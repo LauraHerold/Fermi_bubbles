@@ -11,6 +11,7 @@
 \usepackage{geometry}
 \geometry{a4paper,left=40mm,right=30mm, top=3cm, bottom=3cm} 
 \usepackage{subcaption}
+\usepackage{float}
 
 \newcommand{\Fermi}{\textit{Fermi} }
 
@@ -28,15 +29,79 @@ Bubbles at low latitutes are important for interpretation.
 
 \subsection{On-off analysis}
 \subsubsection{Left-right comparison of the GC}
-\subsection{Fit a single power law or add another power-law with a cutoff}
+To directly compare the spectrum to the right and to the left of the Galactic center, the spectral energy distribution (SED) is plotted for $\ell \in (-20^\circ, 0^\circ)$ and $\ell \in (0^\circ, 20^\circ)$ in $\Delta b = 4^\circ$ stripes, both for the southern and northern hemisphere at latitutes $|b| < 10^\circ$ (Figure \ref{SED_at_low_lat}). The SED is expressed in $E^2 \frac{dN}{dE}$. As the integral of the SED (over logarithmic energy scale) gives the intensity, the area under each graph is a measure for the energy content of the process.\\
+The errorbars show the statistical errors which increase with increasing energy due to the smaller number of photons at higher energies. The calculation of the SED and its statistical errors is given in the appendix \ref{calc_int_SED}.
+\begin{figure}[h!!!]
+	\makebox[\linewidth][c]{%
+		\begin{subfigure}[b]{.6\textwidth}
+			\centering
+			\includegraphics[width=.95\textwidth]{SED_1_top.pdf}
+		\end{subfigure}%
+		\hspace{-1.1cm}
+		\begin{subfigure}[b]{.6\textwidth}
+			\centering
+			\includegraphics[width=.95\textwidth]{SED_1_bottom.pdf}
+		\end{subfigure}%
+}
+\caption{Spectral energy distribution at low latitudes. The left plot shows the SED of the north bubble, the right plot the south bubble. The graphs for $b \in (-2^\circ,2^\circ)$ can be seen in both plots. Lighter colours indicate regions to the left, darker colours regions to the right of the Galactic center. Point sources are masked.}
+\label{SED_at_low_lat}
+\end{figure}\\
+\\
+One observes that the SED to the right of the Galactic center, i.e., $\ell \in (-20^\circ, 0^\circ)$, is clearly harder than to the left of the Galactic center, i.e., $\ell \in (0^\circ, 20^\circ)$, at almost every latitude. This confirms that there is an excess of hard emission to right of the Galactic center.
 
-\subsection{Fit in stripes using low energy data as the background model}
-
-\subsection{``Model'' the bubbles as a collection of rectangles and fit in larger stripes}
 
 
 
-\begin{figure}[h]
+
+\subsubsection{Fit a single power law or add another power-law with a cutoff}
+
+\subsection{Fit in stripes using low energy data as the background model} 
+Unfortunately, the $\chi^2$-fitting procedure encounters a problem if the number of counts in one bin is zero. Therefore, a \textbf{likelihood} fit is applied to improve the performance. Since the approach to use low-energy \textit{Fermi} data seems promising, this method is kept to model the soft emission in our Galaxy. Additionally, the model is improved by another parameter $c$ that takes the isotropic gamma-ray background into account. The total model $N_{\text{model}} = k \cdot N_{\text{low}} + c$ is again fitted in $1^\circ$-latitude stripes to the data $N_{\text{high}}$. Since for the method of maximum likelihood a Poisson-distributed variable is required, instead of the integrated intensity one uses the number of photon counts in each latitude-longitude bin and each energy interval. In order to reduce the formation of holes by point sources in the residual, the lower energy interval is set to 600 MeV - 1.6 GeV. This time the region of the bubbes, i.e., $\ell \in (-20^\circ,20^\circ)$, is excluded from the fit to avoid an over-compensation of the hard emission by the model. Point sources are masked. For details on the likelihood fit see the appendix \ref{likelihood}.\\
+\begin{figure}[h!]
+    \begin{subfigure}{0.5\textwidth}
+    	\centering
+        \includegraphics[width=\textwidth]{FitE_mollweide_at_0-1_to_1-1663015.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+    	\centering
+        \includegraphics[width=\textwidth]{FitE_mollweide_at_0-1_to_1-1663_nonorm.pdf}
+    \end{subfigure} 
+    \caption{Residual photon-counts map after subtraction of the model, normalized (left) and not normalized by the model (right). The energy range of the model is given by $E_{\text{high}}$, the energy range of the data by $E_{\text{low}}$. The map is smoothed with a Gaussian of $5^\circ$ FWHM. Point sources are masked.}
+    \label{lowE_likelihood_mollweide}
+\end{figure}\\
+The resulting residual photon-counts map is shown in Figure \ref{lowE_likelihood_mollweide}. The \textit{Fermi} bubbles are again clearly visible. In the left map of Figure \ref{lowE_likelihood_mollweide} the residual has been normalized by the model, revealing the bubbles again as two lobes of hard spectra. The right map of Figure \ref{lowE_likelihood_mollweide} shows the total residual photon counts, making regions of high-excess emission visible. One excess to the right of the Galactic center in the Galactic plane at $\ell = -5^\circ$ attracts attention. It seems to be connected to the bubbles by a band of hard emission. Further to the right another excess emission stands out at $\ell = -15^\circ$. The Galactic center itself appears to have a comparatively soft spectrum.\\
+\\
+In Figure \ref{lowE_likelihood_profiles} the model is further analyzed at low latitudes. Shown are the longitudinal profiles of photon counts at $|b| < 10^\circ$ in $\Delta b = 4^\circ$ stripes. The two excesses that were discovered in the all-sky map are again visible at $b \in (-2^\circ, 2^\circ)$, and $\ell = -5^\circ$ and $\ell = -15^\circ$, respectively. The two stripes below the Galactic plane, i.e., $b \in (10^\circ, -2^\circ)$, indicated by darker colours, show both an excess at the Galactic center and one at around $\ell = -8^\circ$ to the right of the Galactic center. On the other hand, the two stripes above the Galactic plane, i.e., $b \in (2^\circ, 10^\circ)$, indicated by lighter colours, possess excessive hard emission centered around the Galactic center.\\
+\\
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.7\textwidth]{FitE_profile_plot_at_0-1_to_1-1663.pdf}
+    \caption{Longitudinal profiles of photon counts per pixel at small latitudes. Darker colours indicate latitude stripes above the Galactic plane, lighter colours indicate latitude stripes below. The region of the bubbles, i.e., $\ell \in (-20^\circ,20^\circ)$, is excluded from the fit. Point sources are masked.}
+    \label{lowE_likelihood_profiles}
+\end{figure}
+Accordingly, all modelling done in this work indicates an assymmetry with respect to the Galactic center. Hard gamma radiation seems to be more abundant to the right of the Galactic center. Since the spectrum of the \textit{Fermi} bubbles themselves is very hard, it is reasonable to look out for regions of extraordinary hard spectra in the Galactic plane. They might be related to the origin of the \textit{Fermi} bubbles.
+
+
+
+
+
+\subsection{``Model'' the bubbles as a collection of rectangles}
+
+The model of the previous section is extended by a collection of rectangles, that cover the bubbles roughly. The low-energy data, isotropic background and rectangles are fitted in $4^\circ$-latitude stripes. The rectangle in each stripe is divided into an eastern and a western part; each part is fitted separately to the data.\\
+Figure \ref{boxes_fit} (left) shows the residual in Mollweide projection for two types of ``boxes'': The bubbles are modelled first by rectangles that cover the region from $-20^\circ$ to $20^\circ$ in every latitude stripe (first row in Fig. \ref{boxes_fit}). Though, this ``model'' is very rough, it eats large parts of the positive bubble residual. \\
+The second ``model'' has the following shape, tracing the bubbles a little better:
+
+\begin{description}
+\item[$-180^\circ < b < -14^\circ$:] Rectangle from $-20^\circ$ to $16^\circ$,
+\item[$-14^\circ < b < 10^\circ$:] Rectangle from $-10^\circ$ to $10^\circ$,
+\item[$-10^\circ < b < -2^\circ$:] Rectangle from $-4^\circ$ to $4^\circ$,
+\item[$-2^\circ < b < 18^\circ$:] Rectangle from $-8^\circ$ to $8^\circ$,
+\item[$18^\circ < b < 180^\circ$:] Rectangle from $-20^\circ$ to $16^\circ$.
+\end{description}
+The sizes have been chosen such that the fit works best.
+ 
+
+\begin{figure}[H]
 	\makebox[\linewidth][c]{%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
@@ -59,8 +124,8 @@ Bubbles at low latitutes are important for interpretation.
 		\includegraphics[width=.95\textwidth]{FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf}
 	\end{subfigure}%
 	}\\
-\caption{Fit boxes}
-\label{Fit_IC_pi0_to_ROI}
+\caption{Residual of low-energy data model with rectangles in Mollweide projection (left) and corresponding latitude profile of the box parameter (right), i.e. the fitting parameter of the rectangle. The rectangles west and east have been fitted independently. \textit{Top row:} Rectangles have the same length in every latitude stripe ($-20^\circ, 20^\circ$), \textit{bottom row:} Rectangles have sizes as indicated in the text, adapted to the shape of the \Fermi bubbles. Point sources have been masked. The high-energy data has been smoothed with a Gaussian of $0.5^\circ$ FWHM to compensate for the worse resolution at low energies. Only data with $|b| < 90^\circ$ is taken into account.}
+\label{boxes_fit}
 \end{figure}
 
 
@@ -76,47 +141,48 @@ Bubbles at low latitutes are important for interpretation.
 
 \subsection{Residuals at different energies}
 
-
-\begin{figure}[h]
+\newpage
+\begin{figure}[H]
 	\makebox[\linewidth][c]{%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{gnomview.pdf}
+		\includegraphics[width=.95\textwidth]{gnomview}
+		\vspace*{1cm}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_nonorm.pdf}
+		\includegraphics[width=.95\textwidth]{gnomview_nonorm}
+		\vspace*{1cm}
 	\end{subfigure}%
 	}\\
-	%\vspace*{-3cm}
+	\vspace*{1cm}
 	\makebox[\linewidth][c]{%
-	\vspace*{-3cm}
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth.pdf}
+		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nonorm.pdf}
+		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nonorm}
 	\end{subfigure}%
 	}\\
 		\makebox[\linewidth][c]{%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nomask.pdf}
+		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nomask}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nonorm_nomask.pdf}
+		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nonorm_nomask}
 	\end{subfigure}%
 	}\\
-\caption{Gnomview maps normalized (left) and not normalized (right). \textit{First row:} Point sources are masked and shown as the minimum value of the scale (dark blue). \textit{Second row:} The high-energy data is smoothed with a $0.5^\circ$ sigma Gaussian. \textit{Third row:} Point sources are not masked, high-energy data is smoothed. In order to avoid artefacts in the maps without mask resulting from the high fluxes of two very bright point sources on the western hemisphere (one is Crab nebula), the likelihood fit does not take into account the longitudes 0-$90^\circ$.}
+\caption{Residual photon-counts maps of the Galactic plane normalized (left) and not normalized (right). \textit{First row:} Point sources are masked and shown as the minimum value of the scale (dark blue). \textit{Second row:} The high-energy data is smoothed with a $0.5^\circ$ sigma Gaussian. \textit{Third row:} Point sources are not masked, high-energy data is smoothed. In order to avoid artefacts in the maps without mask resulting from the high fluxes of two very bright point sources on the western hemisphere (one is Crab nebula), the likelihood fit does not take into account the longitudes 0-$90^\circ$. The distance between two graticules is $5^\circ$}
 \label{Fit_IC_pi0_to_ROI}
 \end{figure}
 
 
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\makebox[\linewidth][c]{%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
@@ -141,87 +207,30 @@ Bubbles at low latitutes are important for interpretation.
 \label{Fit_IC_pi0_to_ROI}
 \end{figure}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1.\textwidth]{HESS_GalacticPlaneSurvey}
-    \caption{H.E.S.S.
-     galactic plane survey.}
-    \label{TotalData_Sum}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1.\textwidth]{3FHL}
-    \caption{Galactic plane with hard sources of the 3FHL cataloge.}
-    \label{TotalData_Sum}
-\end{figure}
 
 
 
-
-\begin{figure}[h]
-	\makebox[\linewidth][c]{
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-2,2)_l=(-10,-4).pdf}
-		\caption{ROI}
-	\end{subfigure}
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf}
-		\caption{Region 1a}
-	\end{subfigure}
-	}
-	\makebox[\linewidth][c]{
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf}
-		\caption{Region 1}
-	\end{subfigure}\
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf}
-		\caption{Region 2}
-	\end{subfigure}
-	}
-	\makebox[\linewidth][c]{
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf}
-		\caption{Region 3}
-	\end{subfigure}
-		\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf}
-		\caption{Region 4}
-	\end{subfigure}
-	}	
-\caption{Spectra of different bubble regions on the southern hemisphere.}
-\label{SEDs}
-\end{figure}
-
-
-
-\begin{figure}[h]
+\begin{figure}[H]
 	\makebox[\linewidth][c]{%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-1_to_1-1663_4deg.pdf}
+		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-1_to_1-1663_4deg}
+		\vspace*{1cm}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-4_to_4-1663_4deg.pdf}
+		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-4_to_4-1663_4deg}
+		\vspace*{1cm}
 	\end{subfigure}%
 	}\\
-	%\vspace*{-3cm}
 	\makebox[\linewidth][c]{%
-	\vspace*{-3cm}
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-12_to_12-1663_4deg.pdf}
+		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-12_to_12-1663_4deg}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-36_to_36-1663_4deg.pdf}
+		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-36_to_36-1663_4deg}
 	\end{subfigure}%
 	}\\
 \caption{Gnomview maps}
@@ -233,7 +242,7 @@ Bubbles at low latitutes are important for interpretation.
 
 
 
-
+\newpage
 \subsection{Smaller mask radius for point sources and order = 8 pixels}
 
 \subsection{PS refitting to get unmasked residual?}
@@ -256,7 +265,8 @@ The first and last points have not been taken into account for the fit, as the f
 \\
 The fit yields a spectral index of {\boldmath$n = 2 + \gamma = 2.16$}, where $\gamma$ denotes the spectral index of $E^2 \frac{dN}{dE}$. Typical spectral indices are, for example, {\boldmath$n = 2.4$} for IC and {\boldmath$n = 2.6 - 2.7$} for neutral pion decay. The observed spectrum is much harder. The {\boldmath$\frac{\chi^2}{n_{dof}} = 3.5$} is not so good. (???)\\
 Moreover, the $\chi^2$ fit is mainly dominated by the points below 10 GeV that have very small statistical errors. If one takes a closer look at the points between 20 GeV and 1 TeV, the spectrum seems to be almost flat, i.e., $n \approx 2.0$. Since one could argue that the points below 10 GeV are still very close to the energy range of the model, i.e., 43 MeV - 1.6 GeV, the actual spectrum of the ROI could be closer to $n \approx 2.0$ than the fit would suggest. There is no apparent explanation for such a hard spectrum.\\
-\begin{figure}[t]
+
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Res_SED_b=(-2,2)_l=(-10,-4).pdf}
     \caption{Spectral energy distribution of the ROI. Top: SED of data (blue) and model (red). The energy range of the data is specified by $E_\text{high}$, the energy range of the model by $E_\text{low}$. Bottom: Residual SED (data - model). A power law has been fitted to the residual data, the spectral index is $n = 2 + \gamma = 2.16$. The first and last points have not been taken into account for the fit. Point sources are masked.}
@@ -278,7 +288,7 @@ $$\left(\frac{dN}{dE}\right)_e = N_{0,IC}\ E_e^{n_{IC}},$$
 $$\left(\frac{dN}{dp}\right)_p = N_{0,\pi^0}\ p_p^{n_{\pi^0}}.$$
 The resulting photon spectra are fitted to the spectrum of the ROI with a $\chi^2$ fit. The fit result for both the total and the residual spectrum are shown in Figure \ref{Fit_IC_pi0_to_ROI}. Iminuit and scipy's fmin function yield the same results. The very similar $\chi^2$ values indicate that neither IC scattering nor $\pi^0$ decay are favoured. There is excessive radiation in the total spectrum at high energies\\
 The total spectrum can be better explained by a combination of both emission mechanisms as can be seen in Figure \ref{TotalData_Sum}. The best fit result models the spectrum with a dominant $\pi^0$ emission and an additional IC contribution at higher energies. The $\chi^2$ value has decreased.
-\begin{figure}[h]
+\begin{figure}[H]
 	\makebox[\linewidth][c]{%
 	\begin{subfigure}[b]{.65\textwidth}
 		\centering
@@ -294,7 +304,7 @@ The total spectrum can be better explained by a combination of both emission mec
 \label{Fit_IC_pi0_to_ROI}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{TotalData_Sum_new_best.pdf}
     \caption{Sum of IC and $\pi^0$ emission fitted to the total spectrum of the ROI.}
@@ -308,7 +318,7 @@ The best-fit parameters are:
 \item[Total data, sum:] $n_{IC} = -1.1,\ n_{\pi^0} = -2.6,\ N_{0, IC} = 2.7 \cdot 10^{8},\ N_{0, \pi^0} = 1.0 \cdot 10^{14}$\\
 \end{description}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{TotalData_Sum_IC_n_fixed.pdf}
     \caption{Sum of IC and $\pi^0$ emission fitted to the total spectrum of the ROI for different electron spectral indices.}
@@ -321,7 +331,7 @@ The best-fit parameters are:
 
 \subsubsection{Does the powerlaw have a cutoff?}
 A simple powerlaw is clearly favoured over a powerlaw with cutoff. This can be seen from the decreasing $\chi^2$ value with increasing cutoff energy in Figure \ref{Cutoff_energies}. 
-\begin{figure}[h]
+\begin{figure}[H]
 	\makebox[\linewidth][c]{%
 	\begin{subfigure}[b]{.65\textwidth}
 		\centering
@@ -360,7 +370,7 @@ A simple powerlaw is clearly favoured over a powerlaw with cutoff. This can be s
 
 
 \begin{figure}[h]
-\vspace*{-3cm}
+%\vspace*{-3cm}
 	\centering
 	\includegraphics[width=0.5\textwidth]{gnomview_1}
     \caption{Residual photon counts map. The region of interest (ROI) at $b \in (-2^\circ, 2^\circ)$ and $\ell \in (-10^\circ, -4^\circ)$ is marked with a red rectangle, excessive gamma-ray emission is clearly visible. Low-energy \textit{Fermi} data and isotropic background is used as a model, i.e., $N_\text{res} = N_\text{high} - k \cdot N_\text{low} - c$ (bubbles excluded from fit). The center of the map coincides with the Galactic center. The distance between two graticules is $5^\circ$. The map is smoothed with a Gaussian of $5^\circ$ FWHM. Point sources are masked.}
@@ -427,74 +437,7 @@ which is a reasonable distance. Hence, the excess could also be explained by a c
 Prospects for CTA and neutrino telescopes.
 
 
-
-
-
-
-\begin{figure}[h]
-	\makebox[\linewidth][c]{%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{gnomview.pdf}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_nonorm.pdf}
-	\end{subfigure}%
-	}\\
-	%\vspace*{-3cm}
-	\makebox[\linewidth][c]{%
-	\vspace*{-3cm}
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth.pdf}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nonorm.pdf}
-	\end{subfigure}%
-	}\\
-		\makebox[\linewidth][c]{%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nomask.pdf}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nonorm_nomask.pdf}
-	\end{subfigure}%
-	}\\
-\caption{Gnomview maps normalized (left) and not normalized (right). \textit{First row:} Point sources are masked and shown as the minimum value of the scale (dark blue). \textit{Second row:} The high-energy data is smoothed with a $0.5^\circ$ sigma Gaussian. \textit{Third row:} Point sources are not masked, high-energy data is smoothed. In order to avoid artefacts in the maps without mask resulting from the high fluxes of two very bright point sources on the western hemisphere (one is Crab nebula), the likelihood fit does not take into account the longitudes 0-$90^\circ$.}
-\label{Fit_IC_pi0_to_ROI}
-\end{figure}
-
-
-
-\begin{figure}[h]
-	\makebox[\linewidth][c]{%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.pdf}
-	\end{subfigure}%
-	}\\
-	\makebox[\linewidth][c]{%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf}
-	\end{subfigure}%
-	}\\
-\caption{Mollweide maps normalized (top) and not normalized (bottom) with (right) and without (left) point sources mask. In order to avoid artefacts in the maps without mask resulting from the high fluxes of two very bright point sources on the western hemisphere (one is Crab nebula), the likelihood fit does not take into account the longitudes 0-$90^\circ$.}
-\label{Fit_IC_pi0_to_ROI}
-\end{figure}
-
+\section*{Appendix}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1.\textwidth]{HESS_GalacticPlaneSurvey}
@@ -508,81 +451,6 @@ Prospects for CTA and neutrino telescopes.
     \caption{Galactic plane with hard sources of the 3FHL cataloge.}
     \label{TotalData_Sum}
 \end{figure}
-
-
-
-
-\begin{figure}[h]
-	\makebox[\linewidth][c]{
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-2,2)_l=(-10,-4).pdf}
-		\caption{ROI}
-	\end{subfigure}
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf}
-		\caption{Region 1a}
-	\end{subfigure}
-	}
-	\makebox[\linewidth][c]{
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf}
-		\caption{Region 1}
-	\end{subfigure}\
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf}
-		\caption{Region 2}
-	\end{subfigure}
-	}
-	\makebox[\linewidth][c]{
-	\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf}
-		\caption{Region 3}
-	\end{subfigure}
-		\begin{subfigure}[b]{.65\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf}
-		\caption{Region 4}
-	\end{subfigure}
-	}	
-\caption{Spectra of different bubble regions on the southern hemisphere.}
-\label{SEDs}
-\end{figure}
-
-
-
-\begin{figure}[h]
-	\makebox[\linewidth][c]{%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-1_to_1-1663_4deg.pdf}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-4_to_4-1663_4deg.pdf}
-	\end{subfigure}%
-	}\\
-	%\vspace*{-3cm}
-	\makebox[\linewidth][c]{%
-	\vspace*{-3cm}
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-12_to_12-1663_4deg.pdf}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.5\textwidth}
-		\centering
-		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-36_to_36-1663_4deg.pdf}
-	\end{subfigure}%
-	}\\
-\caption{Gnomview maps}
-\label{Fit_IC_pi0_to_ROI}
-\end{figure}
-
-
 
 
 
