@@ -1,0 +1,374 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[english]{babel}
+\usepackage[babel=true]{microtype}
+\usepackage{wrapfig}
+\usepackage{url}
+\usepackage{mathrsfs} 
+\usepackage[absolute]{textpos}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper,left=40mm,right=30mm, top=1cm, bottom=2cm} 
+\usepackage{subcaption}
+
+\newcommand{\Fermi}{\textit{Fermi} }
+
+\begin{document}
+\title{What we already have: A region with excessive hard emission at around -5$^\circ$ longitude}
+\maketitle
+
+\begin{figure}[h]
+\vspace*{-3cm}
+	\centering
+	\includegraphics[width=0.5\textwidth]{gnomview_1}
+    \caption{Residual photon counts map. The region of interest (ROI) at $b \in (-2^\circ, 2^\circ)$ and $\ell \in (-10^\circ, -4^\circ)$ is marked with a red rectangle, excessive gamma-ray emission is clearly visible. Low-energy \textit{Fermi} data and isotropic background is used as a model, i.e., $N_\text{res} = N_\text{high} - k \cdot N_\text{low} - c$ (bubbles excluded from fit). The center of the map coincides with the Galactic center. The distance between two graticules is $5^\circ$. The map is smoothed with a Gaussian of $5^\circ$ FWHM. Point sources are masked.}
+    \label{gnomview}
+\end{figure}
+
+\section{Luminosity of the excess-flux region}
+The \textbf{residual} luminosity of the ROI per unit detector area is approximately 
+\begin{equation}
+\label{eq_dLdA}
+\frac{dL}{dA} = \int_\text{ROI} \int_{E_0}^\infty E\ \frac{dN^\gamma}{d\Omega\ dE\ \tau}\ dE\ d\Omega \approx \sum_{i \in \text{ROI}}\ \sum_{j: E_j > E_0}  E_j\ \frac{N_{ij}^\gamma}{\tau_{ij}} = 2.9 \cdot 10^{-10}\ \frac{\text{erg}}{\text{cm}^2\text{s}}
+\end{equation}
+where $E_j$ is the mean energy of energy bin $j$, $N_{ij}^\gamma$ and $\tau_{ij}$ are the number of photon counts and exposure in pixel $i$ and energy bin $j$, respectively.\\
+
+Assuming that the ROI is close to the Galactic center, as it would be expected if it was related to the \textit{Fermi} bubbles, the total luminosity of the ROI is
+\begin{equation}
+\label{eq_L}
+L = \int_{\substack{\text{Sphere with} \\ \text{radius }R}}\ \frac{dL}{dA}\ dA = 4 \pi R^2\ \frac{dL}{dA} = 2.2 \cdot 10^{36}\ \frac{\text{erg}}{\text{s}}
+\end{equation}
+with the distance $R = 8$ kpc to the ROI. Expressed in solar luminosities the luminosity becomes $L = 572\ L_\odot$, or expressed in terms of luminosity per area from the Crab nebula $\frac{dL}{dA} = 12 $ mCrab. 
+
+
+\section{Cosmic-ray energy density in a purely hadronic model}
+Let's assume for now that the excessive gamma-ray emission is produced by neutral pion decay \textbf{only}. How much additional cosmic radiation would be needed to explain the residual gamma radiation from the ROI? (Values and certain formulas are taken from \cite{Longair}.)\\
+\\
+To calculate the cosmic-ray density $\rho_{\text{CR}}$, we assume the gas density in the ROI to have a typical value for the inner Galaxy, i.e., $\rho_\text{gas} = \frac{1}{\text{cm}^3}$. Since cosmic rays are highly relativistic we can approximate their velocity by the speed of light, $v_\text{CR} = c$. The proton-proton cross section $\sigma_\text{pp} = 2.5 \cdot 10^{-26}$ cm$^2$ for pion production is similar to the geometric size of the proton.\\
+Then, the average number of collisions per unit time and area is $P_\text{col} = \rho_{\text{gas}}\ \sigma_{\text{pp}}\ \rho_{\text{CR}}\ v_{\text{CR}}$.\\
+However, collisions between cosmic-ray protons and protons or nuclei of the interstellar gas produce not only $\pi^0$ mesons, but also $\pi^+$ and $\pi^-$ mesons. The charged pions decay into muons and further into electrons (and neutrinos). Though, leptons can emit gamma radiation via inverse Compton scattering, this is not taken into account in this calculation. Only the neutral pion decays into two gamma-ray photons. Therefore, only one third of the energy in cosmic rays is converted into gamma radiation. This is expressed in the energy branching ratio $F(E_{\text{CR}}, E_\gamma)$, with $\int F(E_{\text{CR}}, E_\gamma)\ dE_\gamma = \frac{1}{3}E_\text{CR}$.
+With that, the luminosity of the ROI can also be written in terms of $P_\text{col}$:
+\begin{equation}
+\begin{split}
+\frac{dL}{dV} &= \int P_\text{col}(E_{\text{CR}}) \int F(E_{\text{CR}}, E_\gamma)\ dE_\gamma\ dE_{\text{CR}}\\
+&= \frac{1}{3}\ \rho_{\text{gas}}\ \sigma_{\text{pp}}\ \int \rho_{\text{CR}}\ v_{\text{CR}}\ E_{\text{CR}}\ dE_{\text{CR}}\\
+&= \frac{1}{3}\ \rho_{\text{gas}}\ \sigma_{\text{pp}}\ c\ \epsilon_{\text{CR}}
+\end{split}
+\end{equation}
+where $\epsilon_{\text{CR}} = \int \rho_{\text{CR}}\  E_{\text{CR}}\ dE_{\text{CR}}$ is the energy density of cosmic radiation.\\
+With the value of the total luminosity $L$ that was calculated in the previous section, one gets for the cosmic-ray energy density:
+\begin{equation}
+\label{eq_epsilon}
+\epsilon_\text{CR} = \frac{3}{\rho_{\text{gas}}\ \sigma_{\text{pp}}\ c}\ \frac{L}{V_\text{ROI}} = 8.8 \cdot 10^{51}\ \frac{\text{erg}}{V_\text{ROI}} = 1.5\cdot 10^{-12}\ \frac{\text{erg}}{\text{cm}^3}. 
+\end{equation} 
+Thereby, the luminosity $L$ is assumed to be constant over the volume $V_\text{ROI}$ of the ROI. The volume $V_\text{ROI}$ is assumed to have an ellipsoidal shape. The length and height was set to the length and height of the rectangle that is marked in Figure \ref{gnomview} with red lines, assuming a distance of 8 kpc between the ROI and earth. The depth of the ROI is assumed to be the same as the length. This yields the following volume of the ROI:\\
+\begin{equation}
+V_\text{ROI} = \frac{4}{3}\ \pi\cdot 279 \text{ pc}\cdot (418 \text{ pc})^2 = 0.20 \text{ kpc}^3.
+\end{equation}\\
+The average energy release of a supernova in cosmic radiation is approximately $E_\text{SNR} \approx 10 ^{49}$ erg. Hence, the cosmic-ray density necessary for the observed luminosity could be explained by around \textbf{880 supernovae}.\\
+Assuming an average supernova rate of $\frac{1}{\text{century}}$ in our galaxy, a rough estimate for the supernova rate in a region like the ROI could be $\frac{1}{\text{kyr}}$. Therefore, the timescale in which the ROI has formed, is around 1 Myr. Interestingly, this coincides with the cooling time of the electrons in the \textit{Fermi} bubbles within the leptonic model of Ackermann et al. \cite{Ackermann1}.\\
+\\
+Another question one could ask is: What would be the distance of the excess when the additional cosmic-ray density was created by one supernova? To answer that question we rearrange Equation \ref{eq_L} and put in Equation \ref{eq_dLdA} and \ref{eq_epsilon}. We get
+\begin{equation}
+R_\text{1SN} = \sqrt{\frac{L}{4\ \pi\ \frac{dL}{dA}}}\ = \sqrt{\frac{\rho_\text{gas}\ \sigma_\text{pp}\ c\ E_\text{SNR}}{12\ \pi\ \frac{dL}{dA}}}\ = \sqrt{\frac{1}{880}}\cdot 8\ \text{kpc} = 270\ \text{pc}
+\end{equation}\\
+which is a reasonable distance. Hence, the excess could also be explained by a close-by supernova remnant.
+
+
+
+\section{The spectrum of the excess-flux region}
+Besides the luminosity, also the spectral energy distribution sheds light on the emission mechanism in a gamma-ray source. Figure \ref{res_SED} (top) shows the SED of both the data and the model. To construct the model, low-energy \textit{Fermi} data and isotropic background are used. Figure \ref{res_SED} (bottom) shows the resulting residual SED. The errorbars indicate the standard deviation. One observes that only at the highest energy the SED of the data lies below the SED of the model. In the logarithmic plot, the corresponding point of the residual is negative and, therefore, only its errorbar can be seen.\\
+\\
+To determine the spectral index $n$, a power law 
+\begin{equation}
+\frac{dN}{dE} = N_0 \left( \frac{E}{E_0}\right)^{-n}
+\end{equation}
+is fitted to the residual data with the method of least squares. $N_0$ denotes the number of photon counts at energy $E_0$ which can be freely chosen.\\
+The first and last points have not been taken into account for the fit, as the first point at 1.9 GeV is still strongly influenced by the model that contains \textit{Fermi} data below 1.6 GeV, and the last point is negative.\\
+\\
+The fit yields a spectral index of {\boldmath$n = 2 + \gamma = 2.16$}, where $\gamma$ denotes the spectral index of $E^2 \frac{dN}{dE}$. Typical spectral indices are, for example, {\boldmath$n = 2.4$} for IC and {\boldmath$n = 2.6 - 2.7$} for neutral pion decay. The observed spectrum is much harder. The {\boldmath$\frac{\chi^2}{n_{dof}} = 3.5$} is not so good. (???)\\
+Moreover, the $\chi^2$ fit is mainly dominated by the points below 10 GeV that have very small statistical errors. If one takes a closer look at the points between 20 GeV and 1 TeV, the spectrum seems to be almost flat, i.e., $n \approx 2.0$. Since one could argue that the points below 10 GeV are still very close to the energy range of the model, i.e., 43 MeV - 1.6 GeV, the actual spectrum of the ROI could be closer to $n \approx 2.0$ than the fit would suggest. There is no apparent explanation for such a hard spectrum.\\
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Res_SED_b=(-2,2)_l=(-10,-4).pdf}
+    \caption{Spectral energy distribution of the ROI. Top: SED of data (blue) and model (red). The energy range of the data is specified by $E_\text{high}$, the energy range of the model by $E_\text{low}$. Bottom: Residual SED (data - model). A power law has been fitted to the residual data, the spectral index is $n = 2 + \gamma = 2.16$. The first and last points have not been taken into account for the fit. Point sources are masked.}
+    \label{res_SED}
+\end{figure}
+ 
+ 
+ 
+
+ 
+\section{The spectra of a powerlaw distribution of electrons or protons}
+The two processes that have to be considered are:
+\begin{enumerate}
+\item Inverse Compton scattering of a distribution of relativistic electrons on the photons of the interstellar radiation field and
+\item Neutral pion decay of $\pi^0$ mesons produced in collisions of relativistic protons.
+\end{enumerate}
+The particle spectra are modelled by simple powerlaws:
+$$\left(\frac{dN}{dE}\right)_e = N_{0,IC}\ E_e^{n_{IC}},$$ 
+$$\left(\frac{dN}{dp}\right)_p = N_{0,\pi^0}\ p_p^{n_{\pi^0}}.$$
+The resulting photon spectra are fitted to the spectrum of the ROI with a $\chi^2$ fit. The fit result for both the total and the residual spectrum are shown in Figure \ref{Fit_IC_pi0_to_ROI}. Iminuit and scipy's fmin function yield the same results. The very similar $\chi^2$ values indicate that neither IC scattering nor $\pi^0$ decay are favoured. There is excessive radiation in the total spectrum at high energies\\
+The total spectrum can be better explained by a combination of both emission mechanisms as can be seen in Figure \ref{TotalData_Sum}. The best fit result models the spectrum with a dominant $\pi^0$ emission and an additional IC contribution at higher energies. The $\chi^2$ value has decreased.
+\begin{figure}[h]
+	\makebox[\linewidth][c]{%
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{TotalData_IC_powerlaw_pi0-powerlaw.pdf}
+	\end{subfigure}%
+	\hspace*{-1.2cm}
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{ResidualData_IC_powerlaw_pi0-powerlaw.pdf}
+	\end{subfigure}%
+	}\\
+\caption{\textit{Left:} Total spectrum of the ROI. \textit{Right:} Residual spectrum using the low-energy \Fermi  data model. Both the IC and $\pi^0$ spectrum fit to the data points.}
+\label{Fit_IC_pi0_to_ROI}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{TotalData_Sum_new_best.pdf}
+    \caption{Sum of IC and $\pi^0$ emission fitted to the total spectrum of the ROI.}
+    \label{TotalData_Sum}
+\end{figure}
+
+The best-fit parameters are:
+\begin{description}
+\item[Total data, independent fit:] $n_{IC} = -2.8,\ n_{\pi^0} = -2.6,\ N_{0, IC} = 9.2 \cdot 10^{14},\ N_{0, \pi^0} = 9.4 \cdot 10^{13}$
+\item[Residual data, independent fit:] $n_{IC} = -2.2,\ n_{\pi^0} = -2.2,\ N_{0, IC} = 1.7 \cdot 10^{12},\ N_{0, \pi^0} = 2.2 \cdot 10^{12}$
+\item[Total data, sum:] $n_{IC} = -1.1,\ n_{\pi^0} = -2.6,\ N_{0, IC} = 2.7 \cdot 10^{8},\ N_{0, \pi^0} = 1.0 \cdot 10^{14}$\\
+\end{description}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{TotalData_Sum_IC_n_fixed.pdf}
+    \caption{Sum of IC and $\pi^0$ emission fitted to the total spectrum of the ROI for different electron spectral indices.}
+    \label{TotalData_Sum}
+\end{figure}
+
+
+
+
+\newpage
+\section{Does the powerlaw have a cutoff?}
+A simple powerlaw is clearly favoured over a powerlaw with cutoff. This can be seen from the decreasing $\chi^2$ value with increasing cutoff energy in Figure \ref{Cutoff_energies}. 
+\begin{figure}[h]
+	\makebox[\linewidth][c]{%
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Compare_IC_Ecut_of_tot_data.pdf}
+	\end{subfigure}%
+	\hspace*{-1.2cm}
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Compare_pi0_Ecut_of_tot_data.pdf}
+	\end{subfigure}%
+	}\\
+	\makebox[\linewidth][c]{%
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Compare_IC_Ecut_of_res_data.pdf}
+	\end{subfigure}%
+	\hspace*{-1.2cm}
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Compare_pi0_Ecut_of_res_data.pdf}
+	\end{subfigure}%
+	}
+\caption{Electron and proton powerlaw spectra with different cutoff energies. The higher the cutoff energy, the better the agreement with the data.}
+\label{Cutoff_energies}
+\end{figure}
+
+\section{The residual in Mollweide projection}
+
+
+\begin{figure}[h]
+	\makebox[\linewidth][c]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{gnomview.pdf}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{gnomview_nonorm.pdf}
+	\end{subfigure}%
+	}\\
+	%\vspace*{-3cm}
+	\makebox[\linewidth][c]{%
+	\vspace*{-3cm}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth.pdf}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nonorm.pdf}
+	\end{subfigure}%
+	}\\
+		\makebox[\linewidth][c]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nomask.pdf}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{gnomview_highEsmooth_nonorm_nomask.pdf}
+	\end{subfigure}%
+	}\\
+\caption{Gnomview maps normalized (left) and not normalized (right). \textit{First row:} Point sources are masked and shown as the minimum value of the scale (dark blue). \textit{Second row:} The high-energy data is smoothed with a $0.5^\circ$ sigma Gaussian. \textit{Third row:} Point sources are not masked, high-energy data is smoothed. In order to avoid artefacts in the maps without mask resulting from the high fluxes of two very bright point sources on the western hemisphere (one is Crab nebula), the likelihood fit does not take into account the longitudes 0-$90^\circ$.}
+\label{Fit_IC_pi0_to_ROI}
+\end{figure}
+
+
+\newpage
+\begin{figure}[h]
+	\makebox[\linewidth][c]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.pdf}
+	\end{subfigure}%
+	}\\
+	\makebox[\linewidth][c]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf}
+	\end{subfigure}%
+	}\\
+\caption{Mollweide maps normalized (top) and not normalized (bottom) with (right) and without (left) point sources mask. In order to avoid artefacts in the maps without mask resulting from the high fluxes of two very bright point sources on the western hemisphere (one is Crab nebula), the likelihood fit does not take into account the longitudes 0-$90^\circ$.}
+\label{Fit_IC_pi0_to_ROI}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.\textwidth]{HESS_GalacticPlaneSurvey}
+    \caption{H.E.S.S.
+     galactic plane survey.}
+    \label{TotalData_Sum}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.\textwidth]{3FHL}
+    \caption{Galactic plane with hard sources of the 3FHL cataloge.}
+    \label{TotalData_Sum}
+\end{figure}
+
+
+
+\newpage
+\begin{figure}[h]
+	\makebox[\linewidth][c]{
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Res_SED_b=(-2,2)_l=(-10,-4).pdf}
+		\caption{ROI}
+	\end{subfigure}
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf}
+		\caption{Region 1a}
+	\end{subfigure}
+	}
+	\makebox[\linewidth][c]{
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf}
+		\caption{Region 1}
+	\end{subfigure}\
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf}
+		\caption{Region 2}
+	\end{subfigure}
+	}
+	\makebox[\linewidth][c]{
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf}
+		\caption{Region 3}
+	\end{subfigure}
+		\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf}
+		\caption{Region 4}
+	\end{subfigure}
+	}	
+\caption{Spectra of different bubble regions on the southern hemisphere.}
+\label{SEDs}
+\end{figure}
+
+
+\newpage
+\begin{figure}[h]
+	\makebox[\linewidth][c]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-1_to_1-1663_4deg.pdf}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-4_to_4-1663_4deg.pdf}
+	\end{subfigure}%
+	}\\
+	%\vspace*{-3cm}
+	\makebox[\linewidth][c]{%
+	\vspace*{-3cm}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-12_to_12-1663_4deg.pdf}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_gnomview_at_0-36_to_36-1663_4deg.pdf}
+	\end{subfigure}%
+	}\\
+\caption{Gnomview maps}
+\label{Fit_IC_pi0_to_ROI}
+\end{figure}
+
+
+\newpage
+\begin{figure}[h]
+	\makebox[\linewidth][c]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf}
+	\end{subfigure}
+	%\vspace*{-3cm}
+	}\\
+	\makebox[\linewidth][c]{%
+	\vspace*{-3cm}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+		\includegraphics[width=.95\textwidth]{FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf}
+	\end{subfigure}%
+	}\\
+\caption{Fit boxes}
+\label{Fit_IC_pi0_to_ROI}
+\end{figure}
+
+
+\newpage
+\begin{thebibliography}{9}
+	\bibitem{Longair} M. S. Longair. \textit{High Energy Astrophysics}. Cambridge University Press, Cambridge, 3rd edition (2011).
+	\bibitem{Ackermann1} M. Ackermann, A. Albert, W. B. Atwood et al. \textit{The Spectrum and Morphology of the \textit{Fermi} Bubbles}. arXiv:1407.7905v1 (2014).\\
+\end{thebibliography}
+
+\end{document}
