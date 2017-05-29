@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.31)  29 MAY 2017 09:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.31)  29 MAY 2017 12:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -236,11 +236,7 @@ Package caption Info: wrapfig package is loaded.
 \c@subfigure=\count108
 \c@subtable=\count109
 )
-(./What_we_already_have.aux
-
-LaTeX Warning: Label `TotalData_Sum' multiply defined.
-
-)
+No file What_we_already_have.aux.
 \openout1 = `What_we_already_have.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -266,7 +262,7 @@ Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 Package microtype Info: Redefining babel's language switching commands.
- (/Users/lauraherold/App/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+(/Users/lauraherold/App/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
@@ -339,14 +335,14 @@ e
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
 * h-part:(L,W,R)=(113.81102pt, 398.3386pt, 85.35826pt)
-* v-part:(T,H,B)=(28.45274pt, 759.6886pt, 56.9055pt)
+* v-part:(T,H,B)=(85.35826pt, 674.33032pt, 85.35826pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=398.3386pt
-* \textheight=759.6886pt
+* \textheight=674.33032pt
 * \oddsidemargin=41.54103pt
 * \evensidemargin=41.54103pt
-* \topmargin=-80.81725pt
+* \topmargin=-23.91173pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -373,259 +369,521 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 LaTeX Warning: No \author given.
 
-<gnomview_1.pdf, id=1, 419.166pt x 462.52798pt>
-File: gnomview_1.pdf Graphic file (type pdf)
- <use gnomview_1.pdf>
-Package pdftex.def Info: gnomview_1.pdf used on input line 24.
-(pdftex.def)             Requested size: 199.1693pt x 219.77364pt.
+<FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf, id=1, 614.295pt x 390.25798pt>
+File: FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf Graphic file (type pdf)
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--36
+<use FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf>
+Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf used on i
+nput line 50.
+(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
 
- []
+<FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf, id=2, 614.295pt x 390.25798pt>
+File: FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf Graphic file (type pdf)
 
+<use FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf>
+Package pdftex.def Info: FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf used on inp
+ut line 50.
+(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
 
-LaTeX Warning: Citation `Longair' on page 1 undefined on input line 46.
+<FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf, id=3, 614.295pt x 390.25
+798pt>
+File: FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf Graphic file (type p
+df)
+ <use FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf>
+Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf u
+sed on input line 61.
+(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
 
+<FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf, id=4, 614.295pt x 390.2579
+8pt>
+File: FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf Graphic file (type pdf
+)
+ <use FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf>
+Package pdftex.def Info: FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf use
+d on input line 61.
+(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--52
-
- []
-
-[1
-
-{/Users/lauraherold/App/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./gnomvi
-ew_1.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 64--66
-
- []
-
-
-LaTeX Warning: Citation `Ackermann1' on page 2 undefined on input line 70.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--73
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 81--84
-
- []
-
-[2] <Res_SED_b=(-2,2)_l=(-10,-4).pdf, id=65, 578.16pt x 433.62pt>
-File: Res_SED_b=(-2,2)_l=(-10,-4).pdf Graphic file (type pdf)
-
-<use Res_SED_b=(-2,2)_l=(-10,-4).pdf>
-Package pdftex.def Info: Res_SED_b=(-2,2)_l=(-10,-4).pdf used on input line 94.
-
-(pdftex.def)             Requested size: 318.67209pt x 239.0012pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 86--98
+Underfull \hbox (badness 10000) in paragraph at lines 40--62
 
  []
 
-[3 <./Res_SED_b=(-2,2)_l=(-10,-4).pdf>]
-<TotalData_IC_powerlaw_pi0-powerlaw.pdf, id=149, 578.16pt x 433.62pt>
-File: TotalData_IC_powerlaw_pi0-powerlaw.pdf Graphic file (type pdf)
-
-<use TotalData_IC_powerlaw_pi0-powerlaw.pdf>
-Package pdftex.def Info: TotalData_IC_powerlaw_pi0-powerlaw.pdf used on input l
-ine 125.
-(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-<ResidualData_IC_powerlaw_pi0-powerlaw.pdf, id=150, 578.16pt x 433.62pt>
-File: ResidualData_IC_powerlaw_pi0-powerlaw.pdf Graphic file (type pdf)
-
-<use ResidualData_IC_powerlaw_pi0-powerlaw.pdf>
-Package pdftex.def Info: ResidualData_IC_powerlaw_pi0-powerlaw.pdf used on inpu
-t line 125.
-(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--126
-
- []
-
-<TotalData_Sum_new_best.pdf, id=151, 578.16pt x 433.62pt>
-File: TotalData_Sum_new_best.pdf Graphic file (type pdf)
-
-<use TotalData_Sum_new_best.pdf>
-Package pdftex.def Info: TotalData_Sum_new_best.pdf used on input line 132.
-(pdftex.def)             Requested size: 318.67209pt x 239.0012pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
-
- []
-
-<TotalData_Sum_IC_n_fixed.pdf, id=152, 578.16pt x 433.62pt>
-File: TotalData_Sum_IC_n_fixed.pdf Graphic file (type pdf)
-
-<use TotalData_Sum_IC_n_fixed.pdf>
-Package pdftex.def Info: TotalData_Sum_IC_n_fixed.pdf used on input line 146.
-(pdftex.def)             Requested size: 318.67209pt x 239.0012pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4 <./TotalData_IC_powerlaw_pi0-powerlaw.pdf> <./ResidualData_IC_powerlaw_pi0-p
-owerlaw.pdf
-
-pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Resid
-ualData_IC_powerlaw_pi0-powerlaw.pdf): PDF inclusion: multiple pdfs with page g
-roup included in a single page
-> <./TotalData_Sum_new_best.pdf
-
-pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Total
-Data_Sum_new_best.pdf): PDF inclusion: multiple pdfs with page group included i
-n a single page
->]
-
-LaTeX Warning: Reference `Cutoff_energies' on page 5 undefined on input line 15
-6.
-
-<Compare_IC_Ecut_of_tot_data.pdf, id=345, 578.16pt x 433.62pt>
-File: Compare_IC_Ecut_of_tot_data.pdf Graphic file (type pdf)
-
-<use Compare_IC_Ecut_of_tot_data.pdf>
-Package pdftex.def Info: Compare_IC_Ecut_of_tot_data.pdf used on input line 168
-.
-(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-<Compare_pi0_Ecut_of_tot_data.pdf, id=346, 578.16pt x 433.62pt>
-File: Compare_pi0_Ecut_of_tot_data.pdf Graphic file (type pdf)
-
-<use Compare_pi0_Ecut_of_tot_data.pdf>
-Package pdftex.def Info: Compare_pi0_Ecut_of_tot_data.pdf used on input line 16
-8.
-(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-<Compare_IC_Ecut_of_res_data.pdf, id=347, 578.16pt x 433.62pt>
-File: Compare_IC_Ecut_of_res_data.pdf Graphic file (type pdf)
-
-<use Compare_IC_Ecut_of_res_data.pdf>
-Package pdftex.def Info: Compare_IC_Ecut_of_res_data.pdf used on input line 179
-.
-(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-<Compare_pi0_Ecut_of_res_data.pdf, id=348, 578.16pt x 433.62pt>
-File: Compare_pi0_Ecut_of_res_data.pdf Graphic file (type pdf)
-
-<use Compare_pi0_Ecut_of_res_data.pdf>
-Package pdftex.def Info: Compare_pi0_Ecut_of_res_data.pdf used on input line 17
-9.
-(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<gnomview.pdf, id=349, 419.166pt x 462.52798pt>
+<gnomview.pdf, id=5, 419.166pt x 462.52798pt>
 File: gnomview.pdf Graphic file (type pdf)
  <use gnomview.pdf>
-Package pdftex.def Info: gnomview.pdf used on input line 197.
+Package pdftex.def Info: gnomview.pdf used on input line 90.
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
 
-<gnomview_nonorm.pdf, id=350, 419.166pt x 462.52798pt>
+<gnomview_nonorm.pdf, id=6, 419.166pt x 462.52798pt>
 File: gnomview_nonorm.pdf Graphic file (type pdf)
-
-<use gnomview_nonorm.pdf>
-Package pdftex.def Info: gnomview_nonorm.pdf used on input line 197.
+ <use gnomview_nonorm.pdf>
+Package pdftex.def Info: gnomview_nonorm.pdf used on input line 90.
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
 
-<gnomview_highEsmooth.pdf, id=351, 419.166pt x 462.52798pt>
+<gnomview_highEsmooth.pdf, id=7, 419.166pt x 462.52798pt>
 File: gnomview_highEsmooth.pdf Graphic file (type pdf)
 
 <use gnomview_highEsmooth.pdf>
-Package pdftex.def Info: gnomview_highEsmooth.pdf used on input line 209.
+Package pdftex.def Info: gnomview_highEsmooth.pdf used on input line 102.
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
 
-<gnomview_highEsmooth_nonorm.pdf, id=352, 419.166pt x 462.52798pt>
+<gnomview_highEsmooth_nonorm.pdf, id=8, 419.166pt x 462.52798pt>
 File: gnomview_highEsmooth_nonorm.pdf Graphic file (type pdf)
 
 <use gnomview_highEsmooth_nonorm.pdf>
-Package pdftex.def Info: gnomview_highEsmooth_nonorm.pdf used on input line 209
+Package pdftex.def Info: gnomview_highEsmooth_nonorm.pdf used on input line 102
 .
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
 
-<gnomview_highEsmooth_nomask.pdf, id=353, 419.166pt x 462.52798pt>
+<gnomview_highEsmooth_nomask.pdf, id=9, 419.166pt x 462.52798pt>
 File: gnomview_highEsmooth_nomask.pdf Graphic file (type pdf)
 
 <use gnomview_highEsmooth_nomask.pdf>
-Package pdftex.def Info: gnomview_highEsmooth_nomask.pdf used on input line 219
+Package pdftex.def Info: gnomview_highEsmooth_nomask.pdf used on input line 112
 .
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
 
-<gnomview_highEsmooth_nonorm_nomask.pdf, id=354, 419.166pt x 462.52798pt>
+<gnomview_highEsmooth_nonorm_nomask.pdf, id=10, 419.166pt x 462.52798pt>
 File: gnomview_highEsmooth_nonorm_nomask.pdf Graphic file (type pdf)
 
 <use gnomview_highEsmooth_nonorm_nomask.pdf>
 Package pdftex.def Info: gnomview_highEsmooth_nonorm_nomask.pdf used on input l
-ine 219.
+ine 112.
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--220
+Underfull \hbox (badness 10000) in paragraph at lines 81--113
 
  []
 
 
+LaTeX Warning: Float too large for page by 60.02455pt on input line 115.
+
+[1
+
+{/Users/lauraherold/App/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./FitE_m
+ollweide_at_0-1_to_1-1663_norm_new.pdf> <./FitE_boxprof_at_0-1_to_1-1663_norm_n
+ew.pdf
+
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
+boxprof_at_0-1_to_1-1663_norm_new.pdf): PDF inclusion: multiple pdfs with page 
+group included in a single page
+> <./FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf
+
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
+mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf): PDF inclusion: multiple pdfs 
+with page group included in a single page
+> <./FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf
+
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
+boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf): PDF inclusion: multiple pdfs wi
+th page group included in a single page
+>]
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5 <./TotalData_Sum_IC_n_fixed.pdf>]
-<FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf, id=416, 614.295pt x 390
+
+<FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf, id=210, 614.295pt x 390
 .25798pt>
 File: FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf Graphic file (type 
 pdf)
  <use FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf>
 Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf 
-used on input line 236.
+used on input line 129.
 (pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
 
-<FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.pdf, id=417, 614.295pt x
+<FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.pdf, id=211, 614.295pt x
  390.25798pt>
 File: FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.pdf Graphic file (t
 ype pdf)
  <use FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.pdf>
 Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.
-pdf used on input line 236.
+pdf used on input line 129.
 (pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
 
-<FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf, id=418, 614.295pt x 390.257
+<FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf, id=212, 614.295pt x 390.257
 98pt>
 File: FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf Graphic file (type pdf)
 
  <use FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf>
 Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf used
- on input line 246.
+ on input line 139.
 (pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
 
-<FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf, id=419, 614.295pt x 390.2
+<FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf, id=213, 614.295pt x 390.2
 5798pt>
 File: FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf Graphic file (type pd
 f)
  <use FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf>
 Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf us
-ed on input line 246.
+ed on input line 139.
 (pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--247
+Underfull \hbox (badness 10000) in paragraph at lines 120--140
 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<HESS_GalacticPlaneSurvey.png, id=420, 1156.32pt x 265.99374pt>
+<HESS_GalacticPlaneSurvey.png, id=214, 1156.32pt x 265.99374pt>
 File: HESS_GalacticPlaneSurvey.png Graphic file (type png)
 
 <use HESS_GalacticPlaneSurvey.png>
-Package pdftex.def Info: HESS_GalacticPlaneSurvey.png used on input line 253.
+Package pdftex.def Info: HESS_GalacticPlaneSurvey.png used on input line 146.
 (pdftex.def)             Requested size: 398.3386pt x 91.62993pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<3FHL.png, id=421, 1905.1175pt x 587.19376pt>
+<3FHL.png, id=215, 1905.1175pt x 587.19376pt>
 File: 3FHL.png Graphic file (type png)
  <use 3FHL.png>
-Package pdftex.def Info: 3FHL.png used on input line 260.
+Package pdftex.def Info: 3FHL.png used on input line 153.
+(pdftex.def)             Requested size: 398.3386pt x 122.77673pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Res_SED_b=(-2,2)_l=(-10,-4).pdf, id=216, 578.16pt x 433.62pt>
+File: Res_SED_b=(-2,2)_l=(-10,-4).pdf Graphic file (type pdf)
+
+<use Res_SED_b=(-2,2)_l=(-10,-4).pdf>
+Package pdftex.def Info: Res_SED_b=(-2,2)_l=(-10,-4).pdf used on input line 173
+.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+<Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf, id=217, 578.16pt x 433.62pt>
+File: Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf Graphic file (type pdf)
+
+<use Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf>
+Package pdftex.def Info: Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf used on input line
+ 173.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+<Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf, id=218, 578.16pt x 433.62pt>
+File: Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf Graphic file (type pdf)
+
+<use Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf>
+Package pdftex.def Info: Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf used on input line 1
+85.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+<Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf, id=219, 578.16pt x 433.62pt>
+File: Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf Graphic file (type pdf)
+
+<use Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf>
+Package pdftex.def Info: Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf used on input line
+ 185.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+<Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf, id=220, 578.16pt x 433.62pt>
+File: Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf Graphic file (type pdf)
+
+<use Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf>
+Package pdftex.def Info: Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf used on input lin
+e 197.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+<Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf, id=221, 578.16pt x 433.62pt>
+File: Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf Graphic file (type pdf)
+
+<use Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf>
+Package pdftex.def Info: Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf used on input lin
+e 197.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<FitE_gnomview_at_0-1_to_1-1663_4deg.pdf, id=222, 419.166pt x 462.52798pt>
+File: FitE_gnomview_at_0-1_to_1-1663_4deg.pdf Graphic file (type pdf)
+
+<use FitE_gnomview_at_0-1_to_1-1663_4deg.pdf>
+Package pdftex.def Info: FitE_gnomview_at_0-1_to_1-1663_4deg.pdf used on input 
+line 214.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+
+<FitE_gnomview_at_0-4_to_4-1663_4deg.pdf, id=223, 419.166pt x 462.52798pt>
+File: FitE_gnomview_at_0-4_to_4-1663_4deg.pdf Graphic file (type pdf)
+
+<use FitE_gnomview_at_0-4_to_4-1663_4deg.pdf>
+Package pdftex.def Info: FitE_gnomview_at_0-4_to_4-1663_4deg.pdf used on input 
+line 214.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+
+<FitE_gnomview_at_0-12_to_12-1663_4deg.pdf, id=224, 419.166pt x 462.52798pt>
+File: FitE_gnomview_at_0-12_to_12-1663_4deg.pdf Graphic file (type pdf)
+
+<use FitE_gnomview_at_0-12_to_12-1663_4deg.pdf>
+Package pdftex.def Info: FitE_gnomview_at_0-12_to_12-1663_4deg.pdf used on inpu
+t line 226.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+
+<FitE_gnomview_at_0-36_to_36-1663_4deg.pdf, id=225, 419.166pt x 462.52798pt>
+File: FitE_gnomview_at_0-36_to_36-1663_4deg.pdf Graphic file (type pdf)
+
+<use FitE_gnomview_at_0-36_to_36-1663_4deg.pdf>
+Package pdftex.def Info: FitE_gnomview_at_0-36_to_36-1663_4deg.pdf used on inpu
+t line 226.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--227
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `res_SED' on page 2 undefined on input line 248.
+
+
+LaTeX Warning: Reference `res_SED' on page 2 undefined on input line 248.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--251
+
+ []
+
+File: Res_SED_b=(-2,2)_l=(-10,-4).pdf Graphic file (type pdf)
+<use Res_SED_b=(-2,2)_l=(-10,-4).pdf>
+Package pdftex.def Info: Res_SED_b=(-2,2)_l=(-10,-4).pdf used on input line 261
+.
+(pdftex.def)             Requested size: 318.67209pt x 239.0012pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--265
+
+ []
+
+[2]
+
+LaTeX Warning: Reference `Fit_IC_pi0_to_ROI' on page 3 undefined on input line 
+279.
+
+
+LaTeX Warning: Reference `TotalData_Sum' on page 3 undefined on input line 280.
+
+
+<TotalData_IC_powerlaw_pi0-powerlaw.pdf, id=244, 578.16pt x 433.62pt>
+File: TotalData_IC_powerlaw_pi0-powerlaw.pdf Graphic file (type pdf)
+
+<use TotalData_IC_powerlaw_pi0-powerlaw.pdf>
+Package pdftex.def Info: TotalData_IC_powerlaw_pi0-powerlaw.pdf used on input l
+ine 292.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+<ResidualData_IC_powerlaw_pi0-powerlaw.pdf, id=245, 578.16pt x 433.62pt>
+File: ResidualData_IC_powerlaw_pi0-powerlaw.pdf Graphic file (type pdf)
+
+<use ResidualData_IC_powerlaw_pi0-powerlaw.pdf>
+Package pdftex.def Info: ResidualData_IC_powerlaw_pi0-powerlaw.pdf used on inpu
+t line 292.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--293
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<TotalData_Sum_new_best.pdf, id=246, 578.16pt x 433.62pt>
+File: TotalData_Sum_new_best.pdf Graphic file (type pdf)
+
+<use TotalData_Sum_new_best.pdf>
+Package pdftex.def Info: TotalData_Sum_new_best.pdf used on input line 299.
+(pdftex.def)             Requested size: 318.67209pt x 239.0012pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
+
+ []
+
+<TotalData_Sum_IC_n_fixed.pdf, id=247, 578.16pt x 433.62pt>
+File: TotalData_Sum_IC_n_fixed.pdf Graphic file (type pdf)
+
+<use TotalData_Sum_IC_n_fixed.pdf>
+Package pdftex.def Info: TotalData_Sum_IC_n_fixed.pdf used on input line 313.
+(pdftex.def)             Requested size: 318.67209pt x 239.0012pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `Cutoff_energies' on page 3 undefined on input line 32
+3.
+
+<Compare_IC_Ecut_of_tot_data.pdf, id=248, 578.16pt x 433.62pt>
+File: Compare_IC_Ecut_of_tot_data.pdf Graphic file (type pdf)
+
+<use Compare_IC_Ecut_of_tot_data.pdf>
+Package pdftex.def Info: Compare_IC_Ecut_of_tot_data.pdf used on input line 335
+.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+<Compare_pi0_Ecut_of_tot_data.pdf, id=249, 578.16pt x 433.62pt>
+File: Compare_pi0_Ecut_of_tot_data.pdf Graphic file (type pdf)
+
+<use Compare_pi0_Ecut_of_tot_data.pdf>
+Package pdftex.def Info: Compare_pi0_Ecut_of_tot_data.pdf used on input line 33
+5.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+<Compare_IC_Ecut_of_res_data.pdf, id=250, 578.16pt x 433.62pt>
+File: Compare_IC_Ecut_of_res_data.pdf Graphic file (type pdf)
+
+<use Compare_IC_Ecut_of_res_data.pdf>
+Package pdftex.def Info: Compare_IC_Ecut_of_res_data.pdf used on input line 346
+.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+<Compare_pi0_Ecut_of_res_data.pdf, id=251, 578.16pt x 433.62pt>
+File: Compare_pi0_Ecut_of_res_data.pdf Graphic file (type pdf)
+
+<use Compare_pi0_Ecut_of_res_data.pdf>
+Package pdftex.def Info: Compare_pi0_Ecut_of_res_data.pdf used on input line 34
+6.
+(pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<gnomview_1.pdf, id=252, 419.166pt x 462.52798pt>
+File: gnomview_1.pdf Graphic file (type pdf)
+ <use gnomview_1.pdf>
+Package pdftex.def Info: gnomview_1.pdf used on input line 365.
+(pdftex.def)             Requested size: 199.1693pt x 219.77364pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 375--377
+
+ []
+
+
+LaTeX Warning: Citation `Longair' on page 3 undefined on input line 387.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--393
+
+ []
+
+[3]
+
+LaTeX Warning: Reference `gnomview' on page 4 undefined on input line 406.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--407
+
+ []
+
+
+LaTeX Warning: Citation `Ackermann1' on page 4 undefined on input line 411.
+
+
+LaTeX Warning: Reference `eq_L' on page 4 undefined on input line 413.
+
+
+LaTeX Warning: Reference `eq_dLdA' on page 4 undefined on input line 413.
+
+
+LaTeX Warning: Reference `eq_epsilon' on page 4 undefined on input line 413.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--414
+
+ []
+
+File: gnomview.pdf Graphic file (type pdf)
+<use gnomview.pdf>
+Package pdftex.def Info: gnomview.pdf used on input line 444.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+File: gnomview_nonorm.pdf Graphic file (type pdf)
+ <use gnomview_nonorm.pdf>
+Package pdftex.def Info: gnomview_nonorm.pdf used on input line 444.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+File: gnomview_highEsmooth.pdf Graphic file (type pdf)
+ <use gnomview_highEsmooth.pdf>
+Package pdftex.def Info: gnomview_highEsmooth.pdf used on input line 456.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+File: gnomview_highEsmooth_nonorm.pdf Graphic file (type pdf)
+
+<use gnomview_highEsmooth_nonorm.pdf>
+Package pdftex.def Info: gnomview_highEsmooth_nonorm.pdf used on input line 456
+.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+File: gnomview_highEsmooth_nomask.pdf Graphic file (type pdf)
+ <use gnomview_highEsmooth_nomask.pdf>
+Package pdftex.def Info: gnomview_highEsmooth_nomask.pdf used on input line 466
+.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+File: gnomview_highEsmooth_nonorm_nomask.pdf Graphic file (type pdf)
+
+<use gnomview_highEsmooth_nonorm_nomask.pdf>
+Package pdftex.def Info: gnomview_highEsmooth_nonorm_nomask.pdf used on input l
+ine 466.
+(pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 435--467
+
+ []
+
+
+LaTeX Warning: Float too large for page by 60.02455pt on input line 469.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf Graphic file (type 
+pdf)
+<use FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf>
+Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf 
+used on input line 483.
+(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
+File: FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.pdf Graphic file (t
+ype pdf)
+
+<use FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.pdf>
+Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_normalized_maskfilled.
+pdf used on input line 483.
+(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
+File: FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf Graphic file (type pdf)
+
+
+<use FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf>
+Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_nonorm_nomask.pdf used
+ on input line 493.
+(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
+File: FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf Graphic file (type pd
+f)
+
+<use FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf>
+Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf us
+ed on input line 493.
+(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 474--494
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: HESS_GalacticPlaneSurvey.png Graphic file (type png)
+<use HESS_GalacticPlaneSurvey.png>
+Package pdftex.def Info: HESS_GalacticPlaneSurvey.png used on input line 500.
+(pdftex.def)             Requested size: 398.3386pt x 91.62993pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: 3FHL.png Graphic file (type png)
+<use 3FHL.png>
+Package pdftex.def Info: 3FHL.png used on input line 507.
 (pdftex.def)             Requested size: 398.3386pt x 122.77673pt.
 
 
@@ -633,154 +891,80 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: Res_SED_b=(-2,2)_l=(-10,-4).pdf Graphic file (type pdf)
 <use Res_SED_b=(-2,2)_l=(-10,-4).pdf>
-Package pdftex.def Info: Res_SED_b=(-2,2)_l=(-10,-4).pdf used on input line 280
+Package pdftex.def Info: Res_SED_b=(-2,2)_l=(-10,-4).pdf used on input line 527
 .
 (pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-<Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf, id=422, 578.16pt x 433.62pt>
 File: Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf Graphic file (type pdf)
 
 <use Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf>
 Package pdftex.def Info: Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf used on input line
- 280.
+ 527.
 (pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-<Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf, id=423, 578.16pt x 433.62pt>
 File: Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf Graphic file (type pdf)
 
 <use Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf>
-Package pdftex.def Info: Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf used on input line 2
-92.
+Package pdftex.def Info: Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf used on input line 5
+39.
 (pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-<Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf, id=424, 578.16pt x 433.62pt>
 File: Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf Graphic file (type pdf)
 
 <use Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf>
 Package pdftex.def Info: Res_SED_b=(-10,-6)_l=(-15,10)_2.pdf used on input line
- 292.
+ 539.
 (pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-<Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf, id=425, 578.16pt x 433.62pt>
 File: Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf Graphic file (type pdf)
 
 <use Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf>
 Package pdftex.def Info: Res_SED_b=(-14,-10)_l=(-15,15)_3.pdf used on input lin
-e 304.
+e 551.
 (pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
-
-<Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf, id=426, 578.16pt x 433.62pt>
 File: Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf Graphic file (type pdf)
 
 <use Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf>
 Package pdftex.def Info: Res_SED_b=(-18,-14)_l=(-15,15)_4.pdf used on input lin
-e 304.
+e 551.
 (pdftex.def)             Requested size: 245.97096pt x 184.47462pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<FitE_gnomview_at_0-1_to_1-1663_4deg.pdf, id=427, 419.166pt x 462.52798pt>
 File: FitE_gnomview_at_0-1_to_1-1663_4deg.pdf Graphic file (type pdf)
-
 <use FitE_gnomview_at_0-1_to_1-1663_4deg.pdf>
 Package pdftex.def Info: FitE_gnomview_at_0-1_to_1-1663_4deg.pdf used on input 
-line 321.
+line 568.
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
-
-<FitE_gnomview_at_0-4_to_4-1663_4deg.pdf, id=428, 419.166pt x 462.52798pt>
 File: FitE_gnomview_at_0-4_to_4-1663_4deg.pdf Graphic file (type pdf)
 
 <use FitE_gnomview_at_0-4_to_4-1663_4deg.pdf>
 Package pdftex.def Info: FitE_gnomview_at_0-4_to_4-1663_4deg.pdf used on input 
-line 321.
+line 568.
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
-
-<FitE_gnomview_at_0-12_to_12-1663_4deg.pdf, id=429, 419.166pt x 462.52798pt>
 File: FitE_gnomview_at_0-12_to_12-1663_4deg.pdf Graphic file (type pdf)
 
 <use FitE_gnomview_at_0-12_to_12-1663_4deg.pdf>
 Package pdftex.def Info: FitE_gnomview_at_0-12_to_12-1663_4deg.pdf used on inpu
-t line 333.
+t line 580.
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
-
-<FitE_gnomview_at_0-36_to_36-1663_4deg.pdf, id=430, 419.166pt x 462.52798pt>
 File: FitE_gnomview_at_0-36_to_36-1663_4deg.pdf Graphic file (type pdf)
 
 <use FitE_gnomview_at_0-36_to_36-1663_4deg.pdf>
 Package pdftex.def Info: FitE_gnomview_at_0-36_to_36-1663_4deg.pdf used on inpu
-t line 333.
+t line 580.
 (pdftex.def)             Requested size: 189.21022pt x 208.78496pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 312--334
+Underfull \hbox (badness 10000) in paragraph at lines 559--581
 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-<FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf, id=431, 614.295pt x 390.25798pt>
-File: FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf Graphic file (type pdf)
-<use FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf>
-Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf used on i
-nput line 351.
-(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
-
-<FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf, id=432, 614.295pt x 390.25798pt>
-File: FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf Graphic file (type pdf)
-
-<use FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf>
-Package pdftex.def Info: FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf used on inp
-ut line 351.
-(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
-
-<FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf, id=433, 614.295pt x 390.
-25798pt>
-File: FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf Graphic file (type p
-df)
- <use FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf>
-Package pdftex.def Info: FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf u
-sed on input line 362.
-(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
-
-<FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf, id=434, 614.295pt x 390.25
-798pt>
-File: FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf Graphic file (type pdf
-)
- <use FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf>
-Package pdftex.def Info: FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf use
-d on input line 362.
-(pdftex.def)             Requested size: 189.21022pt x 120.20459pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 341--363
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 591--592
 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
-
- []
-
-[6 <./Compare_IC_Ecut_of_tot_data.pdf> <./Compare_pi0_Ecut_of_tot_data.pdf
-
-pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Compa
-re_pi0_Ecut_of_tot_data.pdf): PDF inclusion: multiple pdfs with page group incl
-uded in a single page
-> <./Compare_IC_Ecut_of_res_data.pdf
-
-pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Compa
-re_IC_Ecut_of_res_data.pdf): PDF inclusion: multiple pdfs with page group inclu
-ded in a single page
-> <./Compare_pi0_Ecut_of_res_data.pdf
-
-pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Compa
-re_pi0_Ecut_of_res_data.pdf): PDF inclusion: multiple pdfs with page group incl
-uded in a single page
->] [7 <./gnomview.pdf> <./gnomview_nonorm.pdf
+[5] [6 <./gnomview.pdf> <./gnomview_nonorm.pdf
 
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./gnomv
 iew_nonorm.pdf): PDF inclusion: multiple pdfs with page group included in a sin
@@ -805,7 +989,7 @@ ded in a single page
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./gnomv
 iew_highEsmooth_nonorm_nomask.pdf): PDF inclusion: multiple pdfs with page grou
 p included in a single page
->] [8 <./FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf> <./FitE_mollwei
+>] [7 <./FitE_mollweide_at_0-1_to_1-1663_normalized_nomask.pdf> <./FitE_mollwei
 de_at_0-1_to_1-1663_normalized_maskfilled.pdf
 
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
@@ -821,8 +1005,13 @@ h page group included in a single page
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
 mollweide_at_0-1_to_1-1663_nonorm_fillmask.pdf): PDF inclusion: multiple pdfs w
 ith page group included in a single page
-> <./HESS_GalacticPlaneSurvey.png> <./3FHL.png>] [9 <./Res_SED_b=(-6,-2)_l=(-10
-,-4)_1a.pdf> <./Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf
+> <./HESS_GalacticPlaneSurvey.png> <./3FHL.png>] [8 <./Res_SED_b=(-2,2)_l=(-10,
+-4).pdf> <./Res_SED_b=(-6,-2)_l=(-10,-4)_1a.pdf
+
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Res_S
+ED_b=(-6,-2)_l=(-10,-4)_1a.pdf): PDF inclusion: multiple pdfs with page group i
+ncluded in a single page
+> <./Res_SED_b=(-6,-2)_l=(-10,5)_1.pdf
 
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Res_S
 ED_b=(-6,-2)_l=(-10,5)_1.pdf): PDF inclusion: multiple pdfs with page group inc
@@ -842,8 +1031,8 @@ included in a single page
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Res_S
 ED_b=(-18,-14)_l=(-15,15)_4.pdf): PDF inclusion: multiple pdfs with page group 
 included in a single page
->] [10 <./FitE_gnomview_at_0-1_to_1-1663_4deg.pdf> <./FitE_gnomview_at_0-4_to_4
--1663_4deg.pdf
+>] [9 <./FitE_gnomview_at_0-1_to_1-1663_4deg.pdf> <./FitE_gnomview_at_0-4_to_4-
+1663_4deg.pdf
 
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
 gnomview_at_0-4_to_4-1663_4deg.pdf): PDF inclusion: multiple pdfs with page gro
@@ -858,66 +1047,80 @@ roup included in a single page
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
 gnomview_at_0-36_to_36-1663_4deg.pdf): PDF inclusion: multiple pdfs with page g
 roup included in a single page
-> <./FitE_mollweide_at_0-1_to_1-1663_norm_new.pdf
+>] [10 <./TotalData_IC_powerlaw_pi0-powerlaw.pdf> <./ResidualData_IC_powerlaw_p
+i0-powerlaw.pdf
 
-pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
-mollweide_at_0-1_to_1-1663_norm_new.pdf): PDF inclusion: multiple pdfs with pag
-e group included in a single page
-> <./FitE_boxprof_at_0-1_to_1-1663_norm_new.pdf
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Resid
+ualData_IC_powerlaw_pi0-powerlaw.pdf): PDF inclusion: multiple pdfs with page g
+roup included in a single page
+>] [11 <./TotalData_Sum_new_best.pdf> <./TotalData_Sum_IC_n_fixed.pdf
 
-pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
-boxprof_at_0-1_to_1-1663_norm_new.pdf): PDF inclusion: multiple pdfs with page 
-group included in a single page
-> <./FitE_mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Total
+Data_Sum_IC_n_fixed.pdf): PDF inclusion: multiple pdfs with page group included
+ in a single page
+>] [12 <./Compare_IC_Ecut_of_tot_data.pdf> <./Compare_pi0_Ecut_of_tot_data.pdf
 
-pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
-mollweide_at_0-1_to_1-1663_norm_fitbubshape.pdf): PDF inclusion: multiple pdfs 
-with page group included in a single page
-> <./FitE_boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Compa
+re_pi0_Ecut_of_tot_data.pdf): PDF inclusion: multiple pdfs with page group incl
+uded in a single page
+> <./Compare_IC_Ecut_of_res_data.pdf
 
-pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./FitE_
-boxprof_at_0-1_to_1-1663_norm_fitbubshape.pdf): PDF inclusion: multiple pdfs wi
-th page group included in a single page
->] (./What_we_already_have.aux)
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Compa
+re_IC_Ecut_of_res_data.pdf): PDF inclusion: multiple pdfs with page group inclu
+ded in a single page
+> <./Compare_pi0_Ecut_of_res_data.pdf
+
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./Compa
+re_pi0_Ecut_of_res_data.pdf): PDF inclusion: multiple pdfs with page group incl
+uded in a single page
+> <./gnomview_1.pdf
+
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./gnomv
+iew_1.pdf): PDF inclusion: multiple pdfs with page group included in a single p
+age
+>] [13] [14] [15] [16] (./What_we_already_have.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 6207 strings out of 493013
- 100238 string characters out of 6133787
- 210644 words of memory out of 5000000
- 9544 multiletter control sequences out of 15000+600000
- 16236 words of font info for 92 fonts, out of 8000000 for 9000
+ 6200 strings out of 493013
+ 100086 string characters out of 6133787
+ 227552 words of memory out of 5000000
+ 9540 multiletter control sequences out of 15000+600000
+ 15835 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,18n,44p,718b,487s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,18n,44p,718b,489s stack positions out of 5000i,500n,10000p,200000b,80000s
 </Users/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb
 ></Users/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
 /Users/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></U
 sers/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb></User
 s/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/
 lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/la
-uraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/laura
-herold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/lauraher
-old/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></Users/laurahero
-ld/App/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></Users/laurah
-erold/App/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></Users/lau
-raherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/laurah
-erold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/laurahero
-ld/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/lauraherold/
-App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/lauraherold/App/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/lauraherold/App/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></Users/lauraherold/App/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/lauraherold/App/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/lauraherold/App/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on What_we_already_have.pdf (10 pages, 5232205 bytes).
+uraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/laur
+aherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/laurahe
+rold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/lauraherol
+d/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></Users/lauraherold
+/App/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></Users/lauraher
+old/App/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></Users/laura
+herold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/lauraher
+old/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/lauraherold
+/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/lauraherold/Ap
+p/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/lauraherold/App/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/lauraherold/App/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/lauraherold/App/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr9.pfb></Users/lauraherold/App/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></Users/lauraherold/App/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb></Users/lauraherold/App/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti10.pfb></Users/lauraherold/App/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmti12.pfb>
+Output written on What_we_already_have.pdf (16 pages, 5262884 bytes).
 PDF statistics:
- 1991 PDF objects out of 2073 (max. 8388607)
- 594 compressed objects within 6 object streams
+ 2022 PDF objects out of 2073 (max. 8388607)
+ 615 compressed objects within 7 object streams
  0 named destinations out of 1000 (max. 500000)
- 15024 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 16048 words of extra memory for PDF output out of 17280 (max. 10000000)
 
