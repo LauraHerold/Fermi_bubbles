@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.31)  7 JUN 2017 17:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.31)  8 JUN 2017 10:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -505,17 +505,27 @@ Overfull \hbox (2.22221pt too wide) in paragraph at lines 43--61
 []$ $[]$ 
  []
 
-<SED.pdf, id=13, 578.16pt x 433.62pt>
-File: SED.pdf Graphic file (type pdf)
- <use SED.pdf>
-Package pdftex.def Info: SED.pdf used on input line 66.
-(pdftex.def)             Requested size: 358.50229pt x 268.8747pt.
+<SED_top.pdf, id=13, 578.16pt x 433.62pt>
+File: SED_top.pdf Graphic file (type pdf)
+ <use SED_top.pdf>
+Package pdftex.def Info: SED_top.pdf used on input line 67.
+(pdftex.def)             Requested size: 199.1693pt x 149.3741pt.
 
-<Gnomview9-1663GeV.png, id=14, 1590.94376pt x 848.16875pt>
+<SED_bottom.pdf, id=14, 578.16pt x 433.62pt>
+File: SED_bottom.pdf Graphic file (type pdf)
+ <use SED_bottom.pdf>
+Package pdftex.def Info: SED_bottom.pdf used on input line 70.
+(pdftex.def)             Requested size: 199.1693pt x 149.3741pt.
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 66--72
+[]$[]$ $[]$ 
+ []
+
+<Gnomview9-1663GeV.png, id=15, 1590.94376pt x 848.16875pt>
 File: Gnomview9-1663GeV.png Graphic file (type png)
 
 <use Gnomview9-1663GeV.png>
-Package pdftex.def Info: Gnomview9-1663GeV.png used on input line 72.
+Package pdftex.def Info: Gnomview9-1663GeV.png used on input line 77.
 (pdftex.def)             Requested size: 278.83578pt x 148.65176pt.
  [1{/Users/lauraherold/App/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./spe
 ctrum_of_top_bubble_in_lat_stripes_0-10.pdf> <./spectrum_of_top_bubble_in_lat_s
@@ -570,24 +580,29 @@ th page group included in a single page
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./spect
 rum_of_bottom_bubble_in_lat_stripes_50-60.pdf): PDF inclusion: multiple pdfs wi
 th page group included in a single page
->] [3 <./SED.pdf> <./Gnomview9-1663GeV.png>] (./On-off_analysis.aux) ) 
+>] [3 <./SED_top.pdf> <./SED_bottom.pdf
+
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./SED_b
+ottom.pdf): PDF inclusion: multiple pdfs with page group included in a single p
+age
+> <./Gnomview9-1663GeV.png>] (./On-off_analysis.aux) ) 
 Here is how much of TeX's memory you used:
- 5983 strings out of 493013
- 95298 string characters out of 6133787
+ 5986 strings out of 493013
+ 95395 string characters out of 6133787
  206924 words of memory out of 5000000
- 9421 multiletter control sequences out of 15000+600000
- 5048 words of font info for 28 fonts, out of 8000000 for 9000
+ 9425 multiletter control sequences out of 15000+600000
+ 4997 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,7n,40p,739b,363s stack positions out of 5000i,500n,10000p,200000b,80000s
-</Users/l
-auraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/lau
-raherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/laurah
-erold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/lauraher
-old/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on On-off_analysis.pdf (3 pages, 887708 bytes).
+</Users/lauraherold/App/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/lauraherold/App/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/lauraherold/App/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/lauraherold/App/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on On-off_analysis.pdf (3 pages, 924615 bytes).
 PDF statistics:
- 1247 PDF objects out of 1440 (max. 8388607)
- 296 compressed objects within 3 object streams
+ 1338 PDF objects out of 1440 (max. 8388607)
+ 317 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 3143 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3148 words of extra memory for PDF output out of 10000 (max. 10000000)
 
