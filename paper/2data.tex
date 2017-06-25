@@ -1,0 +1,15 @@
+\section{Data selection}
+\lb{sec:data}
+
+Given that the main goal of the analysis is a study of a relatively small region $\lesssim 10^\circ$ from the GC for energies $\gtrsim 1$ GeV,
+we choose the \Fermi LAT Pass 8 Source class events as our main data sample.
+\dima{We should also repeat some parts of the analysis with Ultraclean data for a test of systematics.}
+We use 8 years of {\Fermi}-LAT data between August 4, 2008  and August 3, 2016 ({\Fermi} Mission Elapsed Time 239557418\,s--491888917\,s)
+with energies between 300 MeV \dima{I suggest to use 300 MeV as our low energy cutoff}
+and 1 TeV separated in 24 logarithmic energy bins.
+To avoid contamination from cosmic ray interactions in the Earth atmosphere, 
+we select events with an angle $\theta < 100^{\circ}$ with respect to the local zenith.
+This zenith angle cut is sufficient for energies above 300 MeV.
+
+For spacial binning we use HEALPix\footnote{\url{http://sourceforge.net/projects/healpix/}} \citep{2005ApJ...622..759G} with a pixelization of order 7 
+($\approx 0\degr\!\!.46$ pixel size). 
