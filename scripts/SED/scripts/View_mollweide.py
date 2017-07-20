@@ -9,22 +9,22 @@ import healpylib as hlib
 ##################################################################################################### parameters
 
 
-binmin = 0
-binmax = 19
+binmin = 5
+binmax = 11
 
 smooth_map = True
 mask_point_sources = True
-symmask = True
+symmask = False
 
-scale_min = -1e-5
-scale_max = 3e-5
-cmap = pyplot.cm.hot
+scale_min = -4e-6
+scale_max = 8e-6
+cmap = pyplot.cm.hot_r # jet, hot
 
 normalized = False
 unit = 'GeV / (s sr cm^2)'
 
 map_fn = '../data/LowE_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask.fits'
-save_fn = '../plots/LowE_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask_tot.pdf'
+save_fn = '../plots/LowE_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask_tot_highmedium_hot.pdf'
 mask_fn = '../data/ps_mask_3FGL_small_nside128.npy'
 
 
@@ -76,7 +76,7 @@ if smooth_map:
 
 for pixel in xrange(npix):
     if mask[pixel] == 0:
-        plot_map[pixel] = None
+        plot_map[pixel] = float('nan')
 
   
 

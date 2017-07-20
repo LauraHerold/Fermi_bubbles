@@ -85,10 +85,10 @@ if fit_plaw_cut:
 E_zero = Es[bin_start_fit]
 
 for b in xrange(nB):
-    pyplot.figure()
-
-
+    
     for l in xrange(nL):
+        plt.close(fig)
+        fig = pyplot.figure()
         colour_index = 0
         linestyle_index = 0
         marker_index = 0

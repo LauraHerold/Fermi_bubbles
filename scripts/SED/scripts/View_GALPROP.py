@@ -8,23 +8,24 @@ import healpylib as hlib
 
 ##################################################################################################### parameters
 
-print 'Modifications for GALPROP model!!!!!'
 
-binmin = 23
-binmax = 30
+binmin = 11
+binmax = 15
 
 smooth_map = True
-mask_point_sources = False
+mask_point_sources = True
 
-scale_min = -2e-9 #-1.e8 #-0.4 #-3.e-5
-scale_max = 6e-9#0.4  #1.e-4
+scale_min = -4e-6
+scale_max = 8e-6
 
 normalized = False
 unit = 'GeV / (s sr cm^2)'
 
+cmap = pyplot.cm.hot_r # jet, hot
+
 map_fn = '../data/Source_refit_3FGL_40PS_resid_signal_bubbles_flux.fits'
-save_fn = '../plots/Source_refit_3FGL_40PS_resid_signal_bubbles_flux_highhighE.pdf'
-mask_fn = '../data/ps_mask_3FGL_small_nside128.npy'
+save_fn = '../plots/Source_refit_3FGL_40PS_resid_signal_bubbles_flux_highlowE_hot.pdf'
+mask_fn = '../data/ps_mask_3FGL_OG_nside128.npy'
 
 View_GALPROP = True
 
@@ -51,7 +52,7 @@ if normalized:
 
 data = data.T
 if View_GALPROP:
-    plot_map = Es[binmax]**2 * data[binmax]/ GeV2MeV
+    plot_map = Es[binmax]**2 * data[binmax]
 else:
     plot_map = data[binmax]
     
@@ -67,7 +68,7 @@ print 'sum over energy bins...'
 for i in range(binmin, binmax):
     for j in range(len(plot_map)):
         if View_GALPROP:
-            plot_map[j] += Es[i]**2 * data[i][j] / GeV2MeV
+            plot_map[j] += Es[i]**2 * data[i][j]
         else:
             plot_map[j] += data[i][j]
 
@@ -91,7 +92,7 @@ emax = Es[binmax] * np.exp(delta/2)
 
 title = 'E = %.1f' %emin + ' - %.1f' %emax + ' GeV'
 
-healpy.mollview((plot_map), unit=unit, title = title,  min=scale_min, max=scale_max)
+healpy.mollview((plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap)
 healpy.graticule(dpar=10., dmer=10.)
 
 pyplot.savefig(save_fn)

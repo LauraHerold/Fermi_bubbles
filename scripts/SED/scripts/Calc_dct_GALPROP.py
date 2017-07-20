@@ -13,6 +13,7 @@ import dio
 binmin = 11 # bubbles: 22 - 30 
 binmax = 30
 
+mask_point_sources = True
 
 ###################################################################################################################### Constants
 
@@ -31,6 +32,7 @@ nside = healpy.npix2nside(npix)
 map_fn = '../data/Source_refit_3FGL_40PS_resid_signal_bubbles_flux.fits'
 counts_fn = '../data/counts_P8_P302_ultraclean_veto_z90_healpix_o7_31bins.fits'
 dct_fn ='../dct/dct_GALPROP.yaml'
+mask_fn = '../data/ps_mask_3FGL_OG_nside128.npy'
 
 hdu = pyfits.open(map_fn)
 data = hdu[1].data.field('Spectra')[::,binmin:binmax+1]
@@ -38,6 +40,10 @@ Es = hdu[2].data.field('MeV')[binmin:binmax+1] / GeV2MeV
 
 hdu_counts = pyfits.open(counts_fn)
 counts = hdu_counts[1].data.field('Spectra')[::,binmin:binmax+1]
+
+mask = np.ones(npix)
+if mask_point_sources:
+    mask = np.load(mask_fn)
 
 
 ###################################################################################################################### Select the region and group together pixels of the same region in the inds_dict
@@ -67,7 +73,7 @@ for option in ['small','large']:
     
 
     print 'calculate indices...'
-    inds_dict = hlib.lb_profiles_hinds_dict(nside, Bbins[option], Lbins)
+    inds_dict = hlib.lb_profiles_hinds_dict(nside, Bbins[option], Lbins, mask=mask)
 
 ###################################################################################################################### Calculate differential flux in each pixel, sum over pixels in one lat-lon bin, calculate std
 
