@@ -8,23 +8,25 @@ import healpylib as hlib
 
 ##################################################################################################### parameters
 
-print 'Modifications for GALPROP model!!!!!'
 
-binmin = 11
-binmax = 30
+binmin = 0
+binmax = 19
 
 smooth_map = True
-mask_point_sources = False
+mask_point_sources = True
+symmask = True
 
-scale_min = -1.e8 #-0.4 #-3.e-5
-scale_max = 2.e8 #0.4  #1.e-4
+scale_min = -1e-5
+scale_max = 3e-5
+cmap = pyplot.cm.hot
 
 normalized = False
 unit = 'GeV / (s sr cm^2)'
 
-map_fn = '../data/Source_refit_3FGL_40PS_resid_signal_bubbles_flux.fits'
-save_fn = '../plots/Source_refit_3FGL_40PS_resid_signal_bubbles_flux.pdf'
+map_fn = '../data/LowE_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask.fits'
+save_fn = '../plots/LowE_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask_tot.pdf'
 mask_fn = '../data/ps_mask_3FGL_small_nside128.npy'
+
 
 ##################################################################################################### constants
 
@@ -38,7 +40,7 @@ nside = healpy.npix2nside(npix)
 
 hdu = pyfits.open(map_fn)
 data = hdu[1].data.field('Spectra')
-Es = hdu[2].data.field('MeV')/GeV2MeV
+Es = hdu[2].data.field('GeV')
 
 
 if normalized:
@@ -48,20 +50,22 @@ if normalized:
 ##################################################################################################### transpose the data matrix
 
 data = data.T
-plot_map = Es[binmax]**2 * data[binmax]/ GeV2MeV
-
+plot_map = data[binmax]
+    
 ##################################################################################################### find the mask
 
 mask = np.ones(npix)
 if mask_point_sources:
     mask = np.load(mask_fn)
+    if symmask:
+        mask *= mask[::-1]
 
 ##################################################################################################### sum over energy bins (from binmin to binmax)
 
 print 'sum over energy bins...'
 for i in range(binmin, binmax):
     for j in range(len(plot_map)):
-        plot_map[j] = Es[i]**2 * (plot_map[j] + data[i][j])/ GeV2MeV
+        plot_map[j] += data[i][j]
 
 
 ##################################################################################################### smooth with smooth_sigma Gaussian
@@ -83,12 +87,7 @@ emax = Es[binmax] * np.exp(delta/2)
 
 title = 'E = %.1f' %emin + ' - %.1f' %emax + ' GeV'
 
-healpy.mollview((plot_map), unit=unit, title = title,  min=scale_min, max=scale_max)
+healpy.mollview((plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap)
 healpy.graticule(dpar=10., dmer=10.)
 
 pyplot.savefig(save_fn)
-
-
-
-
-

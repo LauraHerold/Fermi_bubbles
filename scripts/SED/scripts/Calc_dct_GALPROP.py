@@ -79,15 +79,15 @@ for option in ['small','large']:
         for l in xrange(nL):
 
             N_gamma = 0
-            diff_dct[option][(b,l)] = np.sum([data[pixel] for pixel in inds_dict[(b,l)]], axis = 0)# map = N_gamma / exposure
+            diff_dct[option][(b,l)] = np.mean([data[pixel] for pixel in inds_dict[(b,l)]], axis = 0) # map = N_gamma / exposure
             N_gamma = np.sum([counts[pixel] for pixel in inds_dict[(b,l)]], axis = 0)
-            
+        
             
             for i in xrange(len(N_gamma)-1, 0-1, -1): # delete empty lat lon bins
                 if np.sqrt(N_gamma[i]) < 0.1:
                     N_gamma[i] = 0.1
                     
-            diff_dct[option][(b,l)] =  (Es**2 * diff_dct[option][(b,l)]) / GeV2MeV # spectral energy distribution = (E^2 * N_gamma) / (exposure * dOmega * deltaE)
+            diff_dct[option][(b,l)] =  (Es**2 * diff_dct[option][(b,l)]) # * GeV2MeV # spectral energy distribution = (E^2 * N_gamma) / (exposure * dOmega * deltaE)
             std_dct[option][(b,l)] = diff_dct[option][(b,l)] / np.sqrt(N_gamma) # errors = standard deviation via Gaussian error propagation
 
 

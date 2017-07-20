@@ -11,7 +11,7 @@ from iminuit import Minuit
 
 ########################################################################################################################## Parameters
 
-fits_fn_end = '_smallmask_bubblesexcl_highEsmooth_symmask2.fits'
+fits_fn_end = '_smallmask_bubblesexcl_highEsmooth_symmask.fits'
 
 mask_point_sources = True                    # Is used in the calculate_indices function
 smooth_highE_data = True
@@ -114,8 +114,18 @@ k_array = np.zeros((nB, nE))
 c = 1.e-8                                                                              # initial isotropic-background factor
 c_array = np.zeros((nB, nE))
 
-box_l = np.append(np.append(np.zeros(nL/2), np.ones(int(Lbox/dL))), np.zeros(nL/2 - int(Lbox/dL)))
-box_r = np.append(np.append(np.zeros(nL/2 - int(Lbox/dL)), np.ones(int(Lbox/dL))), np.zeros(nL/2))
+box_l_map = np.zeros(npix)
+box_r_map = np.zeros(npix)
+
+for b in xrange(nB):
+    for l in xrange(nL):
+        if Lc[l] == -5:
+            for pixel in inds_dict[(b,l)]:
+                box_r_map[pixel] = 1
+        elif Lc[l] == 5:
+            for pixel in inds_dict[(b,l)]:
+                box_l_map[pixel] = 1
+                                
 
 b_l_array = np.zeros((nB, nE)) # b_l: constant box parameter left
 b_r_array = np.zeros((nB, nE)) # b_r: constant box parameter right
@@ -125,7 +135,9 @@ for E in xrange(nE):
 
         x = np.concatenate([np.asarray([data_high[E][pixel] for pixel in inds_dict[(b,l)]]) for l in l_range])
         y = np.concatenate([np.asarray([data_low[pixel] for pixel in inds_dict[(b,l)]]) for l in l_range])
-
+        box_l = np.concatenate([np.asarray([box_l_map[pixel] for pixel in inds_dict[(b,l)]]) for l in l_range])
+        box_r = np.concatenate([np.asarray([box_r_map[pixel] for pixel in inds_dict[(b,l)]]) for l in l_range])
+        
         fit = likelihood(x,y,box_l,box_r)                                                          # Fit model = (lowE * k + c) to highE
         m = Minuit(fit, k = k, c = c,  b_l = 1., b_r = 1., limit_k = (0,1), limit_c = (0., 10.), limit_b_l = (0., 10.), limit_b_r = (0., 10.), error_k = 0.1, error_c = 0.1, error_b_l = 0.01, error_b_r = 0.01, errordef = 0.1)
         m.migrad()                                                                     # Limits of parameters k and c are important
@@ -137,6 +149,7 @@ for E in xrange(nE):
         
         print 'E = ' + str(E)
         print 'b = ' + str(b)
+        print 'x.shape = ' + str(x.shape)
 
 
 ############################################################################################################################ Calculate residual        
@@ -147,7 +160,7 @@ for E in xrange(nE):
     for b in xrange(nB):
         for l in xrange(nL):
             for pixel in inds_dict[(b,l)]:
-                boxes_map[E, pixel] = box_l[l] * b_l_array[b,E] + box_r[l] * b_r_array[b,E]                           # Calculate model from k and c array
+                boxes_map[E, pixel] = box_l_map[pixel] * b_l_array[b,E] + box_r_map[pixel] * b_r_array[b,E] # Calculate model from k and c array
                  
 
 dOmega = 4. * np.pi / npix
