@@ -10,16 +10,17 @@ from iminuit import Minuit
 import dio
 from yaml import load
 
-########################################################################################################################## parameters
+########################################################################################################################## Parameters
 
-input_data = 'boxes'  # data, lowE, boxes, GALPROP
+input_data = 'data'  # data, lowE, boxes, GALPROP
+plot_diff_leftright = True
 
 fit_plaw = False
-fit_plaw_cut = False
+fit_plaw_cut = True
 
-bin_start_fit = 15 # Energy bin where fit starts (is halved if combine_two_energy_bins)
-binmin = 0
-binmax = 31
+bin_start_fit = 5 # Energy bin where fit starts (is halved if combine_two_energy_bins)
+binmin = 2
+binmax = 20
 
 fn_ending = '.pdf'
 colours = ['blue', 'red']
@@ -50,7 +51,7 @@ nL = len(diff_profiles[0])
 nE = len(diff_profiles[0][0])
 print 'nB, nL, nE = ' + str(nB) + ', ' + str(nL) + ', ' + str(nE)
 
-########################################################################################################################## load data from a fits file
+########################################################################################################################## Define powerlaw classes
 
 if fit_plaw: # with chi2 fit with 2 free parameters: spectral index and normalization]
     class PowerLawChi2:
@@ -76,7 +77,7 @@ if fit_plaw_cut:
             return chi2
 
 
-########################################################################################################################## Fit powerlaw
+########################################################################################################################## Plot profiles
 
 E_zero = Es[bin_start_fit]
 
@@ -88,25 +89,38 @@ for b in xrange(nB):
         map  = np.asarray(diff_profiles[b][l])
         std_map = np.asarray(std_profiles[b][l])
 
+        for E in xrange(nE):
+            if std_map[E] < 10.e-30:
+                std_map[E] = 10.e-7
+
+        label = r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r', $%i^\circ)$' % (Lc[l] + dL/2)
+        pyplot.errorbar(Es, map, std_map, color=colours[colour_index], marker='s', markersize=4, markeredgewidth=0.4, linestyle = '', linewidth=0.1, label=label)
+
+
+########################################################################################################################## Fit powerlaw
+
 
         if fit_plaw:
         
             chi2 = PowerLawChi2(Es[binmin:binmax], map[binmin:binmax], std_map[binmin:binmax], E_zero)
-            N_zero = int(len(map)/2)
-            m = Minuit(chi2, N_zero = N_zero, error_N_zero = 0.00001, Gamma = 0.5, error_Gamma = 0.1)
+            N_zero =  int(len(map)/2)
+            print N_zero
+            print E_zero
+            m = Minuit(chi2, N_zero = N_zero, error_N_zero = 0.00001, Gamma = 0.4, error_Gamma = 0.1, errordef = 1.)
             m.migrad()
             Gamma = m.values['Gamma'] # Spectral index
             N_zero = m.values['N_zero']
 
-            pyplot.plot(Es[binmin:binmax], [N_zero * (x / E_zero)**(-Gamma) for x in Es[binmin:binmax]], label = r'$\gamma = $%.2f' %Gamma, color = colours[colour_index])
+            pyplot.errorbar(Es[binmin:binmax], [N_zero * (x / E_zero)**(-Gamma) for x in Es[binmin:binmax]], label = r'$\gamma = $%.2f' %Gamma, color = colours[colour_index])
                 
             chi2_value = sum((map[binmin:binmax] - N_zero * (Es[binmin:binmax]/E_zero)**(-Gamma))**2 / std_map[binmin:binmax]**2)
             dof = binmax - binmin - 2
 
+            
         if fit_plaw_cut:
             chi2 = PlawCutChi2(Es[binmin:binmax], map[binmin:binmax], std_map[binmin:binmax], E_zero)
             N_zero = int(len(map)/2)
-            m = Minuit(chi2, N_zero = N_zero, error_N_zero = 0.00001, Gamma = 0.5, error_Gamma = 0.1, E_cut = 100000000., error_E_cut = 10.)
+            m = Minuit(chi2, N_zero = N_zero, error_N_zero = 0.00001, Gamma = 0.5, error_Gamma = 0.1, E_cut = 100000000., error_E_cut = 10., errordef = 1.)
             m.migrad()
             Gamma = m.values['Gamma'] # Spectral index
             N_zero = m.values['N_zero']
@@ -115,20 +129,44 @@ for b in xrange(nB):
             chi2_value = sum((map[binmin:binmax] - N_zero * (Es[binmin:binmax]/E_zero)**(-Gamma) * np.exp(- Es[binmin:binmax]/E_cut))**2 / std_map[binmin:binmax]**2)
             dof = binmax - binmin - 3
             label = r'$\gamma = $%.2f, ' %Gamma + r'$E_{\mathrm{cut}} = $%.1e, ' %E_cut + r'$\frac{\chi^2}{\mathrm{d.o.f.}} =$ %.1f' %(chi2_value / dof)
-            pyplot.plot(Es[binmin:binmax], [N_zero * (x / E_zero)**(-Gamma) * np.exp(-x/E_cut) for x in Es[binmin:binmax]], label = label, color = colours[colour_index])
+            pyplot.errorbar(Es[binmin:binmax], [N_zero * (x / E_zero)**(-Gamma) * np.exp(-x/E_cut) for x in Es[binmin:binmax]], label = label, color = colours[colour_index])
 
-    
-            
-########################################################################################################################## plot energy flux with error bars
-
-
-        label = r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r', $%i^\circ)$' % (Lc[l] + dL/2)
-        pyplot.errorbar(Es, map, std_map, color=colours[colour_index], marker='s', markersize=4, markeredgewidth=0.4, linestyle=':', linewidth=0.1, label=label)
         colour_index += 1
-       
-########################################################################################################################## cosmetics, safe plot
+        
+########################################################################################################################## Plot difference right - left
 
-    lg = pyplot.legend(loc='lower left', ncol=1, fontsize = 'medium')
+        
+    if plot_diff_leftright:
+
+        map = [0,0]
+        std_map = [0,0]
+        
+        for ell in xrange(nL):
+            map[ell]  = np.asarray(diff_profiles[b][ell])
+            std_map[ell] = np.asarray(std_profiles[b][ell])
+
+        difference = map[0] - map[1]
+        
+        total_std = np.sqrt(std_map[0]**2 + std_map[1]**2)
+        label_diff = 'difference right - left'
+        
+        for reading_point in range(len(difference)):
+            if difference[reading_point] < 0:
+                ms = 4.
+                pyplot.errorbar(Es[reading_point], -difference[reading_point], total_std[reading_point], color='lightgrey', marker='>', markersize=ms, markeredgewidth=0.4, linestyle=':', linewidth=0.1)
+            else:
+                ms = 6.
+                pyplot.errorbar(Es[reading_point], difference[reading_point], total_std[reading_point], color='grey', marker='>', markersize=ms, markeredgewidth=0.4, linestyle=':', linewidth=0.1, label=label_diff)
+                label_diff = None
+
+
+                    
+########################################################################################################################## Cosmetics, safe plot
+
+
+
+
+    lg = pyplot.legend(loc='upper right', ncol=1, fontsize = 'small')
     lg.get_frame().set_linewidth(0)
     pyplot.grid(True)
     pyplot.xlabel('$E$ [GeV]')
@@ -139,6 +177,6 @@ for b in xrange(nB):
     fn = plot_dir + name + fn_ending
     pyplot.xscale('log')
     pyplot.yscale('log')
-    pyplot.ylim((1.e-8,2.e-4))
+    pyplot.ylim((1.e-8,4.e-4))
     pyplot.savefig(fn, format = 'pdf')
 
