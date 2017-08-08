@@ -9,14 +9,14 @@ import healpylib as hlib
 ##################################################################################################### parameters
 
 
-binmin = 11
-binmax = 15
+binmin = 23
+binmax = 30
 
 smooth_map = True
 mask_point_sources = True
 
-scale_min = -4e-6
-scale_max = 8e-6
+scale_min = -2e-6
+scale_max = 4e-6
 
 normalized = False
 unit = 'GeV / (s sr cm^2)'
@@ -24,7 +24,7 @@ unit = 'GeV / (s sr cm^2)'
 cmap = pyplot.cm.hot_r # jet, hot
 
 map_fn = '../data/Source_refit_3FGL_40PS_resid_signal_bubbles_flux.fits'
-save_fn = '../plots/Source_refit_3FGL_40PS_resid_signal_bubbles_flux_highlowE_hot.pdf'
+save_fn = '../plots/Source_refit_3FGL_40PS_resid_signal_bubbles_flux_highhighE_hot.pdf'
 mask_fn = '../data/ps_mask_3FGL_OG_nside128.npy'
 
 View_GALPROP = True
@@ -42,7 +42,7 @@ nside = healpy.npix2nside(npix)
 hdu = pyfits.open(map_fn)
 data = hdu[1].data.field('Spectra')
 Es = hdu[2].data.field('MeV')/GeV2MeV
-
+deltaE = Es * (np.exp(delta/2) - np.exp(-delta/2))
 
 if normalized:
     data /= (binmax - binmin + 1)
@@ -68,7 +68,7 @@ print 'sum over energy bins...'
 for i in range(binmin, binmax):
     for j in range(len(plot_map)):
         if View_GALPROP:
-            plot_map[j] += Es[i]**2 * data[i][j]
+            plot_map[j] += Es[i] * deltaE[i] * data[i][j]
         else:
             plot_map[j] += data[i][j]
 

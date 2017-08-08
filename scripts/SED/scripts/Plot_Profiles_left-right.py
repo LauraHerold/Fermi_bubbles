@@ -36,6 +36,7 @@ Lc = dct['3) Center_of_lon_bins']
 Bc = dct['4) Center_of_lat_bins']
 
 Es = np.asarray(dct['5) Energy_bins'])
+deltaE = Es * (np.exp(delta/2) - np.exp(-delta/2))
 
 
 nB = len(diff_profiles)
@@ -65,8 +66,8 @@ for l in xrange(nL):
         
         for b in xrange(nB):
             for E in xrange(nE):
-                profiles[b] += diff_profiles[b][l][E]
-                std[b] += std_profiles[b][l][E]**2
+                profiles[b] += diff_profiles[b][l][E] *  deltaE[E] / Es[E]
+                std[b] += (std_profiles[b][l][E] * deltaE[E] / Es[E])**2
         std = np.sqrt(std)
 
         pyplot.errorbar(Bc, profiles, std, color = colours[colour_index], marker=markers[marker_index], markersize=4, label=input)
@@ -77,7 +78,7 @@ for l in xrange(nL):
     lg.get_frame().set_linewidth(0)
     pyplot.grid(True)
     pyplot.xlabel('$b$ [deg]')
-    pyplot.ylabel(r'$ E^2\frac{dN}{dE}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
+    pyplot.ylabel(r'$ F \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
     #pyplot.title(r'SED in latitude stripes, $b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2))
 
     name = 'Profiles_'+ str(l)

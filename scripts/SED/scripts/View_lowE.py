@@ -17,7 +17,7 @@ mask_point_sources = True
 symmask = False
 
 scale_min = -2e-6
-scale_max = 1e-5
+scale_max = 4e-6
 cmap = pyplot.cm.hot_r # jet, hot
 
 normalized = False
@@ -41,6 +41,7 @@ nside = healpy.npix2nside(npix)
 hdu = pyfits.open(map_fn)
 data = hdu[1].data.field('Spectra')
 Es = hdu[2].data.field('GeV')
+deltaE = Es * (np.exp(delta/2) - np.exp(-delta/2))
 
 
 if normalized:
@@ -65,7 +66,7 @@ if mask_point_sources:
 print 'sum over energy bins...'
 for i in range(binmin, binmax):
     for j in range(len(plot_map)):
-        plot_map[j] += data[i][j]
+        plot_map[j] += data[i][j] * deltaE[i] / Es[i]
 
 
 ##################################################################################################### smooth with smooth_sigma Gaussian
