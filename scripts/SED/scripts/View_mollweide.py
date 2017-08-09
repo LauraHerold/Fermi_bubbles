@@ -9,8 +9,8 @@ import healpylib as hlib
 ##################################################################################################### parameters
 
 
-binmin = 5
-binmax = 11
+binmin = 12
+binmax = 19
 
 smooth_map = True
 mask_point_sources = True
@@ -23,8 +23,8 @@ cmap = pyplot.cm.hot_r # jet, hot
 normalized = False
 unit = 'GeV / (s sr cm^2)'
 
-map_fn = '../data/LowE_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask.fits'
-save_fn = '../plots/LowE_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask_tot_highmedium_hot.pdf'
+map_fn = '../data/Boxes_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask_with0stripe.fits'
+save_fn = '../plots/Boxes_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask_with0stripe_high.pdf'
 mask_fn = '../data/ps_mask_3FGL_small_nside128.npy'
 
 
@@ -89,5 +89,6 @@ title = 'E = %.1f' %emin + ' - %.1f' %emax + ' GeV'
 
 healpy.mollview((plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap)
 healpy.graticule(dpar=10., dmer=10.)
+#healpy.graticule(dpar=16., dmer=10.)
 
 pyplot.savefig(save_fn)

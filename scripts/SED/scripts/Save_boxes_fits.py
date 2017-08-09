@@ -11,7 +11,7 @@ from iminuit import Minuit
 
 ########################################################################################################################## Parameters
 
-fits_fn_end = '_smallmask_bubblesexcl_highEsmooth_symmask.fits'
+fits_fn_end = '_smallmask_bubblesexcl_highEsmooth_symmask_with0stripe.fits'
 
 mask_point_sources = True                    # Is used in the calculate_indices function
 smooth_highE_data = True
@@ -29,7 +29,7 @@ Lbox = 10.
 dL = 10.
 dB = 4.
 Lmax = 180.
-Bmax = 60.
+Bmax = 62.
 
 GeV2MeV = 1000.
 delta = 0.346573590092441           # Logarithmic size of one energy bin

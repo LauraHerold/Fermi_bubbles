@@ -28,7 +28,7 @@ nside = healpy.npix2nside(npix)
 
 ###################################################################################################################### Load data
 
-map_fn = '../data/Boxes_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask.fits'
+map_fn = '../data/Boxes_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask_with0stripe.fits'
 counts_fn = '../data/counts_P8_P302_Source_z100_healpix_o7_31bins.fits'
 dct_fn ='../dct/dct_boxes.yaml'
 

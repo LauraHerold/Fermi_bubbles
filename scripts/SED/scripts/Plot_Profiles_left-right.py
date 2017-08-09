@@ -79,7 +79,7 @@ for l in xrange(nL):
     pyplot.grid(True)
     pyplot.xlabel('$b$ [deg]')
     pyplot.ylabel(r'$ F \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
-    #pyplot.title(r'SED in latitude stripes, $b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2))
+    pyplot.title(r'$\ell \in (%i^\circ$' % (Lc[l] - 5) + ', $%i^\circ)$' % (Lc[l] + 5))
 
     name = 'Profiles_'+ str(l)
     fn = plot_dir + name + fn_ending
