@@ -12,7 +12,7 @@ from yaml import load
 
 ########################################################################################################################## parameters
 
-input_data = 'data'  # data, lowE, boxes, GALPROP
+input_data = 'boxes'  # data, lowE, boxes, GALPROP
 
 fit_plaw = False
 fit_plaw_cut = True
@@ -56,7 +56,7 @@ def powerlaw_chi2(pars):
     N_zero = pars[0]
     Gamma = pars[1]
     chi2 = sum((y - N_zero * (x/E_zero)**(-Gamma))**2 / sigma**2 for x,y,sigma in zip(self.x, self.y, self.sigma))
-            return chi2
+    return chi2
 
 if fit_plaw_cut:
     class PlawCutChi2:

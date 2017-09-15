@@ -165,15 +165,20 @@ for b in xrange(nB):
             difference = map[0] - map[1]
 
             total_std = np.sqrt(std_map[0]**2 + std_map[1]**2)
-            label_diff = 'difference data'
+
+            lab0 = 'difference data'
+            lab1 = 'difference data'
+            
             for reading_point in range(len(difference)):
-                if difference[reading_point] < 0:
-                    ms = 4.
-                    pyplot.errorbar(Es[reading_point], -difference[reading_point], total_std[reading_point], color='lightgrey', marker='>', markersize=ms, markeredgewidth=0.4, linestyle=':', linewidth=0.1)
-                else:
-                    ms = 6.
-                    pyplot.errorbar(Es[reading_point], difference[reading_point], total_std[reading_point], color='grey', marker='>', markersize=ms, markeredgewidth=0.4, linestyle=':', linewidth=0.1, label=label_diff)
-                    label_diff = None
+
+                if difference[reading_point] > 0 and l==0:
+                    pyplot.errorbar(Es[reading_point], difference[reading_point], total_std[reading_point], color='grey', marker='>', markersize=6., markeredgewidth=0.4, linestyle=':', linewidth=0.1, label = lab0)
+                    lab0 = None
+                if difference[reading_point] < 0 and l==1:
+                    pyplot.errorbar(Es[reading_point], difference[reading_point], total_std[reading_point], color='grey', marker='>', markersize=6., markeredgewidth=0.4, linestyle=':', linewidth=0.1, label = lab1)
+                    lab1 = None
+                
+                
     
        
 ########################################################################################################################## cosmetics, safe plot

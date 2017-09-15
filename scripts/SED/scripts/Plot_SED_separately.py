@@ -12,13 +12,13 @@ from yaml import load
 
 ########################################################################################################################## Parameters
 
-input_data = 'data'  # data, lowE, boxes, GALPROP
-plot_diff_leftright = True
+input_data = 'boxes'  # data, lowE, boxes, GALPROP
+plot_diff_leftright = False
 
 fit_plaw = False
 fit_plaw_cut = True
 
-bin_start_fit = 5 # Energy bin where fit starts (is halved if combine_two_energy_bins)
+bin_start_fit = 9 # Energy bin where fit starts (is halved if combine_two_energy_bins)
 binmin = 2
 binmax = 20
 
@@ -90,9 +90,10 @@ for b in xrange(nB):
         std_map = np.asarray(std_profiles[b][l])
 
         for E in xrange(nE):
-            if std_map[E] < 10.e-30:
-                std_map[E] = 10.e-7
-
+            std_map[E] += 5.e-8
+                
+        print map
+        print std_map
         label = r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r', $%i^\circ)$' % (Lc[l] + dL/2)
         pyplot.errorbar(Es, map, std_map, color=colours[colour_index], marker='s', markersize=4, markeredgewidth=0.4, linestyle = '', linewidth=0.1, label=label)
 
@@ -103,7 +104,7 @@ for b in xrange(nB):
         if fit_plaw:
         
             chi2 = PowerLawChi2(Es[binmin:binmax], map[binmin:binmax], std_map[binmin:binmax], E_zero)
-            N_zero =  int(len(map)/2)
+            N_zero = 1e-6# int(len(map)/2)
             print N_zero
             print E_zero
             m = Minuit(chi2, N_zero = N_zero, error_N_zero = 0.00001, Gamma = 0.4, error_Gamma = 0.1, errordef = 1.)
@@ -111,7 +112,7 @@ for b in xrange(nB):
             Gamma = m.values['Gamma'] # Spectral index
             N_zero = m.values['N_zero']
 
-            pyplot.errorbar(Es[binmin:binmax], [N_zero * (x / E_zero)**(-Gamma) for x in Es[binmin:binmax]], label = r'$\gamma = $%.2f' %Gamma, color = colours[colour_index])
+            pyplot.errorbar(Es[binmin:binmax], [N_zero * (x / E_zero)**(-Gamma) for x in Es[binmin:binmax]], label = r'$\gamma = $%.2f, ' %Gamma, color = colours[colour_index])
                 
             chi2_value = sum((map[binmin:binmax] - N_zero * (Es[binmin:binmax]/E_zero)**(-Gamma))**2 / std_map[binmin:binmax]**2)
             dof = binmax - binmin - 2
@@ -120,7 +121,7 @@ for b in xrange(nB):
         if fit_plaw_cut:
             chi2 = PlawCutChi2(Es[binmin:binmax], map[binmin:binmax], std_map[binmin:binmax], E_zero)
             N_zero = int(len(map)/2)
-            m = Minuit(chi2, N_zero = N_zero, error_N_zero = 0.00001, Gamma = 0.5, error_Gamma = 0.1, E_cut = 100000000., error_E_cut = 10., errordef = 1.)
+            m = Minuit(chi2, N_zero = N_zero, error_N_zero = 0.00001, Gamma = 0.5, error_Gamma = 0.1, E_cut = 100000000., limit_E_cut = (0,1.e30), error_E_cut = 10., errordef = 1.)
             m.migrad()
             Gamma = m.values['Gamma'] # Spectral index
             N_zero = m.values['N_zero']
@@ -128,7 +129,7 @@ for b in xrange(nB):
                 
             chi2_value = sum((map[binmin:binmax] - N_zero * (Es[binmin:binmax]/E_zero)**(-Gamma) * np.exp(- Es[binmin:binmax]/E_cut))**2 / std_map[binmin:binmax]**2)
             dof = binmax - binmin - 3
-            label = r'$\gamma = $%.2f, ' %Gamma + r'$E_{\mathrm{cut}} = $%.1e, ' %E_cut + r'$\frac{\chi^2}{\mathrm{d.o.f.}} =$ %.1f' %(chi2_value / dof)
+            label = r'$\gamma = $%.2f, ' %Gamma + r'$E_{\mathrm{cut}} = $%.1e, ' %E_cut + r'$\frac{\chi^2}{\mathrm{d.o.f.}} =$ %.1f, ' %(chi2_value / dof)
             pyplot.errorbar(Es[binmin:binmax], [N_zero * (x / E_zero)**(-Gamma) * np.exp(-x/E_cut) for x in Es[binmin:binmax]], label = label, color = colours[colour_index])
 
         colour_index += 1

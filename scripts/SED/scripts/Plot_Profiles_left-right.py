@@ -22,6 +22,8 @@ fn_ending = '_high.pdf'
 colours = ['black', 'blue', 'red', 'green']
 markers = ['s', 'o', 'D', '<']
 
+plot_diff_rightleft = True
+
 
 ########################################################################################################################## Constants
 
@@ -49,6 +51,27 @@ print 'nB, nL, nE = ' + str(nB) + ', ' + str(nL) + ', ' + str(nE)
 
 
 
+########################################################################################################################## Plot difference right - left
+
+if plot_diff_rightleft:
+    input = 'data'
+    dct  = dio.loaddict('../dct/dct_' + input + '.yaml')
+    diff_profiles = dct['6) Differential_flux_profiles']
+    std_profiles = dct['7) Standard_deviation_profiles']
+
+    profiles_data = np.zeros((nL, nB))
+    std_data = np.zeros((nL, nB))
+        
+    for l in xrange(nL):
+        for b in xrange(nB):
+            for E in xrange(nE):
+                profiles_data[l,b] += diff_profiles[b][l][binmin+E] *  deltaE[E] / Es[E]
+                std_data[l,b] += (std_profiles[b][l][binmin+E] * deltaE[E] / Es[E])**2
+
+    difference_profiles = profiles_data[0] - profiles_data[1]            
+    difference_std = np.sqrt(std_data[0] + std_data[1])
+
+
 ########################################################################################################################## Plot profiles
 
 
@@ -57,7 +80,6 @@ for l in xrange(nL):
     pyplot.figure()
     colour_index = 0
     marker_index = 0
-
     
     for input in input_data:
         dct  = dio.loaddict('../dct/dct_' + input + '.yaml')
@@ -71,12 +93,23 @@ for l in xrange(nL):
             for E in xrange(nE):
                 profiles[b] += diff_profiles[b][l][binmin+E] *  deltaE[E] / Es[E]
                 std[b] += (std_profiles[b][l][binmin+E] * deltaE[E] / Es[E])**2
-        std = np.sqrt(std)
+        std = np.sqrt(std) 
 
         pyplot.errorbar(Bc, profiles, std, color = colours[colour_index], marker=markers[marker_index], markersize=4, label=input)
         colour_index += 1
         marker_index += 1
-    
+
+    if plot_diff_rightleft:
+        labl0 = labl1 = 'difference data'
+        
+        for b in xrange(nB):
+            if l==0 and difference_profiles[b] > 0:
+                pyplot.errorbar(Bc[b], difference_profiles[b], difference_std[b], color = 'grey', marker='>', markersize=6, label=labl0)
+                labl0 = None
+            if l==1 and difference_profiles[b] < 0:
+                pyplot.errorbar(Bc[b], -difference_profiles[b], difference_std[b], color = 'grey', marker='>', markersize=6, label=labl1)
+                labl1 = None
+        
     lg = pyplot.legend(loc='upper left', ncol=1, fontsize = 'medium')
     lg.get_frame().set_linewidth(0)
     pyplot.grid(True)
@@ -90,6 +123,6 @@ for l in xrange(nL):
     name = 'Profiles_'+ str(l)
     fn = plot_dir + name + fn_ending
     pyplot.yscale('log')
-    pyplot.ylim(1.e-7, 1.e-3)
+    pyplot.ylim(5.e-8, 1.e-4)
     pyplot.savefig(fn, format = 'pdf')
             
