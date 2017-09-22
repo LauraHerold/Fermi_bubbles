@@ -9,8 +9,8 @@ import healpylib as hlib
 ##################################################################################################### parameters
 
 
-binmin = 12
-binmax = 19
+binmin = 0
+binmax = 4
 
 smooth_map = True
 mask_point_sources = True
