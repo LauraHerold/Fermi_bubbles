@@ -10,35 +10,51 @@ import dio
 
 ####################################################################################################################### Parameters
 
-binmin = 0 # bubbles: 22 - 30 
-binmax = 20
+binmin = 0                                        # range: 0-17
+binmax = 17
 
+source_class = False
 
 ###################################################################################################################### Constants
 
-dB_dct = {'small': 4., 'large':  10.} # length of bin in latitude
-Bmax_dct = {'small': 10., 'large': 60.} # maximal latitude (in deg)
-dL = 10. # length of bin in longitudinal
-Lmax = 10. # maximal longitude (in deg)
+dB_dct = {'small': 4., 'large':  10.}             # length of bin in latitude
+Bmax_dct = {'small': 10., 'large': 60.}           # maximal latitude (in deg)
+dL = 10.                                          # length of bin in longitudinal
+Lmax = 10.                                        # maximal longitude (in deg)
 
 GeV2MeV = 1000.
-delta = 0.346573590092441 # logarithmic distance between two energy bins
+delta = 0.3837641821164575                        # Logarithmic size of one energy bin, in fits header "Step in energy (log)"
 npix = 196608
 nside = healpy.npix2nside(npix)
 
 ###################################################################################################################### Load data
 
-map_fn = '../data/Boxes_0.6-1.6GeV_smallmask_bubblesexcl_highEsmooth_symmask_with0stripe.fits'
-counts_fn = '../data/counts_P8_P302_Source_z100_healpix_o7_31bins.fits'
-dct_fn ='../dct/dct_boxes.yaml'
+mask_point_sources = True
+symmetrize_mask = True
 
+if source_class:
+    map_fn = 'fits/Boxes_0.3-1.0GeV_source.fits'
+    counts_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits' # Source class (counts )
+    dct_fn ='dct/dct_boxes_source.yaml'
+else:
+    map_fn = 'fits/Boxes_0.3-1.0GeV_ultraclean.fits'
+    counts_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits' # Ultraclean class (counts)
+    dct_fn ='dct/dct_boxes_ultraclean.yaml'
+
+mask_fn = '../../data/ps_masks/ps_mask_3FGL_small_nside128.npy'    
+    
 hdu = pyfits.open(map_fn)
 data = hdu[1].data.field('Spectra')[::,binmin:binmax+1]
 Es = hdu[2].data.field('GeV')[binmin:binmax+1]
 
-hdu_counts = pyfits.open(counts_fn)
-counts = hdu_counts[1].data.field('Spectra')[::,31-(binmax - binmin):31]
+hdu_counts = pyfits.open(counts_fn)                                                                                # Counts are for standard deviation
+counts = hdu_counts[1].data.field('Spectra')[::,6+binmin : 6+binmax+1]                                             # The 6th engergy bin in data is the 0th high-energy bin
 
+mask = np.ones(npix)
+if mask_point_sources:
+    mask = np.load(mask_fn)
+    if symmetrize_mask:
+        mask *= mask[::-1]
 
 ###################################################################################################################### Select the region and group together pixels of the same region in the inds_dict
 
@@ -52,7 +68,7 @@ Lc = (Lbins[:-1] + Lbins[1:])/2
 nL = len(Lbins)-1
 
 
-nE = binmax - binmin
+nE = binmax - binmin + 1
 
 for option in ['small','large']:
     print option
@@ -67,7 +83,7 @@ for option in ['small','large']:
     
 
     print 'calculate indices...'
-    inds_dict = hlib.lb_profiles_hinds_dict(nside, Bbins[option], Lbins)
+    inds_dict = hlib.lb_profiles_hinds_dict(nside, Bbins[option], Lbins, mask=mask)
 
 ###################################################################################################################### Calculate differential flux in each pixel, sum over pixels in one lat-lon bin, calculate std
 
@@ -99,8 +115,8 @@ std_profiles = np.append(np.append(std_dct['large'][0:5], std_dct['small'], axis
 Bbins_tot = np.append(np.append(Bbins['large'][0:5], Bbins['small']), Bbins['large'][8:13])
 Bc_tot =(Bbins_tot[1:] + Bbins_tot[:-1])/2
 
-
-dct = {'1) Comment':'Latitude-longitude profiles of residual differential flux derived from lowE model and corresponding standard deviation with the shape (lat_bin, lon_bin, energy_bin).'}
+if mask_point_sources:
+    dct = {'1) Comment':'Latitude-longitude profiles of residual differential flux derived from lowE model and corresponding standard deviation with the shape (lat_bin, lon_bin, energy_bin). Point sources are masked with the small map.'}
 dct['6) Differential_flux_profiles'] = diff_profiles
 dct['7) Standard_deviation_profiles'] = std_profiles
 dct['2) Unit'] = 'GeV / (cm^2 s sr)'

@@ -10,15 +10,15 @@ import dio
 
 ####################################################################################################################### Parameters
 
-binmin = 6 # bubbles: 22 - 30 
+binmin = 6 # range: 0 - 23
 binmax = 23
 
-mask_point_sources = True
-symmetrize_mask = True
-combine_two_energy_bins = False # energy rebinning for better statistics
 source_class = True
 
 ###################################################################################################################### Constants
+
+mask_point_sources = True
+symmetrize_mask = True
 
 dB_dct = {'small': 4., 'large':  10.} # length of bin in latitude
 Bmax_dct = {'small': 10., 'large': 60.} # maximal latitude (in deg)
@@ -39,7 +39,7 @@ if source_class:
 
 else:
     map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits'
-    expo_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/irfs/expcube_P8_P302_UltracleanVeto_z90_w009_w478_P8R2_ULTRACLEANVETO_V6_healpix_o7_24bins'
+    expo_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/irfs/expcube_P8_P302_UltracleanVeto_z90_w009_w478_P8R2_ULTRACLEANVETO_V6_healpix_o7_24bins.fits'
     dct_fn ='dct/dct_data_ultraclean.yaml'
 
 mask_fn = '../../data/ps_masks/ps_mask_3FGL_small_nside128.npy'
@@ -98,20 +98,7 @@ for option in ['small','large']:
             N_gamma = 0
             diff_dct[option][(b,l)] = np.sum([(data[pixel] / exposure[pixel]) for pixel in inds_dict[(b,l)]], axis = 0)# map = N_gamma / exposure
             N_gamma = np.sum([data[pixel] for pixel in inds_dict[(b,l)]], axis = 0)
-            
-            if combine_two_energy_bins: # energy rebinning
-                if (nE)%2 == 1:
-                    N_gamma = np.delete(N_gamma, nE)
-                    Es = np.delete(Es_copy, nE)
-                    diff_dct[option][(b,l)] = np.delete(diff_dct[option], nE)
-                    if b==0 and l==0:
-                        print "Last energy bin deleted in order to get even number of energy bins for rebinning:" + str(binmax-binmin)
-                    
-                    diff_dct[option][(b,l)] = diff_dct[option][::2] + diff_dct[option][1::2]
-                    N_gamma = N_gamma[::2] + N_gamma[1::2]
-                    Es = Es[::2] * np.exp(delta/2)
-                    deltaE = np.array([E * np.exp(delta) - E * np.exp(-delta) for E in Es])
-            
+                        
             for i in xrange(len(N_gamma)-1, 0-1, -1): # delete empty lat lon bins
                 if np.sqrt(N_gamma[i]) == 0:
                     N_gamma[i] = 0.1

@@ -10,36 +10,52 @@ import dio
 
 ####################################################################################################################### Parameters
 
-binmin = 11 # bubbles: 22 - 30 
-binmax = 30
+binmin = 6                                       # range: 0 - 23
+binmax = 23
 
-mask_point_sources = True
+source_class = True                            # Source class or ultraclean class
 
 ###################################################################################################################### Constants
 
-dB_dct = {'small': 4., 'large':  10.} # length of bin in latitude
-Bmax_dct = {'small': 10., 'large': 60.} # maximal latitude (in deg)
-dL = 10. # length of bin in longitudinal
-Lmax = 10. # maximal longitude (in deg)
+mask_point_sources = True
+
+dB_dct = {'small': 4., 'large':  10.}            # length of bin in latitude
+Bmax_dct = {'small': 10., 'large': 60.}          # maximal latitude (in deg)
+dL = 10.                                         # length of bin in longitudinal
+Lmax = 10.                                       # maximal longitude (in deg)
 
 GeV2MeV = 1000.
-delta = 0.346573590092441 # logarithmic distance between two energy bins
+delta = 0.3837641821164575                       # Logarithmic size of one energy bin, in fits header "Step in energy (log)"
 npix = 196608
 nside = healpy.npix2nside(npix)
 
 ###################################################################################################################### Load data
 
-map_fn = '../data/Source_refit_3FGL_40PS_resid_signal_bubbles_flux.fits'
-counts_fn = '../data/counts_P8_P302_ultraclean_veto_z90_healpix_o7_31bins.fits'
-dct_fn ='../dct/dct_GALPROP.yaml'
-mask_fn = '../data/ps_mask_3FGL_OG_nside128.npy'
+
+if source_class:
+    map_fn = '../../data/P8_P302_Source_z100_w009_w478/residuals/9years_Source_z100_refit_PS_resid_signal_bubbles_counts.fits'               # Map is in unit counts
+    expo_fn =  '../../data/P8_P302_Source_z100_w009_w478/irfs/expcube_P8_P302_Source_z100_w009_w478_P8R2_SOURCE_V6_healpix_o7_24bins.fits'
+    counts_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits'
+    dct_fn ='dct/dct_GALPROP_source.yaml'
+else:
+    map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/residuals/9years_UltracleanVeto_z90_refit_PS_resid_signal_bubbles_counts.fits'
+    expo_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/irfs/expcube_P8_P302_UltracleanVeto_z90_w009_w478_P8R2_ULTRACLEANVETO_V6_healpix_o7_24bins.fits'
+    counts_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits'
+    dct_fn ='dct/dct_GALPROP_ultraclean.yaml'
+
+mask_fn = '../../data/ps_masks/ps_mask_3FGL_OG_nside128.npy'                                                                  # Mask OG (= outer galaxy)
 
 hdu = pyfits.open(map_fn)
 data = hdu[1].data.field('Spectra')[::,binmin:binmax+1]
 Es = hdu[2].data.field('MeV')[binmin:binmax+1] / GeV2MeV
 
+hdu_expo = pyfits.open(expo_fn)
+exposure = hdu_expo[1].data.field('Spectra')[::,binmin:binmax+1]
+
 hdu_counts = pyfits.open(counts_fn)
 counts = hdu_counts[1].data.field('Spectra')[::,binmin:binmax+1]
+
+deltaE = Es * (np.exp(delta/2) - np.exp(-delta/2))
 
 mask = np.ones(npix)
 if mask_point_sources:
@@ -85,7 +101,7 @@ for option in ['small','large']:
         for l in xrange(nL):
 
             N_gamma = 0
-            diff_dct[option][(b,l)] = np.mean([data[pixel] for pixel in inds_dict[(b,l)]], axis = 0) # map = N_gamma / exposure
+            diff_dct[option][(b,l)] = np.sum([(data[pixel] / exposure[pixel]) for pixel in inds_dict[(b,l)]], axis = 0)# map = N_gamma / exposure
             N_gamma = np.sum([counts[pixel] for pixel in inds_dict[(b,l)]], axis = 0)
         
             
@@ -93,7 +109,8 @@ for option in ['small','large']:
                 if np.sqrt(N_gamma[i]) < 0.1:
                     N_gamma[i] = 0.1
                     
-            diff_dct[option][(b,l)] =  (Es**2 * diff_dct[option][(b,l)]) # * GeV2MeV # spectral energy distribution = (E^2 * N_gamma) / (exposure * dOmega * deltaE)
+            dOmega = 4. * np.pi * len(inds_dict[(b,l)]) / npix  # calculate solid angle of region
+            diff_dct[option][(b,l)] =  (Es**2 * diff_dct[option][(b,l)]) / (deltaE * dOmega) # spectral energy distribution = (E^2 * N_gamma) / (exposure * dOmega * deltaE)
             std_dct[option][(b,l)] = diff_dct[option][(b,l)] / np.sqrt(N_gamma) # errors = standard deviation via Gaussian error propagation
 
 

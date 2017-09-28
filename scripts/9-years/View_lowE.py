@@ -8,9 +8,21 @@ import healpylib as hlib
 
 ##################################################################################################### parameters
 
+source_class = True
 
-binmin = 12
-binmax = 17
+binmin = 0
+binmax = 5
+
+#binmin = 6
+#binmax = 11
+
+#binmin = 12
+#binmax = 17
+
+save_fn = '../../plots/Plots_9-year/Mollweide_LowE_0.3-1.0GeV_source_range1.pdf'
+
+##################################################################################################### constants
+
 
 smooth_map = True
 mask_point_sources = True
@@ -23,12 +35,6 @@ cmap = pyplot.cm.hot_r # jet, hot
 normalized = False
 unit = r'$\mathrm{GeV /(s\ sr\ cm}^2)}$'
 
-map_fn = 'fits/LowE_0.3-1.0GeV_Source.fits'
-save_fn = '../../plots/Plots_9-year/Mollweide_LowE_0.3-1.0GeV_Source_highE-range3.pdf'
-mask_fn = '../../data/ps_masks/ps_mask_3FGL_small_nside128.npy'
-
-
-##################################################################################################### constants
 
 GeV2MeV = 1000.
 delta = 0.3837641821164575
@@ -37,6 +43,15 @@ npix = 196608
 nside = healpy.npix2nside(npix)
 
 ##################################################################################################### load data from a fits file
+
+if source_class:
+    map_fn = 'fits/LowE_0.3-1.0GeV_source.fits'
+else:
+    map_fn = 'fits/LowE_0.3-1.0GeV_ultraclean.fits'
+
+ 
+mask_fn = '../../data/ps_masks/ps_mask_3FGL_small_nside128.npy'
+
 
 hdu = pyfits.open(map_fn)
 data = hdu[1].data.field('Spectra')

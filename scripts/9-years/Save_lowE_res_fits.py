@@ -17,7 +17,6 @@ from iminuit import Minuit
 ########################################################################################################################## Parameters
 
 source_class = False
-fits_fn_end = '_ultraclean.fits'
 
 binmin_high = 6                     # bin 6 - 23 / 1 GeV - 1 TeV
 binmax_high = 23
@@ -47,10 +46,12 @@ nside = healpy.npix2nside(npix)     # Side parameter of Healpy projection
 if source_class:
     map_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits'                  # Source class (counts map)
     expo_fn = '../../data/P8_P302_Source_z100_w009_w478/irfs/expcube_P8_P302_Source_z100_w009_w478_P8R2_SOURCE_V6_healpix_o7_24bins.fits' # Exposure
+    save_fn_class = '_source.fits'
 
 else:
-    map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits'                  # Source class (counts map)
+    map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits'                  # Ultraclean class (counts map)
     expo_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/irfs/expcube_P8_P302_UltracleanVeto_z90_w009_w478_P8R2_ULTRACLEANVETO_V6_healpix_o7_24bins.fits' # Exposure
+    save_fn_class = '_ultraclean.fits'
 
 mask_fn = '../../data/ps_masks/ps_mask_3FGL_small_nside128.npy'                                                                       # Small mask
 
@@ -145,7 +146,8 @@ for E in xrange(nE):
         print 'b = ' + str(b)
 
 
-############################################################################################################################ Calculate residual        
+
+############################################################################################################################ Calculate residual flux   
 
 model = np.zeros((nE, npix))        
         
@@ -156,6 +158,7 @@ for E in xrange(nE):
                 model[E, pixel] = k_array[b,E] * data_low[pixel] + c_array[b,E]                              # Calculate model from k and c array
                 
 resid_counts = data_high - model                                                                             # Residual = data - model 
+
 
 dOmega = 4. * np.pi / npix
 deltaE = Es_high * (np.exp(delta/2) - np.exp(-delta/2))
@@ -173,7 +176,8 @@ for E in range(nE):
             if model[E][pixel] == 0:                                                                         # No divide by zero encountered
                 resid_counts_norm[E][pixel] = 0.
             else:
-                resid_counts_norm[E][pixel] = resid_counts[E][pixel] / model[E][pixel] 
+                resid_counts_norm[E][pixel] = resid_counts[E][pixel] / model[E][pixel]
+
 
 
 ############################################################################################################################ Function to save fits files (auxil.py)
@@ -216,13 +220,14 @@ def hmap2skymap(values, fn=None, unit=None, kdict=None, comment=None, Es=None, E
     hdulist.writeto(fn)
 
     return None
-
+                
 
 ############################################################################################################################ Save residual flux as fits file
 
 emax_low = Es[binmax_low] * np.exp(delta/2)
 emin_low = Es[binmin_low] * np.exp(-delta/2)
 
-fits_fn = 'fits/LowE_%.1f' %emin_low + '-%.1fGeV' %emax_low + fits_fn_end
+
+fits_fn = 'fits/LowE_%.1f' %emin_low + '-%.1fGeV' %emax_low + save_fn_class
 
 skymap = hmap2skymap(resid_flux.T, fits_fn, unit = 'GeV/(cm^2 s sr)', Es = Es_high)

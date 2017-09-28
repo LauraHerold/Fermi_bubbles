@@ -8,9 +8,9 @@ import healpylib as hlib
 
 ##################################################################################################### parameters
 
-source_class = True
+source_class = False
 
-binmin = 7
+binmin = 6
 binmax = 11
 
 #binmin = 12
@@ -19,7 +19,7 @@ binmax = 11
 #binmin = 18
 #binmax = 23
 
-save_fn = '../../plots/Plots_9-year/Mollweide_GALPROP_source_range1.pdf'
+save_fn = '../../plots/Plots_9-year/Mollweide_GALPROP_ultraclean_range1.pdf'
 
 ##################################################################################################### constants
 
@@ -43,11 +43,11 @@ nside = healpy.npix2nside(npix)
 ##################################################################################################### load data from a fits file
 
 if source_class:
-    map_fn = '../../data/P8_P302_Source_z100_w009_w478/residuals/resid_signal_P8_P302_Source_z100_w009_w478_hmap_order7_Galprop_5rings_IC123_geomLoopI_bremss_ext_9years_source_z100_PS_3FGL_no_ext_adaptive_ps_mask_3FGL_OG_DM_Cusp_n2p5_psrefit_40_3FGL_pnorm_psfall.fits'               # Map is in unit counts
+    map_fn = '../../data/P8_P302_Source_z100_w009_w478/residuals/9years_Source_z100_refit_PS_resid_signal_bubbles_counts.fits'               # Map is in unit counts
     expo_fn = '../../data/P8_P302_Source_z100_w009_w478/irfs/expcube_P8_P302_Source_z100_w009_w478_P8R2_SOURCE_V6_healpix_o7_24bins.fits'
     
 else:
-    map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/residuals/resid_signal_P8_P302_UltracleanVeto_z90_w009_w478_hmap_order7_Galprop_5rings_IC123_geomLoopI_bremss_ext_9years_PS_3FGL_no_ext_adaptive_ps_mask_3FGL_OG_DM_Cusp_n2p5_psrefit_40_3FGL_pnorm_psfall.fits'               # Map is in unit counts
+    map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/residuals/9years_UltracleanVeto_z90_refit_PS_resid_signal_bubbles_counts.fits'               # Map is in unit counts
     expo_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/irfs/expcube_P8_P302_UltracleanVeto_z90_w009_w478_P8R2_ULTRACLEANVETO_V6_healpix_o7_24bins.fits'
 
 mask_fn = '../../data/ps_masks/ps_mask_3FGL_OG_nside128.npy'     
