@@ -1,5 +1,45 @@
-\section{Characterization of the \Fermi bubbles using different models}
-%\subsection{On-off analysis}
+
+\section{Modeling of the \Fermi bubbles at low latitudes}
+
+One of the main problems in the analysis of the FB near the GC is the 
+presence of the foreground emission components, 
+such as the interactions of cosmic rays with the interstellar gas and radiation fields.
+In order to test the possible effects of the foreground emission modeling,
+we use several methods to estimate the contribution of the foreground emission to the data.
+
+In particular, there is a tentative
+displacement of the FB to the right of the GC, e.g., negative Galactic latitudes \citep{2016ApJS..223...26A, 2017ApJ...840...43A},
+with a spectrum that is harder than the spectrum of the FB at high latitudes \citep{2017ApJ...840...43A}.
+If we assume that the Galactic emission components are approximately symmetric with respect to the GC,
+then we can simply mask PS and calculate the difference in gamma-ray flux to the left and to the right from the GC.
+The difference should be approximately equal to the asymmetric part of the FB emission
+under the assumption that the other Galactic components and unresolved PS are symmetric with respect to the GC.
+
+In order to further test the hypothesis of the asymmetric and hard emission from the FB at low latitudes,
+we use the data at energies $\lesssim 1$ GeV to create a template of the Galactic emission,
+provided that the expected contribution of the FB at these energies is small relative to the rest of the Galactic components.
+Then we fit the template derived from the low energy data together with an isotropic template at higher energies
+outside of the FB area.
+The FB intensity is determined by extrapolating the model inside the FB area using the full template and by subtracting the model
+from the data.
+As an alternative approach, instead of fitting outside of the FB area, we add independent flat rectangular templates with the size
+approximately following the FB size to the model and fit over the whole sky.
+The flux attributed to these rectangular templates is used as an estimate of the average flux in the FB in the corresponding areas.
+
+
+
+\subsection{Left-right difference in the data}
+
+\dima{I suggest to describe the calculation of the left-right difference in data as the first simple check of the harder
+emission at the base of the bubbles.}
+
+
+\begin{figure}[h]
+ \includegraphics[]{plots/data_diff.pdf}
+ \caption{Left-right difference in the data as a function of latitude.}
+ \label{fig:data_diff}
+\end{figure}
+
 \subsection{Low energy data as a background model}
 \begin{figure*}[t]
 	\makebox[\textwidth][c]{
@@ -13,7 +53,7 @@
         	\includegraphics[width=\textwidth]{plots/LowE_06-16GeV_smallmask_bubblesexcl_highEsmooth_symmask_tot_highhigh_hot.pdf}
     	\end{subfigure}
     }
-  	\caption{Residuals of the low-energy model for three different energy ranges in differential flux. The \Fermi bubbbles are clearly visible in the first two energy ranges. Point sources are masked.}
+  	\caption{Residuals of the low-energy model for three different energy ranges in differential flux. The \Fermi bubbles are clearly visible in the first two energy ranges. Point sources are masked.}
   	\label{Maps_lowE}
 \end{figure*}
 
