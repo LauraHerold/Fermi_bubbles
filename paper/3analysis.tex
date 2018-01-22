@@ -13,7 +13,8 @@ with a spectrum that is harder than the spectrum of the FB at high latitudes \ci
 If we assume that the Galactic emission components are approximately symmetric with respect to the GC,
 then we can simply mask PS and calculate the difference in gamma-ray flux to the left and to the right from the GC.
 The difference should be approximately equal to the asymmetric part of the FB emission
-under the assumption that the other Galactic components and unresolved PS are symmetric with respect to the GC.
+under the assumption that the other Galactic components and unresolved PS are symmetric with respect to the GC
+(Section \ref{sec:data_diff}).
 
 In order to further test the hypothesis of the asymmetric and hard emission from the FB at low latitudes,
 we use the data at energies $\lesssim 1$ GeV to create a template of the Galactic emission,
@@ -21,14 +22,19 @@ provided that the expected contribution of the FB at these energies is small rel
 Then we fit the template derived from the low energy data together with an isotropic template at higher energies
 outside of the FB area.
 The FB intensity is determined by extrapolating the model inside the FB area using the full template and by subtracting the model
-from the data.
+from the data (Section \ref{sec:le_data_model}).
 As an alternative approach, instead of fitting outside of the FB area, we add independent flat rectangular templates with the size
 approximately following the FB size to the model and fit over the whole sky.
-The flux attributed to these rectangular templates is used as an estimate of the average flux in the FB in the corresponding areas.
+The flux attributed to these rectangular templates is used as an estimate of the average flux in the FB in the corresponding areas
+(Section \ref{sec:box_model}).
+
+We also calculate the flux attributed to the bubbles using one of the diffuse emission models from \citep{2017ApJ...840...43A}
+(Section \ref{sec:galprop_model}).
 
 
 
 \subsection{Left-right difference in the data}
+\label{sec:data_diff}
 
 \dima{I suggest to describe the calculation of the left-right difference in data as the first simple check of the harder
 emission at the base of the bubbles.}
@@ -41,6 +47,8 @@ emission at the base of the bubbles.}
 \end{figure}
 
 \subsection{Low energy data as a background model}
+\label{sec:le_data_model}
+
 \begin{figure*}[t]
 	\makebox[\textwidth][c]{
     	\begin{subfigure}{0.3\textwidth}
@@ -53,20 +61,42 @@ emission at the base of the bubbles.}
         	\includegraphics[width=\textwidth]{plots/LowE_06-16GeV_smallmask_bubblesexcl_highEsmooth_symmask_tot_highhigh_hot.pdf}
     	\end{subfigure}
     }
-  	\caption{Residuals of the low-energy model for three different energy ranges in differential flux. The \Fermi bubbles are clearly visible in the first two energy ranges. Point sources are masked.}
-  	\label{Maps_lowE}
+  	\caption{Residuals of the low-energy model for three different energy ranges in differential flux. The \Fermi bubbles are clearly visible in the first two energy ranges. Point sources are masked. \dima{the energy ranges should be updated}}
+  	\label{fig:Maps_lowE}
 \end{figure*}
 
-Emission from hadronic interactions dominates in the lower energy range (0.6 - 1.6 GeV). Low-energy \Fermi data is a good tracer for hadronic emission in the Galactic plane and can be used to create a spatial template for the Galactic foreground. \\
-We cut the sky horizontally in $4^\circ$-thick latitude stripes and define our model in each stripe and energy bin separately. In the latitude stripe $\ell$ and energy bin $E$ our model consists of a term proportional to the low-energy photon counts $k \cdot N^\low$ (summed over all energies in 0.6 - 1.6 GeV) and an additional constant factor $c$: $N^\model_{\ell E} = k_{\ell E} \cdot N^\low_{\ell E} + c_{\ell E}$. The constant factor $c$ takes into account the isotropic extragalactic background and compensates for the latitude dependent IC emission. We fit the model to the high-energy \Fermi data (with python's iminuit and a likelihood fit) and obtain the fit parameters $c$ and $k$. Since the point spread function is significantly worse for smaller energies, we smoot the high-energy data with a Gaussian prior to the fit. To avoid an overcompensation of the \Fermi bubbles the region $-20^\circ < \ell < 20^\circ$ is excluded from the fit. Certain point sources from the 2FGL catalog are masked \Laura{The mask covers the 200 brightest gamma-ray sources of the 2FGL with a circle of radius $\frac{\delta}{\sqrt{2}} + 1^\circ$ with $\delta$ being the angle spanned by the sidelength of one pixel?}. Since there are many point sources at low latitudes, that could introduce a bias, the mask is symmetrized w.r.t. the Galactic center. \\
-Figure \ref{Maps_lowE} shows the resulting residual maps for three different energy ranges. The \Fermi bubbles are clearly visible in the first two energy ranges, $E = 1.6 - 9.2$ GeV and $E = 9.2 - 103.9$ GeV, for $E = 103.9 - 1663.1$ GeV the statistics are too low.  
+Gamma rays produced in interactions of CR with gas and IC scattering dominate the gamma-ray emission around the GC in the energy range $E \lesssim 1$ GeV. 
+Consequently, low-energy \Fermi-LAT data is a good tracer for diffuse gamma-ray emission in the Galactic plane and can be used to create a spatial template for the Galactic foreground.
+Since the angular resolution is worse for smaller energies, we smooth the data in each high-energy bin with a Gaussian kernel to compensate for the difference in angular resolution. 
+
+We cut the sky horizontally in latitude stripes with the width of $4^\circ$ and define our model in each stripe and energy bin separately. 
+In the latitude stripe $\ell$ and energy bin $E_\alpha$ our model consists of a term proportional to the low-energy photon counts $k_{\ell\alpha} \cdot N^\low$ (summed over all energies in 0.6 - 1.6 GeV) and an additional constant factor $c_{\ell\alpha}$: 
+\be
+N^\model_{\ell \alpha} = k_{\ell \alpha} \cdot N^\low_{\ell \alpha} + c_{\ell \alpha}
+\ee
+\dima{Is it constant or proportional to exposure?}
+The constant factor $c_{\ell \alpha}$ takes into account the isotropic extragalactic background and partially compensates for the latitude dependent IC emission. 
+We determine the parameters $c_{\ell \alpha}$ and $k_{\ell \alpha}$ by fitting the model to the \Fermi-LAT data in energy bins $E_\alpha > 1.6$ GeV
+using Poisson likelihood (with Python iminuit minimizer).
+\dima{If we smooth the data before the fit, the Poisson likelihood is not precise, but still a good approximation.
+Should we say something like: ``Since we smooth the data before the fit, the Poisson log-likelihood is an approximation in this case.''}
+To avoid an overcompensation of the \Fermi bubbles the region $-20^\circ < \ell < 20^\circ$ is excluded from the fit. 
+We mask 200 brightest 3FGL PS  with a circle of radius $\frac{\delta}{\sqrt{2}} + 1^\circ$ where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels. 
+We also symmetrize the PS relative to the GC in order to avoid possible bias by masking more pixels on one side of the GC.
+
+After we fit the model in each latitude stripe, we interpolate it inside the bubbles ROI and find the residual by subtracting it from the data.
+Figure \ref{fig:Maps_lowE} shows the residual maps for three different energy ranges. 
+The \Fermi bubbles are clearly visible in the first two energy ranges, $E = 1.6 - 9.2$ GeV and $E = 9.2 - 103.9$ GeV, for 
+$E = 100$ GeV -- 1 TeV the statistics is low, but one can still see an excess near the GP.
 
 
 \subsection{Rectangles model of the bubbles}
+\label{sec:box_model}
+
 First simple ansatz to 
 
 \subsection{GALPROP model of the foreground and PS refitting}
-
+\label{sec:galprop_model}
 
 \begin{figure*}
 	\makebox[\textwidth][c]{
@@ -81,5 +111,5 @@ First simple ansatz to
     	\end{subfigure}
     	}
   	\caption{GALPROP model residuals in three different energy ranges.}
-  	\label{Maps_GALPROP}
+  	\label{fig:Maps_GALPROP}
  \end{figure*}
