@@ -139,6 +139,8 @@ def cooling_time(E_e, EdNdE_irf, E_irf): # cooling time if energy loss of partic
     return E_e / ICS_Edot(E_e, EdNdE_irf, E_irf)
 
 
+########################################################################## Use this for lifetime calculations:
+
 #def ICS_Edot(E_e, EdNdE_irf, E_irf, gamma_spectrum=False):
 def ICS_Edot(E_e, EdNdE_irf, E_irf): # = dE/dt (Longair 9.33)
     f = np.sqrt(E_irf[1] / E_irf[0]) # (f-1/f) \approx log(f)

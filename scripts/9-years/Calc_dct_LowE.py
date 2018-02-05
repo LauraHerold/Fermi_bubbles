@@ -13,7 +13,11 @@ import dio
 binmin = 0                                        # range: 0-17
 binmax = 17
 
-source_class = True
+source_class = False
+Save_counts = True
+
+low_energy_range = 0                              # 0: baseline
+lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
 
 ###################################################################################################################### Constants
 
@@ -33,17 +37,33 @@ nside = healpy.npix2nside(npix)
 ###################################################################################################################### Load data
 
 if source_class:
-    map_fn = 'fits/LowE_0.3-1.0GeV_source.fits'
     counts_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits' # Source class (counts )
-    dct_fn ='dct/dct_lowE_source.yaml'
-else:
-    map_fn = 'fits/LowE_0.3-1.0GeV_ultraclean.fits'
-    counts_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits' # Ultraclean class (counts)
-    dct_fn ='dct/dct_lowE_ultraclean.yaml'
+    if Save_counts:
+        map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_counts_source.fits'
+        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_lowE_counts_source.yaml'
+    else:
+        map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_source.fits'
+        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_lowE_source.yaml'
 
+else:
+    counts_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits' # Ultraclean class (counts)
+    if Save_counts:
+        map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_counts_ultraclean.fits'
+        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_lowE_counts_ultraclean.yaml'
+    else:
+        map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_ultraclean.fits'
+        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_lowE_ultraclean.yaml'
+   
+        
 mask_fn = '../../data/ps_masks/ps_mask_3FGL_small_nside128.npy'
+
     
 hdu = pyfits.open(map_fn)
+
+#binmax = min(np.size(hdu[2].data.field('GeV')), binmax)
+print binmax
+print np.size(hdu[2].data.field('GeV'))
+print np.shape(hdu[1].data.field('Spectra'))
 data = hdu[1].data.field('Spectra')[::,binmin:binmax+1]
 Es = hdu[2].data.field('GeV')[binmin:binmax+1]
 
@@ -95,7 +115,10 @@ for option in ['small','large']:
         for l in xrange(nL):
 
             N_gamma = 0
-            diff_dct[option][(b,l)] = np.mean([data[pixel] for pixel in inds_dict[(b,l)]], axis = 0) # mean since this is diff flux (dOmega!)
+            if Save_counts:
+                diff_dct[option][(b,l)] = np.sum([data[pixel] for pixel in inds_dict[(b,l)]], axis = 0) # mean since this is diff flux (dOmega!)
+            else:
+                diff_dct[option][(b,l)] = np.mean([data[pixel] for pixel in inds_dict[(b,l)]], axis = 0) # mean since this is diff flux (dOmega!)
             N_gamma = np.sum([counts[pixel] for pixel in inds_dict[(b,l)]], axis = 0)
             
             
@@ -120,7 +143,11 @@ if mask_point_sources:
     dct = {'1) Comment':'Latitude-longitude profiles of residual differential flux derived from lowE model and corresponding standard deviation with the shape (lat_bin, lon_bin, energy_bin). Point sources are masked with the small map.'}
 dct['6) Differential_flux_profiles'] = diff_profiles
 dct['7) Standard_deviation_profiles'] = std_profiles
-dct['2) Unit'] = 'GeV / (cm^2 s sr)'
+if Save_counts:
+    dct['2) Unit'] = 'counts'
+else:
+    dct['2) Unit'] = 'GeV / (cm^2 s sr)'
+
 dct['3) Center_of_lon_bins'] = Lc
 dct['4) Center_of_lat_bins'] = Bc_tot
 dct['5) Energy_bins'] = Es

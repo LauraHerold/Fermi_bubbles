@@ -15,12 +15,14 @@ from iminuit import Minuit
 
 ########################################################################################################################## Parameters
 
-source_class = False
+Save_counts = True
+source_class = True
 
 binmin_high = 6                     # bin 6 - 23 / 1 GeV - 1 TeV
 binmax_high = 23
-binmin_low = 3                       # bin 3 - 5 / 0.32 - 1 GeV
+binmin_low = 3                        # bin 3 - 5 / 0.32 - 1 GeV
 binmax_low = 5
+
 
 ############################################################################################################################ Constants
 
@@ -164,7 +166,7 @@ for E in xrange(nE):
 
 
 ############################################################################################################################ Calculate residual        
-
+model = np.zeros((nE, npix))
 boxes_map = np.zeros((nE, npix))        
         
 for E in xrange(nE):
@@ -172,15 +174,19 @@ for E in xrange(nE):
         for l in xrange(nL):
             for pixel in inds_dict[(b,l)]:
                 boxes_map[E, pixel] = box_l_map[pixel] * b_l_array[b,E] + box_r_map[pixel] * b_r_array[b,E]                            # Calculate model from k and c array
-                 
+                model[E,pixel] = k_array[b,E] * data_low[pixel] + c_array[b,E]
+                                                    
+resid_counts = data_high - model                 
 
 dOmega = 4. * np.pi / npix
 deltaE = Es_high * (np.exp(delta/2) - np.exp(-delta/2))
 
 boxes_flux = np.zeros((nE, npix))
+resid_flux = np.zeros((nE, npix))
 for E in xrange(nE):
     for pixel in xrange(npix):
         boxes_flux[E, pixel] = mask[pixel] * (Es_high[E]**2 * boxes_map[E, pixel]) / (deltaE[E] * expo_high[E,pixel] * dOmega)           # Differential flux
+        resid_flux[E, pixel] = mask[pixel] * (Es_high[E]**2 * resid_counts[E, pixel]) / (deltaE[E] * expo_high[E,pixel] * dOmega)
 
 
 ############################################################################################################################ Function to save fits files (auxil.py)
@@ -230,6 +236,19 @@ def hmap2skymap(values, fn=None, unit=None, kdict=None, comment=None, Es=None, E
 emax_low = Es[binmax_low] * np.exp(delta/2)
 emin_low = Es[binmin_low] * np.exp(-delta/2)
 
-fits_fn = 'fits/Boxes_%.1f' %emin_low + '-%.1fGeV' %emax_low + save_fn_class
 
-skymap = hmap2skymap(boxes_flux.T, fits_fn, unit = 'GeV/(cm^2 s sr)', Es = Es_high)
+#if Save_counts:
+#    fits_fn = 'fits/Boxes_%.1f' %emin_low + '-%.1fGeV_counts' %emax_low + save_fn_class
+#    skymap = hmap2skymap(boxes_map.T, fits_fn, unit = 'counts', Es = Es_high)
+
+#else:
+#    fits_fn = 'fits/Boxes_%.1f' %emin_low + '-%.1fGeV' %emax_low + save_fn_class
+#    skymap = hmap2skymap(boxes_flux.T, fits_fn, unit = 'GeV/(cm^2 s sr)', Es = Es_high)
+
+
+
+fits_resid_counts_fn = 'fits/Boxes_residual_%.1f' %emin_low + '-%.1fGeV_counts' %emax_low + save_fn_class
+skymap_resid_counts = hmap2skymap(resid_counts.T, fits_resid_counts_fn, unit = 'counts', Es = Es_high)
+
+fits_resid_flux_fn = 'fits/Boxes_residual_%.1f' %emin_low + '-%.1fGeV' %emax_low + save_fn_class
+skymap_resid_flux = hmap2skymap(resid_flux.T, fits_resid_flux_fn, unit = 'GeV/(cm^2 s sr)', Es = Es_high)

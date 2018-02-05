@@ -16,9 +16,10 @@ from iminuit import Minuit
 
 ########################################################################################################################## Parameters
 
+Save_counts = True
 source_class = False
 
-binmin_high = 6                     # bin 6 - 23 / 1 GeV - 1 TeV
+binmin_high = 6                      # bin 6 - 23 / 1 GeV - 1 TeV
 binmax_high = 23
 binmin_low = 3                       # bin 3 - 5 / 0.32 - 1 GeV
 binmax_low = 5
@@ -227,7 +228,12 @@ def hmap2skymap(values, fn=None, unit=None, kdict=None, comment=None, Es=None, E
 emax_low = Es[binmax_low] * np.exp(delta/2)
 emin_low = Es[binmin_low] * np.exp(-delta/2)
 
+if Save_counts:
 
-fits_fn = 'fits/LowE_%.1f' %emin_low + '-%.1fGeV' %emax_low + save_fn_class
+    fits_fn = 'fits/LowE_%.1f' %emin_low + '-%.1fGeV' %emax_low + '_counts' + save_fn_class
+    skymap = hmap2skymap(resid_counts.T, fits_fn, unit = 'counts', Es = Es_high)
 
-skymap = hmap2skymap(resid_flux.T, fits_fn, unit = 'GeV/(cm^2 s sr)', Es = Es_high)
+else:
+
+    fits_fn = 'fits/LowE_%.1f' %emin_low + '-%.1fGeV' %emax_low + save_fn_class
+    skymap = hmap2skymap(resid_flux.T, fits_fn, unit = 'GeV/(cm^2 s sr)', Es = Es_high)

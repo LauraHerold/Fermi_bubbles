@@ -13,7 +13,8 @@ import dio
 binmin = 6                                       # range: 0 - 23
 binmax = 23
 
-source_class = True                            # Source class or ultraclean class
+source_class = False                            # Source class or ultraclean class
+Save_counts = True
 
 ###################################################################################################################### Constants
 
@@ -36,12 +37,18 @@ if source_class:
     map_fn = '../../data/P8_P302_Source_z100_w009_w478/residuals/9years_Source_z100_refit_PS_resid_signal_bubbles_counts.fits'               # Map is in unit counts
     expo_fn =  '../../data/P8_P302_Source_z100_w009_w478/irfs/expcube_P8_P302_Source_z100_w009_w478_P8R2_SOURCE_V6_healpix_o7_24bins.fits'
     counts_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits'
-    dct_fn ='dct/dct_GALPROP_source.yaml'
+    if Save_counts:
+        dct_fn ='dct/Low_energy_range0/dct_GALPROP_counts_source.yaml'
+    else:
+        dct_fn ='dct/Low_energy_range0/dct_GALPROP_source.yaml'
 else:
     map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/residuals/9years_UltracleanVeto_z90_refit_PS_resid_signal_bubbles_counts.fits'
     expo_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/irfs/expcube_P8_P302_UltracleanVeto_z90_w009_w478_P8R2_ULTRACLEANVETO_V6_healpix_o7_24bins.fits'
     counts_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits'
-    dct_fn ='dct/dct_GALPROP_ultraclean.yaml'
+    if Save_counts:
+        dct_fn ='dct/Low_energy_range0/dct_GALPROP_counts_ultraclean.yaml'
+    else:
+        dct_fn ='dct/Low_energy_range0/dct_GALPROP_ultraclean.yaml'
 
 mask_fn = '../../data/ps_masks/ps_mask_3FGL_OG_nside128.npy'                                                                  # Mask OG (= outer galaxy)
 
@@ -101,16 +108,20 @@ for option in ['small','large']:
         for l in xrange(nL):
 
             N_gamma = 0
-            diff_dct[option][(b,l)] = np.sum([(data[pixel] / exposure[pixel]) for pixel in inds_dict[(b,l)]], axis = 0)# map = N_gamma / exposure
+            if Save_counts:
+                diff_dct[option][(b,l)] = np.sum([data[pixel] for pixel in inds_dict[(b,l)]], axis = 0)# map = N_gamma / exposure
+            else:
+                diff_dct[option][(b,l)] = np.sum([(data[pixel] / exposure[pixel]) for pixel in inds_dict[(b,l)]], axis = 0)# map = N_gamma / exposure
+           
             N_gamma = np.sum([counts[pixel] for pixel in inds_dict[(b,l)]], axis = 0)
         
             
             for i in xrange(len(N_gamma)-1, 0-1, -1): # delete empty lat lon bins
                 if np.sqrt(N_gamma[i]) < 0.1:
                     N_gamma[i] = 0.1
-                    
-            dOmega = 4. * np.pi * len(inds_dict[(b,l)]) / npix  # calculate solid angle of region
-            diff_dct[option][(b,l)] =  (Es**2 * diff_dct[option][(b,l)]) / (deltaE * dOmega) # spectral energy distribution = (E^2 * N_gamma) / (exposure * dOmega * deltaE)
+            if Save_counts == False:        
+                dOmega = 4. * np.pi * len(inds_dict[(b,l)]) / npix  # calculate solid angle of region
+                diff_dct[option][(b,l)] =  (Es**2 * diff_dct[option][(b,l)]) / (deltaE * dOmega) # spectral energy distribution = (E^2 * N_gamma) / (exposure * dOmega * deltaE)
             std_dct[option][(b,l)] = diff_dct[option][(b,l)] / np.sqrt(N_gamma) # errors = standard deviation via Gaussian error propagation
 
 
@@ -128,7 +139,11 @@ Bc_tot =(Bbins_tot[1:] + Bbins_tot[:-1])/2
 dct = {'1) Comment':'Latitude-longitude profiles of residual differential flux derived from GALPROP model and corresponding standard deviation with the shape (lat_bin, lon_bin, energy_bin).'}
 dct['6) Differential_flux_profiles'] = diff_profiles
 dct['7) Standard_deviation_profiles'] = std_profiles
-dct['2) Unit'] = 'GeV / (cm^2 s sr)'
+if Save_counts:
+    dct['2) Unit'] = 'counts'
+else:
+    dct['2) Unit'] = 'GeV / (cm^2 s sr)'
+
 dct['3) Center_of_lon_bins'] = Lc
 dct['4) Center_of_lat_bins'] = Bc_tot
 dct['5) Energy_bins'] = Es
