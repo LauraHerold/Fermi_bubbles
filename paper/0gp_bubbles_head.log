@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.31)  16 FEB 2018 18:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.31)  1 MAR 2018 18:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1177,20 +1177,20 @@ LaTeX Warning: Unused global option(s):
 (./0gp_bubbles_head.aux)
 \openout1 = `0gp_bubbles_head.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 164.
-LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
 
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1256,7 +1256,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box65
-Package hyperref Info: Link coloring OFF on input line 164.
+Package hyperref Info: Link coloring OFF on input line 175.
 
 (/Users/lauraherold/App/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1266,9 +1266,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count196
 )
-LaTeX Info: Redefining \ref on input line 164.
-LaTeX Info: Redefining \pageref on input line 164.
-LaTeX Info: Redefining \nameref on input line 164.
+LaTeX Info: Redefining \ref on input line 175.
+LaTeX Info: Redefining \pageref on input line 175.
+LaTeX Info: Redefining \nameref on input line 175.
 
 (./0gp_bubbles_head.out) (./0gp_bubbles_head.out)
 \@outlinefile=\write3
@@ -1359,31 +1359,31 @@ Dictionary: translator-basic-dictionary, Language: English
 File: siunitx-abbreviations.cfg 2016/08/22 v2.6r siunitx: Abbreviated units
 )
 \c__siunitx_mathsf_int=\count197
-LaTeX Font Info:    Try loading font information for U+msa on input line 164.
+LaTeX Font Info:    Try loading font information for U+msa on input line 175.
 (/Users/lauraherold/App/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 164.
+LaTeX Font Info:    Try loading font information for U+msb on input line 175.
 
 (/Users/lauraherold/App/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 \c__siunitx_mathtt_int=\count198
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 214.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 225.
 
 
 (/Users/lauraherold/App/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 214.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 214.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 225.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 225.
 
 
 (/Users/lauraherold/App/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 214.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 225.
 
 
 (/Users/lauraherold/App/texmf-dist/tex/latex/base/t1cmtt.fd
@@ -1502,12 +1502,37 @@ Overfull \hbox (2.22168pt too wide) in paragraph at lines 11--17
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+<plots/SED_all_models_source_l=5_b=0.pdf, id=279, 578.16pt x 433.62pt>
+File: plots/SED_all_models_source_l=5_b=0.pdf Graphic file (type pdf)
+
+<use plots/SED_all_models_source_l=5_b=0.pdf>
+Package pdftex.def Info: plots/SED_all_models_source_l=5_b=0.pdf used on input 
+line 27.
+(pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
+
+<plots/SED_all_models_source_l=-5_b=0.pdf, id=280, 578.16pt x 433.62pt>
+File: plots/SED_all_models_source_l=-5_b=0.pdf Graphic file (type pdf)
+
+<use plots/SED_all_models_source_l=-5_b=0.pdf>
+Package pdftex.def Info: plots/SED_all_models_source_l=-5_b=0.pdf used on input
+ line 30.
+(pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
+
+Overfull \hbox (2.22168pt too wide) in paragraph at lines 26--32
+[]$[]$ $[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--37
+
+ []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 24.
+Package hyperref Warning: Suppressing link with empty target on input line 37.
 
 [3 <./plots/Mollweide_LowE_03-10GeV_flux_source_range_0.pdf> <./plots/Mollweide
 _LowE_03-10GeV_flux_source_range_1.pdf
@@ -1525,26 +1550,7 @@ pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./plots
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./plots
 /Mollweide_Boxes_residual+boxes_03-10GeV_flux_source_range_1.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->] <plots/SED_all_models_source_l=5_b=0.pdf, id=472, 578.16pt x 433.62pt>
-File: plots/SED_all_models_source_l=5_b=0.pdf Graphic file (type pdf)
-
-<use plots/SED_all_models_source_l=5_b=0.pdf>
-Package pdftex.def Info: plots/SED_all_models_source_l=5_b=0.pdf used on input 
-line 28.
-(pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
-
-<plots/SED_all_models_source_l=-5_b=0.pdf, id=473, 578.16pt x 433.62pt>
-File: plots/SED_all_models_source_l=-5_b=0.pdf Graphic file (type pdf)
-
-<use plots/SED_all_models_source_l=-5_b=0.pdf>
-Package pdftex.def Info: plots/SED_all_models_source_l=-5_b=0.pdf used on input
- line 31.
-(pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
-
-Overfull \hbox (2.22168pt too wide) in paragraph at lines 27--33
-[]$[]$ $[]$ 
- []
-
+>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1553,7 +1559,7 @@ File: plots/SED_lowE_source_0cutoff.pdf Graphic file (type pdf)
 
 <use plots/SED_lowE_source_0cutoff.pdf>
 Package pdftex.def Info: plots/SED_lowE_source_0cutoff.pdf used on input line 4
-2.
+0.
 (pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
 
 <plots/SED_lowE_source_-4cutoff.pdf, id=475, 578.16pt x 433.62pt>
@@ -1561,20 +1567,31 @@ File: plots/SED_lowE_source_-4cutoff.pdf Graphic file (type pdf)
 
 <use plots/SED_lowE_source_-4cutoff.pdf>
 Package pdftex.def Info: plots/SED_lowE_source_-4cutoff.pdf used on input line 
-45.
+43.
 (pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
 
-Overfull \hbox (2.22168pt too wide) in paragraph at lines 41--47
+Overfull \hbox (2.22168pt too wide) in paragraph at lines 39--45
 []$[]$ $[]$ 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) (./5conclusions.tex) (./0gp_bubbles_head.bbl)
 
-Package hyperref Warning: Suppressing link with empty target on input line 228.
+Package natbib Warning: Citation `1970RvMP...42..237B' on page 4 undefined on i
+nput line 55.
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+)
+(./5conclusions.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--12
+
+ []
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 17.
 
 [4 <./plots/Mollweide_GALPROP_source_range2.pdf>]
 
@@ -1592,8 +1609,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 228.
-
+Package hyperref Warning: Suppressing link with empty target on input line 17.
 
 [5 <./plots/Profiles_l=1_source_range_1.pdf> <./plots/Profiles_l=0_source_range
 _1.pdf
@@ -1624,42 +1640,46 @@ cluded in a single page
 >]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+)
+
+Package hyperref Warning: Suppressing link with empty target on input line 236.
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 228.
+[6] (./0gp_bubbles_head.bbl)
 
-
-[6
-
-] (./app1.tex)
-
-Package hyperref Warning: Suppressing link with empty target on input line 232.
+Package hyperref Warning: Suppressing link with empty target on input line 239.
 
 
 [7
 
+] (./app1.tex)
+
+Package natbib Warning: There were undefined citations.
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 243.
+
+
+[8
+
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 232.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 232.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 243.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 243.
  (./0gp_bubbles_head.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 232.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 232.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 243.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 243.
 Package rerunfilecheck Info: File `0gp_bubbles_head.out' has not changed.
 (rerunfilecheck)             Checksum: C73893A7BD3DAD55E0ACC6B32FFEC091;937.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 20494 strings out of 493013
- 372411 string characters out of 6133787
- 427254 words of memory out of 5000000
- 23691 multiletter control sequences out of 15000+600000
+ 20517 strings out of 493013
+ 372637 string characters out of 6133787
+ 431587 words of memory out of 5000000
+ 23708 multiletter control sequences out of 15000+600000
  36399 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,12n,45p,10367b,772s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,14n,45p,10367b,778s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/lauraherold/App/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<
 /Users/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></U
 sers/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Use
@@ -1667,34 +1687,35 @@ rs/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Users/
 lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/lau
 raherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/laurah
 erold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/laurahero
-ld/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/lauraherold/A
-pp/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/lauraherold/App/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/lauraherold/App/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/lauraherold/App/texmf-
-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></Users/lauraherold/App/tex
-mf-dist/fonts/type1/public/cm-super/sfbi1000.pfb></Users/lauraherold/App/texmf-
-dist/fonts/type1/public/cm-super/sfbx1000.pfb></Users/lauraherold/App/texmf-dis
-t/fonts/type1/public/cm-super/sfrm0600.pfb></Users/lauraherold/App/texmf-dist/f
-onts/type1/public/cm-super/sfrm0700.pfb></Users/lauraherold/App/texmf-dist/font
-s/type1/public/cm-super/sfrm0800.pfb></Users/lauraherold/App/texmf-dist/fonts/t
-ype1/public/cm-super/sfrm0900.pfb></Users/lauraherold/App/texmf-dist/fonts/type
-1/public/cm-super/sfrm1000.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/p
-ublic/cm-super/sfrm1095.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/publ
-ic/cm-super/sfsi0900.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/
-cm-super/sfsi1000.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-
-super/sfsl0900.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-sup
-er/sfsl1000.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/
-sfso1095.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfs
-o1728.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfsx09
-00.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfsx1095.
-pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb
-></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></
-Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></Use
-rs/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on 0gp_bubbles_head.pdf (7 pages, 2178608 bytes).
+ld/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/lauraherold/A
+pp/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/lauraherold/App/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/lauraherold/App/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/lauraherold/App/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/lauraherold/App/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msam10.pfb></Users/lauraherold/App/texmf-d
+ist/fonts/type1/public/cm-super/sfbi1000.pfb></Users/lauraherold/App/texmf-dist
+/fonts/type1/public/cm-super/sfbx1000.pfb></Users/lauraherold/App/texmf-dist/fo
+nts/type1/public/cm-super/sfrm0600.pfb></Users/lauraherold/App/texmf-dist/fonts
+/type1/public/cm-super/sfrm0700.pfb></Users/lauraherold/App/texmf-dist/fonts/ty
+pe1/public/cm-super/sfrm0800.pfb></Users/lauraherold/App/texmf-dist/fonts/type1
+/public/cm-super/sfrm0900.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm1000.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/publi
+c/cm-super/sfrm1095.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/c
+m-super/sfsi0900.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-s
+uper/sfsi1000.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-supe
+r/sfsl0900.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/s
+fsl1000.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfso
+1095.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfso172
+8.pfb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfsx0900.p
+fb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb>
+</Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb></U
+sers/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></User
+s/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></Users/l
+auraherold/App/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
+Output written on 0gp_bubbles_head.pdf (8 pages, 2203075 bytes).
 PDF statistics:
- 1212 PDF objects out of 1440 (max. 8388607)
- 500 compressed objects within 5 object streams
- 41 named destinations out of 1000 (max. 500000)
+ 1233 PDF objects out of 1440 (max. 8388607)
+ 518 compressed objects within 6 object streams
+ 47 named destinations out of 1000 (max. 500000)
  173 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,1 +1,20 @@
 \section{Conclusions}
+
+For the ROI, $b \in (\ang{-2},\ang{2}),\ \ell \in (\ang{-10},\ang{0})$, the total energy density in electrons with energy above $E_0 = \SI{1}{GeV}$ is given by the integral of the electron spectrum that was found in Section \ref{sec:IC_model}:
+
+\be
+\frac{\de E_\tot}{\de V} = \int_{E_0}^{\infty} \left(E \frac{\de N}{\de E}\right)_\el \de E = \SI{3.8e-14}{erg/cm^3}.
+\ee
+Assuming a distance of $\SI{8}{kpc}$ to the ROI, the volume of the ROI is $V = \SI{0.54}{kpc^3} = \SI{1.58e64}{cm^3}$. The total energy content of the ROI in electrons above $\SI{1}{GeV}$ is $E_\tot = \SI{6e50}{erg}$, which corresponds to the CR energy output of $60$ SNe.\\
+Using the result from Section \ref{sec:Pion_model} we find an energy density in protons of $\de E_\tot / \de V = \SI{6.6e-13}{erg/cm^3}$ and a total energy content of $E_\tot = \SI{1e52}{erg}$. However, the gas density in the inner Galaxy is probably higher than $n_\Hy = \SI{1}{/cm^3}$ as assumed in Section \ref{sec:Pion_model}, resulting in an energy content in protons of the same order of magnitude as the energy density in electrons. \\
+\\
+To estimate the maximal propagation distance of electrons, we start with a diffusion equation taking into account diffusion and energy loss $b_\IC(E)$ via IC. From the solution we read off the diffusion distance for electrons with energy $E_0 = \SI{1}{TeV}$:
+\be
+\langle x \rangle^2 = 2 \int_{E_0}^E \frac{D(E)}{b_\IC(E)}\de E = \SI{1300}{pc}.
+\ee
+with a spatially constant diffusion coefficient $D(E) = D_0\left(\frac{E}{\SI{1}{GeV}}\right)^\delta$, where we take values of the local diffusion coefficient: $D_0 = \SI{3e28}{cm^2/s} = \SI{100}{pc^2/kyr}$ and $\delta = 0.4$. The energy loss $b_\IC(E)$ is \dots. Since the diffusion distance of the electrons exceeds the spatial size of the ROI, the electrons cannot be confined. Therefore, we find that a transient process is favoured. The energy losses of protons exceed the energy losses of electrons by far, therefore the same applies for protons.\\
+Wit the local diffusion coefficient we find an escape time for both electrons and protons of 
+\be
+T = \frac{\Delta x^2}{2 D(E)} = \SI{70}{kyr}.
+\ee
+
