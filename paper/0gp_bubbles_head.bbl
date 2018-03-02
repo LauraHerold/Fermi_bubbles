@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{4}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Acero} {et~al.}(2016){Acero}, {Ackermann}, {Ajello},
@@ -8,6 +8,9 @@
 \bibitem[{{Ackermann} {et~al.}(2017){Ackermann}, {Ajello}, {Albert},
   {et~al.}}]{2017ApJ...840...43A}
 {Ackermann}, M., {Ajello}, M., {Albert}, A., {et~al.} 2017, \apj, 840, 43
+
+\bibitem[{{Blumenthal} \& {Gould}(1970)}]{1970RvMP...42..237B}
+{Blumenthal}, G.~R. \& {Gould}, R.~J. 1970, Reviews of Modern Physics, 42, 237
 
 \bibitem[{{G{\'o}rski} {et~al.}(2005){G{\'o}rski}, {Hivon}, {Banday},
   {Wandelt}, {Hansen}, {Reinecke}, \& {Bartelmann}}]{2005ApJ...622..759G}
