@@ -32,8 +32,16 @@ Figure \ref{fig:SED_all} shows a comparison of the SED of the raw data (without 
   	\caption{Comparison of SED of all models.}
   	\label{fig:SED_all}
 \end{figure*}
-Fit the spectra with a power-law and a cutoff function.
-Fit the spectra with IC and pi0 models.
+
+To compare the drop-off behaivoir of the models at high energies, we fit a log-parabola
+ \be
+ f(E) = N_0 E^{-\alpha - \beta \ln(E)}
+ \ee
+ to the different models. The inclination is given by
+ \be 
+n := \frac{\de \ln(f)}{\de E} = -\alpha - 2 \beta \ln(E).
+ \ee
+ \dots
 
 \begin{figure*}[h!]
     \begin{subfigure}{0.5\textwidth}
@@ -54,7 +62,7 @@ Fit the spectra with IC and pi0 models.
 
 IC radiation is produced in scattering processes of relativistic electrons on photons of the ISRF. The spectrum of the IC gamma radiation depends on the density of ISRF photons, the density of electrons and the differential Klein-Nishina cross section $\de \sigma_\IC / \de E_\gamma$, taken from \citep{1970RvMP...42..237B}:
 \be
-\left(\frac{\de n}{\de E}\right)_{\gamma,\IC} = \int \int \left(\frac{\de n}{\de E}\right)_\ISRF \frac{\de \sigma_\IC}{\de E_\gamma}\left(\frac{\de n}{\de E}\right)_\el \de E_\ISRF \de E_\el.
+\left(\frac{\de n}{\de E}\right)_{\!\!\gamma,\IC}\! = \int\!\! \int \left(\frac{\de n}{\de E}\right)_{\!\!\ISRF} \frac{\de \sigma_\IC}{\de E_\gamma}\ \left(\frac{\de n}{\de E}\right)_{\!\!\el} \de E_\ISRF\, \de E_\el.
 \label{eq:IC_spectrum}
 \ee
 The ISRF has three main components: starlight, IR and CMB. The first two components are taken from (???). For the CMB a thermal spectrum of $\SI{2.73}{K}$ is used. We assume that the distribution of electrons follows a powerlaw with a potential cutoff
@@ -73,6 +81,6 @@ and determine the normalization $n_\el$, spectral index $\gamma_\el$ and cutoff 
 In collisions of CR protons and the interstellar gas neutral pions are created that decay into gamma-ray photons. The spectrum of the gamma radiation depends on the density of interstellar gas $n_\Hy$, the density and velocity of CR protons and the cross section to produce gamma rays in a proton-nucleus collision:
 
 \be
-\left(\frac{\de n}{\de E \de t}\right)_\gamma = \int n_\Hy \frac{\de \sigma_\pr}{\de E_\gamma} v_\pr \left(\frac{\de n}{\de T}\right)_\pr \de T_\pr.
+\left(\frac{\de n}{\de E \de t}\right)_{\!\!\gamma, \pi^0}\! = \int n_\Hy\ \frac{\de \sigma_\pr}{\de E_\gamma} v_\pr \left(\frac{\de n}{\de T}\right)_{\!\!\pr} \de T_\pr.
 \ee
 \dots
