@@ -51,10 +51,10 @@ which is significantly harder than the index at higher latitudes.
 
 \begin{figure*}[h!]
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{plots/SED_lowE_source_0cutoff.pdf}
+        \includegraphics[width=\textwidth]{plots/SED_lowE_source_0.pdf}
     \end{subfigure} 
     \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{plots/SED_lowE_source_-4cutoff.pdf}
+        \includegraphics[width=\textwidth]{plots/SED_lowE_source_-4.pdf}
     \end{subfigure}
   	\caption{SED of low-energy model with powerlaw and particle spectra fits.}
   	\label{fig:SED_with_fits}
@@ -72,19 +72,26 @@ IC radiation is produced in scattering processes of relativistic electrons on ph
 \label{eq:IC_spectrum}
 \ee
 The ISRF has three main components: starlight, IR and CMB. 
-The IR and the starlight components are taken from the on-line distribution of GALPROP (???). 
+The IR and the starlight components are taken from the on-line distribution of GALPROP. 
 For the CMB, we use the thermal spectrum with the temperature $\SI{2.73}{K}$. 
-We assume that the distribution of electrons follows a power law with an exponential cutoff
+We assume that the distribution of electrons follows  a simple powerlaw
 %\be 
 %\left(\frac{\de n}{\de E}\right)_\el = n_\el \left(\frac{E}{\SI{1}{GeV}}\right)^{-\gamma_\el} \cdot \eto^\frac{E}{E_{\cut,\el}},
 %\ee
-and determine the normalization $n_\el$, spectral index $\gamma_\el$ and cutoff energy $E_\cut$  by fitting the IC spectrum\eqref{eq:IC_spectrum} to the diffuse \Fermi data using Poisson likelihood. 
+and determine the normalization $n_\el$ and spectral index $\gamma_\el$  by fitting the IC spectrum\eqref{eq:IC_spectrum} to the diffuse \Fermi data using Poisson likelihood.  Point sources are masked as described in Section \ref{sec:Modeling}.\\
+Figure \ref{fig:SED_with_fits} shows the residual spectrum in the low-energy model within the latitude stripes $b \in (-\ang{2}, \ang{2})$ and $b \in (-\ang{6}, -\ang{2})$. The dotted line represents the best-fit IC spectrum for an electron distribution following a simple powerlaw. \\
+\\
+For the latitude stripe covering the Galactic plane, $b \in (-\ang{2}, \ang{2})$, adding a cutoff to the powerlaw does not improve the $\chi^2$-value at negative longitudes (blue, $\chi^2 = 715.4$ in both cases) . For positive longitudes both a simple powerlaw and a powerlaw with a cutoff have similarly high $\chi^2$-values due to the large oversubtractions. For negative longitudes we find a lower bound for the cutoff energy at $\SI{14.9}{TeV}$, for positive longitudes at $\SI{16.1}{GeV}$, at a $\SI{95}{\percent}$-confidence level.\\
+\\
+Slightly below the Galactic plane, $b \in (-\ang{6}, -\ang{2})$, the $\chi^2$-value does not improve by adding a powerlaw, neither at negative longitudes ($\chi^2 = 98.6$ in both cases) nor at positive longitudes ($\chi^2 = 155$ in both cases). For negative longitudes we find a lower bound for the cutoff energy at $\SI{22.0}{TeV}$, for positive longitudes at $\SI{790.0}{GeV}$, at a $\SI{95}{\percent}$-confidence level.\\
+\\
+
 \red{Dima: we should first show here the fit with a simple power law (no cutoff) and then find the difference in $\chi^2$
 for the models with and without the cutoff.
 In the model with a cutoff, we should use the errors on the cutoff to determine 95\% lower confidence limit on the cutoff value.}
 
 
-Point sources are masked as described in Section \ref{sec:Modeling}. Figure \ref{fig:SED_with_fits} shows the residual spectrum in the low-energy model within the latitude stripes $b \in (-\ang{2}, \ang{2})$ and $b \in (-\ang{6}, -\ang{2})$. The dotted line represents the best-fit IC spectrum.
+
 
 
 
