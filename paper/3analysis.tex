@@ -8,7 +8,7 @@ In order to test the possible effects of the foreground emission modeling,
 we use several methods to estimate the contribution of the foreground emission to the data.
 
 In particular, there is a tentative
-displacement of the FB to the right of the GC, e.g., negative Galactic latitudes \citep{2016ApJS..223...26A, 2017ApJ...840...43A},
+displacement of the FB to the right of the GC, i.e., negative Galactic latitudes \citep{2016ApJS..223...26A, 2017ApJ...840...43A},
 with a spectrum that is harder than the spectrum of the FB at high latitudes \citep{2017ApJ...840...43A}.
 If we assume that the Galactic emission components are approximately symmetric with respect to the GC,
 then we can simply mask PS and calculate the difference in gamma-ray flux to the left and to the right from the GC.
@@ -19,7 +19,7 @@ under the assumption that the other Galactic components and unresolved PS are sy
 In order to further test the hypothesis of the asymmetric and hard emission from the FB at low latitudes,
 we use the data at energies $\lesssim \SI{1}{GeV}$ to create a template of the Galactic emission,
 provided that the expected contribution of the FB at these energies is small relative to the rest of the Galactic components.
-Then we fit the template derived from the low energy data together with an isotropic template at higher energies
+Then we fit the template derived from the low-energy data together with an isotropic template at higher energies
 outside of the FB area.
 The FB intensity is determined by extrapolating the model inside the FB area using the full template and by subtracting the model
 from the data (Section \ref{sec:le_data_model}).
@@ -33,11 +33,12 @@ We also calculate the flux attributed to the bubbles using one of the diffuse em
 
 
 
-\subsection{East -- West asymmetry in the data}
+\subsection{West -- East asymmetry in the data}
 \label{sec:data_diff}
 
 As a first simple check of the asymmetry at low latitudes, we compare the unprocessed \Fermi-LAT data east and west of the Galactic center. 
-After masking PS, we average the data over a region to the West (longitudes $0^\circ < \ell < 10^\circ$) and to the East ($-10^\circ < \ell  <  0^\circ$) of the Galactic center for different latitudes. The regions have a latitude width of $10^\circ$ for $b >|10^\circ|$ and a width of  $4^\circ$ for  $b <|10^\circ|$. 
+We mask the 200 brightest 3FGL PS  with a circle of radius $\frac{\delta}{\sqrt{2}} + 1^\circ$ where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels. We also symmetrize the PS relative to the GC in order to avoid possible bias by masking more pixels on one side of the GC. The point sources mask is also used in the following sections. 
+The data is averaged over a region to the West (longitudes $0^\circ < \ell < 10^\circ$) and to the East ($-10^\circ < \ell  <  0^\circ$) of the Galactic center for different latitudes. The regions have a latitude width of $10^\circ$ for $b >|10^\circ|$ and a width of  $4^\circ$ for  $b <|10^\circ|$. 
 The difference of the averaged intensity of emission West minus East of the GC is shown in Fig. \ref{fig:data_diff}. At high latitudes, $b >|10^\circ|$, the emission is relatively symmetric. 
 The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^\circ)$ shows excess emission to the West of the Galactic center, 
 which remains significant at high energies. 
@@ -51,7 +52,7 @@ which remains significant at high energies.
  \label{fig:data_diff}
 \end{figure}
 
-\subsection{Low energy data as a background model}
+\subsection{Low-energy data as a background model}
 \label{sec:le_data_model}
 
 \begin{figure*}[t]
@@ -97,10 +98,9 @@ where $n_\low = 3$ is the number of low-energy bins between 316 MeV and 1 GeV.
 
 We determine the parameters $c_{\ell}(E)$ and $k_{\ell}(E)$ by fitting the model to the \Fermi-LAT data in energy bins $E > \SI{1.0}{GeV}$
 using Poisson likelihood (with Python iminuit minimizer). Since we smooth the data before the fit, the Poisson log-likelihood is an approximation in this case. 
-In order to avoid an overcompensation of the \Fermi bubbles, the region $-20^\circ < \ell < 20^\circ$ is excluded from the fit. 
-We mask the 200 brightest 3FGL PS  with a circle of radius $\frac{\delta}{\sqrt{2}} + 1^\circ$ where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels. 
-We also symmetrize the PS relative to the GC in order to avoid possible bias by masking more pixels on one side of the GC.
-\red{Dima: do we symmetrize the PS mask in the analysis as well, not only in the calculation of the asymmetry in the data?}
+In order to avoid an overcompensation of the \Fermi bubbles, the region $-20^\circ < \ell < 20^\circ$ is excluded from the fit. Point sources are masked with the mask described in section \ref{fig:data_diff}.
+
+%\red{Dima: do we symmetrize the PS mask in the analysis as well, not only in the calculation of the asymmetry in the data?}
 
 After we fit the model in each latitude stripe, we interpolate it inside the bubbles ROI and find the residual by subtracting it from the data.
 Figure \ref{fig:Maps_lowE} shows the residual maps for three different energy ranges. 
@@ -117,7 +117,7 @@ N^\model_{\ell}(E,x) &= k_{\ell}(E) \cdot \tilde N^\low_{\ell}(E,x) +\tilde c_{\
 &\quad + R^\east_\ell(E) + R^\west_\ell(E).
 \end{split}
 \ee
-We determine the normalization of the rectangles $R^\east_\ell(E)$ and $R^\west_\ell(E)$ and the parameters $k_{\ell}(E)$ and $c_{\ell}(E)$ by fitting the model to the \Fermi-LAT data in energy bins $E > \SI{1.0}{GeV}$. The resulting residual, shown in Fig. \ref{fig:Maps_Rectangles} for $E = 10 - \SI{100}{GeV}$, is very similar to the low-energy model.
+We determine the normalization of the rectangles $R^\east_\ell(E)$ and $R^\west_\ell(E)$ and the parameters $k_{\ell}(E)$ and $c_{\ell}(E)$ by fitting the model to the \Fermi-LAT data in energy bins $E > \SI{1.0}{GeV}$, while point sources are masked. The resulting residual, shown in Fig. \ref{fig:Maps_Rectangles} for $E = 10 - \SI{100}{GeV}$, is very similar to the low-energy model.
 
 \begin{figure}[h]
  \includegraphics[width=0.5\textwidth]{plots/Mollweide_Boxes_residual+boxes_03-10GeV_flux_source_range_1.pdf}
@@ -148,7 +148,7 @@ We determine the normalization of the rectangles $R^\east_\ell(E)$ and $R^\west_
 
 \begin{figure}[h]
  \includegraphics[width=0.5\textwidth]{plots/Mollweide_GALPROP_source_range2.pdf}
- \caption{GALPROP-model residuals in three different energy ranges.}
+ \caption{GALPROP-model residual.}
  \label{fig:Maps_GALPROP}
 \end{figure}
 %

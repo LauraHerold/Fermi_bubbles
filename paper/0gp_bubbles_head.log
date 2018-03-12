@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.31)  9 MAR 2018 18:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.31)  12 MAR 2018 18:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1435,10 +1435,10 @@ File: plots/Difference_data_for_different_latitudes.pdf Graphic file (type pdf)
 
  <use plots/Difference_data_for_different_latitudes.pdf>
 Package pdftex.def Info: plots/Difference_data_for_different_latitudes.pdf used
- on input line 47.
+ on input line 48.
 (pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
 
-Overfull \hbox (5.69055pt too wide) in paragraph at lines 47--50
+Overfull \hbox (5.69055pt too wide) in paragraph at lines 48--51
 [][] 
  []
 
@@ -1452,7 +1452,7 @@ File: plots/Mollweide_LowE_03-10GeV_flux_source_range_0.pdf Graphic file (type
 pdf)
  <use plots/Mollweide_LowE_03-10GeV_flux_source_range_0.pdf>
 Package pdftex.def Info: plots/Mollweide_LowE_03-10GeV_flux_source_range_0.pdf 
-used on input line 68.
+used on input line 69.
 (pdftex.def)             Requested size: 157.0608pt x 99.77945pt.
 
 <plots/Mollweide_LowE_03-10GeV_flux_source_range_1.pdf, id=130, 614.295pt x 390
@@ -1461,7 +1461,7 @@ File: plots/Mollweide_LowE_03-10GeV_flux_source_range_1.pdf Graphic file (type
 pdf)
  <use plots/Mollweide_LowE_03-10GeV_flux_source_range_1.pdf>
 Package pdftex.def Info: plots/Mollweide_LowE_03-10GeV_flux_source_range_1.pdf 
-used on input line 68.
+used on input line 69.
 (pdftex.def)             Requested size: 157.0608pt x 99.77945pt.
 
 <plots/Mollweide_LowE_03-10GeV_flux_source_range_2.pdf, id=131, 614.295pt x 390
@@ -1470,14 +1470,11 @@ File: plots/Mollweide_LowE_03-10GeV_flux_source_range_2.pdf Graphic file (type
 pdf)
  <use plots/Mollweide_LowE_03-10GeV_flux_source_range_2.pdf>
 Package pdftex.def Info: plots/Mollweide_LowE_03-10GeV_flux_source_range_2.pdf 
-used on input line 68.
+used on input line 69.
 (pdftex.def)             Requested size: 157.0608pt x 99.77945pt.
 
-Underfull \vbox (badness 7133) has occurred while \output is active []
 
-
-
-Package hyperref Warning: Suppressing link with empty target on input line 83.
+Package hyperref Warning: Suppressing link with empty target on input line 81.
 
 [2 <./plots/Mollweide_data_source_range_0.pdf> <./plots/Mollweide_data_source_r
 ange_1.pdf
@@ -1491,7 +1488,7 @@ pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./plots
 /Mollweide_data_source_range_2.pdf): PDF inclusion: multiple pdfs with page gro
 up included in a single page
 >]
-<plots/Mollweide_Boxes_residual+boxes_03-10GeV_flux_source_range_1.pdf, id=286,
+<plots/Mollweide_Boxes_residual+boxes_03-10GeV_flux_source_range_1.pdf, id=287,
  614.295pt x 390.25798pt>
 File: plots/Mollweide_Boxes_residual+boxes_03-10GeV_flux_source_range_1.pdf Gra
 phic file (type pdf)
@@ -1508,7 +1505,7 @@ Overfull \hbox (5.69055pt too wide) in paragraph at lines 123--124
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<plots/Mollweide_GALPROP_source_range2.pdf, id=287, 614.295pt x 390.25798pt>
+<plots/Mollweide_GALPROP_source_range2.pdf, id=288, 614.295pt x 390.25798pt>
 File: plots/Mollweide_GALPROP_source_range2.pdf Graphic file (type pdf)
 
 <use plots/Mollweide_GALPROP_source_range2.pdf>
@@ -1524,7 +1521,7 @@ Overfull \hbox (5.69055pt too wide) in paragraph at lines 150--151
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (./4discussion.tex
-<plots/Profiles_l=1_source_range_1.pdf, id=289, 578.16pt x 433.62pt>
+<plots/Profiles_l=1_source_range_1.pdf, id=290, 578.16pt x 433.62pt>
 File: plots/Profiles_l=1_source_range_1.pdf Graphic file (type pdf)
 
 <use plots/Profiles_l=1_source_range_1.pdf>
@@ -1532,7 +1529,7 @@ Package pdftex.def Info: plots/Profiles_l=1_source_range_1.pdf used on input li
 ne 12.
 (pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
 
-<plots/Profiles_l=0_source_range_1.pdf, id=290, 578.16pt x 433.62pt>
+<plots/Profiles_l=0_source_range_1.pdf, id=291, 578.16pt x 433.62pt>
 File: plots/Profiles_l=0_source_range_1.pdf Graphic file (type pdf)
 
 <use plots/Profiles_l=0_source_range_1.pdf>
@@ -1547,7 +1544,7 @@ Overfull \hbox (2.22168pt too wide) in paragraph at lines 11--17
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<plots/SED_all_models_source_l=5_b=0.pdf, id=292, 578.16pt x 433.62pt>
+<plots/SED_all_models_source_l=5_b=0.pdf, id=293, 578.16pt x 433.62pt>
 File: plots/SED_all_models_source_l=5_b=0.pdf Graphic file (type pdf)
 
 <use plots/SED_all_models_source_l=5_b=0.pdf>
@@ -1555,7 +1552,7 @@ Package pdftex.def Info: plots/SED_all_models_source_l=5_b=0.pdf used on input
 line 27.
 (pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
 
-<plots/SED_all_models_source_l=-5_b=0.pdf, id=293, 578.16pt x 433.62pt>
+<plots/SED_all_models_source_l=-5_b=0.pdf, id=294, 578.16pt x 433.62pt>
 File: plots/SED_all_models_source_l=-5_b=0.pdf Graphic file (type pdf)
 
 <use plots/SED_all_models_source_l=-5_b=0.pdf>
@@ -1579,24 +1576,44 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Package hyperref Warning: Suppressing link with empty target on input line 40.
 
 [3 <./plots/Difference_data_for_different_latitudes.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+<plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf, id=417, 578.16pt x 433.62pt>
+File: plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf Graphic file (type pdf)
+
+<use plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf>
+Package pdftex.def Info: plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf used on i
+nput line 53.
+(pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
+
+<plots/LogParabola_n(500GeV)_l_in_(0,10).pdf, id=418, 578.16pt x 433.62pt>
+File: plots/LogParabola_n(500GeV)_l_in_(0,10).pdf Graphic file (type pdf)
+
+<use plots/LogParabola_n(500GeV)_l_in_(0,10).pdf>
+Package pdftex.def Info: plots/LogParabola_n(500GeV)_l_in_(0,10).pdf used on in
+put line 56.
+(pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
+
+Overfull \hbox (2.22168pt too wide) in paragraph at lines 52--58
+[]$[]$ $[]$ 
+ []
 
 
-<plots/SED_lowE_source_0.pdf, id=415, 578.16pt x 433.62pt>
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<plots/SED_lowE_source_0.pdf, id=419, 578.16pt x 433.62pt>
 File: plots/SED_lowE_source_0.pdf Graphic file (type pdf)
 
 <use plots/SED_lowE_source_0.pdf>
-Package pdftex.def Info: plots/SED_lowE_source_0.pdf used on input line 54.
+Package pdftex.def Info: plots/SED_lowE_source_0.pdf used on input line 65.
 (pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
 
-<plots/SED_lowE_source_-4.pdf, id=416, 578.16pt x 433.62pt>
+<plots/SED_lowE_source_-4.pdf, id=420, 578.16pt x 433.62pt>
 File: plots/SED_lowE_source_-4.pdf Graphic file (type pdf)
 
 <use plots/SED_lowE_source_-4.pdf>
-Package pdftex.def Info: plots/SED_lowE_source_-4.pdf used on input line 57.
+Package pdftex.def Info: plots/SED_lowE_source_-4.pdf used on input line 68.
 (pdftex.def)             Requested size: 261.76535pt x 196.32478pt.
 
-Overfull \hbox (2.22168pt too wide) in paragraph at lines 53--59
+Overfull \hbox (2.22168pt too wide) in paragraph at lines 64--70
 []$[]$ $[]$ 
  []
 
@@ -1604,46 +1621,50 @@ Overfull \hbox (2.22168pt too wide) in paragraph at lines 53--59
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 73--88
+Underfull \hbox (badness 1005) in paragraph at lines 84--99
 \T1/cmr/m/n/10 model within the lat-i-tude stripes $\OML/cmm/m/it/10 b \OMS/cms
 y/m/n/10 2 \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^@[][]\OML/cmm/m/it/10 ; [][]\OT1
 /cmr/m/n/10 )$ \T1/cmr/m/n/10 and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--88
+Underfull \hbox (badness 10000) in paragraph at lines 84--99
 
  []
 
 
-Underfull \hbox (badness 2376) in paragraph at lines 73--88
+Underfull \hbox (badness 2376) in paragraph at lines 84--99
 \T1/cmr/m/n/10 For the lat-i-tude stripe cov-er-ing the Galac-tic plane,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--88
+Underfull \hbox (badness 10000) in paragraph at lines 84--99
 
  []
 
 
-Underfull \hbox (badness 2150) in paragraph at lines 73--88
+Underfull \hbox (badness 2150) in paragraph at lines 84--99
 \T1/cmr/m/n/10 Slightly be-low the Galac-tic plane, $\OML/cmm/m/it/10 b \OMS/cm
 sy/m/n/10 2 \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^@[][]\OML/cmm/m/it/10 ; \OMS/cm
 sy/m/n/10 ^^@[][]\OT1/cmr/m/n/10 )$\T1/cmr/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--88
+Underfull \hbox (badness 10000) in paragraph at lines 84--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--88
+Underfull \hbox (badness 10000) in paragraph at lines 84--99
 
  []
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 88.
+Underfull \vbox (badness 7667) has occurred while \output is active []
+
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 99.
 
 [4 <./plots/Mollweide_LowE_03-10GeV_flux_source_range_0.pdf> <./plots/Mollweide
 _LowE_03-10GeV_flux_source_range_1.pdf
@@ -1682,7 +1703,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 88.
+Package hyperref Warning: Suppressing link with empty target on input line 99.
 
 [5 <./plots/Profiles_l=1_source_range_1.pdf> <./plots/Profiles_l=0_source_range
 _1.pdf
@@ -1700,29 +1721,42 @@ up included in a single page
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./plots
 /SED_all_models_source_l=-5_b=0.pdf): PDF inclusion: multiple pdfs with page gr
 oup included in a single page
-> <./plots/SED_lowE_source_0.pdf
+> <./plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf
 
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./plots
-/SED_lowE_source_0.pdf): PDF inclusion: multiple pdfs with page group included 
-in a single page
-> <./plots/SED_lowE_source_-4.pdf
+/LogParabola_n(500GeV)_l_in_(-10,0).pdf): PDF inclusion: multiple pdfs with pag
+e group included in a single page
+> <./plots/LogParabola_n(500GeV)_l_in_(0,10).pdf
+
+pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./plots
+/LogParabola_n(500GeV)_l_in_(0,10).pdf): PDF inclusion: multiple pdfs with page
+ group included in a single page
+>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1152) in paragraph at lines 114--116
+\T1/cmr/m/n/10 ter-stel-lar gas. The spec-trum of the gamma ra-di-a-tion
+ []
+
+) (./5conclusions.tex
+Underfull \vbox (badness 2495) has occurred while \output is active []
+
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 3.
+
+[6 <./plots/SED_lowE_source_0.pdf> <./plots/SED_lowE_source_-4.pdf
 
 pdfTeX warning: /Users/lauraherold/App/bin/x86_64-darwin/pdflatex (file ./plots
 /SED_lowE_source_-4.pdf): PDF inclusion: multiple pdfs with page group included
  in a single page
 >]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(./5conclusions.tex
 Underfull \hbox (badness 1783) in paragraph at lines 5--9
 \T1/cmr/m/n/10 We as-sumed a spa-tially con-stant dif-fu-sion co-ef-fi-cient
  []
 
-
-Package hyperref Warning: Suppressing link with empty target on input line 9.
-
-[6])
+)
 Underfull \hbox (badness 10000) in paragraph at lines 17--240
 
  []
@@ -1752,16 +1786,16 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package rerunfilecheck Info: File `0gp_bubbles_head.out' has not changed.
-(rerunfilecheck)             Checksum: CDBD1CEFAD29163224251584216491B2;992.
+(rerunfilecheck)             Checksum: DAD0103EE1361B35684F3B2F55B09160;992.
  ) 
 Here is how much of TeX's memory you used:
- 20538 strings out of 493013
- 373330 string characters out of 6133787
- 430835 words of memory out of 5000000
- 23723 multiletter control sequences out of 15000+600000
+ 20550 strings out of 493013
+ 373826 string characters out of 6133787
+ 430891 words of memory out of 5000000
+ 23732 multiletter control sequences out of 15000+600000
  36399 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,14n,45p,10367b,776s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,14n,50p,10367b,789s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/lauraherold/App/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<
 /Users/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></U
 sers/lauraherold/App/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Use
@@ -1794,10 +1828,10 @@ fb></Users/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb>
 sers/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfti0900.pfb></User
 s/lauraherold/App/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></Users/l
 auraherold/App/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on 0gp_bubbles_head.pdf (8 pages, 3188457 bytes).
+Output written on 0gp_bubbles_head.pdf (8 pages, 3223070 bytes).
 PDF statistics:
- 1319 PDF objects out of 1440 (max. 8388607)
- 585 compressed objects within 6 object streams
- 50 named destinations out of 1000 (max. 500000)
- 188 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1449 PDF objects out of 1728 (max. 8388607)
+ 623 compressed objects within 7 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 198 words of extra memory for PDF output out of 10000 (max. 10000000)
 

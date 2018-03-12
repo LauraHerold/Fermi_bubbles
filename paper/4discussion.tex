@@ -20,7 +20,7 @@ Figure \ref{fig:Profiles} shows the latitude profiles of the different models in
 
 \subsection{Comparison of the spectra at different latitudes}
 
-Figure \ref{fig:SED_all} shows a comparison of the SED of the raw data (without point sources) and the three different models in a very thin latitude stripe covering the Galactic plane. The grey triangles show the difference in the raw data west minus east. All models give similar results. \\
+Figure \ref{fig:SED_all} shows a comparison of the SED of the raw data (without point sources) and the three different models in a very thin latitude stripe covering the Galactic plane. The grey triangles show the difference in the raw data West minus East. All models give similar results. \\
 \\
 \begin{figure*}[h!]
     \begin{subfigure}{0.5\textwidth}
@@ -42,12 +42,23 @@ in each latitude stripe. The local ``index'' of the spectrum at energy $E$ is
  \be 
 n \equiv \frac{\de \ln f}{\de \ln E} = -\alpha - 2 \beta \ln(E).
  \ee
-In Figure (???) we show a comparison of the SED index $(2 - n)$
+In Figure \ref{fig:logpar_index} we show a comparison of the SED index $(2 - n)$
 for the bubbles spectra in different models at $E = 500$ GeV.
 For positive longitudes the index is relatively soft ($n < -2$) for most of the latitudes, 
 except high latitudes where the gamma-ray statistics is small.
 For negative longitudes the index is near the GC is $\approx -2$, 
 which is significantly harder than the index at higher latitudes.
+\begin{figure*}[h!]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf}
+    \end{subfigure} 
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{plots/LogParabola_n(500GeV)_l_in_(0,10).pdf}
+    \end{subfigure}
+  	\caption{``Index'' of the log-parabola at energy $E\ = \SI{500}{GeV}$.}
+  	\label{fig:logpar_index}
+\end{figure*}
+
 
 \begin{figure*}[h!]
     \begin{subfigure}{0.5\textwidth}
@@ -66,9 +77,9 @@ which is significantly harder than the index at higher latitudes.
 \subsection{IC model of the gamma-ray emission}
 \label{sec:IC_model}
 
-IC radiation is produced in scattering processes of relativistic electrons on photons of the ISRF. The spectrum of the IC gamma radiation depends on the density of ISRF photons, the density of electrons and the differential Klein-Nishina cross section $\de \sigma_\IC / \de E_\gamma$, taken from \citep{1970RvMP...42..237B}:
+IC radiation is produced in scattering processes of relativistic electrons on photons of the ISRF. The spectrum of the IC gamma radiation $(E \de n/ \de E)_{\gamma,\IC}\ [\SI{}{1/cm^3s}]$ depends on the density of ISRF photons $(\de n/ \de E)_\ISRF [\SI{}{1/GeVcm^3}]$ , the density of electrons $(\de n / \de E)_\el\ [\SI{}{1/GeVcm^3}]$and the IC cross section $\sigma_\IC(E_\gamma, E_\ISRF, E_\el)$, taken from \citep{1970RvMP...42..237B}:
 \be
-\left(\frac{\de n}{\de E}\right)_{\!\!\gamma,\IC}\! = \int\!\! \int \left(\frac{\de n}{\de E}\right)_{\!\!\ISRF} \frac{\de \sigma_\IC}{\de E_\gamma}\ \left(\frac{\de n}{\de E}\right)_{\!\!\el} \de E_\ISRF\, \de E_\el.
+\left(E\frac{\de n}{\de E}\right)_{\!\!\gamma,\IC}\! = c\int\!\! \int \left(\frac{\de n}{\de E}\right)_{\!\!\ISRF} \sigma_\IC\ \left(\frac{\de n}{\de E}\right)_{\!\!\el} \de E_\ISRF\, \de E_\el.
 \label{eq:IC_spectrum}
 \ee
 The ISRF has three main components: starlight, IR and CMB. 
@@ -78,15 +89,15 @@ We assume that the distribution of electrons follows  a simple powerlaw
 %\be 
 %\left(\frac{\de n}{\de E}\right)_\el = n_\el \left(\frac{E}{\SI{1}{GeV}}\right)^{-\gamma_\el} \cdot \eto^\frac{E}{E_{\cut,\el}},
 %\ee
-and determine the normalization $n_\el$ and spectral index $\gamma_\el$  by fitting the IC spectrum\eqref{eq:IC_spectrum} to the diffuse \Fermi data using Poisson likelihood.  Point sources are masked as described in Section \ref{sec:Modeling}.\\
+and determine the normalization $n_\el$ and spectral index $\gamma_\el$  by fitting the IC spectrum\eqref{eq:IC_spectrum} to the diffuse \Fermi data using Poisson likelihood.  Point sources are masked as described in Section \ref{sec:data_diff}.\\
 Figure \ref{fig:SED_with_fits} shows the residual spectrum in the low-energy model within the latitude stripes $b \in (-\ang{2}, \ang{2})$ and $b \in (-\ang{6}, -\ang{2})$. The dotted line represents the best-fit IC spectrum for an electron distribution following a simple powerlaw. \\
 \\
-For the latitude stripe covering the Galactic plane, $b \in (-\ang{2}, \ang{2})$, adding a cutoff to the powerlaw does not improve the $\chi^2$-value at negative longitudes (blue, $\chi^2 = 715.4$ in both cases) . For positive longitudes both a simple powerlaw and a powerlaw with a cutoff have similarly high $\chi^2$-values due to the large oversubtractions. For negative longitudes we find a lower bound for the cutoff energy at $\SI{14.9}{TeV}$, for positive longitudes at $\SI{16.1}{GeV}$, at a $\SI{95}{\percent}$-confidence level.\\
+For the latitude stripe covering the Galactic plane, $b \in (-\ang{2}, \ang{2})$, adding a cutoff to the powerlaw does not improve the $\chi^2$-value at negative longitudes (blue, $\chi^2 \approx 715$ in both cases) . For positive longitudes both a simple powerlaw and a powerlaw with a cutoff have similarly high $\chi^2$-values due to the large oversubtractions. For negative longitudes we find a lower bound for the cutoff energy at $\SI{14.9}{TeV}$, for positive longitudes at $\SI{16.1}{GeV}$, at a $\SI{95}{\percent}$-confidence level.\\
 \\
-Slightly below the Galactic plane, $b \in (-\ang{6}, -\ang{2})$, the $\chi^2$-value does not improve by adding a powerlaw, neither at negative longitudes ($\chi^2 = 98.6$ in both cases) nor at positive longitudes ($\chi^2 = 155$ in both cases). For negative longitudes we find a lower bound for the cutoff energy at $\SI{22.0}{TeV}$, for positive longitudes at $\SI{790.0}{GeV}$, at a $\SI{95}{\percent}$-confidence level.\\
+Slightly below the Galactic plane, $b \in (-\ang{6}, -\ang{2})$, the $\chi^2$-value does not improve by adding a powerlaw, neither at negative longitudes ($\chi^2 = 99$ in both cases) nor at positive longitudes ($\chi^2 = 155$ in both cases). For negative longitudes we find a lower bound for the cutoff energy at $\SI{22.0}{TeV}$, for positive longitudes at $\SI{790.0}{GeV}$, at a $\SI{95}{\percent}$-confidence level.\\
 \\
 
-\red{Dima: we should first show here the fit with a simple power law (no cutoff) and then find the difference in $\chi^2$
+\dima{ we should first show here the fit with a simple power law (no cutoff) and then find the difference in $\chi^2$
 for the models with and without the cutoff.
 In the model with a cutoff, we should use the errors on the cutoff to determine 95\% lower confidence limit on the cutoff value.}
 
@@ -101,8 +112,8 @@ In the model with a cutoff, we should use the errors on the cutoff to determine 
 \label{sec:Pion_model}
 
 In the hadronic model, the gamma rays are produced as a result of collisions of hadronic CR with the interstellar gas.
-The spectrum of the gamma radiation depends on the density of interstellar gas $n_\Hy$, the energy density of CR protons and the cross section to produce gamma rays in a proton-nucleus collisions:
+The spectrum of the gamma radiation $(E \de n / \de E)_{\gamma,\pi^0}\ [\SI{}{1/cm^3s}]$ depends on the density of interstellar gas, where we assume $n_\Hy = \SI{1}{/cm^3}$, the velocity of CR protons, which we approximate with the speed of light, $v_\pr \approx c$, the energy density of CR protons $(\de n / \de T)_\pr\ [\SI{}{1/GeVcm^3}]$ and the cross section to produce gamma rays in a proton-nucleus collisions $\sigma_\pr (E_\gamma, T_\pr)$, \Laura{which Dima saved in numpy arrays}:
 \be
-\left(\frac{\de n}{\de E \de t}\right)_{\!\!\gamma, \pi^0}\! = \int n_\Hy\ \frac{\de \sigma_\pr}{\de E_\gamma} v_\pr \left(\frac{\de n}{\de T}\right)_{\!\!\pr} \de T_\pr.
+\left(E\frac{\de n}{\de E}\right)_{\!\!\gamma, \pi^0}\! = \int n_\Hy\ \sigma_\pr v_\pr \left(\frac{\de n}{\de T}\right)_{\!\!\pr} \de T_\pr,
 \ee
-\dots
+where the integral goes over the kinetic energies of the protons $T_\pr$. 
