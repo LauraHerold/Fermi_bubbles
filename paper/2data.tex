@@ -13,7 +13,7 @@
         	\includegraphics[width=\textwidth]{plots/Mollweide_data_source_range_2.pdf}
     	\end{subfigure}
     }
-  	\caption{9-year \Fermi data in three different energy ranges.}
+  	\caption{Integrated intensity maps in three different energy ranges of the data set used in this paper.}
   	\label{fig:Maps_data}
 \end{figure*}
 
@@ -26,7 +26,9 @@ The selection of the events is performed with the standard quality cuts.
 In order to avoid contamination from gamma rays produced in interactions of cosmic ray in the Earth atmosphere, 
 we select events with the zenith angles $\theta < 100^{\circ}$,
 which is sufficient for energies above 316 MeV.
-We calculate the exposure and PSF using the {\Fermi}-LAT Science Tools package version 
+We calculate the exposure and point-spread function (PSF) using the {\Fermi}-LAT Science Tools package version 
 10-01-01 available from the {\Fermi} Science Support Center\footnote{\url{http://fermi.gsfc.nasa.gov/ssc/data/analysis/}} 
 with the P8R2\_SOURCE\_V6 instrument response functions.
+Figure \ref{fig:Maps_data} shows the data in units of integrated flux in three energy ranges. For all maps shown in this paper, we use Galactic coordinates centered on the GC in Mollweide projection. The graticule spacing is $\ang{10}$ in latitude and longitude. The maps are smoothed with a $\sigma = \ang{0.5}$ Gaussian kernel.
 For spatial binning we use HEALPix\footnote{\url{http://sourceforge.net/projects/healpix/}} \citep{2005ApJ...622..759G} scheme with a pixelization of order 7  ($\approx 0\degr\!\!.46$ pixel size). 
+

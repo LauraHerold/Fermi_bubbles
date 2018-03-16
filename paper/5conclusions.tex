@@ -1,20 +1,21 @@
 \section{Intepretation}
+\label{sec:Interpretation}
 
 In general, the bright and hard gamma-ray emission at the base of the bubbles can be at any position along the line of sight.
 In this section we consider two characteristic scenarios: that the emission is near the GC at the base of the FB and that the emission is 
-produced by one or a few CNe closer to us (similar to, e.g., Cygnus region that contains recently accelerated CR from several SNe).
+produced by one or a few SNe closer to us (similar to, e.g., Cygnus region that contains recently accelerated CR from several SNe).
 
 \subsection{Emission near the GC scenario}
 
 In the estimates in this subsection we will use the following characteristic sizes: 
-the distance to the GC is 8.5 kpc, 
+the distance to the GC is $\SI{8.5}{kpc}$, 
 the size of the region with the enhanced gamma-ray emission interpreted as an additional population of CR:
 $-10^\circ < \ell < 0^\circ$ and $|b| < 6^\circ$.
-If we assume that the geometry of the region is a simple box, then the size of the box along the GP is 1.5 kpc,
+If we assume that the geometry of the region is a simple box, then the size of the box along the GP is $\SI{1.5}{kpc}$,
 while the half-size in the vertical direction (distance from the GP to the boundary) is $\Delta h = 0.9$ kpc.
-\red{Dima: for the total CR energy content, we should use the $|b| < 6^\circ$ ROI.}
+%\red{Dima: for the total CR energy content, we should use the $|b| < 6^\circ$ ROI.}
 
-One of the most intriguing features of the gamma-rays spectrum at the base of the FB is the absence of the cutoff up to 1 TeV and 
+One of the most intriguing features of the gamma-ray spectrum at the base of the FB is the absence of the cutoff up to 1 TeV and 
 a hard spectrum of underlying electrons or protons.
 In particular, the spectrum of the CRp is $\sim E^{-2.2}$ which is significantly harder than the propagated spectrum
 $\sim E^{-2.7}$ observed locally and throughout most of the GP.
@@ -24,41 +25,41 @@ This is possible if the CRp were injected relatively recently and didn't have ti
 i.e., the age of the CRp is smaller than the propagation time to cross the vertical distance of 0.9 kpc.
 
 We will assume a spatially constant diffusion coefficient $D(E) = D_0\left(\frac{E}{\SI{1}{GeV}}\right)^\delta$ with $D_0 = \SI{3e28}{cm^2/s} = \SI{100}{pc^2/kyr}$ and $\delta = 0.4$.
-The escape time for the protons (and also electrons) at $E = 10\:{\rm TeV}$ is 
+The escape time for the protons (and also electrons) at $E = \SI{10}{TeV}$ is 
 \be
 T_{\rm esc} = \frac{\Delta h^2}{D(E)} \approx \SI{200}{kyr}.
 \ee
+\Laura{Is there no factor of 1/2 missing in the formula for the cooling time?}
 This gives us an approximate upper bound on the age of the proton CR.
 The CRp energy density (normalized to $n_\Hy = \SI{1}{cm^{-3}}$) within $|b| < 2^\circ$ is 
-\red{$\de E_\tot / \de V = \SI{84}{meV\: cm^{-3}}$}.
-\red{In Figure Z, we compare the corresponding flux to the local CRp flux.}
-The total energy content within $|b| < 6^\circ$ is \red{$E_\tot = \SI{1e63}{eV} = \SI{2e51}{erg}$ (Dima: check this number for $|b| < 6^\circ$)}.
+$\de E_\tot / \de V = \SI{400}{meV\: cm^{-3}}$.
+In Figure \ref{fig:Particle_spectra} (left), we compare the corresponding flux to the local CRp flux.
+The total energy content within $|b| < 6^\circ$ is $E_\tot = \SI{7e52}{erg}$.
 %However, the gas density in the inner Galaxy is probably higher than $n_\Hy = \SI{1}{/cm^3}$ as assumed in Section \ref{sec:Pion_model}, resulting in an energy content in protons of the same order of magnitude as the energy density in electrons.
-This population of CRp can be obtained from \red{$\sim$ 20} SNe in the past $\sim$ 500 kyr.
+This population of CRp can be obtained from $\sim$ \Laura{700 SNe, assuming $\SI{1e50}{erg}$/SN} in the past $\sim \SI{500}{kyr}$. \Laura{Why 500 kyr?}\\
+\\
 
 
 The best-fit spectrum of CR electrons is $\sim E^{-2.7}$ which is softer than the spectrum of the protons.
 Nonetheless, this spectrum is harder than the spectrum expected in the presence of cooling softening
 for a stationary population of CRe or a break for a transient population of CRe.
 Thus, unless the injection spectrum is harder than $E^{-2}$, the population of the CRe at the base of the 
-bubbles is not affected by cooling up to \red{XX TeV (Dima: the lower bound on the CRe cutoff here)}, 
-which is the 95\% confidence lower bound on the cutoff in the CRe.
-The cooling time for the electrons as XX TeV is
-\red{
+bubbles is not affected by cooling up to $\SI{3}{TeV}$,
+which is the 95\% confidence minimal lower bound on the cutoff in the CRe. \Laura{I picked the minimum value for all models in $|b| < \ang{6}$}
+The cooling time for the electrons at $\SI{3}{TeV}$ is
 \be
-T_{\rm cool} = YY
+T_{\rm cool} = \SI{180}{kyr}
 \ee
-}
-\red{The distance that the electrons at XX TeV propagating during time YY is RR, this corresponds to $xx^\circ$ -- this is consistent(?) with the 
+\Laura{I integrated from 100 TeV to 3 TeV.} The distance that the electrons at $\SI{3}{TeV}$ propagate during $\SI{180}{kyr}$ is $\SI{0.85}{kpc}$ \Laura{Can I just say 180 kyr $\approx$ 200 kyr}, this corresponds to \red{$xx^\circ$ -- this is consistent(?) with the 
 softening of CRe for $|b| > 2^\circ$}.
 
 The total energy density in electrons with energy above $E_0 = \SI{1}{GeV}$, which needs to be generated by this transient process, is given by the integral of the electron spectrum that was found in Section \ref{sec:IC_model}:
 \be
-\frac{\de E_\tot}{\de V} = \int_{E_0}^{\infty} \left(E \frac{\de N}{\de E}\right)_{\!\!\el} \de E = \SI{4.9}{meV/cm^3}.
+\frac{\de E_\tot}{\de V} = \int_{E_0}^{\infty} \left(E \frac{\de N}{\de E}\right)_{\!\!\el} \de E = \SI{5}{meV/cm^3}.
 \ee
-\red{In Figure Z, we compare the corresponding flux to the local CRe flux.}
-The total energy content of the ROI in electrons above $\SI{1}{GeV}$ is \red{$E_\tot = \SI{8e61}{eV} = \SI{1e50}{erg}$}, which corresponds to the CR energy output of \red{10} SNe  in the past \red{YY kyr} (assuming a 1\% efficiency in converting the SNe kinetic energy to CRe energy).
-\red{Dima: if the electrons cool as they propagate $2^\circ$, we should use $|b| < 2^\circ$ to calculate the total energy content of CRe}.
+In Figure \ref{fig:Particle_spectra} (right), we compare the corresponding flux to the local CRe flux.
+The total energy content of the ROI in electrons above $\SI{1}{GeV}$ is $E_\tot = \SI{3e51}{erg}$, which corresponds to the CR energy output of 30 SNe in the past $\SI{200}{kyr}$ (assuming a 1\% efficiency in converting the SNe kinetic energy to CRe energy). \Laura{So, $\SI{1e50}{erg}$ per SN?}
+\red{Dima: if the electrons cool as they propagate $2^\circ$, we should use $|b| < 2^\circ$ to calculate the total energy content of CRe}. \Laura{This is the total energy content for $|b| < 6$}
 
 We note, that the energy density of CRe is comparable to the energy density of CRp 
 (especially if we take the density of gas $n_\Hy = \SI{10}{cm^{-3}}$).
@@ -71,28 +72,16 @@ IC scattering at $E_\g = 1$ TeV relative to the hadronic model of the gamma-ray 
 The presence of the hadronic production of gamma-rays at the base of the FB without a sign of a cutoff up to gamma-ray energies
 of 1 TeV is important for the detectability of the associated neutrino signal by the neutrino telescopes.
 
-
-\subsection{Old text}
-
-We want to estimate the properties that particles need to have to emit the gamma radiation observed in the region $b \in (\ang{-2},\ang{2}),\ \ell \in (\ang{-10},\ang{0})$. Averaged over the ROI, the best-fit spectrum of the electrons shows no cutoff and we conclude, that electrons of at least $E_0 = \SI{1}{TeV}$ need to be able to travel inside the whole volume of the ROI.  We start with a diffusion equation taking into account diffusion and energy loss $b_\IC(E)$ via IC. From the solution we read off the diffusion distance for electrons with energy $E_0 = \SI{1}{TeV}$:
-\be
-\langle x \rangle^2 = 2 \int_{E_0}^\infty \frac{D(E)}{b_\IC(E)}\de E = \SI{1300}{pc}.
-\ee
-We assumed a spatially constant diffusion coefficient $D(E) = D_0\left(\frac{E}{\SI{1}{GeV}}\right)^\delta$ with values of the local diffusion coefficient $D_0 = \SI{3e28}{cm^2/s} = \SI{100}{pc^2/kyr}$ and $\delta = 0.4$. The energy loss $b_\IC(E)$ is \dots.\\
-Assuming a distance of $\SI{8}{kpc}$ to the ROI, we find a height of $\SI{0.56}{kpc}$ in latitude and a length of $\SI{0.98}{kpc}$ in longitude. Since the diffusion distance of the electrons exceeds the spatial size of the ROI, the electrons cannot be confined. Therefore, we find that a transient process is favoured. The energy losses of protons exceed the energy losses of electrons by far, therefore the same applies for protons.\\
-Wit the local diffusion coefficient we find an escape time for both electrons and protons of 
-\be
-T = \frac{\Delta x^2}{2 D(E)} = \SI{70}{kyr}.
-\ee
-
-The total energy density in electrons with energy above $E_0 = \SI{1}{GeV}$, which needs to be generated by this transient process, is given by the integral of the electron spectrum that was found in Section \ref{sec:IC_model}:
-
-\be
-\frac{\de E_\tot}{\de V} = \int_{E_0}^{\infty} \left(E \frac{\de N}{\de E}\right)_{\!\!\el} \de E = \SI{4.9}{meV/cm^3}.
-\ee
-Assuming that the depth along the optical axis coincides with the length in longitude, the volume of the ROI is $V = \SI{0.54}{kpc^3} = \SI{1.58e64}{cm^3}$. The total energy content of the ROI in electrons above $\SI{1}{GeV}$ is $E_\tot = \SI{8e61}{eV} = \SI{1e50}{erg}$, which corresponds to the CR energy output of $10$ SNe.\\
-Using the result from Section \ref{sec:Pion_model} we find an energy density in protons of $\de E_\tot / \de V = \SI{84}{meV/cm^3}$ and a total energy content of $E_\tot = \SI{1e63}{eV} = \SI{2e51}{erg}$. However, the gas density in the inner Galaxy is probably higher than $n_\Hy = \SI{1}{/cm^3}$ as assumed in Section \ref{sec:Pion_model}, resulting in an energy content in protons of the same order of magnitude as the energy density in electrons. \\
-\\
+\begin{figure*}[h]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{plots/Summary_proton_spectra_0.pdf}
+    \end{subfigure} 
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{plots/Summary_electron_spectra_0.pdf}
+    \end{subfigure}
+  	\caption{Best-fit proton (left) and electron (right) spectra for the baseline model. The shaded bands represent the systematic uncertainties, estimated by the maximal and minimal best-fit spectrum of the other models. For comparison with the local CR spectrum, data points of some experiments are shown. The errorbars represent the systematic + statistical errors estimated in the references.}
+  	\label{fig:Particle_spectra}
+\end{figure*}
 
 
 \section{Conclusions}
