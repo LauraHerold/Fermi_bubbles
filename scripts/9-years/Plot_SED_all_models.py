@@ -6,37 +6,45 @@ import healpy
 from matplotlib import pyplot
 import healpylib as hlib
 from iminuit import Minuit
-
+from optparse import OptionParser
 import dio
 from yaml import load
+import auxil
 
 ########################################################################################################################## parameters
 
-input_data = ['data', 'lowE', 'GALPROP', 'boxes']
-plot_diff_leftright = True
+parser = OptionParser()
+parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
+parser.add_option("-E", "--lowE_range", dest="lowE_range", default='0', help="There are 3 low-energy ranges: (3,5), (3,3), (4,5), (6,7)")
 
-data_class = 'ultraclean'
-binmin = 0
-binmax = 31
+(options, args) = parser.parse_args()
+
+data_class = str(options.data_class)
+low_energy_range = int(options.lowE_range) # 0: baseline
+
+
+########################################################################################################################## Constants
+
+input_data = ['data', 'lowE', 'boxes', 'GALPROP'] 
+labels_dct = {"data":"Data", "lowE": "LowE", "boxes": "Rectangles", "GALPROP":"GALPROP"}
+
+plot_diff_leftright = True
 
 fn_ending = '.pdf'
 colours = ['black', 'blue', 'red', 'green']
 markers = ['s', 'o', 'D', '<']
-
-
-########################################################################################################################## Constants
 
 dL = 10.
 dB = [10., 10., 10., 10., 10., 4., 4., 4., 4., 4., 10., 10., 10., 10., 10.]
 
 GeV2MeV = 1000.
 delta = 0.3837641821164575 # logarithmic distance between two energy bins
-plot_dir = '../../plots/Plots_9-year/'
+plot_dir = '../../plots/Plots_9-year/Low_energy_range'+ str(low_energy_range) +'/'
 
 ########################################################################################################################## Load dictionaries
 
 
-dct  = dio.loaddict('dct/dct_' + input_data[0] + '_' + data_class + '.yaml')
+dct  = dio.loaddict('dct/Low_energy_range' + str(low_energy_range)  +'/dct_' + input_data[0] + '_' + data_class + '.yaml')
 diff_profiles = dct['6) Differential_flux_profiles']
 
 Lc = dct['3) Center_of_lon_bins']
@@ -47,8 +55,7 @@ Es = np.asarray(dct['5) Energy_bins'])
 
 nB = len(diff_profiles)
 nL = len(diff_profiles[0])
-nE = binmax - binmin +1
-print 'nB, nL, nE = ' + str(nB) + ', ' + str(nL) + ', ' + str(nE)
+
 
 
 ########################################################################################################################## Plot spectra
@@ -56,7 +63,7 @@ print 'nB, nL, nE = ' + str(nB) + ', ' + str(nL) + ', ' + str(nE)
 for b in xrange(nB):
          
     for l in xrange(nL):
-
+        auxil.setup_figure_pars(plot_type = 'spectrum')
         fig = pyplot.figure()
         colour_index = 0
         marker_index = 0
@@ -64,7 +71,7 @@ for b in xrange(nB):
         for input in input_data:    
             print input
             
-            dct  = dio.loaddict('dct/dct_' + input + '_' + data_class + '.yaml')
+            dct  = dio.loaddict('dct/Low_energy_range' + str(low_energy_range)  +'/dct_' + input + '_' + data_class + '.yaml')
             diff_profiles = dct['6) Differential_flux_profiles']
             std_profiles = dct['7) Standard_deviation_profiles']
         
@@ -74,8 +81,9 @@ for b in xrange(nB):
 
 ########################################################################################################################## plot energy flux with error bars
 
-            label = input
-            pyplot.errorbar(Es, map, std_map, color=colours[colour_index], marker=markers[marker_index], markersize=6, markeredgewidth=0.4, linestyle='-', linewidth=0.1, label=label)
+            label = labels_dct[input]
+            #print Es, map, std_map
+            pyplot.errorbar(Es, map, std_map, color=colours[colour_index], marker=markers[marker_index], linestyle='-', label=label)
             colour_index += 1
             marker_index += 1
             
@@ -84,7 +92,7 @@ for b in xrange(nB):
         
         if plot_diff_leftright:
             print 'difference data'
-            dct  = dio.loaddict('dct/dct_data_' + data_class + '.yaml')
+            dct  = dio.loaddict('dct/Low_energy_range' + str(low_energy_range)  +'/dct_' + 'data_' + data_class + '.yaml')
             diff_profiles = dct['6) Differential_flux_profiles']
             std_profiles = dct['7) Standard_deviation_profiles']
 
@@ -99,15 +107,15 @@ for b in xrange(nB):
 
             total_std = np.sqrt(std_map[0]**2 + std_map[1]**2)
 
-            lab0 = lab1 = 'difference data'
+            lab0 = lab1 = 'Difference data'
             
             for reading_point in range(len(difference)):
 
                 if difference[reading_point] > 0 and l==0:
-                    pyplot.errorbar(Es[reading_point], difference[reading_point], total_std[reading_point], color='grey', marker='>', markersize=6., markeredgewidth=0.4, linestyle=':', linewidth=0.1, label = lab0)
+                    pyplot.errorbar(Es[reading_point], difference[reading_point], total_std[reading_point], color='grey', marker='>', linestyle=':', label = lab0)
                     lab0 = None
                 if difference[reading_point] < 0 and l==1:
-                    pyplot.errorbar(Es[reading_point], difference[reading_point], total_std[reading_point], color='grey', marker='>', markersize=6., markeredgewidth=0.4, linestyle=':', linewidth=0.1, label = lab1)
+                    pyplot.errorbar(Es[reading_point], difference[reading_point], total_std[reading_point], color='grey', marker='>', linestyle=':', label = lab1)
                     lab1 = None
                 
                 
@@ -116,13 +124,13 @@ for b in xrange(nB):
 ########################################################################################################################## cosmetics, safe plot
         
 
-        lg = pyplot.legend(loc='upper right', ncol=2, fontsize = 'small')
+        lg = pyplot.legend(loc='upper right', ncol=2)
         lg.get_frame().set_linewidth(0)
         #pyplot.grid(True)
-        pyplot.xlabel('$E$ [GeV]')
+        pyplot.xlabel('$E\ [\mathrm{GeV}]$')
         pyplot.ylabel(r'$ E^2\frac{\mathrm{d} N}{\mathrm{d}E}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
-        pyplot.title(r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r', $%i^\circ)$' % (Lc[l] + dL/2) + r', $b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2))
-    
+        pyplot.title(r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r'$,\ %i^\circ)$' % (Lc[l] + dL/2) + r'$,\ b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + '$, %i^\circ)$' % (Bc[b] + dB[b]/2))
+        auxil.setup_figure_pars(plot_type = 'spectrum')
         pyplot.axis('tight')
         name = 'SED_all_models_' + data_class + '_l=' + str(int(Lc[l])) + '_b=' + str(int(Bc[b]))
         fn = plot_dir + name + fn_ending

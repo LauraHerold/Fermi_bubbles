@@ -45,8 +45,8 @@ def setup_figure_pars(spectrum=False, plot_type=None):
         fig_width = 8  # width in inches
         fig_height = 6    # height in inches
     elif plot_type == 'map':
-        fig_width = 9  # width in inches
-        fig_height = 6    # height in inches
+        fig_width = 9/4  # width in inches
+        fig_height = 6/4    # height in inches
     elif plot_type == 'zoomin_map':
         fig_width = 4.6  # width in inches
         fig_height = 6    # height in inches
@@ -55,11 +55,11 @@ def setup_figure_pars(spectrum=False, plot_type=None):
     params = {'axes.labelsize': 20,
               'axes.titlesize': 20,
               'font.size': 16,
-              'legend.fontsize': 14,
+              'legend.fontsize': 16,
               'xtick.labelsize':18,
               'ytick.labelsize':18,
               #'text.usetex': True,
-              'figure.figsize': fig_size,
+              #'figure.figsize': fig_size,
               'xtick.major.size' : 6,
               'ytick.major.size' : 6,
               'xtick.minor.size' : 3,
@@ -68,12 +68,13 @@ def setup_figure_pars(spectrum=False, plot_type=None):
               'figure.subplot.right' : 0.97,
               'figure.subplot.bottom' : 0.15,
               'figure.subplot.top' : 0.9
-                }
+
+    }
     pyplot.rcParams.update(params)
     if plot_type == 'spectrum':
         pyplot.rcParams['figure.subplot.left'] = 0.15
         pyplot.rcParams['figure.subplot.right'] = 0.95
-        pyplot.rcParams['figure.subplot.bottom'] = 0.1
+        pyplot.rcParams['figure.subplot.bottom'] = 0.12
     elif plot_type == 'zoomin_map':
         pyplot.rcParams['axes.titlesize'] = 20
         pyplot.rcParams['xtick.labelsize'] = 16
@@ -83,8 +84,10 @@ def setup_figure_pars(spectrum=False, plot_type=None):
         
         pyplot.rcParams['figure.subplot.left'] = 0.03
         pyplot.rcParams['figure.subplot.right'] = 0.99
-        pyplot.rcParams['figure.subplot.bottom'] = 0.12
+        pyplot.rcParams['figure.subplot.bottom'] = 0.11
         pyplot.rcParams['figure.subplot.top'] = 0.9
+
+        pyplot.rcParams['figure.linewidth'] = 1.
         #pyplot.rcParams['figure.figsize'][0] *= 2./3.
 
     #rc('text.latex', preamble=r'\usepackage{amsmath}')

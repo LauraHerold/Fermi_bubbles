@@ -6,20 +6,36 @@ import pyfits
 import healpy
 import healpylib as hlib
 import dio
-
+from optparse import OptionParser
 
 ####################################################################################################################### Parameters
 
-binmin = 0                                        # range: 0-17
-binmax = 17
 
-source_class = False
-Save_counts = True
+parser = OptionParser()
+parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
+parser.add_option("-f", "--Save_format", dest="Save_format", default="counts", help= "counts or flux?")
+parser.add_option("-E", "--lowE_range", dest="lowE_range", default='0', help="There are 3 low-energy ranges: (3,5), (3,3), (4,5), (6,7)")
 
-low_energy_range = 0                              # 0: baseline
-lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
+(options, args) = parser.parse_args()
+
+data_class = str(options.data_class)
+low_energy_range = int(options.lowE_range) # 0: baseline, 4: test
+Save_format = str(options.Save_format)
+
 
 ###################################################################################################################### Constants
+
+source_class = False
+if data_class == "source":
+    source_class = True
+
+Save_counts = False
+if Save_format == "counts":
+    Save_counts = True
+    
+binmin, binmax = ((6,23), (6,23), (6,23), (8,23))[low_energy_range]
+
+lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
 
 mask_point_sources = True
 symmetrize_mask = True
@@ -42,7 +58,7 @@ if source_class:
         map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_counts_source.fits'
         dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_lowE_counts_source.yaml'
     else:
-        map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_source.fits'
+        map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_flux_source.fits'
         dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_lowE_source.yaml'
 
 else:
@@ -51,7 +67,7 @@ else:
         map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_counts_ultraclean.fits'
         dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_lowE_counts_ultraclean.yaml'
     else:
-        map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_ultraclean.fits'
+        map_fn = 'fits/LowE_'+ lowE_ranges[low_energy_range] +'GeV_flux_ultraclean.fits'
         dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_lowE_ultraclean.yaml'
    
         
@@ -64,11 +80,11 @@ hdu = pyfits.open(map_fn)
 print binmax
 print np.size(hdu[2].data.field('GeV'))
 print np.shape(hdu[1].data.field('Spectra'))
-data = hdu[1].data.field('Spectra')[::,binmin:binmax+1]
-Es = hdu[2].data.field('GeV')[binmin:binmax+1]
+data = hdu[1].data.field('Spectra')[::,:binmax-binmin+1]
+Es = hdu[2].data.field('GeV')[:binmax-binmin+1]
 
 hdu_counts = pyfits.open(counts_fn)                                                                                # Counts are for standard deviation
-counts = hdu_counts[1].data.field('Spectra')[::,6+binmin : 6+binmax+1]                                             # The 6th engergy bin in data is the 0th high-energy bin
+counts = hdu_counts[1].data.field('Spectra')[::,binmin : binmax+1]                                             # The 6th engergy bin in data is the 0th high-energy bin
 
 mask = np.ones(npix)
 if mask_point_sources:
@@ -138,6 +154,8 @@ std_profiles = np.append(np.append(std_dct['large'][0:5], std_dct['small'], axis
     
 Bbins_tot = np.append(np.append(Bbins['large'][0:5], Bbins['small']), Bbins['large'][8:13])
 Bc_tot =(Bbins_tot[1:] + Bbins_tot[:-1])/2
+
+
 
 if mask_point_sources:
     dct = {'1) Comment':'Latitude-longitude profiles of residual differential flux derived from lowE model and corresponding standard deviation with the shape (lat_bin, lon_bin, energy_bin). Point sources are masked with the small map.'}

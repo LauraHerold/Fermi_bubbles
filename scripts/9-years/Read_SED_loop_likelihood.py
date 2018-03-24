@@ -6,7 +6,7 @@ import healpy
 from matplotlib import pyplot
 import healpylib as hlib
 from iminuit import Minuit
-
+from optparse import OptionParser
 import dio
 from yaml import load
 import gamma_spectra
@@ -14,25 +14,35 @@ import auxil
 
 ########################################################################################################################## Parameters
 
-
-
-low_energy_range = 0                                           # 1: 0.3-0.5 GeV, 2: 0.5-1.0 GeV, 3: 1.0-2.2 GeV, 0: baseline (0.3-1.0 GeV)
-lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
-
-input_data = 'lowE'                                           # data, lowE, boxes, GALPROP
-data_class = 'source'
-
-fit_plaw = False
+fit_plaw = True
 fit_IC  = True
 fit_pi0 = True
 
-cutoff = True
 
-fn_ending = '.pdf'
-colours = ['blue', 'red']
 
+parser = OptionParser()
+parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
+parser.add_option("-E", "--lowE_range", dest="lowE_range", default='0', help="There are 3 low-energy ranges: (3,5), (3,3), (4,5), (6,7)")
+parser.add_option("-i", "--input_data", dest="input_data", default="lowE", help="Input data can be: data, lowE, boxes, GALPROP")
+parser.add_option("-o", "--cutoff", dest="cutoff", default="True", help="Write true if you want cutoff")
+(options, args) = parser.parse_args()
+
+data_class = str(options.data_class)
+low_energy_range = int(options.lowE_range) # 0: baseline, 4: test
+input_data = str(options.input_data) # data, lowE, boxes, GALPROP
+
+cutoff = False
+if str(options.cutoff) == "True":
+    cutoff = True
 
 ########################################################################################################################## Constants
+
+lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
+colours = ['blue', 'red']
+
+fn_ending = '.pdf'
+if cutoff:
+    fn_ending = 'cutoff.pdf'
 
 dL = 10.
 dB = [10., 10., 10., 10., 10., 4., 4., 4., 4., 4., 10., 10., 10., 10., 10.]
@@ -103,6 +113,8 @@ def setup_figure_pars(spectrum=False, plot_type=None):
         pyplot.rcParams['figure.subplot.right'] = 0.99
         pyplot.rcParams['figure.subplot.bottom'] = 0.12
         pyplot.rcParams['figure.subplot.top'] = 0.9
+        pyplot.rcParams['figure.linewidth'] = 0.9
+    
         #pyplot.rcParams['figure.figsize'][0] *= 2./3.
 
     #rc('text.latex', preamble=r'\usepackage{amsmath}')
@@ -150,7 +162,7 @@ for b in xrange(nB):
         flux_map = map * Es**2 / dOmega[b][l] / deltaE / expo_map
         flux_std_map = std_map * Es**2 / dOmega[b][l] / deltaE / expo_map
 
-        pyplot.errorbar(Es, flux_map, flux_std_map, color=colours[colour_index], marker='s', markersize=4, markeredgewidth=0.4, linestyle = '', linewidth=0.1, label=label)
+        pyplot.errorbar(Es, flux_map, flux_std_map, color=colours[colour_index], marker='s', markersize=4, markeredgewidth=0.4, linestyle = '', label=label)
 
 
 ########################################################################################################################## Fit spectra
@@ -163,7 +175,8 @@ for b in xrange(nB):
                 x, y = dct["x"], dct["y"]                
                 N_0, gamma, E_cut  = dct["N_0"], dct["gamma"], dct["E_cut"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
-                label = r'$\mathrm{PL}:\ \gamma = %.2f,$ ' %(gamma+2.) + r'$E_{\mathrm{cut}} = %.1e\ \mathrm{GeV}$ ' %E_cut + ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
+                # gamma is saved as spectral index of dN/dE
+                label = r'$\mathrm{PL}:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.1e\ \mathrm{GeV}$ ' %E_cut #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
                 pyplot.errorbar(x, y, label = label, color = colours[colour_index])
 
             else:
@@ -171,7 +184,7 @@ for b in xrange(nB):
                 x, y = dct["x"], dct["y"]                
                 N_0, gamma = dct["N_0"], dct["gamma"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
-                label = r'$\mathrm{PL}:\ \gamma = %.2f,$ ' %(gamma+2.)  + ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
+                label = r'$\mathrm{PL}:\ \gamma = %.2f$ ' %(gamma)  #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
                 pyplot.errorbar(x, y, label = label, color = colours[colour_index])
                   
                  
@@ -183,7 +196,8 @@ for b in xrange(nB):
                 x, y = dct["x"], dct["y"]                
                 N_0, gamma, E_cut  = dct["N_0"], dct["gamma"], dct["E_cut"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
-                label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %(gamma+2.) + r'$E_{\mathrm{cut}} = %.1e\ \mathrm{GeV}$ ' %(E_cut) + ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
+                # gamma is spectral index of EdN/dE
+                label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %(gamma+1) + r'$E_{\mathrm{cut}} = %.1e\ \mathrm{GeV}$' %(E_cut) #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
                 pyplot.errorbar(x, y, label = label, color = colours[colour_index], ls = ':')
 
             else:
@@ -192,7 +206,8 @@ for b in xrange(nB):
                 IC_x, IC_y = IC_dct["x"], IC_dct["y"]                
                 N_0, gamma = IC_dct["N_0"], IC_dct["gamma"]
                 chi2_dof, TS = IC_dct["chi^2/d.o.f."], IC_dct["-logL"]
-                label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %(gamma+2.)  + ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
+                # gamma is spectral index of dN/dp
+                label = r'$\mathrm{IC}:\ \gamma = %.2f$ ' %(gamma+1)  #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
                 pyplot.errorbar(IC_x, IC_y, label = label, color = colours[colour_index], ls = ':')
             
 
@@ -207,7 +222,7 @@ for b in xrange(nB):
                 x, y = dct["x"], dct["y"]                
                 N_0, gamma, E_cut  = dct["N_0"], dct["gamma"], dct["E_cut"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
-                label = r'$\pi^0:\ \gamma = %.2f,$ ' %(gamma+2.) + r'$E_{\mathrm{cut}} = %.1e\ \mathrm{GeV}$ ' %(E_cut) + ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
+                label = r'$\pi^0:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.1e\ \mathrm{GeV}$' %(E_cut) #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
                 pyplot.errorbar(x, y, label = label, color = colours[colour_index], ls = '-.')
 
             else:
@@ -215,11 +230,10 @@ for b in xrange(nB):
                 x, y = dct["x"], dct["y"]                
                 N_0, gamma = dct["N_0"], dct["gamma"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
-                label = r'$\pi^0:\ \gamma = %.2f,$ ' %(gamma+2.)  + ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
+                label = r'$\pi^0:\ \gamma = %.2f$ ' %(gamma)  #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
                 pyplot.errorbar(x, y, label = label, color = colours[colour_index], ls = '-.')
 
-            
-
+                
         colour_index += 1
         
 

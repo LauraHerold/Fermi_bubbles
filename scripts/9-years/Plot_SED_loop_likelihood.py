@@ -6,38 +6,51 @@ import healpy
 from matplotlib import pyplot
 import healpylib as hlib
 from iminuit import Minuit
-
+from optparse import OptionParser
 import dio
 from yaml import load
 import gamma_spectra
+import auxil
 
 ########################################################################################################################## Parameters
-
-Save_as_dct = True
-Save_plot = True
-
-low_energy_range = 0                                           # 1: 0.3-0.5 GeV, 2: 0.5-1.0 GeV, 3: 1.0-2.2 GeV, 0: baseline (0.3-1.0 GeV)
-lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
-
-input_data = 'GALPROP'                                           # data, lowE, boxes, GALPROP
-data_class = 'source'
 
 fit_plaw = False
 fit_logpar = True
 fit_IC  = False
 fit_pi0 = False
 
-cutoff = True
+fn_ending = ".pdf"
+
+parser = OptionParser()
+parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
+parser.add_option("-E", "--lowE_range", dest="lowE_range", default='0', help="There are 3 low-energy ranges: (3,5), (3,3), (4,5), (6,7)")
+parser.add_option("-i", "--input_data", dest="input_data", default="lowE", help="Input data can be: data, lowE, boxes, GALPROP")
+parser.add_option("-o", "--cutoff", dest="cutoff", default="True", help="Write true if you want cutoff")
+(options, args) = parser.parse_args()
+
+data_class = str(options.data_class)
+low_energy_range = int(options.lowE_range) # 0: baseline, 4: test
+input_data = str(options.input_data) # data, lowE, boxes, GALPROP
+
+cutoff = False
+if str(options.cutoff) == "True":
+    cutoff = True
+
+########################################################################################################################## Constants
+
+
+lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
+
+Save_as_dct = True
+Save_plot = True
 
 bin_start_fit = 6                                              # Energy bin where fit starts
 fitmin = 4
 fitmax = 18                                                    # bins: 0-15 for low-energy range 3, 0-17 else
 
-fn_ending = '_logparabola.pdf'
+
 colours = ['blue', 'red']
 
-########################################################################################################################## Constants
- 
 dL = 10.
 dB = [10., 10., 10., 10., 10., 4., 4., 4., 4., 4., 10., 10., 10., 10., 10.]
 
@@ -58,6 +71,10 @@ if cutoff:
     dof = fitmax - fitmin - 3
 else:
     dof = fitmax - fitmin - 2
+
+binmin = 0    
+if low_energy_range == 3:
+    binmin = 2
 
 
 ########################################################################################################################## Load dictionaries
@@ -85,14 +102,14 @@ print "total_data_profiles: ", len(total_data_profiles)
 expo_dct = dio.loaddict('dct/Low_energy_range' + str(low_energy_range) +'/dct_expo_' + data_class + '.yaml')
 exposure_profiles = expo_dct['6) Exposure_profiles'] # shape: (nB, nL, nE)
 print "expo_profiles shape: " + str(len(exposure_profiles)) + ", " + str(len(exposure_profiles[0])) + ", " + str(len(exposure_profiles[0][0]))
-deltaE = expo_dct['8) deltaE']
-dOmega = expo_dct['7) dOmega_profiles']
+deltaE = expo_dct['8) deltaE'][binmin :]
+dOmega = expo_dct['7) dOmega_profiles'][binmin :]
 
 
 ########################################################################################################################## Define likelihood class and powerlaw fct
 
 
-class likelihood1:                                                        
+class likelihood1:                                                        # First fit: over 4 energy bins only
     def __init__(self, model_fct, background_map, total_data_map):
         self.model_fct = model_fct
         self.background_map = background_map
@@ -106,7 +123,7 @@ class likelihood1:
         return L
 
 
-class likelihood2:                                                        
+class likelihood2:                                                       # Second fit: without cutoff  
     def __init__(self, model_fct, background_map, total_data_map):
         self.model_fct = model_fct
         self.background_map = background_map
@@ -119,7 +136,7 @@ class likelihood2:
         print "N_0, gamma: " + str(N_0) + ", " + str(gamma) + " --> " + str(L)
         return L
     
-class likelihood_cutoff:                                                        
+class likelihood_cutoff:                                                 # Optional third fit: with cutoff       
     def __init__(self, model_fct, background_map, total_data_map):
         self.model_fct = model_fct
         self.background_map = background_map
@@ -176,6 +193,7 @@ for b in xrange(nB):
             EdNdE_gamma_IC_vec = np.frompyfunc(EdNdE_gamma_IC, 1, 1)
             #print "N_0, gamma = " + str(N_0) + ", "+ str(gamma)
             return lambda E: EdNdE_gamma_IC_vec(Es[E]) * exposure_profiles[b][l][E] * dOmega[b][l] * deltaE[E] / Es[E]
+            # Actually a factor V_ROI / (4 pi R_GC^2) missing, but doesn't matter here
 
         def pi0_model(N_0, gamma, Ecut_inv = 0.):
             dNdp_p = N_0 * p_p**(-gamma) * np.exp(-p_p * Ecut_inv)
@@ -187,7 +205,7 @@ for b in xrange(nB):
 ########################################################################################################################## Plot SED
         
         map  = np.asarray(diff_profiles[b][l])
-        expo_map = np.asarray(exposure_profiles[b][l])
+        expo_map = np.asarray(exposure_profiles[b][l])[binmin:]
         std_map = np.asarray(std_profiles[b][l])
         total_data_map = np.asarray(total_data_profiles[b][l])
         total_data_map = total_data_map[len(total_data_map)-nE:]
@@ -197,8 +215,12 @@ for b in xrange(nB):
         for E in range(nE):
             if np.abs(std_map[E]) < 1.:
                 std_map[E] = 1.
+            if background_map[E] < 0:
+                background_map[E] = 0.
                 
         label = r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r', $%i^\circ)$' % (Lc[l] + dL/2)
+
+        print map.shape, Es.shape, len(deltaE), expo_map.shape
         flux_map = map * Es**2 / dOmega[b][l] / deltaE / expo_map
         flux_std_map = std_map * Es**2 / dOmega[b][l] / deltaE / expo_map
 
@@ -232,6 +254,7 @@ for b in xrange(nB):
 
             
             TS = 2 * sum(flux_plaw_in_counts(N_0, gamma)(E) - map[E] * np.log(flux_plaw_in_counts(N_0, gamma)(E)) for E in range(fitmin,fitmax))
+            # gamma is spectral index of E^2dN/dE
             label = r'$\mathrm{PL}:\ \gamma = %.2f, $' %(gamma+2) + r'$-\log L = %.2f$' %TS
             dct_fn = "plot_dct/Low_energy_range" + str(low_energy_range) + "/" + input_data + "_" + data_class + "_Plaw_l=" + str(Lc[l]) + "_b=" + str(Bc[b]) + ".yaml"
             
@@ -290,7 +313,9 @@ for b in xrange(nB):
             N_0, gamma  = m.values["N_0"], m.values["gamma"]
             
             TS =  2 * sum(IC_model(N_0, gamma)(E) - map[E] * np.log(IC_model(N_0, gamma)(E)) for E in range(fitmin,fitmax))
-            label  = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %gamma + r'$-\log L = %.2f$' %TS
+
+            # gamma is spectral index of EdN/dE
+            label  = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %(gamma+1.) + r'$-\log L = %.2f$' %TS
             dct_fn = "plot_dct/Low_energy_range" + str(low_energy_range) + "/" + input_data + "_" + data_class + "_IC_l=" + str(Lc[l]) + "_b=" + str(Bc[b]) + ".yaml"
             
             if cutoff:
@@ -300,9 +325,9 @@ for b in xrange(nB):
                 N_0, gamma, Ecut_inv  = m.values["N_0"], m.values["gamma"], m.values["Ecut_inv"]
                 TS =  2 * sum(IC_model(N_0, gamma, Ecut_inv)(E) - map[E] * np.log(IC_model(N_0, gamma, Ecut_inv)(E)) for E in range(fitmin,fitmax))
                 if Ecut_inv == 0:
-                    label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %gamma + r'$E_\mathrm{cut} = \infty'+ ',\n' + r'$-\log L = %.2f$' %TS
+                    label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %(gamma+1) + r'$E_\mathrm{cut} = \infty'+ ',\n' + r'$-\log L = %.2f$' %TS
                 else:
-                    label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %gamma + r'$E_\mathrm{cut} = %.1e\ \mathrm{GeV}$ ' %(1./Ecut_inv) + ',\n' + r'$-\log L = %.2f$' %TS
+                    label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %(gamma+1) + r'$E_\mathrm{cut} = %.1e\ \mathrm{GeV}$ ' %(1./Ecut_inv) + ',\n' + r'$-\log L = %.2f$' %TS
                 dct_fn = "plot_dct/Low_energy_range" + str(low_energy_range) + "/" + input_data + "_" + data_class + "_IC_cutoff_l=" + str(Lc[l]) + "_b=" + str(Bc[b])  + ".yaml"
                 dct["E_cut"] = 1./Ecut_inv
 
@@ -402,6 +427,8 @@ for b in xrange(nB):
 
             
             TS = 2 * sum(flux_logpar_in_counts(N_0, alpha, beta)(E) - map[E] * np.log(flux_logpar_in_counts(N_0, alpha, beta)(E)) for E in range(fitmin,fitmax))
+
+            # gamma is spectral index of dN/dp
             label = r'$\mathrm{LogPar}:\ \alpha = %.2f, $' %alpha + r'$\beta = %.2f, $' %beta + '\n' + r'$-\log L = %.2f$' %TS
             dct_fn = "plot_dct/Low_energy_range" + str(low_energy_range) + "/" + input_data + "_" + data_class + "_LogPar_l=" + str(Lc[l]) + "_b=" + str(Bc[b]) + ".yaml"
             

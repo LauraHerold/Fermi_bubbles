@@ -219,6 +219,7 @@ def thermal_spectrum(T, U=None): # thermal photon spectrum of black body with te
     def func(Eg): # Plancksches Strahlungsgesetz N(nu == v) 8 * pi * v^2 / c^3 * hv/(exp(hv/k_b/T)-1)
         k = Eg / hPl_eV / c_light
 
+
         expf = 1 / (np.exp(Eg/T) - 1) # T[ev] == k_B * T[K]
         return 8. * np.pi * Eg * k**3 * expf * U / W0
     return func # --> U(v) = N(v) * v in eV/cm^3
@@ -509,7 +510,7 @@ def EdQdE_pp(dNdp_p, p_p, n_H=1., ID_PARTICLE=0):
             proton density dN / dp, where p is the momentum (1/GeV/cm^3)
         p_p - array_like, shape (n,):
             proton momenta (GeV)
-        n_H - float:
+0        n_H - float:
             target gas density (1/cm^3)
         ID_PARTICLE - int:
             particle ID: gamma = 0, electron = 1, positron = 2 etc.

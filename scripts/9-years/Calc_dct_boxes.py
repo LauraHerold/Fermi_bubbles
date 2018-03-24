@@ -6,20 +6,40 @@ import pyfits
 import healpy
 import healpylib as hlib
 import dio
+from optparse import OptionParser
 
 
 ####################################################################################################################### Parameters
 
-binmin = 0                                        # range: 0-17
-binmax = 15
 
-Save_counts = True
-source_class = True
+parser = OptionParser()
+parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
+parser.add_option("-f", "--Save_format", dest="Save_format", default="counts", help= "counts or flux?")
+parser.add_option("-E", "--lowE_range", dest="lowE_range", default='0', help="There are 3 low-energy ranges: (3,5), (3,3), (4,5), (6,7)")
 
-low_energy_range = 3                              # 0: baseline
-lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
+(options, args) = parser.parse_args()
+
+data_class = str(options.data_class)
+low_energy_range = int(options.lowE_range) # 0: baseline, 4: test
+Save_format = str(options.Save_format)
+
 
 ###################################################################################################################### Constants
+
+source_class = False
+if data_class == "source":
+    source_class = True
+
+Save_counts = False
+if Save_format == "counts":
+    Save_counts = True
+    
+binmin, binmax = ((6,23), (6,23), (6,23), (8,23))[low_energy_range]
+
+lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
+
+mask_point_sources = True
+symmetrize_mask = True
 
 dB_dct = {'small': 4., 'large':  10.}             # length of bin in latitude
 Bmax_dct = {'small': 10., 'large': 60.}           # maximal latitude (in deg)
@@ -33,8 +53,6 @@ nside = healpy.npix2nside(npix)
 
 ###################################################################################################################### Load data
 
-mask_point_sources = True
-symmetrize_mask = True
 
 if source_class:
     counts_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits' # Source class (counts )
@@ -42,7 +60,7 @@ if source_class:
         map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_counts_source.fits'
         dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes_counts_source.yaml'
     else:
-        map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_source.fits'
+        map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_flux_source.fits'
         dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes_source.yaml'
 
 else:
@@ -51,19 +69,22 @@ else:
         map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_counts_ultraclean.fits'
         dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes_counts_ultraclean.yaml'
     else:
-        map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_ultraclean.fits'
+        map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_flux_ultraclean.fits'
         dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes_ultraclean.yaml'
         
 mask_fn = '../../data/ps_masks/ps_mask_3FGL_small_nside128.npy'    
-    
-hdu = pyfits.open(map_fn)
 
-binmax = min(np.size(hdu[2].data.field('GeV')) - binmin, binmax)
-data = hdu[1].data.field('Spectra')[::,binmin:binmax+1]
-Es = hdu[2].data.field('GeV')[binmin:binmax+1]
+
+nE = binmax - binmin + 1
+
+hdu = pyfits.open(map_fn)
+#binmax = min(np.size(hdu[2].data.field('GeV')) - binmin, binmax)
+data = hdu[1].data.field('Spectra')[::,:binmax-binmin+1]
+Es = hdu[2].data.field('GeV')[:binmax-binmin+1]
+print data.shape
 
 hdu_counts = pyfits.open(counts_fn)                                                                                # Counts are for standard deviation
-counts = hdu_counts[1].data.field('Spectra')[::,6+binmin : 6+binmax+1]                                             # The 6th engergy bin in data is the 0th high-energy bin
+counts = hdu_counts[1].data.field('Spectra')[::,binmin : binmax+1]                                             # The 6th engergy bin in data is the 0th high-energy bin
 
 mask = np.ones(npix)
 if mask_point_sources:
@@ -82,8 +103,6 @@ Lbins = np.arange(-Lmax, Lmax + 0.001, dL)
 Lc = (Lbins[:-1] + Lbins[1:])/2
 nL = len(Lbins)-1
 
-
-nE = binmax - binmin + 1
 
 for option in ['small','large']:
     print option
@@ -146,6 +165,7 @@ dct['3) Center_of_lon_bins'] = Lc
 dct['4) Center_of_lat_bins'] = Bc_tot
 dct['5) Energy_bins'] = Es
 
+print Es
 
 dio.saveyaml(dct, dct_fn, expand = True)
 
