@@ -1,0 +1,34 @@
+Supplementary material for "Cosmic-ray electron-positron spectrum from 7 GeV to 2 TeV with the Fermi Large Area Telescope", PRD XX, 2017
+
+This distribution contains machine-readable text files corresponding
+to Table 1 and 2.
+
+********************************************************************************
+
+File: CREtable_LE.txt (Table 1):
+
+Description: Number of events after background subtraction (without correction for the loss of CREs above the geomagnetic energy cutooff), residual background contamination and flux J_E, with its statistical and systematic errors, for the LE selection.
+
+column 1: E_low (GeV)
+column 2: E_up (GeV)
+column 3: counts
+column 4: contamination
+column 5: flux J_E (GeV^-1 s^-1 m^-2 sr^-1)
+column 6: statistical error (fractional value)
+column 7: systematic error (fractional value)
+
+********************************************************************************
+
+File: CREtable_HE.txt (Table 2):
+
+Description: Number of events after background subtraction, residual background contamination and flux J_E , with its statistical and systematic errors (the acceptance uncertainty and the sum of the contamination and IVC correction uncertainties are shown separately), for the HE selection.
+
+column 1: E_low (GeV)
+column 2: E_up (GeV)
+column 3: counts
+column 4: contamination
+column 5: flux J_E (GeV^-1 s^-1 m^-2 sr^-1)
+column 6: statistical error (fractional value)
+column 7: systematic error due to acceptance uncertainty (fractional value)
+column 8: systematic error due to contamination + IVC correction uncertainties (fractional value)
+
