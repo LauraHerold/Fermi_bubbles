@@ -41,31 +41,38 @@ the inability of the GALPROP templates to fit the data is also manifested by the
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{plots/SED_all_models_source_l=-5_b=0.pdf}
     \end{subfigure}
-  	\caption{SED of the model residuals, the data with PS mask and the difference in the data with PS mask West minus East. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0} - \ang{10}$ to the East of the GC (left) and $\ang{-10} - \ang{0}$ to the West of the GC (right).}
+  	\caption{SED of the model residuals, the data with PS mask and the difference in the data with PS mask West minus East. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0}$ to $\ang{10}$ to the East of the GC (left) and $\ang{-10}$ to $\ang{0}$ to the West of the GC (right).}
   	\label{fig:SED_all}
 \end{figure*}
 
-In the following, we want to test the hypothesis of a harder energy spectrum inside the FB region in the Galactic plane. We first compare the spectral energy distribution (SED) of the different model residuals in Figure \ref{fig:SED_all}. The differential flux is averaged over regions to the East $(\ang{0} - \ang{10})$ and West $(\ang{-10} - \ang{0})$ of the GC, in a very thin stripe covering the Galactic plane $b \in (\ang{-2},\ \ang{2})$. For comparison we show the data with PS mask and the difference in the data West minus East, which is positive in every energy bin in the shown latitude band.
+In this section we quantify the hardening of the gamma-ray spectrum at the base of the FB. 
+We first compare the SED of the different model residuals in Figure \ref{fig:SED_all}. 
+The differential flux is averaged over regions to the East $(\ang{0} - \ang{10})$ and West $(\ang{-10} - \ang{0})$ of the GC, 
+in a very thin stripe covering the Galactic plane $b \in (\ang{-2},\ \ang{2})$. 
+For comparison we show the data with PS mask and the difference in the data West minus East, 
+which is positive in every energy bin in the shown latitude band.
 
 For negative longitudes, all models give similar results. We again observe that the differential flux of the GALPROP model is smaller than the differential flux of the other models, wich is consistent with the observation in section \ref{sec:Latitude_profiles}. We also find an assymmetry in the flux of the data with PS mask. The difference of the data West minus East is similar to the flux of the low-energy and rectangles model. The spectra at positive longitudes show large oversubtractions and an overall softer spectrum. %\Laura{Should we show here the plots for (-6,-2) and (2,6) deg latitude also?}
 %\dima{I'm not sure, it will take space}
 
 To compare the behavior of the energy spectra at high energies for different latitudes, 
 we fit a log-parabola
+
  \be
  f(E) = N_0 \left(\frac{E}{\SI{1}{GeV}}\right)^{-\alpha - \beta \ln(E)}
  \ee
 in each latitude stripe. The local ``index'' of the spectrum at energy $E$ is
+
  \be 
 n \equiv \frac{\de \ln f}{\de \ln E} = -\alpha - 2 \beta \ln\left(\frac{E}{\SI{1}{GeV}}\right).
  \ee
 In Figure \ref{fig:logpar_index} we compare this log-parabola index $n$ as a function of latitude at $E = \SI{500}{GeV}$. 
 %\Laura{You called it bubble! ;)} \dima{bubble removed}
-Shown is $(2 - n)$ which corresponds to the SED index.
-For positive longitudes the index is relatively soft ($2-n > 2$) for most of the latitudes, 
+We plot $(2 - n)$, which corresponds to the SED index.
+For positive longitudes the index is relatively soft ($n > 2$) for most of the latitudes, 
 except high latitudes where the gamma-ray statistics is small.
-For negative longitudes the index near the GC is $\approx -2$, 
-which is significantly harder than the index at higher latitudes.
+For negative longitudes the index near the GC ($n \approx 2$) 
+is significantly harder than the index at higher latitudes.
 %\Laura{Would you like the x-axis of the log-par plot to show n-2?}
 %\dima{yes, I'd suggest to put (2 - n) on the y-axis}
 \begin{figure*}[h!]
@@ -85,33 +92,60 @@ which is significantly harder than the index at higher latitudes.
 \subsection{IC model of the gamma-ray emission}
 \label{sec:IC_model}
 
-Inverse-Compton (IC) radiation is produced in scattering processes of relativistic electrons on photons of the ISRF. The spectrum of the IC gamma radiation $(E \de n/ \de E)_{\gamma,\IC}\ [\SI{}{1/cm^3s}]$ depends on the density of ISRF photons $(\de n/ \de E)_\ISRF\ [\SI{}{1/GeVcm^3}]$ , the density of electrons $(\de n / \de E)_\el\ [\SI{}{1/GeVcm^3}]$ and the IC cross section $\sigma_\IC(E_\gamma, E_\ISRF, E_\el)$, taken from \citep{1970RvMP...42..237B}:
+In this section we model the gamma-ray emission at the base of the FB via the IC scattering.
+As a baseline case, we take the gamma-ray spectrum derived in the rectangles model of the FB in Section \ref{sec:box_model}.
+The source function for the IC gamma-rays is
+
 \be
-\left(E\frac{\de n}{\de E}\right)_{\!\!\gamma,\IC}\! = c\int\!\! \int \left(\frac{\de n}{\de E}\right)_{\!\!\ISRF} \sigma_\IC\ \left(\frac{\de n}{\de E}\right)_{\!\!\el} \de E_\ISRF\, \de E_\el.
 \label{eq:IC_spectrum}
+\left(E\frac{\de Q}{\de E}\right)_{\!\!\gamma,\IC}\! = c\int\!\! \int \left(\frac{\de n}{\de E}\right)_{\!\!\ISRF} \sigma_\IC\ \left(\frac{\de n}{\de E}\right)_{\!\!\el} \de E_\ISRF\, \de E_\el,
 \ee
-The ISRF has three main components: starlight, IR and CMB. 
-The IR and the starlight components are taken from the on-line distribution of GALPROP. 
-For the CMB, we use the thermal spectrum with the temperature $\SI{2.73}{K}$.\\
-We assume that the density of electrons as a function of energy follows  a simple powerlaw 
+where $(\de n/ \de E)_\ISRF\ [\SI{}{GeV^{-1} cm^{-3}}]$ is the number density of ISRF photons,
+$(\de n / \de E)_\el\ [\SI{}{GeV^{-1} cm^{-3}}]$ is the number density of electrons, and $\sigma_\IC(E_\gamma, E_\ISRF, E_\el)$
+is the IC scattering cross section \citep{1970RvMP...42..237B}.
+The ISRF number density for starlight and IR photons is taken from GALPROP v54.
+%The ISRF has three main components: starlight, IR and CMB. 
+%The IR and the starlight components are taken from the on-line distribution of GALPROP. 
+For the CMB, we use the thermal spectrum with the temperature $\SI{2.73}{K}$.
+The energy spectrum of electrons is modeled as a power law 
 \be 
-\left(\frac{\de n}{\de E}\right)_\el = n_\el \left(\frac{E_\el}{\SI{1}{GeV}}\right)^{-\gamma_\el} %\cdot \eto^\frac{E}{E_{\cut,\el}},
 \label{eq:e_spectrum}
+\left(\frac{\de n}{\de E}\right)_\el = n_\el \left(\frac{E_\el}{\SI{1}{GeV}}\right)^{-\gamma_\el}. %\cdot \eto^\frac{E}{E_{\cut,\el}},
 \ee
-and determine the normalization $n_\el$ and spectral index $\gamma_\el$  by fitting the IC spectrum \eqref{eq:IC_spectrum} to the diffuse \Fermi data. For that, we determine the photon counts detected by \Fermi-LAT that correspond to the IC radiation generated by the electrons in the respective region. For a volume $V$ and a distance $R$ to the region, the detected counts per energy bin $E$ are 
+The gamma-ray flux is determined by integrating the source function in Equation (\ref{eq:IC_spectrum}) along the line of sight.
+We determine the normalization $n_\el$ and spectral index $\gamma_\el$  by fitting the IC model of the FB plus the foreground model to the 
+total gamma-ray data using Poisson likelihood. 
+\begin{comment}
+For that, we determine the photon counts detected by \Fermi-LAT that correspond to the IC radiation generated by the electrons in the respective region. For a volume $V$ and a distance $R$ to the region, the detected counts per energy bin $E$ are 
 \be
 N_{\gamma,\IC}(E) = \left(E\frac{\de n}{\de E}\right)_{\!\!\gamma,\IC} \cdot V \frac{\tau(E_\gamma)}{4 \pi R^2} \cdot \de(\log E_\gamma),
 \ee
-where $ \de(\log E_\gamma)$ is the logarithmic size of the energy bin. Since the exposure $\tau(E_\gamma)$, which is averaged over the area on the sky, depends on energy, it can affect the shape of the electron spectrum. The quantities $V$ and $R$ only affect the normalization of the electron spectrum and will not be important until section \ref{sec:Interpretation}.\\
-Now our model for the total detected counts is the sum of one of the foreground models and the counts generated by the electron density via IC scattering. As our baseline model for the foreground, we pick the rectangles model. We fit our model of the total counts to the actually observed total counts in that region (with PS mask) using Poisson likelihood and extract the parameters $n_\el$ and $\gamma_\el$ of the electron spectrum.\\
+where $ \de(\log E_\gamma)$ is the logarithmic size of the energy bin. Since the exposure $\tau(E_\gamma)$, which is averaged over the area on the sky, depends on energy, it can affect the shape of the electron spectrum. The quantities $V$ and $R$ only affect the normalization of the electron spectrum and will not be important until section \ref{sec:Interpretation}.
+The model for the total detected counts is the sum of one of the foreground models and the counts generated by the electron density via IC scattering. As our baseline model for the foreground, we pick the rectangles model.
+ We fit our model of the total counts to the actually observed total counts in that region (with PS mask) using Poisson likelihood and extract the parameters $n_\el$ and $\gamma_\el$ of the electron spectrum.
+\end{comment}
 
 Figure \ref{fig:SED_with_fits} shows the residual of the rectangles model within the latitude stripes $b \in (\ang{2}, \ang{6})$, $b \in (-\ang{2}, \ang{2})$ and $b \in (-\ang{6}, -\ang{2})$ (as in Figure \ref{fig:SED_all}). The dotted line represents the best-fit IC spectrum for an electron distribution following a simple powerlaw.
 %\Laura{Should we here compare with the spectral indices of the other models?} \dima{yes}
-The spectral index to the West of the GC of the electron spectrum is relatively hard. For $b \in (\ang{2}, \ang{6})$ the spectral index varies between 2.92 and 3.15 for the three models, for $b \in (-\ang{2}, \ang{2})$ between 2.68 and 3.54 and for $b \in (-\ang{6}, -\ang{2})$ between 2.85 and 3.00. The softest spectrum in each latitude stripe is fitted to the GALPROP model. To the East of the GC the spectral indices vary between 2.97 and 5.09 in the three latitude stripes. 
+The spectral index to the West of the GC of the electron spectrum is harder than the spectrum to the East of the GC. 
+\begin{comment}
+For $b \in (\ang{2}, \ang{6})$ the spectral index varies between 2.92 and 3.15 for the three models, for $b \in (-\ang{2}, \ang{2})$ between 2.68 and 3.54 and for $b \in (-\ang{6}, -\ang{2})$ between 2.85 and 3.00. The softest spectrum in each latitude stripe is fitted to the GALPROP model. To the East of the GC the spectral indices vary between 2.97 and 5.09 in the three latitude stripes. 
+\end{comment}
+
+In order to test the presence of a cutoff in the spectrum of electrons, we fit the gamma-ray data using a spectrum of the electrons
+with an additional cutoff factor $\exp(-\alpha E_\el)$, where $\alpha = E^{-1}_{\el,\cut}$ is the inverse cutoff.
+The improvement in the $-2 \log \La$ \dima{We use Poisson log likelihood, right? I think it will be less confusing to use $-2 \log \La$,
+which we actually calculate, rather  than $\chi^2$. We could even replace the two $\chi^2$ columns in the tables with a single column $-2 \Delta \log \La$,
+since the actual values of $-2 \log \La$ do not mean much.}
+for the models with and without the cutoff is shown in Table \ref{tab:IC}
+for different latitude stripes.
+For negative longitudes the cutoff is not significant.
+We also report the 95\% lower limit on the cutoff value. For example, for negative longitudes in the Galactic plane,
+the 95\% confidence lower limit on the cutoff in the spectrum of electrons is 13 TeV,
+while the minimal value of the 95\% confidence limit for all the models of the foreground emission is about 3 TeV.
 
 
-We want to estimate the probability for the electron spectrum to have an exponential cutoff. For that we multiply an exponential cutoff $\exp(E_\el / E_{\el,\cut})$ to the electron spectrum \eqref{eq:e_spectrum} and determine the parameters analog to the procedure described before, using the rectangles model as the baseline foreground model.\\
-
+%We want to estimate the probability for the electron spectrum to have an exponential cutoff. For that we multiply an exponential cutoff $\exp(E_\el / E_{\el,\cut})$ to the electron spectrum \eqref{eq:e_spectrum} and determine the parameters analog to the procedure described before, using the rectangles model as the baseline foreground model.\\
 %For the latitude stripe covering the Galactic plane, $b \in (-\ang{2}, \ang{2})$, adding a cutoff to the powerlaw does not improve the $\chi^2$-value both at negative ($\chi^2 \approx 135$) and positive longitudes ($\chi^2 \approx 128$).
 
 %We determine the lower bound for the cutoff energy at a $\SI{95}{\percent}$-confidence level for our baseline model, the value in parenthesis gives the lowest value for all models: For negative longitudes we find a lower bound for the cutoff energy at $\SI{13.3}{TeV}$ ($\SI{2.9}{TeV}$), for positive longitudes at $\SI{491}{GeV}$ ($\SI{16}{GeV}$).
@@ -155,20 +189,26 @@ We want to estimate the probability for the electron spectrum to have an exponen
 
 \begin{table*}
   \begin{center}
-    \caption{$\chi^2$-values for IC-spectrum fit of a distribution of electrons following a simple powerlaw and a powerlaw with cutoff, respectively in the latitude bands discussed in the text. The lower bound for $E_\cut$ at a $\SI{95}{\percent}$-confidence level for our baseline model is shown in the last column; the value in parenthesis gives the lowest value for all models.}
+    \caption{$\chi^2$-values for IC-spectrum fit of a distribution of electrons following a simple powerlaw and a powerlaw with cutoff, respectively in the latitude bands discussed in the text. 
+The lower bounds for $E_\cut$ at $\SI{95}{\percent}$ confidence level for our baseline model and the minimum among all
+models are shown in the last two columns respectively.
+\dima{I've added an extra column for the minimum of cutoff among all models, if you think it's OK, please, change the pi0 table as well.
+I'd also suggest to keep only the integer values for the $\chi^2$, i.e.,  305.9 --$>$ 306, and to have at most two significant digits
+in the cutoff values.}}
     \label{tab:IC}
-    \begin{tabular}{|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+    \begin{tabular}{|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
-		 lat & lon  & $\chi^2$(no cutoff) &  $\chi^2$(cutoff) & Lower bound $E_\cut$ \\ 
+		 Lat & Lon  & $\chi^2$(no cutoff) &  $\chi^2$(cutoff) & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\ 
+		       &         &                               &                            &  \multicolumn{1}{c}{Rectangles model} & All models \\ 
 		\hline
-  		$(\ang{2}, \ang{6})$ & east & 305.9 & 75.1  & $\SI{50.5}{GeV}$ ($\SI{50.5}{GeV}$)\\ 
-		& west & 155.9 & 155.7  & $\SI{4.31}{TeV}$ ($\SI{4.31}{TeV}$) \\ 
+  		$(\ang{2}, \ang{6})$ & east & 305.9 & 75.1  & 0.051 & 0.051 \\ 
+		& west & 155.9 & 155.7  & 4.3  & 4.3 \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & east & 128.1 & 128.1 & $\SI{491}{GeV}$ ($\SI{16}{GeV}$)\\ 
-		& west & 135.3 & 135.3 & $\SI{13.3}{TeV}$ ($\SI{2.9}{TeV}$)\\ 
+  		$(\ang{-2}, \ang{2})$ & east & 128.1 & 128.1 & 0.49 & 0.016 \\ 
+		& west & 135.3 & 135.3 & 13  & 2.9  \\ 
  		\hline
-  		$(\ang{-6}, \ang{-2})$ & east & 97.6 & 86.7 & $\SI{818}{GeV}$ ($\SI{0.79}{GeV}$)\\ 
-		& west & 76.1 & 76.1 & $\SI{6.89}{TeV}$ ($\SI{6.89}{TeV}$) \\ 
+  		$(\ang{-6}, \ang{-2})$ & east & 97.6 & 86.7 & 0.82 & 0.0008 \\ 
+		& west & 76.1 & 76.1 & 6.9 & 6.9\\ 
  \hline
     \end{tabular}
   \end{center}
@@ -192,21 +232,47 @@ We want to estimate the probability for the electron spectrum to have an exponen
 \subsection{Hadronic model of gamma-ray emission}
 \label{sec:Pion_model}
 
-In the hadronic model, the gamma rays are produced as a result of collisions of hadronic CR with the interstellar gas, where $\pi^0$-mesons are created.
-The spectrum of the gamma radiation $(E \de n / \de E)_{\gamma,\pi^0}\ [\SI{}{1/cm^3s}]$ depends on the density of interstellar gas, where we assume $n_\Hy = \SI{1}{/cm^3}$, the velocity of CR protons, which we approximate with the speed of light, $v_\pr \approx c$, the (kinetic) energy density of CR protons $(\de n / \de T)_\pr\ [\SI{}{1/GeVcm^3}]$ and the cross section to produce gamma rays in a proton-nucleus collisions $\sigma_\pr (E_\gamma, T_\pr)$, taken from \Laura{reference}:
+In the hadronic model, the gamma rays are produced as a result of collisions of hadronic CR with the interstellar gas.
+The source function for the gamma rays is 
 \be
-\left(E\frac{\de n}{\de E}\right)_{\!\!\gamma, \pi^0}\! = \int n_\Hy\ \sigma_\pr v_\pr \left(\frac{\de n}{\de T}\right)_{\!\!\pr} \de T_\pr,
+\left(E\frac{\de Q}{\de E}\right)_{\!\!\gamma, \pi^0}\! = \int n_\Hy\ \sigma_\pr v_\pr \left(\frac{\de n}{\de T}\right)_{\!\!\pr} \de T_\pr,
 \label{eq:had_spectrum}
 \ee
-where the integral goes over the kinetic energies of the protons $T_\pr$. Similarly to section \ref{sec:IC_model} we assume for the density of protons a simple powerlaw and determine the normalization $n_\pr$ and spectral index $\gamma_\pr$  by fitting the hadronic spectrum \eqref{eq:had_spectrum} to the diffuse \Fermi data. For that, we again fit the sum of the photon counts generated by hadronic processes and the baseline model for the foreground to the total photon counts detected by the \Fermi-LAT (with PS mask) using Poisson likelihood.  The dotted-dashed line in Figure \ref{fig:SED_with_fits} represents the best-fit hadronic spectrum (labeled as $\pi^0$). The spectral index of the proton spectrum shows a east-west assymmetry. For $b \in (\ang{2}, \ang{6})$ the spectral index to the West of the GC varies between 2.26 and 2.42, for $b \in (-\ang{2}, \ang{2})$ between 2.14 and 2.64 and for $(-\ang{6}, -\ang{2})$ between 2.21 and 2.32. To the East of the GC the indices vary between 2.33 and 3.55. 
+where the integral goes over the kinetic energies of the protons $T_\pr = \sqrt{(qc)^2 + (mc^2)^2} - mc^2$,
+$n_\Hy$ is the density of gas, and $\sigma_\pr (E_\gamma, T_\pr)$ is 
+the differential cross section to produce gamma rays in proton-proton collisions taken from \citep{2006ApJ...647..692K, 2008ApJ...674..278K}.
+We will use $n_\Hy = \SI{1}{cm^{-3}}$ as a characteristic density,
+which is consistent with the gas surface density of $\sim 10 M_\odot {\rm pc}^{-2}$ \citep{2017ApJ...834...57M}
+averaged over $\approx 200$ pc above and below the GC.
+We will model the proton spectrum as a power law of the momentum $\frac{d n}{d q} = n_\pr q^{-\g_p}$ 
+(note, that $ v \frac{\de n}{\de T} = \frac{d n}{d q}$).
 
+We add the hadronic model of the gamma-ray emission at the base of the FB to the foreground emission 
+and determine the normalization $n_\pr$ and index $\gamma_\pr$ of the CRp spectrum
+by fitting the total model to the \Fermi-LAT data using Poisson log likelihood.
+The dash-dotted line in Figure \ref{fig:SED_with_fits} represents the best-fit hadronic spectrum (labeled as $\pi^0$). 
+The index of the proton spectrum is relatively hard $\g_\pr \lesssim 2.3$, especially to the West of the GC.
+\begin{comment}
+For that, we again fit the sum of the photon counts generated by hadronic processes and the baseline model for the foreground to the total photon counts detected by the \Fermi-LAT (with PS mask) using Poisson likelihood.  
+For $b \in (\ang{2}, \ang{6})$ the spectral index to the West of the GC varies between 2.26 and 2.42, for $b \in (-\ang{2}, \ang{2})$ between 2.14 and 2.64 and for $(-\ang{6}, -\ang{2})$ between 2.21 and 2.32. To the East of the GC the indices vary between 2.33 and 3.55. 
+\end{comment}
+
+We calculate the significance of a cutoff in the CRp spectrum by adding an exponential cutoff factor and refitting the model to the gamma-ray data.
+The improvement in the model and the 95\% confidence lower bound on the cutoff values are presented in Table \ref{tab:pi0}.
+Within $\pm 2^\circ$ from the Galactic plane West of the GC, the 95\% confidence level for the lower bound on the cutoff among all the models
+of the foreground emission that we have considered is about 20 TeV.
+
+
+\begin{comment}
 We again estimate the probability for the proton spectrum to have an exponential cutoff: For the latitude stripe covering the Galactic plane, $b \in (-\ang{2}, \ang{2})$, adding a cutoff does neither improve the $\chi^2$-valueat negative ($\chi^2 \approx 62$) nor positive longitudes ($\chi^2 \approx 116$). At a $95\%$-confidence level, the lower bound for the cutoff energy for the baseline model (and all models) is $\SI{28.6}{TeV}$ ($\SI{22.6}{TeV}$) for negative longitudes and $\SI{1.8}{TeV}$ ($\SI{11.5}{GeV}$) for positive longitudes.\\
 In the latitude band $(-\ang{6}, -\ang{2})$, the $\chi^2$-value does increase both for negative ($\chi^2 = 157$ to $\chi^2 = 123$) and positive longitudes ($\chi^2 = 245$ to $\chi^2 = 156$) by adding an exponential cutoff. The lower bound on the cutoff energy is $\SI{23.6}{TeV}$ ($\SI{0.99}{TeV}$) for negative and $\SI{1.57}{TeV}$ ($\SI{40}{GeV}$) for positive longitudes.
+\end{comment}
+
 
 \begin{table*}
   \begin{center}
     \caption{$\chi^2$-values for hadronic-spectrum fit of a distribution of protons following a simple powerlaw and a powerlaw with a cutoff, respectively in the latitude bands discussed in the text. The lower bound for $E_\cut$ at a $\SI{95}{\percent}$-confidence level for our baseline model is shown in the last column; the value in parenthesis gives the lowest value for all models.}
-    \label{tab:IC}
+    \label{tab:pi0}
     \begin{tabular}{|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
 		 lat & lon  & $\chi^2$(no cutoff) &  $\chi^2$(cutoff) & Lower bound $E_\cut$ \\ 
