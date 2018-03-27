@@ -84,6 +84,7 @@ In the latitude stripe $\ell$ and energy bin $E$ our model consists of a term pr
 $k_{\ell}(E) \cdot \tilde N^\low_\ell(E, x)$, summed over all energies in $0.3 - \SI{1.0}{GeV}$ 
 and rescaled by the ratio of exposures at low and at high energies,
 and an additional term $c_\ell(E) \cdot \tau(x,E)$ proportional to exposure $\tau(x,E)$:
+
 \be
 N^\model_{\ell}(E,x) = k_{\ell}(E) \cdot \tilde N^\low_{\ell}(E,x) +c_\ell(E) \cdot \tau(x,E).
 \ee
@@ -92,6 +93,7 @@ N^\model_{\ell}(E,x) = k_{\ell}(E) \cdot \tilde N^\low_{\ell}(E,x) +c_\ell(E) \c
 %\tilde c_\ell(E,x) = c_\ell(E) \cdot \tau(x,E).
 %\ee
 The term proportional to the exposure takes into account the isotropic extragalactic background and partially compensates for the latitude dependent IC emission. To include the dependence of exposure on energy and position in the sky, the low-energy data is weighted by the ratio of exposure in the low- and in the high-energy bins in each pixel $x$:
+
 \be
 \tilde N^\low_\ell(E,x) = \frac{1}{n_\low} \left(\sum_{\epsilon \in (0.3 - \SI{1.0}{GeV})} \frac{N^\low(\epsilon, x)}{\tau(\epsilon,x)}\right) \cdot \tau(E,x),
 \ee
@@ -114,7 +116,10 @@ $E = \SI{100}{GeV} - \SI{1}{TeV}$ the statistics is low, but one can still see a
 \subsection{Rectangles model of the bubbles}
 \label{sec:box_model}
 
-Our first simple ansatz for a model of the FB consists of rectangular templates that approximately cover the area of the FB. As a model for the foreground we again use the low-energy model from Section \ref{sec:le_data_model}. As before, the fit is performed independently in each $4^\circ$ latitude stripe. To explore the east-west assymetry of the FB, two rectangular templates, one east ($-20^\circ - 0^\circ$) and one west ($0^\circ - 20^\circ$), are added to the low-energy model in each latitude stripe $\ell$ and energy bin $E$: 
+
+Our first simple ansatz for a model of the FB consists of rectangular templates that approximately cover the area of the FB. As a model for the foreground we again use the low-energy model from Section \ref{sec:le_data_model}. As before, the fit is performed independently in each $4^\circ$ latitude stripe. To explore the east-west assymetry of the FB, two rectangular templates, one east ($-20^\circ - 0^\circ$) and one west ($0^\circ - 20^\circ$), 
+are added to the low-energy model in each latitude stripe $\ell$ and energy bin $E$: 
+
 \be
 \begin{split}
 N^\model_{\ell}(E,x) &= k_{\ell}(E) \cdot \tilde N^\low_{\ell}(E,x) +\tilde c_{\ell}(E,x)\\
