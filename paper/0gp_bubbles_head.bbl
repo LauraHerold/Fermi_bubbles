@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Acero} {et~al.}(2016){Acero}, {Ackermann}, {Ajello},
@@ -32,6 +32,11 @@
   {Murray}, \& {Lee}}]{2017ApJ...834...57M}
 {Miville-Desch{\^e}nes}, M.-A., {Murray}, N., \& {Lee}, E.~J. 2017, \apj, 834,
   57
+
+\bibitem[{{Park} {et~al.}(2015){Park}, {Caprioli}, \&
+  {Spitkovsky}}]{2015PhRvL.114h5003P}
+{Park}, J., {Caprioli}, D., \& {Spitkovsky}, A. 2015, Physical Review Letters,
+  114, 085003
 
 \bibitem[{{Su} {et~al.}(2010){Su}, {Slatyer}, \&
   {Finkbeiner}}]{2010ApJ...724.1044S}
