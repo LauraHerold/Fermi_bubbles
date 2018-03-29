@@ -1,5 +1,9 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{24}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Acero} {et~al.}(2015){Acero}, {Ackermann}, {Ajello},
+  {et~al.}}]{2015ApJS..218...23A}
+{Acero}, F., {Ackermann}, M., {Ajello}, M., {et~al.} 2015, \apjs, 218, 23
 
 \bibitem[{{Acero} {et~al.}(2016){Acero}, {Ackermann}, {Ajello},
   {et~al.}}]{2016ApJS..223...26A}
@@ -13,6 +17,11 @@
   {et~al.}}]{2014ApJ...793...64A}
 {Ackermann}, M., {Albert}, A., {Atwood}, W.~B., {et~al.} 2014, \apj, 793, 64
 
+\bibitem[{{Ball} {et~al.}(2018){Ball}, {Sironi}, \&
+  {{\"O}zel}}]{2018arXiv180305556B}
+{Ball}, D., {Sironi}, L., \& {{\"O}zel}, F. 2018, ArXiv e-prints
+  [\eprint[arXiv]{1803.05556}]
+
 \bibitem[{{Blumenthal} \& {Gould}(1970)}]{1970RvMP...42..237B}
 {Blumenthal}, G.~R. \& {Gould}, R.~J. 1970, Reviews of Modern Physics, 42, 237
 
@@ -20,6 +29,11 @@
   {Wandelt}, {Hansen}, {Reinecke}, \& {Bartelmann}}]{2005ApJ...622..759G}
 {G{\'o}rski}, K.~M., {Hivon}, E., {Banday}, A.~J., {et~al.} 2005, \apj, 622,
   759
+
+\bibitem[{{Johannesson} {et~al.}(2013){Johannesson}, {Orlando}, \& {for the
+  Fermi-LAT collaboration}}]{2013arXiv1307.0197J}
+{Johannesson}, G., {Orlando}, E., \& {for the Fermi-LAT collaboration}. 2013,
+  ArXiv:1307.0197 [\eprint[arXiv]{1307.0197}]
 
 \bibitem[{{Kamae} {et~al.}(2006){Kamae}, {Karlsson}, {Mizuno},
   {et~al.}}]{2006ApJ...647..692K}
@@ -33,13 +47,53 @@
 {Miville-Desch{\^e}nes}, M.-A., {Murray}, N., \& {Lee}, E.~J. 2017, \apj, 834,
   57
 
+\bibitem[{Moskalenko \& Strong(1998)}]{Moskalenko:1997gh}
+Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
+
+\bibitem[{{Moskalenko} {et~al.}(2006){Moskalenko}, {Porter}, \&
+  {Digel}}]{2006ApJ...652L..65M}
+{Moskalenko}, I.~V., {Porter}, T.~A., \& {Digel}, S.~W. 2006, \apjl, 652, L65
+
+\bibitem[{{Orlando} \& {Strong}(2007)}]{2007Ap&SS.309..359O}
+{Orlando}, E. \& {Strong}, A.~W. 2007, \apss, 309, 359
+
+\bibitem[{{Orlando} \& {Strong}(2008)}]{2008A&A...480..847O}
+{Orlando}, E. \& {Strong}, A.~W. 2008, \aap, 480, 847
+
 \bibitem[{{Park} {et~al.}(2015){Park}, {Caprioli}, \&
   {Spitkovsky}}]{2015PhRvL.114h5003P}
 {Park}, J., {Caprioli}, D., \& {Spitkovsky}, A. 2015, Physical Review Letters,
   114, 085003
 
+\bibitem[{Porter {et~al.}(2008)Porter, Moskalenko, Strong,
+  {et~al.}}]{Porter:2008ve}
+Porter, T.~A., Moskalenko, I.~V., Strong, A.~W., {et~al.} 2008, \apj, 682, 400
+
+\bibitem[{Ptuskin {et~al.}(2006)Ptuskin, Moskalenko, Jones,
+  {et~al.}}]{Ptuskin:2005ax}
+Ptuskin, V., Moskalenko, I.~V., Jones, F., {et~al.} 2006, \apj, 642, 902
+
+\bibitem[{{Strong} {et~al.}(2007){Strong}, {Moskalenko}, \&
+  {Ptuskin}}]{2007ARNPS..57..285S}
+{Strong}, A.~W., {Moskalenko}, I.~V., \& {Ptuskin}, V.~S. 2007, Annual Review
+  of Nuclear and Particle Science, 57, 285
+
+\bibitem[{Strong {et~al.}(2000)Strong, Moskalenko, \& Reimer}]{Strong:1998fr}
+Strong, A.~W., Moskalenko, I.~V., \& Reimer, O. 2000, \apj, 537, 763
+
+\bibitem[{Strong {et~al.}(2004)Strong, Moskalenko, \& Reimer}]{Strong:2004de}
+Strong, A.~W., Moskalenko, I.~V., \& Reimer, O. 2004, \apj, 613, 962
+
 \bibitem[{{Su} {et~al.}(2010){Su}, {Slatyer}, \&
   {Finkbeiner}}]{2010ApJ...724.1044S}
 {Su}, M., {Slatyer}, T.~R., \& {Finkbeiner}, D.~P. 2010, \apj, 724, 1044
+
+\bibitem[{Vladimirov {et~al.}(2011)Vladimirov, Digel, Johannesson,
+  {et~al.}}]{Vladimirov:2010aq}
+Vladimirov, A.~E., Digel, S.~W., Johannesson, G., {et~al.} 2011,
+  Comput.Phys.Commun., 182, 1156
+
+\bibitem[{Wolleben(2007)}]{Wolleben:2007pq}
+Wolleben, M. 2007, \apj, 664, 349
 
 \end{thebibliography}

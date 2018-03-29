@@ -142,7 +142,40 @@ Here we plot the sum of the residual and the rectangles model.
 
 
 \begin{figure}[h]
+\centering
  \includegraphics[width=0.5\textwidth]{plots/Mollweide_GALPROP_source_range2.pdf}
  \caption{Integrated SED intensity of the residuals in the GALPROP model.}
  \label{fig:Maps_GALPROP}
 \end{figure}
+
+In this section we fit the gamma-ray data using a model derived with the GALPROP
+galactic propagation code v54.1
+\citep{Moskalenko:1997gh, Strong:1998fr, Strong:2004de, Ptuskin:2005ax, 2007ARNPS..57..285S, Porter:2008ve,Vladimirov:2010aq}\footnote{\url{http://galprop.stanford.edu}}. 
+The model for the diffuse components is the same as the Sample model in \cite{2017ApJ...840...43A}.
+The difference is that, within $10^\circ$ from the GC, we do not mask PS and refit 40 PS with largest 
+flux between 10 and 100 GeV.
+
+We use GALPROP to calculate templates for the Galactic diffuse emission components.
+In particular, in each energy bin we determine 5 templates for gamma rays produced in 
+interactions of hadronic CR with gas and bremsstrahlung in 5 Galactocentric rings: 
+0 -- 1.5\,kpc, 1.5 -- 3.5\,kpc, and 3.5 -- 8\,kpc; 8 -- 10\,kpc, and 10 -- 50\,kpc. 
+We use 3 inverse Compton templates corresponding to the three interstellar radiation fields: CMB, 
+infrared emission, and starlight.
+In addition to GALPROP templates, we use a flat template for the \Fermi bubbles at latitudes $|b| > 10^\circ$~\citep{2014ApJ...793...64A}. 
+In the Sample Model we account for Loop~I using a geometric model \citep[e.g., Figure 2 of][]{2014ApJ...793...64A}
+based on a polarization survey at 1.4 GHz~\citep{Wolleben:2007pq}.
+The Sun \citep{2007Ap&SS.309..359O, 2006ApJ...652L..65M, 2008A&A...480..847O, 2013arXiv1307.0197J} and the Moon templates are obtained with the \Fermi Science Tools%
+\footnote{\url{http://fermi.gsfc.nasa.gov/ssc/data/analysis/scitools/solar_template.html}}.
+We also include a generalized Navarro-Frenk-White (gNFW) profile with index $\gamma = 1.25$ and scaling radius $r_{\rm s} = 20\;{\rm kpc}$.
+
+
+For the PS, we add sources in the 3FGL catalog~\citep{2015ApJS..218...23A} to form a template
+in each energy bin.
+We create independent templates for the Large Magellanic cloud and the Cygnus region.
+The remaining extended sources are also added in a separate template.
+We mask 200 brightest sources outside $R = 10^\circ$ from the GC and include independent templates
+for 40 sources with largest flux between 10 and 100 GeV within $10^\circ$ from the GC.
+In Figure \ref{fig:Maps_GALPROP} we show the residual emission plus the \Fermi bubbles model and the gNFW model summed over energies between 10 and 100 GeV.
+
+
+
