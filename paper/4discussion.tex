@@ -21,13 +21,8 @@ the inability of the GALPROP templates to fit the data is also manifested by the
 
 
 \begin{figure*}[h]
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{plots/Profiles_l=1_source_range_1.pdf}
-    \end{subfigure} 
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{plots/Profiles_l=0_source_range_1.pdf}
-    \end{subfigure}
-    
+\includegraphics[width=0.5\textwidth]{plots/Profiles_l=1_source_range_1.pdf}
+\includegraphics[width=0.5\textwidth]{plots/Profiles_l=0_source_range_1.pdf}
   	\caption{Latitude profiles of the different model residals and the data with PS mask in integrated flux in $10 - \SI{100}{GeV}$. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0} - \ang{10}$ to the East of the GC (left) and $\ang{-10} - \ang{0}$ to the West of the GC (right).}
   	\label{fig:Profiles}
 \end{figure*}
@@ -35,12 +30,8 @@ the inability of the GALPROP templates to fit the data is also manifested by the
 \subsection{Comparison of the spectra at different latitudes}
 
 \begin{figure*}[h]
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{plots/SED_all_models_source_l=5_b=0.pdf}
-    \end{subfigure} 
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{plots/SED_all_models_source_l=-5_b=0.pdf}
-    \end{subfigure}
+\includegraphics[width=0.5\textwidth]{plots/SED_all_models_source_l=5_b=0.pdf}
+\includegraphics[width=0.5\textwidth]{plots/SED_all_models_source_l=-5_b=0.pdf}
   	\caption{SED of the model residuals, the data with PS mask and the difference in the data with PS mask West minus East. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0}$ to $\ang{10}$ to the East of the GC (left) and $\ang{-10}$ to $\ang{0}$ to the West of the GC (right).}
   	\label{fig:SED_all}
 \end{figure*}
@@ -76,12 +67,8 @@ is significantly harder than the index at higher latitudes.
 %\Laura{Would you like the x-axis of the log-par plot to show n-2?}
 %\dima{yes, I'd suggest to put (2 - n) on the y-axis}
 \begin{figure*}[h!]
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{plots/LogParabola_n(500GeV)_l_in_(0,10).pdf}
-    \end{subfigure} 
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf}
-    \end{subfigure}
+\includegraphics[width=0.5\textwidth]{plots/LogParabola_n(500GeV)_l_in_(0,10).pdf}
+\includegraphics[width=0.5\textwidth]{plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf}
   	\caption{Index of the log-parabola (as defined in the text) at an energy $E\ = \SI{500}{GeV}$ as a function of latitude for the different model residuals. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0} - \ang{10}$ to the East of the GC (left) and $\ang{-10} - \ang{0}$ to the West of the GC (right).}
   	\label{fig:logpar_index}
 \end{figure*}
@@ -303,6 +290,7 @@ In the latitude band $(-\ang{6}, -\ang{2})$, the $\chi^2$-value does increase bo
 %\dima{we can put a summary plot with the baseline model and the band of all spectra in a small subsection here}
 
 \begin{figure}[h]
+\centering
  \includegraphics[width=0.5\textwidth]{plots/Summary_SED_0.pdf}
  \caption{SED in the Galactic plane. The shaded areas give the systematic uncertainties estimated from the variation of the other models (using 4 different low-energy ranges).}
  \label{fig:data_diff}
