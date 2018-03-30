@@ -191,19 +191,19 @@ models are shown in the last two columns respectively.
 I'd also suggest to keep only the integer values for the $\chi^2$, i.e.,  305.9 --$>$ 306, and to have at most two significant digits
 in the cutoff values.}}
     \label{tab:IC}
-    \begin{tabular}{|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+    \begin{tabular}{|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
-		 Lat & Lon  & $\chi^2$(no cutoff) &  $\chi^2$(cutoff) & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\ 
-		       &         &                               &                            &  \multicolumn{1}{c}{Rectangles model} & All models \\ 
+		 Lat & Lon  & $-2 \Delta \log \La$ & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\ 
+		       &        &                                  &  \multicolumn{1}{c}{Rectangles model} & All models \\ 
 		\hline
-  		$(\ang{2}, \ang{6})$ & east & 305.9 & 75.1  & 0.051 & 0.051 \\ 
-		& west & 155.9 & 155.7  & 4.3  & 4.3 \\ 
+  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 2.6  & 0.051 & 0.051 \\ 
+		& $(\ang{-10}, \ang{0})$ & 0.0  & 4.3  & 4.3 \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & east & 128.1 & 128.1 & 0.49 & 0.016 \\ 
-		& west & 135.3 & 135.3 & 13  & 2.9  \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & 0.0 & 0.49 & 0.016 \\ 
+		& $(\ang{-10}, \ang{0})$ & 0.0 & 13  & 2.9  \\ 
  		\hline
-  		$(\ang{-6}, \ang{-2})$ & east & 97.6 & 86.7 & 0.82 & 0.0008 \\ 
-		& west & 76.1 & 76.1 & 6.9 & 6.9\\ 
+  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$ & 1.1 & 0.82 & 0.0008 \\ 
+		& $(\ang{-10}, \ang{0})$& 0.0 & 6.9 & 6.9\\ 
  \hline
     \end{tabular}
   \end{center}
@@ -270,16 +270,17 @@ In the latitude band $(-\ang{6}, -\ang{2})$, the $\chi^2$-value does increase bo
     \label{tab:pi0}
     \begin{tabular}{|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
-		 lat & lon  & $\chi^2$(no cutoff) &  $\chi^2$(cutoff) & Lower bound $E_\cut$ \\ 
+		 lat & lon  & $-2 \Delta \log \La$ & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\
+		      &        &                                  &       \multicolumn{1}{c}{Rectangles model} & All models \\ 
 		\hline
-  		$(\ang{2}, \ang{6})$ & east & 416.6 & 70.3 & $\SI{160.6}{GeV}$ ($\SI{160.6}{GeV}$)\\ 
-		& west &  127.3 & 204.2 & $\SI{6.3}{TeV}$ ($\SI{1.7}{TeV}$)\\ 
+  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 4.4 & 0.16  & 0.16 \\ 
+		& $(\ang{-10}, \ang{0})$ &  0.0 & 6.3 & 6.3 \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & east & 116.4 & 115.5 & $\SI{1.8}{TeV}$ ($\SI{11.5}{GeV}$)\\ 
-		& west & 61.5 & 61.5 & $\SI{28.6}{TeV}$ ($\SI{22.6}{TeV}$)\\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & 0.0 & 1.8 & 0.011 \\ 
+		& $(\ang{-10}, \ang{0})$ & 0.0 & 29  & 23 \\ 
  		\hline
-  		$(\ang{-6}, \ang{-2})$ & east & 127.3 & 83.7 & $\SI{1.57}{TeV}$ ($\SI{40}{GeV}$)\\ 
-		& west & 96.7 & 65.0 & $\SI{23.6}{TeV}$ ($\SI{0.99}{TeV}$)\\ 
+  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$ & 2.7 & 1.6 & 0.04 \\ 
+		& $(\ang{-10}, \ang{0})$ & 0.0 & 24 & 24 \\ 
  \hline
     \end{tabular}
   \end{center}
