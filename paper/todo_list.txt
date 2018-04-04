@@ -1,0 +1,39 @@
+1. 
+General question:
+I wonder if we should split the current figure 9 into 3 figures:
+parametric, IC and pi0 models.
+
+Then each of these models will go into it's own subsection:
+4.3 - parametric
+4.4 - IC
+4.5 - pi0
+each subsection will have plots of models with and without cutoff 
+plus a shaded region between the min model (95% lower value of energy cutoff).
+each subsection will have a table with the parameters.
+
+
+2. 
+Subsection 4.6 (current 4.5) "summary of the spectrum analysis":
+find model min and model max for b = (-2, 2) deg l = (0, -10) deg region.
+Model min: smallest normalization and cutoff at 95% lower level.
+Model max: largest normalization and no cutoff.
+
+Give all parameters of the models (including normalizations) for the gamma-ray spectra
+as well as the IC and pi0 models (normalizations as column densities of electrons and protons?).
+
+This would be very useful for people who would like to do modeling of the CR or
+find signatures in, e.g., neutrinos.
+
+In particular, I would like to add a plot with a comparison of the intensity inside
+b = (-2, 2) l = (0, -10) region with the CTA and KM3NeT sensitivities (in pi0 scenario).
+These plot would go at the end of Section 5.1.
+
+
+3. 
+Check a few numbers in (current) Tables 1 and 2 (all models b = (-2, 2) both east and west).
+
+
+
+
+
+
