@@ -123,7 +123,7 @@ The source function for the IC gamma-rays is
 \ee
 where $(\de n/ \de E)_\ISRF\ [\SI{}{GeV^{-1} cm^{-3}}]$ is the number density of ISRF photons,
 $(\de n / \de E)_\el\ [\SI{}{GeV^{-1} cm^{-3}}]$ is the number density of electrons, and $\sigma_\IC(E_\gamma, E_\ISRF, E_\el)$
-is the IC scattering cross section \citep{1970RvMP...42..237B}.
+is the differential IC scattering cross section in units of $E_\g\frac{d\sigma}{d E_\g}$ \citep{1970RvMP...42..237B}.
 The ISRF number density for starlight and IR photons is taken from GALPROP v54.
 %The ISRF has three main components: starlight, IR and CMB. 
 %The IR and the starlight components are taken from the on-line distribution of GALPROP. 
@@ -269,7 +269,8 @@ The source function for the gamma rays is
 \ee
 where the integral goes over the kinetic energies of the protons $T_\pr = \sqrt{(qc)^2 + (mc^2)^2} - mc^2$,
 $n_\Hy$ is the density of gas, and $\sigma_\pr (E_\gamma, T_\pr)$ is 
-the differential cross section to produce gamma rays in proton-proton collisions taken from \citep{2006ApJ...647..692K, 2008ApJ...674..278K}.
+the differential cross section in units of $E_\g\frac{d\sigma}{d E_\g}$
+to produce gamma rays in proton-proton collisions \citep{2006ApJ...647..692K, 2008ApJ...674..278K}.
 We will use $n_\Hy = \SI{1}{cm^{-3}}$ as a characteristic density,
 which is consistent with the gas surface density of $\sim 10 M_\odot {\rm pc}^{-2}$ \citep{2017ApJ...834...57M}
 averaged over $\approx 200$ pc above and below the GC.
