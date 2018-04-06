@@ -85,8 +85,9 @@ we also find the minimum among all models.
 
 \begin{table*}
   \begin{center}
-    \caption{Parametric model of the FB (best fit values for the rectangles model, significance of the cutoff, 95\% confidence on cutoff statistical,
-    and 95\% confidence -- minimum among the models.}
+    \caption{Parametric model of the FB. We report the best fit values of the spectrum, the significance of the cutoff, 
+    and statistical 95\% confidence on $E_{\rm cut}$ for the rectangles model.
+    The last column is the minimum among all models of the 95\% statistical confidence value of $E_{\rm cut}$.}
     \label{tab:param}
     \begin{tabular}{|c|c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
@@ -272,8 +273,8 @@ the differential cross section to produce gamma rays in proton-proton collisions
 We will use $n_\Hy = \SI{1}{cm^{-3}}$ as a characteristic density,
 which is consistent with the gas surface density of $\sim 10 M_\odot {\rm pc}^{-2}$ \citep{2017ApJ...834...57M}
 averaged over $\approx 200$ pc above and below the GC.
-We will model the proton spectrum as a power law of the momentum $\frac{d n}{d q} = n_\pr q^{-\g_p}$ 
-(note, that $ v \frac{\de n}{\de T} = \frac{d n}{d q}$).
+We will model the proton spectrum as a power law of the momentum $\frac{d n}{d qc} = n_\pr q^{-\g_p}$ 
+(note, that $ v \frac{\de n}{\de T} = c \frac{d n}{d qc}$).
 
 We add the hadronic model of the gamma-ray emission at the base of the FB to the foreground emission 
 and determine the normalization $n_\pr$ and index $\gamma_\pr$ of the CRp spectrum
@@ -325,8 +326,8 @@ In the latitude band $(-\ang{6}, -\ang{2})$, the $\chi^2$-value does increase bo
 
 \begin{figure}[h]
 \centering
- \includegraphics[width=0.5\textwidth]{plots/Summary_SED_b=0_l=-5.pdf}
- \includegraphics[width=0.5\textwidth]{plots/Summary_SED_b=0_l=5.pdf}
+ \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=-5.pdf}
+ \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=5.pdf}
  \caption{SED in the Galactic plane. The shaded areas give the systematic uncertainties estimated from the variation of the other models (using 4 different low-energy ranges).}
  \label{fig:data_diff}
 \end{figure}
@@ -334,20 +335,25 @@ In the latitude band $(-\ang{6}, -\ang{2})$, the $\chi^2$-value does increase bo
 
 \begin{table*}
   \begin{center}
-    \caption{Summary of the min and max models for the parametric, IC and hadronic models of the FB for $|b| < 2^\circ$ and $-10^\circ < \ell < 0^\circ$.}
-    \label{tab:param}
-    \begin{tabular}{|c|c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+    \caption{Summary of the min and max models for the parametric, 
+    IC and hadronic models of the FB for $|b| < 2^\circ$ and $-10^\circ < \ell < 0^\circ$. 
+    For the parametric model we report the energy spectrum of the gamma rays,
+    for the IC model we report the surface density of the electrons spectrum as a function of energy,
+    while for the hadronic model -- the surface density of the protons spectrum as a function of momentum.
+    The normalizations are provided at 1 GeV.}
+    \label{tab:summary}
+    \begin{tabular}{| l |c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
-		 Model & Type  & norm & index & cutoff 95\% stat & cutoff 95\% min \\ 
-		       &        &  ${\rm \frac{GeV}{cm^{2}\, s\, sr}}$ &  & {\rm TeV} & {\rm TeV}\\ 
+		 {\hspace{2cm}Model} & Type  & norm & index & cutoff 95\% stat & cutoff 95\% min \\ 
+		       &        &   &  & {\rm TeV} & {\rm TeV}\\ 
 		\hline
-  		Parametric & max & 1.  & -2 &  5 & 1 \\ 
+  		\multirow{2}{*}{Parametric, $\frac{dN_\g}{dE} = \left[{\rm \frac{1}{GeV\, cm^{2}\, s}}\right]$} & max & 1.  & -2 &  5 & 1 \\ 
 		& min & 1.  & -2 &  5 & 1  \\ 
  		\hline
-  		IC & max & 1.  & -2 &  5 & 1 \\ 
+  		\multirow{2}{*}{IC, $\frac{d\Sigma_e}{dE} = \left[{\rm \frac{1}{GeV\,cm^2}}\right]$} & max & 1.  & -2 &  5 & 1 \\ 
 		& min & 1.  & -2 &  5 & 1  \\ 
  		\hline
-  		Hadronic & max & 1.  & -2 &  5 & 1 \\ 
+  		\multirow{2}{*}{Hadronic, $\frac{d\Sigma_p}{dqc} = \left[{\rm \frac{1}{GeV\,cm^2}}\right]$} & max & 1.  & -2 &  5 & 1 \\ 
 		& min & 1.  & -2 &  5 & 1  \\ 
  \hline
     \end{tabular}
