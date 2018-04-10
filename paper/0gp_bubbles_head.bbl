@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{27}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Acero} {et~al.}(2015){Acero}, {Ackermann}, {Ajello},
@@ -41,6 +41,11 @@
 \bibitem[{{Ackermann} {et~al.}(2014){Ackermann}, {Albert}, {Atwood},
   {et~al.}}]{2014ApJ...793...64A}
 {Ackermann}, M., {Albert}, A., {Atwood}, W.~B., {et~al.} 2014, \apj, 793, 64
+
+\bibitem[{{Ambrogi} {et~al.}(2018){Ambrogi}, {Celli}, \&
+  {Aharonian}}]{2018APh...100...69A}
+{Ambrogi}, L., {Celli}, S., \& {Aharonian}, F. 2018, Astroparticle Physics,
+  100, 69
 
 \bibitem[{{Archambault} {et~al.}(2017){Archambault}, {Archer}, {Benbow},
   {Bird}, {Bourbeau}, {Buchovecky}, {Buckley}, {Bugaev}, {Cerruti}, {Connolly},
