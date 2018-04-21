@@ -8,14 +8,16 @@ In order to quantitatively estimate the difference in the intensity of emission 
 of the gamma-ray emission at the base of the FB,
 we plot the latitude profiles to the left and to the right of the GC.
 In Figure \ref{fig:Profiles} we show the flux for different models integrated in the energy range $10 - \SI{100}{GeV}$ as a function of Galactic latitude. 
-The regions have a width of $\ang{4}$ for $|b|<\ang{10}$ and $\ang{10}$ for $|b|>\ang{10}$ in latitude and a width of $\ang{10}$ in longitude, that is $\ang{0} - \ang{10}$ to the East of the GC an $\ang{-10} - \ang{0}$ to the West of the GC. The profiles of the three models show the residual including the FB, i.e. for the low-energy model this is the residual, for the rectangles model it is the sum of residual and rectangles template, and for the GALPROP model it is the sum of residual, FB template and GC excess template, as decsribed in section \ref{sec:Modeling}. For comparison we show the data outside of the PS mask.
+%The regions have a width of $\ang{4}$ for $|b|<\ang{10}$ and $\ang{10}$ for $|b|>\ang{10}$ in latitude and a width of $\ang{10}$ in longitude. 
+%that is $\ang{0} - \ang{10}$ to the East of the GC an $\ang{-10} - \ang{0}$ to the West of the GC. 
+The profiles of the three models include the residual emission plus the FB, i.e. for the low-energy model this is the residual, for the rectangles model it is the sum of residual and rectangles template, and for the GALPROP model it is the sum of residual, FB template and GC excess template, as decsribed in section \ref{sec:Modeling}. For comparison we show the latitude profile of the total gamma-ray data outside of the PS mask.
 %We observe an agreement between all models and a East-West assymmetry close to the GC. 
 For positive longitudes,
-some models overpredict the gamma-ray data which leads to oversubtration in the residuals.
+some models overpredict the gamma-ray data which leads to negative residuals.
 For negative longitudes there is an increase of flux in the Galactic plane by at least a factor of 2 for all models relative to the gamma-ray emission
 from the FB at high latitudes. 
-The residual of the GALPROP model differs from the low-energy and rectangles model in the Galactic plane by a factor of $2-3$. 
-This may be due to additional freedom in the GALPROP model related to many templates in the Galactic plane,
+The residual of the GALPROP model differs from the low-energy and rectangles model in the Galactic plane by a factor of 2 to 3. 
+This may be due to additional freedom in the GALPROP model related to the usage of many templates in the Galactic plane,
 the inability of the GALPROP templates to fit the data is also manifested by the negative residuals to the East of the GC.
 %Also the data shows a slight East-West assymmetry in the flux around the GC.
 
@@ -23,7 +25,9 @@ the inability of the GALPROP templates to fit the data is also manifested by the
 \begin{figure*}[h]
 \includegraphics[width=0.5\textwidth]{plots/Profiles_l=1_source_range_1.pdf}
 \includegraphics[width=0.5\textwidth]{plots/Profiles_l=0_source_range_1.pdf}
-  	\caption{Latitude profiles of the different model residals and the data with PS mask in integrated flux in $10 - \SI{100}{GeV}$. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0} - \ang{10}$ to the East of the GC (left) and $\ang{-10} - \ang{0}$ to the West of the GC (right).}
+  	\caption{Latitude profiles of the different model residals and the data with PS mask in 
+	the units of flux integrated between 10 and 100 GeV. 
+	The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0} - \ang{10}$ to the East of the GC (left) and $\ang{-10} - \ang{0}$ to the West of the GC (right).}
   	\label{fig:Profiles}
 \end{figure*}
 
@@ -32,7 +36,7 @@ the inability of the GALPROP templates to fit the data is also manifested by the
 \begin{figure*}[h]
 \includegraphics[width=0.5\textwidth]{plots/SED_all_models_source_l=5_b=0.pdf}
 \includegraphics[width=0.5\textwidth]{plots/SED_all_models_source_l=-5_b=0.pdf}
-  	\caption{SED of the model residuals, the data with PS mask and the difference in the data with PS mask West minus East. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0}$ to $\ang{10}$ to the East of the GC (left) and $\ang{-10}$ to $\ang{0}$ to the West of the GC (right).}
+  	\caption{SED of the model residuals, the data with PS mask and the difference in the data with PS mask West minus East. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0}$ to $\ang{10}$ to the East of the GC (left) and $\ang{-10}$ to $\ang{0}$ to the West of the GC (right). \dima{I don't think it makes sense to keep the difference in the data on the left plot, since there are basically no points. Can we remove it there?}}
   	\label{fig:SED_all}
 \end{figure*}
 
@@ -40,10 +44,13 @@ In this section we quantify the hardening of the gamma-ray spectrum at the base 
 We first compare the SED of the different model residuals in Figure \ref{fig:SED_all}. 
 The differential flux is averaged over regions to the East $(\ang{0} - \ang{10})$ and West $(\ang{-10} - \ang{0})$ of the GC, 
 in a very thin stripe covering the Galactic plane $b \in (\ang{-2},\ \ang{2})$. 
-For comparison we show the data with PS mask and the difference in the data West minus East, 
-which is positive in every energy bin in the shown latitude band.
+For comparison we show the data with PS mask and the difference in the data West minus East
+on the plot for $\ell \in (\ang{-10} - \ang{0})$.
 
-For negative longitudes, all models give similar results. We again observe that the differential flux of the GALPROP model is smaller than the differential flux of the other models, wich is consistent with the observation in section \ref{sec:Latitude_profiles}. We also find an assymmetry in the flux of the data with PS mask. The difference of the data West minus East is similar to the flux of the low-energy and rectangles model. The spectra at positive longitudes show large oversubtractions and an overall softer spectrum. %\Laura{Should we show here the plots for (-6,-2) and (2,6) deg latitude also?}
+For negative longitudes, all models give similar results. 
+The differential flux of the GALPROP model is smaller than the differential flux of the other models above 10 GeV, 
+which is consistent with the profile plots in Figure \ref{fig:Profiles}.
+We also find an asymmetry in the flux of the data with PS mask. The difference of the data West minus East is similar to the flux of the low-energy and rectangles models. The spectra at positive longitudes show large oversubtractions and an overall softer spectrum. %\Laura{Should we show here the plots for (-6,-2) and (2,6) deg latitude also?}
 %\dima{I'm not sure, it will take space}
 
 To compare the behavior of the energy spectra at high energies for different latitudes, 
@@ -78,10 +85,12 @@ is significantly harder than the index at higher latitudes.
 \label{sec:param_model}
 
 In this section we study in detail the spectrum of the FB at latitudes $|b| < 6^\circ$.
-We compare a power-law model with a power-law and an exponential cutoff and find 
-the 95\% confidence level for the cutoff energy.
-As a baseline model we use the rectangles model of the FB, for the 95\% confidence level 
-we also find the minimum among all models.
+As a baseline model we use the rectangles model of the FB.
+We compare a power-law model of the energy spectrum with a power-law and an exponential cutoff model.
+For the model with a cutoff, we find the 95\% statistical confidence interval for the cutoff energy 
+(we report the lower boundary of the interval).
+At last, we find the minimum among the 95\% confidence levels for all considered models.
+The results are summarized in Table \ref{tab:param}
 
 \begin{table*}
   \begin{center}
@@ -207,7 +216,7 @@ for different latitude stripes.
         \includegraphics[width=\textwidth]{plots/SED_boxes_source_-4.pdf}
     \end{subfigure}
 \end{comment}
-  	\caption{SED of rectangles-model residual in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive longitudes (red). We determine the spectral index of a powerlaw (PL), of an electron distribution emitting gamma-rays via IC and of a proton distribution emitting gamma-rays via $\pi^0$-decay.}
+  	\caption{SED of rectangles-model residual in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive (red) longitudes. We determine the spectral index of a powerlaw (PL), of an electron distribution emitting gamma-rays via IC and of a proton distribution emitting gamma-rays via $\pi^0$-decay.}
   	%\Laura{Should we add the spectrum for the latitude band $(\ang{2}, \ang{6})$ also, or just say that it looks similar?}
 	%\blue{Dima: yes, let's add the 2 to 6 deg spectrum.}
   	\label{fig:SED_with_fits}
@@ -233,12 +242,11 @@ for different latitude stripes.
 
 \begin{table*}
   \begin{center}
-    \caption{$\chi^2$-values for IC-spectrum fit of a distribution of electrons following a simple powerlaw and a powerlaw with cutoff, respectively in the latitude bands discussed in the text. 
-The lower bounds for $E_\cut$ at $\SI{95}{\percent}$ confidence level for our baseline model and the minimum among all
+    \caption{Energy cutoff values and the significance of the cutoff in the IC model of the FB at low latitudes.
+%  $\chi^2$-values for IC-spectrum fit of a distribution of electrons following a simple powerlaw and a powerlaw with cutoff, respectively in the latitude bands discussed in the text. 
+The lower bounds for $E_\cut$ at the 95\% confidence level for our baseline model and the minimum among all
 models are shown in the last two columns respectively.
-\dima{I've added an extra column for the minimum of cutoff among all models, if you think it's OK, please, change the pi0 table as well.
-I'd also suggest to keep only the integer values for the $\chi^2$, i.e.,  305.9 --$>$ 306, and to have at most two significant digits
-in the cutoff values.}}
+}
     \label{tab:IC}
     \begin{tabular}{|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
@@ -285,12 +293,20 @@ The source function for the gamma rays is
 where the integral goes over the kinetic energies of the protons $T_\pr = \sqrt{(qc)^2 + (mc^2)^2} - mc^2$,
 $n_\Hy$ is the density of gas, and $\sigma_\pr (E_\gamma, T_\pr)$ is 
 the differential cross section in units of $E_\g\frac{d\sigma}{d E_\g}$
-to produce gamma rays in proton-proton collisions \citep{2006ApJ...647..692K, 2008ApJ...674..278K}.
+for gamma rays in proton-proton collisions \citep{2006ApJ...647..692K, 2008ApJ...674..278K}.
 We will use $n_\Hy = \SI{1}{cm^{-3}}$ as a characteristic density,
 which is consistent with the gas surface density of $\sim 10 M_\odot {\rm pc}^{-2}$ \citep{2017ApJ...834...57M}
 averaged over $\approx 200$ pc above and below the GC.
-We will model the proton spectrum as a power law of the momentum $\frac{d n}{d qc} = n_\pr q^{-\g_p}$ 
-(note, that $ v \frac{\de n}{\de T} = c \frac{d n}{d qc}$).
+The gamma-ray flux in the hadronic model is
+
+\be
+E^2 \frac{dF}{dE} = \frac{E}{4\pi} \int n_\Hy\ \sigma_\pr v_\pr \left(\frac{\de \Sigma}{\de T}\right)_{\!\!\pr} \de T_\pr,
+%\frac{Ec}{4\pi}\int \int \left(\frac{\de n}{\de E}\right)_{\!\!\ISRF} \sigma_\IC\ \left(\frac{\de \Sigma}{\de E}\right)_{\!\!\el} \de E_\ISRF\, \de E_\el,
+\ee
+where $\left(\frac{\de \Sigma}{\de E}\right)_{\!\!\pr} = \int \left(\frac{\de n}{\de E}\right)_{\!\!\pr} dR$ is the column density 
+of CR protons.
+We will model the proton spectrum as a power law of the momentum $\frac{d \Sigma}{d qc} = n_\pr q^{-\g_p}$ 
+(note, that $ v \frac{\de \Sigma}{\de T} = c \frac{d \Sigma}{d qc}$).
 
 We add the hadronic model of the gamma-ray emission at the base of the FB to the foreground emission 
 and determine the normalization $n_\pr$ and index $\gamma_\pr$ of the CRp spectrum
@@ -316,7 +332,9 @@ In the latitude band $(-\ang{6}, -\ang{2})$, the $\chi^2$-value does increase bo
 
 \begin{table*}
   \begin{center}
-    \caption{$\chi^2$-values for hadronic-spectrum fit of a distribution of protons following a simple powerlaw and a powerlaw with a cutoff, respectively in the latitude bands discussed in the text. The lower bound for $E_\cut$ at a $\SI{95}{\percent}$-confidence level for our baseline model is shown in the last column; the value in parenthesis gives the lowest value for all models.}
+    \caption{Energy cutoff values and the significance of the cutoff in the hadronic model of the FB at low latitudes.
+%    $\chi^2$-values for hadronic-spectrum fit of a distribution of protons following a simple powerlaw and a powerlaw with a cutoff, respectively in the latitude bands discussed in the text. 
+The lower bound for $E_\cut$ at the 95\% confidence level for our baseline model is shown in the last column; the value in parenthesis gives the lowest value for all models.}
     \label{tab:pi0}
     \begin{tabular}{|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
@@ -342,9 +360,12 @@ In the latitude band $(-\ang{6}, -\ang{2})$, the $\chi^2$-value does increase bo
 
 \begin{figure}[h]
 \centering
- \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=-5.pdf}
  \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=5.pdf}
- \caption{SED in the Galactic plane. The shaded areas give the systematic uncertainties estimated from the variation of the other models (using 4 different low-energy ranges).}
+  \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=-5.pdf}
+ \caption{SED of the FB in the Galactic plane. 
+ The shaded areas show the envelope of the FB spectra in all foreground models considered in the paper
+including the changes in the choice of the low-energy range to model the foreground emission
+(discussed in Appendix \ref{sec:lowE_syst}).}
  \label{fig:spec_summary}
 \end{figure}
 
