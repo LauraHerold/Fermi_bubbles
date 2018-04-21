@@ -8,17 +8,17 @@
 \includegraphics[width=0.33\textwidth]{plots/Mollweide_data_source_range_1.pdf}
 \includegraphics[width=0.33\textwidth]{plots/Mollweide_data_source_range_2.pdf}
 \caption{SED intensity integrated in three different energy ranges of the \Fermi-LAT 9 years of Source class data.
-\dima{I'm not sure that one needs to use subfigure in this case.}
+\dima{Please, transform them in a log scale, so that the emission in the Galactic plane is not as saturated.}
 }
 \label{fig:Maps_data}
 \end{figure*}
 
-The main goal of the analysis is a study of a relatively small region $\lesssim 10^\circ$ from the GC for energies $\gtrsim 1$ GeV.
+%The main goal of the analysis is a study of a relatively small region $\lesssim 10^\circ$ from the GC for energies $\gtrsim 1$ GeV.
 We use 9 years of the \Fermi-LAT Pass 8 Source class events
 between August 4, 2008  and August 3, 2017 ({\Fermi} Mission Elapsed Time 239557418\,s -- 523411376\,s)
 with energies between 316 MeV $ = 10^{2.5}$ MeV
 and 1 TeV separated in 21 logarithmic energy bins (6 bins per decade).
-The selection of the events is performed with the standard quality cuts.
+The selection of the events is performed with the standard quality cuts (DATA\_QUAL$>$0)\&\&(LAT\_CONFIG==1).
 In order to avoid contamination from gamma rays produced in interactions of cosmic ray in the Earth atmosphere, 
 we select events with the zenith angles $\theta < 100^{\circ}$,
 which is sufficient for energies above 316 MeV.

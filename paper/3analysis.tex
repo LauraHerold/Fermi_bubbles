@@ -1,5 +1,7 @@
 \section{Modeling of the \Fermi bubbles at low latitudes}
 \label{sec:Modeling}
+
+\begin{comment}
 One of the main problems in the analysis of the FB near the GC is the 
 presence of the foreground emission components, 
 such as the interactions of cosmic rays with the interstellar gas and radiation fields.
@@ -30,7 +32,7 @@ The flux attributed to these rectangular templates is used as an estimate of the
 We also calculate the flux attributed to the bubbles using one of the diffuse emission models from \citep{2017ApJ...840...43A}
 (Section \ref{sec:galprop_model}).
 
-
+\end{comment}
 
 \subsection{West -- East asymmetry in the data}
 \label{sec:data_diff}
@@ -39,7 +41,8 @@ As a first simple check of the asymmetry at low latitudes, we compare the \Fermi
 We mask the 200 brightest 3FGL Point sources (PS)  with a circle of radius $\frac{\delta}{\sqrt{2}} + 1^\circ$ where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels. We also symmetrize the PSs relative to the GC in order to avoid possible bias by masking more pixels on one side of the GC. 
 This PS mask is also used in the following sections. 
 The data is averaged over a region to the West (longitudes $0^\circ < \ell < 10^\circ$) and to the East ($-10^\circ < \ell  <  0^\circ$) of the Galactic center for different latitudes. The regions have a latitude width of $10^\circ$ for $b >|10^\circ|$ and a width of  $4^\circ$ for  $b <|10^\circ|$. 
-The difference of the averaged intensity of emission West minus East of the GC is shown in Fig. \ref{fig:data_diff}. The errorbars in all figures show the statistical errors if not indicated differently.
+The difference of the averaged intensity of emission West minus East of the GC is shown in Fig. \ref{fig:data_diff}. 
+The error bars in show the statistical errors.
 At high latitudes, $b >|10^\circ|$, the emission is relatively symmetric. 
 The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^\circ)$ shows excess emission to the West of the Galactic center, which remains significant at high energies. 
 
@@ -48,7 +51,7 @@ The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^
 \centering
  \includegraphics[width=0.5\textwidth]{plots/Difference_data_for_different_latitudes.pdf}
  \caption{Difference West minus East in the \Fermi-LAT intensity relative to the GC after masking bright PSs.
- The mask is made symmetric using point reflection relative to the GC.
+ The PS mask is made symmetric using point reflection relative to the GC.
  The West (East) region has $-10^\circ < \ell <0^\circ$ ($0^\circ < \ell <10^\circ$). }
  \label{fig:data_diff}
 \end{figure}
@@ -66,40 +69,34 @@ The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^
 
 Gamma rays produced in interactions of CR with gas and IC scattering dominate the gamma-ray emission around the GC in the energy range $E \lesssim \SI{1}{GeV}$. 
 Consequently, low-energy \Fermi-LAT data is a good tracer for diffuse gamma-ray emission in the Galactic plane and can be used to create a spatial template for the Galactic foreground.
-The PSF for the \Fermi-LAT photons between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ (averaged with $E^{-2}$ spectrum) is about $1^\circ\!\!.5$,
+The 68\% containment for the \Fermi-LAT photons between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ (averaged with $E^{-2}$ spectrum) is about $1^\circ\!\!.5$,
 which is much worse than the sub-degree angular resolution above $\SI{1}{GeV}$.
 In order to compensate for the difference in the angular resolution, 
 we smooth the data in each high-energy bin with a Gaussian kernel of $\ang{1}$ (which corresponds to $68\%$ containment angle of
 $1^\circ\!\!.5$ in 2 dimensions).
 
 We cut the sky horizontally in latitude stripes with the width of $\ang{4}$ and define our model in each stripe and energy bin separately. 
-In the latitude stripe $\ell$ and energy bin $E$ our model consists of a term proportional to the low-energy photon counts 
-$k_{\ell}(E) \cdot \tilde N^\low_\ell(E, x)$, summed over all energies in $0.3 - \SI{1.0}{GeV}$ 
-and rescaled by the ratio of exposures at low and at high energies,
-and an additional term $c_\ell(E) \cdot \tau(x,E)$ proportional to exposure $\tau(x,E)$:
+In the latitude stripe $\ell$ and energy bin $E$ our model consists of two terms:
 
 \be
-N^\model_{\ell}(E,x) = k_{\ell}(E) \cdot \tilde N^\low_{\ell}(E,x) +c_\ell(E) \cdot \tau(x,E).
+N^\model_{\ell}(E,x) = k_{\ell}(E) \cdot \tilde N^\low_{\ell}(E,x) + c_\ell(E) \cdot \tau(x,E),
 \ee
-%The term $\tilde c_\ell(E,x)$ consists of a factor $c_\ell(E)$, which is constant in each latitude $\ell$ and energy $E$, that is weighted by the exposure $\tau(E,x)$:
-%\be
-%\tilde c_\ell(E,x) = c_\ell(E) \cdot \tau(x,E).
-%\ee
-The term proportional to the exposure takes into account the isotropic extragalactic background and partially compensates for the latitude dependent IC emission. To include the dependence of exposure on energy and position in the sky, the low-energy data is weighted by the ratio of exposure in the low- and in the high-energy bins in each pixel $x$:
-
+where $k_{\ell}(E) \cdot \tilde N^\low_\ell(E, x)$ is proportional to the low-energy photon counts summed over 
+$n_\low = 3$ energy bins between between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ 
+rescaled by the ratio of exposures at low and at high energies:
 \be
 \tilde N^\low_\ell(E,x) = \frac{1}{n_\low} \left(\sum_{\epsilon \in (0.3 - \SI{1.0}{GeV})} \frac{N^\low(\epsilon, x)}{\tau(\epsilon,x)}\right) \cdot \tau(E,x),
 \ee
-where $n_\low = 3$ is the number of low-energy bins between $\SI{316}{MeV}$ and $\SI{1}{GeV}$.
-
+The term $c_\ell(E) \cdot \tau(x,E)$ is proportional to exposure $\tau(x,E)$, it accounts for the isotropic extragalactic background and partially compensates for the latitude dependent IC emission. 
 
 We determine the parameters $c_{\ell}(E)$ and $k_{\ell}(E)$ by fitting the model to the \Fermi-LAT data in energy bins $E > \SI{1.0}{GeV}$
 using Poisson likelihood (with Python iminuit minimizer). Since we smooth the data before the fit, the Poisson log-likelihood is an approximation in this case. 
-In order to avoid an overcompensation of the \Fermi bubbles, the region $-20^\circ < \ell < 20^\circ$ is excluded from the fit. PSs are masked with the PS mask described in Section \ref{sec:data_diff}.
+In order to avoid an overcompensation of the \Fermi bubbles, the region $-20^\circ < \ell < 20^\circ$ is excluded from the fit. PSs are masked with the mask described in Section \ref{sec:data_diff}.
 
 %\red{Dima: do we symmetrize the PS mask in the analysis as well, not only in the calculation of the asymmetry in the data?}
 
-After we fit the model in each latitude stripe, we interpolate it inside the bubbles ROI and find the residual by subtracting it from the data.
+After we fit the model in each latitude stripe, we interpolate it inside the bubbles ROI and 
+find the residual by subtracting the model from the data.
 Figure \ref{fig:Maps_lowE} shows the residual SED intensity integrated for three different energy ranges%
 \footnote{The integral of the SED intensity between $E_0$ and $E_1$ is defined as
 $W = \int_{E_0}^{E_1} E \frac{dN}{dE} dE.$}.
@@ -109,24 +106,32 @@ $E = \SI{100}{GeV} - \SI{1}{TeV}$ the statistics is low, but one can still see a
 \subsection{Rectangles model of the bubbles}
 \label{sec:box_model}
 
-
-Our first simple ansatz for a model of the FB consists of rectangular templates that approximately cover the area of the FB. As a model for the foreground we again use the low-energy model from Section \ref{sec:le_data_model}. As before, the fit is performed independently in each $4^\circ$ latitude stripe. To explore the east-west assymetry of the FB, two rectangular templates, one east ($-20^\circ - 0^\circ$) and one west ($0^\circ - 20^\circ$), 
-are added to the low-energy model in each latitude stripe $\ell$ and energy bin $E$: 
+In the previous subsection, we exclude the approximate ROI of the FB.
+In this subsection, we perform the fit over the whole sky and model the emission from the FB by rectangles of small size.
+%Our first simple ansatz for a model of the FB consists of rectangular templates that approximately cover the area of the FB. 
+In order to explore the east-west asymmetry of the FB, 
+we introduce two rectangular templates in each latitude stripe $\ell$ and energy bin $E$: 
+one east ($-20^\circ - 0^\circ$) and one west ($0^\circ - 20^\circ$) of the GC.
+We use the same foreground model as in Section \ref{sec:le_data_model} plus the isotropic template.
+Overall, the model has four terms in each energy bin:
 
 \be
 \begin{split}
-N^\model_{\ell}(E,x) &= k_{\ell}(E) \cdot \tilde N^\low_{\ell}(E,x) +\tilde c_{\ell}(E,x)\\
+N^\model_{\ell}(E,x) &= k_{\ell}(E) \cdot \tilde N^\low_{\ell}(E,x) + c_\ell(E) \cdot \tau(x,E)\\
 &\quad + R^\east_\ell(E) + R^\west_\ell(E).
 \end{split}
 \ee
-We determine the normalization of the rectangles $R^\east_\ell(E)$ and $R^\west_\ell(E)$ and the parameters $k_{\ell}(E)$ and $c_{\ell}(E)$ by fitting the model to the \Fermi-LAT data in energy bins $E > \SI{1.0}{GeV}$, while PSs are masked. The resulting residual, shown in Fig. \ref{fig:Maps_Rectangles} for $E = 10 - \SI{100}{GeV}$, is very similar to the low-energy model. 
-Here we plot the sum of the residual and the rectangles model.
+where the scaling parameters $k_{\ell}(E)$, $c_{\ell}(E)$, $R^\east_\ell(E)$, and $R^\west_\ell(E)$ are determined independently 
+in each $4^\circ$ latitude stripe and in each energy bin $E > \SI{1.0}{GeV}$
+by  fitting the model to the \Fermi-LAT data.
+The map of residuals plus the rectangles model integrated for $E = 10 - \SI{100}{GeV}$ is shown in Fig. \ref{fig:Maps_Rectangles}.
+%Here we plot the sum of the residual and the rectangles model.
 %With residual we denote the sum of the rectangles-model residual and the rectangles template in the following.
 
 \begin{figure}[h]
 \centering
  \includegraphics[width=0.5\textwidth]{plots/Mollweide_Boxes_residual+boxes_03-10GeV_flux_source_range_1.pdf}
- \caption{Integrated SED intensity of the residuals plus the rectangles model of the FB.}
+ \caption{Integrated SED intensity of the residuals plus the rectangles model of the FB derived in Section \ref{sec:box_model}.}
  \label{fig:Maps_Rectangles}
 \end{figure}
 
