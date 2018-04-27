@@ -36,7 +36,7 @@ the inability of the GALPROP templates to fit the data is also manifested by the
 \begin{figure*}[h]
 \includegraphics[width=0.5\textwidth]{plots/SED_all_models_source_l=5_b=0.pdf}
 \includegraphics[width=0.5\textwidth]{plots/SED_all_models_source_l=-5_b=0.pdf}
-  	\caption{SED of the model residuals, the data with PS mask and the difference in the data with PS mask West minus East. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0}$ to $\ang{10}$ to the East of the GC (left) and $\ang{-10}$ to $\ang{0}$ to the West of the GC (right). \dima{I don't think it makes sense to keep the difference in the data on the left plot, since there are basically no points. Can we remove it there?}}
+  	\caption{SED of the model residuals, the data with PS mask and the difference in the data with PS mask West minus East. The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0}$ to $\ang{10}$ to the East of the GC (left) and $\ang{-10}$ to $\ang{0}$ to the West of the GC (right).}
   	\label{fig:SED_all}
 \end{figure*}
 
@@ -382,16 +382,16 @@ including the changes in the choice of the low-energy range to model the foregro
     \begin{tabular}{| l |c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
 		 {\hspace{2cm}Model} & Type  & norm & index & cutoff & cutoff 95\% stat \\ 
-		       &        &   &  & {\rm TeV} & {\rm GeV}\\ 
+		       &        &   &  & {\rm TeV} & {\rm TeV}\\ 
 		\hline
-  		\multirow{2}{*}{Parametric, $\frac{dN_\g}{dE} = \left[{\rm \frac{1}{GeV\, cm^{2}\, s}}\right]$} & max & $\SI{7.3e-6}{}$  & -2.0 &  2.1 & 0.9 \\ 
-		& min & $\SI{1.9e-6}{}$ & -2.2 &  0.9 & 0.3  \\ 
+  		\multirow{2}{*}{Parametric, $\frac{dN_\g}{dE} = \left[{\rm \frac{1}{GeV\, cm^{2}\, s}}\right]\rm \Laura{ \left[\rm \frac{GeV}{cm^2\, s\, sr}\right]}$} & max & $\SI{8.0e-6}{}$  & -2.1 &  $\infty$ & 3.9 \\ 
+		& min & $\SI{1.4e-6}{}$ & -2.0 &  0.26 & 0.14  \\ 
  		\hline
-  		\multirow{2}{*}{IC, $\frac{d\Sigma_e}{dE} = \left[{\rm \frac{1}{GeV\,cm^2}}\right]$} & max & 1.  & -2 &  5 & 1 \\ 
-		& min & 1.  & -2 &  5 & 1  \\ 
+  		\multirow{2}{*}{IC, $\frac{d\Sigma_e}{dE} = \left[{\rm \frac{1}{GeV\, cm^2}}\right]$}& max & $\SI{1.8e10}{}$  & -2.7 &  $\infty$ & 60 \\ 
+		& min & $\SI{2.5e9}{}$  & -2.6 &  1.1 & 0.4  \\ 
  		\hline
-  		\multirow{2}{*}{Hadronic, $\frac{d\Sigma_p}{dqc} = \left[{\rm \frac{1}{GeV\,cm^2}}\right]$} & max & 1.  & -2 &  5 & 1 \\ 
-		& min & 1.  & -2 &  5 & 1  \\ 
+  		\multirow{2}{*}{Hadronic, $\frac{d\Sigma_p}{dqc} = \left[{\rm \frac{1}{GeV\, cm^2}}\right]$} & max & $\SI{4.4e11}{}$  & -2.1 &  $\infty$ & 270 \\ 
+		& min & $\SI{4.9e10}{}$  & -2.0 &  2.3 & 1.1  \\ 
  \hline
     \end{tabular}
   \end{center}
