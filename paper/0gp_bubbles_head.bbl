@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{32}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Acero} {et~al.}(2015){Acero}, {Ackermann}, {Ajello},
@@ -68,10 +68,25 @@
 \bibitem[{{Blumenthal} \& {Gould}(1970)}]{1970RvMP...42..237B}
 {Blumenthal}, G.~R. \& {Gould}, R.~J. 1970, Reviews of Modern Physics, 42, 237
 
+\bibitem[{{Bordoloi} {et~al.}(2017){Bordoloi}, {Fox}, {Lockman}, {Wakker},
+  {Jenkins}, {Savage}, {Hernandez}, {Tumlinson}, {Bland-Hawthorn}, \&
+  {Kim}}]{2017ApJ...834..191B}
+{Bordoloi}, R., {Fox}, A.~J., {Lockman}, F.~J., {et~al.} 2017, \apj, 834, 191
+
+\bibitem[{{Fox} {et~al.}(2015){Fox}, {Bordoloi}, {Savage}, {Lockman},
+  {Jenkins}, {Wakker}, {Bland-Hawthorn}, {Hernandez}, {Kim}, {Benjamin},
+  {Bowen}, \& {Tumlinson}}]{2015ApJ...799L...7F}
+{Fox}, A.~J., {Bordoloi}, R., {Savage}, B.~D., {et~al.} 2015, \apjl, 799, L7
+
 \bibitem[{{G{\'o}rski} {et~al.}(2005){G{\'o}rski}, {Hivon}, {Banday},
   {Wandelt}, {Hansen}, {Reinecke}, \& {Bartelmann}}]{2005ApJ...622..759G}
 {G{\'o}rski}, K.~M., {Hivon}, E., {Banday}, A.~J., {et~al.} 2005, \apj, 622,
   759
+
+\bibitem[{{Jacob} {et~al.}(2018){Jacob}, {Pakmor}, {Simpson}, {Springel}, \&
+  {Pfrommer}}]{2018MNRAS.475..570J}
+{Jacob}, S., {Pakmor}, R., {Simpson}, C.~M., {Springel}, V., \& {Pfrommer}, C.
+  2018, \mnras, 475, 570
 
 \bibitem[{{Johannesson} {et~al.}(2013){Johannesson}, {Orlando}, \& {for the
   Fermi-LAT collaboration}}]{2013arXiv1307.0197J}

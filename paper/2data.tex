@@ -7,8 +7,12 @@
 \includegraphics[width=0.33\textwidth]{plots/Mollweide_data_source_range_0.pdf}
 \includegraphics[width=0.33\textwidth]{plots/Mollweide_data_source_range_1.pdf}
 \includegraphics[width=0.33\textwidth]{plots/Mollweide_data_source_range_2.pdf}
-\caption{SED intensity integrated in three different energy ranges of the \Fermi-LAT 9 years of Source class data.
-\dima{Please, transform them in a log scale, so that the emission in the Galactic plane is not as saturated.}
+\caption{
+SED intensity of the \Fermi-LAT 9 years of Source class data integrated in three energy ranges.
+The maps are represented in logarithmic scale. 
+The map in the energy range 10 -- 100 GeV (100 -- 1000 GeV) 
+is smoothed with a Gaussian kernel with radius $\sigma = 0^\circ\!\!.5$ ($\sigma = 0^\circ\!\!.7$).
+%\dima{Please, transform them in a log scale, so that the emission in the Galactic plane is not as saturated.}
 }
 \label{fig:Maps_data}
 \end{figure*}
@@ -25,6 +29,7 @@ which is sufficient for energies above 316 MeV.
 We calculate the exposure and point-spread function (PSF) using the {\Fermi}-LAT Science Tools package version 
 10-01-01 available from the {\Fermi} Science Support Center\footnote{\url{http://fermi.gsfc.nasa.gov/ssc/data/analysis/}} 
 with the P8R2\_SOURCE\_V6 instrument response functions.
-Figure \ref{fig:Maps_data} shows the data in units of integrated flux in three energy ranges. For all maps shown in this paper, we use Galactic coordinates centered on the GC in Mollweide projection. The graticule spacing is $\ang{10}$ in latitude and longitude. The maps are smoothed with a $\sigma = \ang{0.5}$ Gaussian kernel.
+Figure \ref{fig:Maps_data} shows the data in units of integrated flux in three energy ranges. For all maps shown in this paper, we use Galactic coordinates centered on the GC in Mollweide projection. %The graticule spacing is $\ang{10}$ in latitude and longitude. 
+%The maps are smoothed with a $\sigma = \ang{0.5}$ Gaussian kernel.
 For spatial binning we use HEALPix\footnote{\url{http://sourceforge.net/projects/healpix/}} \citep{2005ApJ...622..759G} scheme with a pixelization of order 7  ($\approx 0\degr\!\!.46$ pixel size). 
 

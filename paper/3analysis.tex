@@ -38,11 +38,14 @@ We also calculate the flux attributed to the bubbles using one of the diffuse em
 \label{sec:data_diff}
 
 As a first simple check of the asymmetry at low latitudes, we compare the \Fermi-LAT data east and west of the Galactic center. 
-We mask the 200 brightest 3FGL Point sources (PS)  with a circle of radius $\frac{\delta}{\sqrt{2}} + 1^\circ$ where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels. We also symmetrize the PSs relative to the GC in order to avoid possible bias by masking more pixels on one side of the GC. 
+We mask 200 3FGL Point sources (PS)  with largest flux above 1 GeV
+with a circle of radius $\frac{\delta}{\sqrt{2}} + 1^\circ$, where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels. 
+We symmetrize the PS mask relative to the GC in order to avoid possible bias by masking more pixels on one side of the GC. 
 This PS mask is also used in the following sections. 
-The data is averaged over a region to the West (longitudes $0^\circ < \ell < 10^\circ$) and to the East ($-10^\circ < \ell  <  0^\circ$) of the Galactic center for different latitudes. The regions have a latitude width of $10^\circ$ for $b >|10^\circ|$ and a width of  $4^\circ$ for  $b <|10^\circ|$. 
+The data is averaged over a region to the West (longitudes $0^\circ < \ell < 10^\circ$) and to the East ($-10^\circ < \ell  <  0^\circ$) 
+of the GC for different latitudes. The regions have a latitude width of $10^\circ$ for $b >|10^\circ|$ and a width of  $4^\circ$ for  $b <|10^\circ|$. 
 The difference of the averaged intensity of emission West minus East of the GC is shown in Fig. \ref{fig:data_diff}. 
-The error bars in show the statistical errors.
+The error bars represent the statistical errors.
 At high latitudes, $b >|10^\circ|$, the emission is relatively symmetric. 
 The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^\circ)$ shows excess emission to the West of the Galactic center, which remains significant at high energies. 
 
@@ -63,11 +66,12 @@ The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^
 \includegraphics[width=0.33\textwidth]{plots/Mollweide_LowE_03-10GeV_flux_source_range_0.pdf}
 \includegraphics[width=0.33\textwidth]{plots/Mollweide_LowE_03-10GeV_flux_source_range_1.pdf}
 \includegraphics[width=0.33\textwidth]{plots/Mollweide_LowE_03-10GeV_flux_source_range_2.pdf}
-\caption{Integrated SED intensity of the residuals of the low-energy model in three different energy ranges. }
+\caption{Integrated SED intensity of the residuals of the low-energy model derived in Section \ref{sec:le_data_model}. }
 \label{fig:Maps_lowE}
 \end{figure*}
 
-Gamma rays produced in interactions of CR with gas and IC scattering dominate the gamma-ray emission around the GC in the energy range $E \lesssim \SI{1}{GeV}$. 
+Gamma rays produced in interactions of stationary Galactic population of CR with gas and interstellar radiation fields (ISRF)
+dominate the gamma-ray emission in the Galactic plane in the energy range $E \lesssim \SI{1}{GeV}$. 
 Consequently, low-energy \Fermi-LAT data is a good tracer for diffuse gamma-ray emission in the Galactic plane and can be used to create a spatial template for the Galactic foreground.
 The 68\% containment for the \Fermi-LAT photons between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ (averaged with $E^{-2}$ spectrum) is about $1^\circ\!\!.5$,
 which is much worse than the sub-degree angular resolution above $\SI{1}{GeV}$.
@@ -91,7 +95,8 @@ The term $c_\ell(E) \cdot \tau(x,E)$ is proportional to exposure $\tau(x,E)$, it
 
 We determine the parameters $c_{\ell}(E)$ and $k_{\ell}(E)$ by fitting the model to the \Fermi-LAT data in energy bins $E > \SI{1.0}{GeV}$
 using Poisson likelihood (with Python iminuit minimizer). Since we smooth the data before the fit, the Poisson log-likelihood is an approximation in this case. 
-In order to avoid an overcompensation of the \Fermi bubbles, the region $-20^\circ < \ell < 20^\circ$ is excluded from the fit. PSs are masked with the mask described in Section \ref{sec:data_diff}.
+In order to avoid an overcompensation 
+for the flux from the FB, the region $-20^\circ < \ell < 20^\circ$ is excluded from the fit. PSs are masked with the mask described in Section \ref{sec:data_diff}.
 
 %\red{Dima: do we symmetrize the PS mask in the analysis as well, not only in the calculation of the asymmetry in the data?}
 
@@ -111,7 +116,7 @@ In this subsection, we perform the fit over the whole sky and model the emission
 %Our first simple ansatz for a model of the FB consists of rectangular templates that approximately cover the area of the FB. 
 In order to explore the east-west asymmetry of the FB, 
 we introduce two rectangular templates in each latitude stripe $\ell$ and energy bin $E$: 
-one east ($-20^\circ - 0^\circ$) and one west ($0^\circ - 20^\circ$) of the GC.
+one east, $\ell \in (-20^\circ, 0^\circ)$, and one west, $\ell \in (0^\circ, 20^\circ)$, of the GC.
 We use the same foreground model as in Section \ref{sec:le_data_model} plus the isotropic template.
 Overall, the model has four terms in each energy bin:
 
@@ -161,7 +166,8 @@ infrared emission, and starlight.
 In addition to GALPROP templates, we use a flat template for the \Fermi bubbles at latitudes $|b| > 10^\circ$~\citep{2014ApJ...793...64A}. 
 We model the Loop~I feature using a geometric template \citep[e.g., Figure 2 of][]{2014ApJ...793...64A}
 based on a polarization survey at 1.4 GHz~\citep{Wolleben:2007pq}.
-The Sun \citep{2007Ap&SS.309..359O, 2006ApJ...652L..65M, 2008A&A...480..847O, 2013arXiv1307.0197J} and the Moon templates are obtained with the \Fermi Science Tools%
+The Sun template \citep{2007Ap&SS.309..359O, 2006ApJ...652L..65M, 2008A&A...480..847O, 2013arXiv1307.0197J} and the Moon template 
+are obtained with the \Fermi Science Tools%
 \footnote{\url{http://fermi.gsfc.nasa.gov/ssc/data/analysis/scitools/solar_template.html}}.
 We also include a generalized Navarro-Frenk-White (gNFW) profile with index $\gamma = 1.25$ and scaling radius $r_{\rm s} = 20\;{\rm kpc}$.
 

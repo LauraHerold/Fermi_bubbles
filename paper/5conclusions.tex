@@ -25,11 +25,11 @@ This is possible if the CRp were injected relatively recently and did not have t
 i.e., the age of the CRp is smaller than the propagation time to cross the vertical distance of 0.9 kpc.
 
 We will assume a spatially constant diffusion coefficient $D(E) = D_0\left(\frac{E}{\SI{1}{GeV}}\right)^\delta$ with $D_0 = \SI{3e28}{cm^2/s} = \SI{100}{pc^2/kyr}$ and $\delta = 0.4$.
-The escape time for the protons (and also electrons) at $E > \SI{3}{TeV}$ is 
+The escape time for the protons (and also electrons) at $E > \SI{1.6}{TeV}$ is 
 %\Laura{Should we also use 3 TeV here? Then escape time is 165 kyr.} 
 %\dima{it looks from Table 2 that the cutoff for the protons within $2^\circ$ from the Gal plane is 20 TeV? Strictly speaking, we should use 20 TeV for the protons (and 3 TeV for the electrons).} 
 \be
-T_{\rm esc} < \frac{\Delta h^2}{2 D(E)} \approx \SI{170}{kyr}.
+T_{\rm esc} < \frac{\Delta h^2}{2 D(E)} \approx \SI{210}{kyr}.
 \ee
 %\Laura{Is there no factor of 1/2 missing in the formula for the cooling time?} \dima{good point - fixed.}
 This gives us an approximate upper bound on the age of the proton CR.
@@ -38,14 +38,14 @@ $\de E_\tot / \de V = \SI{360}{meV\: cm^{-3}}$ between $\SI{1}{GeV}$ and $\SI{1}
 In Figure \ref{fig:Particle_spectra} (left), we compare the corresponding flux to the local CRp flux.
 The total energy content within $|b| < 6^\circ$ is $E_\tot = \SI{7e52}{erg}$.
 %However, the gas density in the inner Galaxy is probably higher than $n_\Hy = \SI{1}{/cm^3}$ as assumed in Section \ref{sec:Pion_model}, resulting in an energy content in protons of the same order of magnitude as the energy density in electrons.
-This population of CRp can be obtained from $\sim$ 700 SNe in the past $\sim \SI{100}{kyr}$, 
+This population of CRp can be obtained from $\sim$ 700 SNe in the past $\sim \SI{200}{kyr}$, 
 assuming that on average SNe inject $\sim 10^{50}$ erg in CRp (which corresponds to about 10\% efficiency).
 %\Laura{Why 500 kyr? } \dima{ sorry this was a typo from my previous estimates.}\\
 \\
 
 
 The best-fit spectrum of CR electrons is $\sim E^{-2.7}$ which is softer than the spectrum of the protons.
-Nonetheless, this spectrum is harder than the spectrum expected in the presence of cooling softening
+Nonetheless, this spectrum is harder than the spectrum expected in the presence of cooling
 for a stationary population of CRe or a break for a transient population of CRe.
 Thus, unless the injection spectrum is harder than $E^{-2}$, the population of the CRe at the base of the 
 bubbles is not affected by cooling up to $\SI{3}{TeV}$,
@@ -65,14 +65,21 @@ is given by the integral of the electron spectrum that was found in Section \ref
 \ee
 In Figure \ref{fig:Particle_spectra} (right), we compare the corresponding flux to the local CRe flux.
 The total energy content of the ROI in electrons above $\SI{1}{GeV}$ is $E_\tot = \SI{3e51}{erg}$, which corresponds to the CR energy output of 3000 SNe in the past $\approx \SI{200}{kyr}$ assuming a 0.1\% efficiency in converting the SNe kinetic energy to CRe energy.
-The ratio of the electron to proton acceleration efficiencies $K_{ep} = 10^{-2}$ assumed here is likely too optimistic,
+The ratio of the electron and proton acceleration efficiencies $K_{e/p} = 10^{-2}$ assumed here is likely too optimistic,
 given that the typical values of the ratio of efficiencies are $\sim 10^{-3}$ \citep[e.g.,][]{2015PhRvL.114h5003P}.
 Since the escape time is comparable to the electron cooling time and the required number of SNe in the hadronic
-scenario is smaller than the number of SNe in the leptonic scenario (for the ratio of acceleration efficiencies $K_{ep} \lesssim 10^{-2}$),
+scenario is smaller than the number of SNe in the leptonic scenario (for the ratio of acceleration efficiencies $K_{e/p} \lesssim 10^{-2}$),
 we conclude that the majority of the gamma-ray emission near the base of the FB 
 is likely to be produced by the hadronic interactions of CRp with the gas.
 %\Laura{So, $\SI{1e50}{erg}$ per SN?} \dima{ SNe kinetic energy is $10^{51}$ erg, energy in CRs:  $10^{50}$ erg, a fraction of that is in CRe, i.e., if we have 1\% in electrons, then we need 300 SNe.}
 %\dima{if the electrons cool as they propagate $2^\circ$, we should use $|b| < 2^\circ$ to calculate the total energy content of CRe}. \Laura{This is the total energy content for $|b| < 6$} \dima{OK}.
+Similar efficiencies of $K_{e/p} \propto 10^{-2}$ can be expected in the acceleration of 
+electrons and protons in AGN jets \citep[e.g.,][]{2018arXiv180305556B}.
+The presence of the hadronic production of gamma-rays at the base of the FB without a sign of a cutoff up to gamma-ray energies
+of 1 TeV is important for the detectability of the associated neutrino signal by the neutrino telescopes (Figure \ref{fig:sensitivities}).
+
+
+
 \begin{comment}
 We note, that the energy density of CRe is comparable to the energy density of CRp 
 (especially if we take the density of gas $n_\Hy = \SI{10}{cm^{-3}}$).
@@ -83,10 +90,8 @@ Since the escape time at $\SI{10}{TeV}$ is much longer than the electron cooling
 the less efficient acceleration of CRe in SNe and cooling may lead to subdominant contribution of 
 IC scattering at $E_\g = 1$ TeV relative to the hadronic model of the gamma-ray production.
 \end{comment}
-\dima{Discuss magnetic reconnection in accretion to Sgr A* \citep{2018arXiv180305556B}.
-The presence of the hadronic production of gamma-rays at the base of the FB without a sign of a cutoff up to gamma-ray energies
-of 1 TeV is important for the detectability of the associated neutrino signal by the neutrino telescopes.
-}
+
+
 
 \begin{figure*}[h]
 \includegraphics[width=0.5\textwidth]{plots/Summary_proton_spectra_0.pdf}
@@ -95,16 +100,41 @@ of 1 TeV is important for the detectability of the associated neutrino signal by
 	The shaded bands represent the systematic uncertainties, 
 	estimated by the maximal and minimal best-fit FB spectrum among the foreground models. 
 	For comparison with the local CR spectrum, data points of some experiments are shown. 
-	The error bars represent the combined systematic and statistical uncertainties.}
+	Here, the error bars represent the combined systematic and statistical uncertainties.}
   	\label{fig:Particle_spectra}
 \end{figure*}
 
+\begin{figure}[h]
+\centering
+ \includegraphics[width=0.48\textwidth]{plots/low_lat_FB_CTA.pdf}
+ \includegraphics[width=0.48\textwidth]{plots/low_lat_FB_KM3.pdf}
+ \caption{Sensitivities of CTA and KM3NeT to the hadronic model of the gamma-ray emission towards the base of the FB.
+ For the flux sensitivities we take the estimates of \cite{2018APh...100...69A} for a $2^\circ$ radius source and divide by the
+ area of the $2^\circ$ circle to transform to intensity units. The min and max models correspond to the min and max models in
+ the hadronic scenario in Table \ref{tab:summary} (for the max model we assume the cutoff in the proton spectrum at 1 PeV).
+ The KM3NeT sensitivity takes into account muon neutrinos only.
+ In estimating the sensitivity, we take into account that the GC is below the horizon for about 2/3 of the time
+ at the KM3NeT location in the Mediterranean sea.
+ }
+ \label{fig:sensitivities}
+\end{figure}
+
+
 \subsection{A nearby SNR or a superbubble scenario}
 
-Since the local gas density is similar to the gas density at the GC \citep{2017ApJ...834...57M}, 
-we only need to take into account for the hadronic model the quadratic decrease of the gamma-ray flux with the radius. Assuming, that the emission is generated by one SN, we find a distance of $\SI{300}{pc}$.
-We can compare the flux from the low latitude bubbles with the emission of a known SNR, such as the Tycho SNR.
-The SED of the Tycho SNR at 10 GeV is $E^2 {dF}/{dE} \approx 10^{-6}\: {\rm MeV\, cm^{-2} s^{-1}}$ \citep{2017ApJ...836...23A}.
+The position of the hard and bright emission at the base of the FB can be at any location along the line of sight.
+In this subsection we discuss the models where this emission is created either by a single SNR
+or several SNRs at a distance closer than the distance to the GC.
+We will start with a single SNR scenario.
+For the leptonic model we use the local ISRF and calculate the IC emission as described in Section \ref{sec:IC_model}.
+Assuming one single SN we find a distance of $\SI{50}{pc}$, which is rather close to Earth and should 
+be easily detected in radio and X-ray observations.
+For the hadronic model of the gamma-ray emission, we will assume that 
+the local gas density is similar to the average gas density near the GC \citep{2017ApJ...834...57M}.
+At the GC, we needed about 700 SNRs, thus the distance where a single SNR can explain the excess emission
+is $d = \frac{8.5\: {\rm kpc}}{\sqrt{700}} \approx 300\:{\rm pc}$.
+We can compare the flux from the low latitude bubbles with the emission of a known SNR, such as Tycho's SNR.
+The SED of Tycho's SNR at 10 GeV is $E^2 {dF}/{dE} \approx 10^{-6}\: {\rm MeV\, cm^{-2} s^{-1}}$ \citep{2017ApJ...836...23A}.
 The solid angle of the ROI of $10^\circ \times 12^\circ$ at the base of the FB is $\Om \approx 0.037$.
 If we assume that Tycho's SNR is at a distance of 3 kpc, then the average intensity inside $\Om$ at a distance of 300 pc
 is $E^2 {dN}/{dE} \approx 2.7 \times 10^{-6}\: {\rm GeV\, cm^{-2} s^{-1} sr^{-1}}$, which is comparable to the 
@@ -112,25 +142,44 @@ FB emission at latitudes $|b| < 6^\circ$ (e.g., Figure \ref{fig:spec_summary}).
 The radius of Tycho's SNR is about 3.5 pc (for the angular diameter of $8'$ at 3 kpc),
 while the radius corresponding to $6^\circ$ angular size at 300 pc is about 30 pc, which is almost 10 times larger than the radius of Tycho's SNR.
 It seems unlikely that an SNR can grow to 30 pc radius and keep the population of CR.
-For the leptonic model we use the local ISRF and calculate the IC emission as described in Section \ref{sec:IC_model}. Assuming one single SN we find a distance of $\SI{50}{pc}$. Such an SNR would be easily observed by radio and X-ray observations, 
-even if we neglect the hadronic mechanism of gamma-ray production.
+Even if we assume that only the core of the emission at the base of the FB within $|b| < 2^\circ$ corresponds to an SNR,
+the corresponding linear size of $\approx 10$ pc (for the same distance of 300 pc) is likely too large for a single SNR.
 
-Another possibility is that the bright emission at the base of the FB is similar to the gamma-ray emission in the Cygnus region 
-\citep{2011Sci...334.1103A}.
+Although the radius of the emitting region larger than 10 pc is difficult to explain with a single SNR,
+superbubbles inflated by several SNRs can have size up to 100 pc or more.
+For instance, the Cygnus superbubble \citep{2011Sci...334.1103A} has the radius of about $2^\circ$, 
+which at a distance of 1.4 kpc from the Earth, corresponds to radius of about 50 pc.
+If a Cygnus-like region is responsible for the emission within $|b| < 6^\circ$ at the base of the FB,
+then such region should be at a distance of about 500 pc from the Earth.
+If only the core of the high intensity region within $|b| < 6^\circ$ is explained by such a superbubble,
+then the distance would be similar to the distance to the Cygnus superbubble, i.e., about 1.4 kpc.
+
 The flux from the Cygnus region around 10 GeV of 
 $E^2 {dF}/{dE} \approx 6\times 10^{-5}\: {\rm MeV\, cm^{-2} s^{-1}}$
-corresponds to an intensity of $E^2 {dN}/{dE} \approx 1.6\times 10^{-5}\: {\rm GeV\, cm^{-2} s^{-1}sr^{-1}}$
-if averaged over a $2^\circ$ circle.
-This is slightly larger than an intensity of $E^2 {dN}/{dE} \approx 6\times 10^{-6}\: {\rm GeV\, cm^{-2} s^{-1}sr^{-1}}$
-at the base of the FB within $|b| < 2^\circ$ (Figure \ref{fig:SED_with_fits}).
+averaged over a $2^\circ$ circle
+corresponds to an intensity of $E^2 {dN}/{dE} \approx 1.6\times 10^{-5}\: {\rm GeV\, cm^{-2} s^{-1}sr^{-1}}$,
+which is comparable to the intensity at the base of the FB within $|b| < 2^\circ$ (Figure \ref{fig:SED_with_fits}),
+while the flux from the Cygnus region averaged over a $6^\circ$ circle is comparable to the average intensity
+at the base of the FB within $|b| < 6^\circ$.
 Thus the bright gamma-ray emission at the base of the FB can be explained by a Cygnus-like 
-superbubble at a distance of $\sim 1$ kpc from the Earth towards the GC.
+superbubble at a distance of $\sim 500\:{\rm pc} - 1.5 \:{\rm kpc}$ from the Earth towards the GC.
 
-
-
-
-
-
+An interesting question is whether the FB themselves can be inflated by a Cygnus-like superbubble,
+which accidentally happened along the line of sight towards the GC.
+If the FB are at a distance of about 1 kpc, then their vertical size is also about 1 kpc,
+which is 10 times smaller than the size of the FB at a distance of 8.5 kpc.
+In the leptonic scenario of the FB the $10^{52}$ erg in CRe at 8.5 kpc \citep{2014ApJ...793...64A},
+would correspond to $10^{50}$ erg at 1 kpc, which can be provided by several hundred SNe.
+The electrons are delivered to the FB volume by an outflow 
+(possibly created by the pressure of the CR themselves \citep{2018MNRAS.475..570J}),
+the measured outflow velocities in the direction of the FB are on the order of 1000 km/s
+with an age of the outflow at the position above the GC $\sim 6 - 9$ Myr \citep{2015ApJ...799L...7F, 2017ApJ...834..191B} .
+If the distance is 10 times smaller, then the ages would be $\sim 600 - 900$ kyr,
+which is comparable to the cooling time of 1 TeV electrons necessary to explain the 
+gamma-ray emission from the FB at high latitudes \citep{2014ApJ...793...64A}.
+Thus the gamma-ray emission at high latitudes can be explained by IC model with about 100 SNRs
+created $\sim$ 1 Myr ago, while the bright and hard emission at the base of the bubbles can
+be explained by the hadronic emission from about 10 SNRs created $\sim$ 100 kyr ago.
 
 
 \section{Conclusions}
