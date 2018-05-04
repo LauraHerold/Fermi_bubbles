@@ -34,7 +34,7 @@ We also calculate the flux attributed to the bubbles using one of the diffuse em
 
 \end{comment}
 
-\subsection{West -- East asymmetry in the data}
+\subsection{East-west  asymmetry in the data}
 \label{sec:data_diff}
 
 As a first simple check of the asymmetry at low latitudes, we compare the \Fermi-LAT data east and west of the Galactic center. 
@@ -42,20 +42,21 @@ We mask 200 3FGL Point sources (PS)  with largest flux above 1 GeV
 with a circle of radius $\frac{\delta}{\sqrt{2}} + 1^\circ$, where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels. 
 We symmetrize the PS mask relative to the GC in order to avoid possible bias by masking more pixels on one side of the GC. 
 This PS mask is also used in the following sections. 
-The data is averaged over a region to the West (longitudes $0^\circ < \ell < 10^\circ$) and to the East ($-10^\circ < \ell  <  0^\circ$) 
-of the GC for different latitudes. The regions have a latitude width of $10^\circ$ for $b >|10^\circ|$ and a width of  $4^\circ$ for  $b <|10^\circ|$. 
-The difference of the averaged intensity of emission West minus East of the GC is shown in Fig. \ref{fig:data_diff}. 
+The data is averaged over regions to the west ($0^\circ < \ell < 10^\circ$) and to the east ($-10^\circ < \ell  <  0^\circ$) 
+of the GC at different latitudes. The regions have a latitude width of $10^\circ$ for $b >|10^\circ|$ and a width of  $4^\circ$ for  $b <|10^\circ|$. 
+The difference of the averaged intensity of emission west minus east of the GC is shown in Fig. \ref{fig:data_diff}. 
 The error bars represent the statistical errors.
 At high latitudes, $b >|10^\circ|$, the emission is relatively symmetric. 
-The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^\circ)$ shows excess emission to the West of the Galactic center, which remains significant at high energies. 
+The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^\circ)$ shows excess emission to the west of the GC, 
+which remains significant at high energies. 
 
 
 \begin{figure}[h]
 \centering
  \includegraphics[width=0.5\textwidth]{plots/Difference_data_for_different_latitudes.pdf}
- \caption{Difference West minus East in the \Fermi-LAT intensity relative to the GC after masking bright PSs.
+ \caption{Difference west minus east in the \Fermi-LAT intensity relative to the GC after masking bright PSs.
  The PS mask is made symmetric using point reflection relative to the GC.
- The West (East) region has $-10^\circ < \ell <0^\circ$ ($0^\circ < \ell <10^\circ$). }
+ The west (east) region has $-10^\circ < \ell <0^\circ$ ($0^\circ < \ell <10^\circ$). }
  \label{fig:data_diff}
 \end{figure}
 
@@ -76,7 +77,8 @@ Consequently, low-energy \Fermi-LAT data is a good tracer for diffuse gamma-ray 
 The 68\% containment for the \Fermi-LAT photons between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ (averaged with $E^{-2}$ spectrum) is about $1^\circ\!\!.5$,
 which is much worse than the sub-degree angular resolution above $\SI{1}{GeV}$.
 In order to compensate for the difference in the angular resolution, 
-we smooth the data in each high-energy bin with a Gaussian kernel of $\ang{1}$ (which corresponds to $68\%$ containment angle of
+we smooth the data in each high-energy bin above 1 GeV
+with a Gaussian kernel of $\ang{1}$ (which corresponds to $68\%$ containment angle of
 $1^\circ\!\!.5$ in 2 dimensions).
 
 We cut the sky horizontally in latitude stripes with the width of $\ang{4}$ and define our model in each stripe and energy bin separately. 
@@ -88,6 +90,7 @@ N^\model_{\ell}(E,x) = k_{\ell}(E) \cdot \tilde N^\low_{\ell}(E,x) + c_\ell(E) \
 where $k_{\ell}(E) \cdot \tilde N^\low_\ell(E, x)$ is proportional to the low-energy photon counts summed over 
 $n_\low = 3$ energy bins between between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ 
 rescaled by the ratio of exposures at low and at high energies:
+
 \be
 \tilde N^\low_\ell(E,x) = \frac{1}{n_\low} \left(\sum_{\epsilon \in (0.3 - \SI{1.0}{GeV})} \frac{N^\low(\epsilon, x)}{\tau(\epsilon,x)}\right) \cdot \tau(E,x),
 \ee
@@ -102,7 +105,7 @@ for the flux from the FB, the region $-20^\circ < \ell < 20^\circ$ is excluded f
 
 After we fit the model in each latitude stripe, we interpolate it inside the bubbles ROI and 
 find the residual by subtracting the model from the data.
-Figure \ref{fig:Maps_lowE} shows the residual SED intensity integrated for three different energy ranges%
+Figure \ref{fig:Maps_lowE} shows the residual SED intensity integrated in three different energy ranges%
 \footnote{The integral of the SED intensity between $E_0$ and $E_1$ is defined as
 $W = \int_{E_0}^{E_1} E \frac{dN}{dE} dE.$}.
 The FB are clearly visible in the first two energy ranges, $E = 1 - \SI{10}{GeV}$ and $E = 10 - \SI{100}{GeV}$, for 

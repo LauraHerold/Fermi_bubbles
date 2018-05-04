@@ -2,8 +2,8 @@
 \label{sec:Interpretation}
 
 In general, the bright and hard gamma-ray emission at the base of the bubbles can be at any position along the line of sight.
-In this section we consider two characteristic scenarios: that the emission is near the GC at the base of the FB and that the emission is 
-produced by one or a few SNe closer to us (similar to, e.g., Cygnus region that contains recently accelerated CR from several SNe).
+In this section we consider two characteristic scenarios: that the emission is near the GC and that the emission is 
+produced by one or a few SNRs closer to us (similar to, e.g., Cygnus region that contains recently accelerated CR from several SNRs).
 
 \subsection{Emission near the GC scenario}
 \lb{sec:GC_scenario}
@@ -15,7 +15,9 @@ $-10^\circ < \ell < 0^\circ$ and $|b| < 6^\circ$.
 If we assume that the geometry of the region is a simple box, then the size of the box along the GP is $\SI{1.5}{kpc}$,
 while the half-size in the vertical direction (distance from the GP to the boundary) is $\Delta h = 0.9$ kpc.
 %\red{Dima: for the total CR energy content, we should use the $|b| < 6^\circ$ ROI.}
-\dima{We can also put the total gamma-ray luminosity here}
+The total gamma-ray luminosity in this case can be estimated as $L = x \times 10^{y}\:{\rm erg\ s^{-1}}$
+(in the rectangles model in Figure \ref{fig:SED_with_fits}).
+\dima{please fill in the x and y values in the luminosity}
 
 One of the most intriguing features of the gamma-ray spectrum at the base of the FB is the absence of the cutoff up to 1 TeV and 
 a hard spectrum of underlying electrons or protons.
@@ -23,13 +25,14 @@ In particular, the spectrum of the CRp is $\sim E^{-2.2}$ which is significantly
 $\sim E^{-2.5 - 2.7}$ observed locally and throughout most of the Galactic plane \citep{2016ApJS..223...26A}.
 We will assume that the CRp spectrum at the base of the bubbles is equal to the injection spectrum unaffected by the 
 propagation softening.
-This is possible if the CRp were injected relatively recently and did not have time to escape from the region of the enhanced emission,
+This is possible if the CRp were injected relatively recently and did not have enough time to escape from the region of the enhanced emission,
 i.e., the age of the CRp is smaller than the propagation time to cross the vertical distance of 0.9 kpc.
 
 We will assume a spatially constant diffusion coefficient $D(E) = D_0\left(\frac{E}{\SI{1}{GeV}}\right)^\delta$ with $D_0 = \SI{3e28}{cm^2/s} = \SI{100}{pc^2/kyr}$ and $\delta = 0.4$.
 The escape time for the protons (and also electrons) at $E > \SI{1.6}{TeV}$ is 
 %\Laura{Should we also use 3 TeV here? Then escape time is 165 kyr.} 
 %\dima{it looks from Table 2 that the cutoff for the protons within $2^\circ$ from the Gal plane is 20 TeV? Strictly speaking, we should use 20 TeV for the protons (and 3 TeV for the electrons).} 
+
 \be
 T_{\rm esc} < \frac{\Delta h^2}{2 D(E)} \approx \SI{210}{kyr}.
 \ee
@@ -43,12 +46,10 @@ The total energy content within $|b| < 6^\circ$ is $E_\tot = \SI{7e52}{erg}$.
 This population of CRp can be obtained from $\sim$ 700 SNe in the past $\sim \SI{200}{kyr}$, 
 assuming that on average SNe inject $\sim 10^{50}$ erg in CRp (which corresponds to about 10\% efficiency).
 %\Laura{Why 500 kyr? } \dima{ sorry this was a typo from my previous estimates.}\\
-\\
 
-
-The best-fit spectrum of CR electrons is $\sim E^{-2.7}$ which is softer than the spectrum of the protons.
+The best-fit spectrum of CR electrons is $\sim E^{-2.7}$, which is softer than the spectrum of the protons.
 Nonetheless, this spectrum is harder than the spectrum expected in the presence of cooling
-for a stationary population of CRe or a break for a transient population of CRe.
+for a stationary population of CRe.
 Thus, unless the injection spectrum is harder than $E^{-2}$, the population of the CRe at the base of the 
 bubbles is not affected by cooling up to $\SI{3}{TeV}$,
 which is the 95\% confidence minimal lower bound on the cutoff in the CRe. 
@@ -62,22 +63,23 @@ which is comparable to the escape time at $\SI{3}{TeV}$.
 
 The energy density in electrons with energy above $E_0 = \SI{1}{GeV}$, which is necessary to produce the gamma-ray signal, 
 is given by the integral of the electron spectrum that was found in Section \ref{sec:IC_model}:
+
 \be
 \frac{\de E_\tot}{\de V} = \int_{E_0}^{\infty} \left(E \frac{\de N}{\de E}\right)_{\!\!\el} \de E = \SI{4.0}{meV/cm^3}.
 \ee
 In Figure \ref{fig:Particle_spectra} (right), we compare the corresponding flux to the local CRe flux.
-The total energy content of the ROI in electrons above $\SI{1}{GeV}$ is $E_\tot = \SI{3e51}{erg}$, which corresponds to the CR energy output of 3000 SNe in the past $\approx \SI{200}{kyr}$ assuming a 0.1\% efficiency in converting the SNe kinetic energy to CRe energy.
-The ratio of the electron and proton acceleration efficiencies $K_{e/p} = 10^{-2}$ assumed here is likely too optimistic,
-given that the typical values of the ratio of efficiencies are $\sim 10^{-3}$ \citep[e.g.,][]{2015PhRvL.114h5003P}.
+The total energy content of the ROI in electrons above $\SI{1}{GeV}$ is $E_\tot = \SI{3e51}{erg}$, which corresponds to the CR energy output of 3000 SNe in the past $\approx \SI{200}{kyr}$ assuming a 0.1\% efficiency in converting the SNR kinetic energy to CRe energy.
+The ratio of the electron and proton acceleration efficiencies $K_{e/p} = 10^{-2}$ assumed here is relatively optimistic,
+given that the values of the ratio of efficiencies can be as low as $\sim 10^{-3}$ \citep[e.g.,][]{2015PhRvL.114h5003P}.
+Similar efficiencies of $K_{e/p} \propto 10^{-2}$ can be expected in the acceleration of 
+electrons and protons in AGN jets \citep[e.g.,][]{2018arXiv180305556B}.
 Since the escape time is comparable to the electron cooling time and the required number of SNe in the hadronic
 scenario is smaller than the number of SNe in the leptonic scenario (for the ratio of acceleration efficiencies $K_{e/p} \lesssim 10^{-2}$),
 we conclude that the majority of the gamma-ray emission near the base of the FB 
 is likely to be produced by the hadronic interactions of CRp with the gas.
 %\Laura{So, $\SI{1e50}{erg}$ per SN?} \dima{ SNe kinetic energy is $10^{51}$ erg, energy in CRs:  $10^{50}$ erg, a fraction of that is in CRe, i.e., if we have 1\% in electrons, then we need 300 SNe.}
 %\dima{if the electrons cool as they propagate $2^\circ$, we should use $|b| < 2^\circ$ to calculate the total energy content of CRe}. \Laura{This is the total energy content for $|b| < 6$} \dima{OK}.
-Similar efficiencies of $K_{e/p} \propto 10^{-2}$ can be expected in the acceleration of 
-electrons and protons in AGN jets \citep[e.g.,][]{2018arXiv180305556B}.
-The presence of the hadronic production of gamma-rays at the base of the FB without a sign of a cutoff up to gamma-ray energies
+The presence of the hadronic production of gamma rays at the base of the FB without a sign of a cutoff up to gamma-ray energies
 of 1 TeV is important for the detectability of the associated neutrino signal by the neutrino telescopes (Figure \ref{fig:sensitivities}).
 
 
@@ -112,7 +114,7 @@ IC scattering at $E_\g = 1$ TeV relative to the hadronic model of the gamma-ray 
 \centering
  \includegraphics[width=0.48\textwidth]{plots/low_lat_FB_CTA.pdf}
  \includegraphics[width=0.48\textwidth]{plots/low_lat_FB_KM3.pdf}
- \caption{Sensitivities of CTA and KM3NeT to the hadronic model of the gamma-ray emission towards the base of the FB.
+ \caption{Sensitivities of CTA and KM3NeT to the hadronic model of the residual gamma-ray emission towards the base of the FB.
  For the flux sensitivities we take the estimates of \cite{2018APh...100...69A} for a $2^\circ$ radius source and divide by the
  area of the $2^\circ$ circle to transform to intensity units. The min and max models correspond to the min and max models in
  the hadronic scenario in Table \ref{tab:summary} (for the max model we assume the cutoff in the proton spectrum at 1 PeV).
@@ -127,7 +129,7 @@ IC scattering at $E_\g = 1$ TeV relative to the hadronic model of the gamma-ray 
 \subsection{A nearby SNR or a superbubble scenario}
 
 The position of the hard and bright emission at the base of the FB can be at any location along the line of sight.
-In this subsection we discuss the models where this emission is created either by a single SNR
+In this subsection we discuss models where this emission is created either by a single SNR
 or several SNRs at a distance closer than the distance to the GC.
 We will start with a single SNR scenario.
 For the leptonic model we use the local ISRF and calculate the IC emission as described in Section \ref{sec:IC_model}.
@@ -172,11 +174,11 @@ An interesting question is whether the FB themselves can be inflated by a Cygnus
 which accidentally happened along the line of sight towards the GC.
 If the FB are at a distance of about 1 kpc, then their vertical size is also about 1 kpc,
 which is 10 times smaller than the size of the FB at a distance of 8.5 kpc.
-In the leptonic scenario of the FB the $10^{52}$ erg in CRe at 8.5 kpc \citep{2014ApJ...793...64A}
+In the leptonic scenario of the FB, the $10^{52}$ erg in CRe at 8.5 kpc \citep{2014ApJ...793...64A}
 would correspond to $10^{50}$ erg at 1 kpc, which can be provided by several hundred SNe.
 The electrons are delivered to the FB volume by an outflow,
-possibly created by the pressure of the CR themselves \citep[e.g.,][]{2018MNRAS.475..570J},
-the measured outflow velocities in the direction of the FB are on the order of 1000 km/s
+possibly created by the pressure of the CR themselves \citep[e.g.,][]{2018MNRAS.475..570J}.
+The measured outflow velocities in the direction of the FB are on the order of 1000 km/s
 with an age of the outflow at the position above the GC about 6 - 9 Myr \citep{2015ApJ...799L...7F, 2017ApJ...834..191B}.
 If the distance is 10 times smaller, then the age would be $\sim 600 - 900$ kyr,
 which is comparable to the cooling time of 1 TeV electrons necessary to explain the 
@@ -184,7 +186,7 @@ gamma-ray emission from the FB at high latitudes \citep{2014ApJ...793...64A}.
 Thus the gamma-ray emission at high latitudes can be explained by IC model with about 100 SNRs
 created $\sim$ 1 Myr ago, while the bright and hard emission at the base of the bubbles can
 be explained by the hadronic emission from about 10 SNRs created more recently 
-(the actual age of the system is determined by the confinement within the shell of the superbubble).
+(the actual age of the system is determined by the confinement within the superbubble).
 In this scenario,
 the star forming region, which can power the emission at the base of the FB and, possibly, the FB themselves
 can be situated in the Sagittarius arm at a distance of 1 -- 1.5 kpc in the direction of the GC.
@@ -194,15 +196,15 @@ can be situated in the Sagittarius arm at a distance of 1 -- 1.5 kpc in the dire
 
 In the paper we use 9 years of \Fermi-LAT Source class data to study the gamma-ray emission
 at the base of the FB.
-We use different methods to construct the foreground diffuse gamma-ray emission and determine
+We use different methods to construct the foreground diffuse gamma-ray emission and to determine
 the properties of the residual gamma-ray emission.
 We confirm the earlier findings that the residual emission at the base of the FB
-has a higher intensity than the FB emission at high latitudes,
+has a higher intensity than the FB emission at high latitudes and
 it is slightly displaced from the GC to negative longitudes.
 The spectrum is consistent with a single power law without a cutoff up to about 1 TeV.
 
-The emission can be explained with either a hadronic or a leptonic IC production of gamma-rays
-with spectra consistent with a power law without a cutoff.
+The emission can be explained by either a hadronic or a leptonic model of gamma-ray production
+with CR spectra consistent with a power law without a cutoff.
 The index of the CRe (CRp) spectrum is 2.6 -- 2.7 (2.0 -- 2.1).
 We derive the 95\% confidence lower bound on the cutoff in the CR electron and proton spectra
 by selecting the lowest 95\% statistical confidence among the different models of the foreground emission.
@@ -221,7 +223,7 @@ Although the total required energy in CRe is smaller than in CRp,
 the efficiency of acceleration of hadronic CR is expected to be significantly higher than for leptonic CR.
 In particular, with 10\% CRp acceleration efficiency, one needs about 700 SNRs to explain the 
 gamma-ray emission in the hadronic scenario near the GC,
-while with 0.1\% CRe acceleration efficiency the required number of SNRs is 3000.
+while with 0.1\% CRe acceleration efficiency, the required number of SNRs is 3000.
 If the residual gamma-ray emission is produced at a closer distance, e.g., at about 1 kpc
 by a Cygnus-like cocoon or a superbubble in the Sagittarius arm, 
 then the required number of SNRs is about two orders of magnitude smaller.
@@ -233,15 +235,15 @@ diffusion time $t \gtrsim 1$ kyr. This is on the order of the lifetime of indivi
 In this case, the age of the CR population can be longer than the diffusion time if there is an
 additional confinement by the SN shells or the shell of the superbubble.
 Together with the question of the location of the residual emission at the base of the FB,
-one can revisit the question of the location of the FB themselves.
-One can imagine a situation that the FB were inflated by a past superbubble created about 1 Myr ago
+one can revisit the question of the location of the FB themselves:
+the FB could have been inflated by a superbubble about 1 Myr ago
 at a distance of 1 kpc from the Sun.
 The CR in the past superbubble may create a wind with velocities up to few hundred km/s, 
 which are sufficient to inflate a 1 kpc large bubble within 1 Myr
 so that the CR electrons in the wind do not cool below 1 TeV and can explain the
 gamma-ray emission from the FB at high latitudes.
 The gamma-ray emission at low latitudes is then explained (most naturally) by a hadronic
-scenario from a different and more recent starburst / SNR episode at about the same location.
+scenario from a different and more recent starburst episode at about the same location.
 
 In the future, the bright and hard gamma-ray emission at the base of the FB
 should be detectable with the CTA telescopes.
