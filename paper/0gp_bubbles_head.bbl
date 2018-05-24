@@ -1,5 +1,13 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{33}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Abdo} {et~al.}(2007){Abdo}, {Allen}, {Berley}, {Casanova}, {Chen},
+  {Coyne}, {Dingus}, {Ellsworth}, {Fleysher}, {Fleysher}, {Gonzalez},
+  {Goodman}, {Hays}, {Hoffman}, {Hopper}, {H{\"u}ntemeyer}, {Kolterman},
+  {Lansdell}, {Linnemann}, {McEnery}, {Mincer}, {Nemethy}, {Noyes}, {Ryan},
+  {Saz Parkinson}, {Shoup}, {Sinnis}, {Smith}, {Sullivan}, {Vasileiou},
+  {Walker}, {Williams}, {Xu}, \& {Yodh}}]{2007ApJ...664L..91A}
+{Abdo}, A.~A., {Allen}, B., {Berley}, D., {et~al.} 2007, \apjl, 664, L91
 
 \bibitem[{{Acero} {et~al.}(2015){Acero}, {Ackermann}, {Ajello},
   {et~al.}}]{2015ApJS..218...23A}
