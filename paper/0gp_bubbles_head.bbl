@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{36}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Abdo} {et~al.}(2007){Abdo}, {Allen}, {Berley}, {Casanova}, {Chen},
@@ -81,6 +81,10 @@
   {Kim}}]{2017ApJ...834..191B}
 {Bordoloi}, R., {Fox}, A.~J., {Lockman}, F.~J., {et~al.} 2017, \apj, 834, 191
 
+\bibitem[{{Calore} {et~al.}(2015){Calore}, {Cholis}, \&
+  {Weniger}}]{Calore:2014xka}
+{Calore}, F., {Cholis}, I., \& {Weniger}, C. 2015, \jcap, 3, 038
+
 \bibitem[{{Fox} {et~al.}(2015){Fox}, {Bordoloi}, {Savage}, {Lockman},
   {Jenkins}, {Wakker}, {Bland-Hawthorn}, {Hernandez}, {Kim}, {Benjamin},
   {Bowen}, \& {Tumlinson}}]{2015ApJ...799L...7F}
@@ -116,9 +120,15 @@
 \bibitem[{Moskalenko \& Strong(1998)}]{Moskalenko:1997gh}
 Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
 
-\bibitem[{{Moskalenko} {et~al.}(2006){Moskalenko}, {Porter}, \&
+\bibitem[{{Moskalenko} {et~al.}(2006{\natexlab{a}}){Moskalenko}, {Porter}, \&
   {Digel}}]{2006ApJ...652L..65M}
-{Moskalenko}, I.~V., {Porter}, T.~A., \& {Digel}, S.~W. 2006, \apjl, 652, L65
+{Moskalenko}, I.~V., {Porter}, T.~A., \& {Digel}, S.~W. 2006{\natexlab{a}},
+  \apjl, 652, L65
+
+\bibitem[{{Moskalenko} {et~al.}(2006{\natexlab{b}}){Moskalenko}, {Porter}, \&
+  {Strong}}]{2006ApJ...640L.155M}
+{Moskalenko}, I.~V., {Porter}, T.~A., \& {Strong}, A.~W. 2006{\natexlab{b}},
+  \apjl, 640, L155
 
 \bibitem[{{Orlando} \& {Strong}(2007)}]{2007Ap&SS.309..359O}
 {Orlando}, E. \& {Strong}, A.~W. 2007, \apss, 309, 359
@@ -157,6 +167,9 @@ Strong, A.~W., Moskalenko, I.~V., \& Reimer, O. 2000, \apj, 537, 763
 
 \bibitem[{Strong {et~al.}(2004)Strong, Moskalenko, \& Reimer}]{Strong:2004de}
 Strong, A.~W., Moskalenko, I.~V., \& Reimer, O. 2004, \apj, 613, 962
+
+\bibitem[{{Su} \& {Finkbeiner}(2012)}]{2012ApJ...753...61S}
+{Su}, M. \& {Finkbeiner}, D.~P. 2012, \apj, 753, 61
 
 \bibitem[{{Su} {et~al.}(2010){Su}, {Slatyer}, \&
   {Finkbeiner}}]{2010ApJ...724.1044S}
