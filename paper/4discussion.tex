@@ -119,6 +119,8 @@ is consistent with a power law with an index $2.1 - 2.2$ and without a cutoff up
     \caption{Parametric model of the FBs. We report the best fit values of the spectrum, the significance of the cutoff, 
     and statistical 95\% confidence lower limit on the cutoff, $E_{\rm cut, 95\%}$, for the rectangles model.
     The last column is the minimal 95\% statistical lower limit among all models, $E_{\rm cut, 95\%}^{\rm min}$.
+    There are four cases when the introduction of a cutoff does not lead to improved fit: in all of these cases
+    $-2 \Delta \log \La < 0.1$ while the formal best-fit values of $E_{\rm cut}$ are larger than 1 TeV.
     %\dima{I'm curious why the rectangles model is also the min model for negative longitudes in the Gal plane, for $\pi^0$ and IC models
     %the cutoffs are different in this region.}
     }
@@ -129,13 +131,13 @@ is consistent with a power law with an index $2.1 - 2.2$ and without a cutoff up
 		       &        &  {\small $\SI{e-6}{GeV^{-1}cm^{-2}s^{-1} sr^{-1}}$ }&  & {\small $\SI{}{GeV}$ }& &{\small  $\SI{}{GeV}$ }&{\small  $\SI{}{GeV}$ }\\ 
 		\hline
   		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 1.9  & 1.9 & 45 & 4.8 & 25 & 25 \\ 
-		& $(\ang{-10}, \ang{0})$ & 2.0  & 2.2 & -- & 0.0 & 308 & {308}  \\ 
+		& $(\ang{-10}, \ang{0})$ & 2.0  & 2.2 & $> 10^3$ \cmt{5.2e3} & $< 0.1$ \cmt{0.027} & 308 & {308}  \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 3.5  & 2.3 & -- & 0.0 & {210} & 2.4  \\ 
-		& $(\ang{-10}, \ang{0})$  & 6.4  & 2.1 & -- & 0.0 & {350} & {350}   \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 3.5  & 2.3 & $> 10^3$ \cmt{8.3e3} &  $< 0.1$ \cmt{0.010} & {210} & 2.4  \\ 
+		& $(\ang{-10}, \ang{0})$  & 6.4  & 2.1 & $> 10^3$ \cmt{8.3e6} &  $< 0.1$ \cmt{3.3e-5} & {350} & {350}   \\ 
  		\hline
   		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$  & 1.8  & 2.1 & 260 & 3.8 & 120 & 11  \\ 
-		& $(\ang{-10}, \ang{0})$ & 2.8  & 2.2 & -- & 0.0 & {330} & {330} \\ 
+		& $(\ang{-10}, \ang{0})$ & 2.8  & 2.2 &  $> 10^3$ \cmt{77e3} &  $< 0.1$ \cmt{0.020} & {330} & {330} \\ 
  \hline
     \end{tabular}
   \end{center}
@@ -225,7 +227,7 @@ for different latitude stripes.
 % version for the one-column style
 %\begin{comment}
 \includegraphics[width=0.33\textwidth]{plots/SED_boxes_source_4cutoff.pdf}
-\includegraphics[width=0.33\textwidth]{plots/SED_boxes_source_0.pdf}
+\includegraphics[width=0.33\textwidth]{plots/SED_boxes_source_0cutoff.pdf}
 \includegraphics[width=0.33\textwidth]{plots/SED_boxes_source_-4cutoff.pdf}
 %\end{comment}
 % version for the two-column style?
