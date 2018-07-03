@@ -81,10 +81,6 @@
   {Kim}}]{2017ApJ...834..191B}
 {Bordoloi}, R., {Fox}, A.~J., {Lockman}, F.~J., {et~al.} 2017, \apj, 834, 191
 
-\bibitem[{{Calore} {et~al.}(2015){Calore}, {Cholis}, \&
-  {Weniger}}]{Calore:2014xka}
-{Calore}, F., {Cholis}, I., \& {Weniger}, C. 2015, \jcap, 3, 038
-
 \bibitem[{{Fox} {et~al.}(2015){Fox}, {Bordoloi}, {Savage}, {Lockman},
   {Jenkins}, {Wakker}, {Bland-Hawthorn}, {Hernandez}, {Kim}, {Benjamin},
   {Bowen}, \& {Tumlinson}}]{2015ApJ...799L...7F}
@@ -156,6 +152,10 @@ Ptuskin, V., Moskalenko, I.~V., Jones, F., {et~al.} 2006, \apj, 642, 902
 
 \bibitem[{{Sharp} \& {Bland-Hawthorn}(2010)}]{2010ApJ...711..818S}
 {Sharp}, R.~G. \& {Bland-Hawthorn}, J. 2010, \apj, 711, 818
+
+\bibitem[{Spurio(2015)}]{Spurio2015}
+Spurio, M. 2015, {Particles and Astrophysics: a Multi-Messenger Approach}
+  (Springer)
 
 \bibitem[{{Strong} {et~al.}(2007){Strong}, {Moskalenko}, \&
   {Ptuskin}}]{2007ARNPS..57..285S}
