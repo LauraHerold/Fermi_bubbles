@@ -12,18 +12,18 @@ of the Galactic latitude for different models of Galactic foreground emission.
 %The regions have a width of $\ang{4}$ for $|b|<\ang{10}$ and $\ang{10}$ for $|b|>\ang{10}$ in latitude and a width of $\ang{10}$ in longitude. 
 %that is $\ang{0} - \ang{10}$ to the east of the GC an $\ang{-10} - \ang{0}$ to the west of the GC. 
 %The profiles of the three models include the residual emission plus the FBs, i.e. 
-For the low-energy model, the profiles show the residual emission, 
+For the low-energy model, the profiles show the residual gamma-ray emission, 
 for the rectangles model -- the sum of residual emission and the rectangles templates model, 
 and for the GALPROP model --  the sum of residual emission, the FBs template, 
 and the GC excess template, as described in Section \ref{sec:Modeling}. 
 For comparison we show the latitude profile of the total gamma-ray data (excluding pixels in the PS mask).
 %We observe an agreement between all models and a east-west assymmetry close to the GC. 
 For positive longitudes,
-some models overpredict the gamma-ray data which leads to negative residuals.
+some models overpredict the gamma-ray data near the GP which leads to negative residuals.
 For negative longitudes, there is an increase of flux at the base of the FBs 
 by at least a factor of 2 to 6 for all models relative to the gamma-ray emission from the FBs at high latitudes. 
-The residual of the GALPROP model differs from the low-energy and rectangles model in the Galactic plane by a factor of 2 to 3. 
-This may be due to additional freedom in the GALPROP model related to the usage of several templates in the Galactic plane.
+The results for the GALPROP model differ from the low-energy and rectangles model in the Galactic plane by a factor of 2 to 3. 
+This is due to additional freedom in the GALPROP model related to the usage of several templates in the Galactic plane.
 %the inability of the GALPROP templates to fit the data is also manifested by the negative residuals to the east of the GC.
 %Also the data shows a slight east-west assymmetry in the flux around the GC.
 
@@ -49,7 +49,7 @@ This may be due to additional freedom in the GALPROP model related to the usage 
 \end{figure*}
 
 In this section we quantify the hardening of the gamma-ray spectrum at the base of the FBs. 
-We first compare the spectral energy distribution (SED) of the residuals plus the FBs models for different foreground models in Figure \ref{fig:SED_all}. 
+We first compare the spectral energy distribution (SED) of the emission at the base of the FB for different foreground models in Figure \ref{fig:SED_all}. 
 The differential flux is averaged over regions to the east, $\ell \in (\ang{0},\ \ang{10})$, and to the west, $\ell \in (\ang{-10},\ \ang{0})$, of the GC
 in a thin stripe covering the Galactic plane $b \in (\ang{-2},\ \ang{2})$. 
 For comparison, we show the total data (excluding pixels masked by the PS mask) and, on the plot for $\ell \in (\ang{-10},\ \ang{0})$, the difference in the data west minus east
@@ -59,13 +59,13 @@ For negative longitudes, all models give similar results.
 The differential flux of the GALPROP model is smaller than the differential flux of the other models above 10 GeV, 
 which is consistent with the profile plots in Figure \ref{fig:Profiles}.
 %We also find an asymmetry in the flux of the data with PS mask. 
-The difference of the data west minus east of the GC is similar to the residual fluxes in the low-energy model and in the rectangles model. 
-The spectra at positive longitudes show large oversubtractions and an overall softer spectrum. 
+The difference of the data west minus east of the GC is similar to the fluxes at the base of the FB in the low-energy model and in the rectangles model. 
+The spectra at positive longitudes show large oversubtractions and softer indices. 
 %\Laura{Should we show here the plots for (-6,-2) and (2,6) deg latitude also?}
 %\dima{I'm not sure, it will take space}
 
 To compare the behavior of the energy spectra at high energies for different latitudes, 
-we fit a log-parabola to the residual flux in each latitude stripe
+we fit a log-parabola to \red{the residual flux} in each latitude stripe
 
  \be
  f(E) = N_0 \left(\frac{E}{\SI{1}{GeV}}\right)^{-\alpha - \beta \ln(E)}.
@@ -88,8 +88,9 @@ is significantly harder ($n \approx 2$) than the index at higher latitudes.
 \begin{figure*}[h!]
 \includegraphics[width=0.5\textwidth]{plots/LogParabola_n(500GeV)_l_in_(0,10).pdf}
 \includegraphics[width=0.5\textwidth]{plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf}
-\caption{Index of the log-parabola defined in Equation (\ref{eq:log_par}) at  $E = \SI{500}{GeV}$ as a function of latitude for residuals in 
-the different foreground diffuse emission models. 
+\caption{
+\red{Index of the log-parabola defined in Equation (\ref{eq:log_par}) at  $E = \SI{500}{GeV}$ as a function of latitude for residuals in 
+the different foreground diffuse emission models. }
 %The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0} - \ang{10}$ to the east of the GC (left) and $\ang{-10} - \ang{0}$ to the west of the GC (right).
 }
 \label{fig:logpar_index}
@@ -106,18 +107,18 @@ We compare a power-law model of the energy spectrum with a power-law and an expo
 \frac{dN}{dE} = N_0 \left( \frac{E}{1\:{\rm GeV}} \right)^{-n} e^{-E / E_{\rm cut}}.
 \ee
 The best-fit parameters for the rectangles model are reported in Table \ref{tab:param}.
-If the improvement in $-2 \Delta \log \La$ is less than about one, then we report the power-law model parameters.
+If the improvement in $-2 \Delta \log \La$ is less than 0.1, then we report the power-law model parameters.
 For the model with a cutoff, we also find the 95\% statistical confidence lower limit for the cutoff energy.
 At last, we find the minimum among the 95\% confidence lower limits for all considered models.
 The spectrum of the residuals including the FBs at  $\ell \in (\ang{-10},\ \ang{0})$
-is consistent with a power law with an index $2.1 - 2.2$ and without a cutoff up to $E \approx 1$ TeV
-(the lower limit on the cutoff is at 350 GeV).
+is consistent with a power law with an index $2.1 - 2.2$ up to $E \approx 1$ TeV.
+The 95\% confidence lower limit on the cutoff energy is $\sim$ 300 GeV.
 %\dima{Report the total luminosity (assuming the GC location) in erg/s including modeling ``error bars",  we can also do it in Section \ref{sec:GC_scenario}.}
 
 \begin{table*}
   \begin{center}
     \caption{Parametric model of the FBs. We report the best fit values of the spectrum, the significance of the cutoff, 
-    and statistical 95\% confidence lower limit on the cutoff, $E_{\rm cut, 95\%}$, for the rectangles model.
+    and statistical 95\% confidence lower limit on the cutoff for the rectangles model, $E_{\rm cut, 95\%}$.
     The last column is the minimal 95\% statistical lower limit among all models, $E_{\rm cut, 95\%}^{\rm min}$.
     There are four cases when the introduction of a cutoff does not lead to improved fit: in all of these cases
     $-2 \Delta \log \La < 0.1$ while the formal best-fit values of $E_{\rm cut}$ are larger than 1 TeV.
@@ -131,13 +132,13 @@ is consistent with a power law with an index $2.1 - 2.2$ and without a cutoff up
 		       &        &  {\small $\SI{e-6}{GeV^{-1}cm^{-2}s^{-1} sr^{-1}}$ }&  & {\small $\SI{}{GeV}$ }& &{\small  $\SI{}{GeV}$ }&{\small  $\SI{}{GeV}$ }\\ 
 		\hline
   		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 1.9  & 1.9 & 45 & 4.8 & 25 & 25 \\ 
-		& $(\ang{-10}, \ang{0})$ & 2.0  & 2.2 & $> 10^3$ \cmt{5.2e3} & $< 0.1$ \cmt{0.027} & 308 & {308}  \\ 
+		& $(\ang{-10}, \ang{0})$ & 2.0  & 2.2 & $-$ \cmt{5.2e3} & $< 0.1$ \cmt{0.027} & 308 & {308}  \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 3.5  & 2.3 & $> 10^3$ \cmt{8.3e3} &  $< 0.1$ \cmt{0.010} & {210} & 2.4  \\ 
-		& $(\ang{-10}, \ang{0})$  & 6.4  & 2.1 & $> 10^3$ \cmt{8.3e6} &  $< 0.1$ \cmt{3.3e-5} & {350} & {350}   \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 3.5  & 2.3 & $-$ \cmt{8.3e3} &  $< 0.1$ \cmt{0.010} & {210} & 2.4  \\ 
+		& $(\ang{-10}, \ang{0})$  & 6.4  & 2.1 & $-$ \cmt{8.3e6} &  $< 0.1$ \cmt{3.3e-5} & {350} & {350}   \\ 
  		\hline
   		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$  & 1.8  & 2.1 & 260 & 3.8 & 120 & 11  \\ 
-		& $(\ang{-10}, \ang{0})$ & 2.8  & 2.2 &  $> 10^3$ \cmt{77e3} &  $< 0.1$ \cmt{0.020} & {330} & {330} \\ 
+		& $(\ang{-10}, \ang{0})$ & 2.8  & 2.2 &  $-$ \cmt{77e3} &  $< 0.1$ \cmt{0.020} & {330} & {330} \\ 
  \hline
     \end{tabular}
   \end{center}
@@ -161,7 +162,7 @@ of CR electrons integrated along the line-of-sight radius $R$,
 $(\de n/ \de E)_\ISRF$ is the number density of ISRF photons,
 and $\sigma_\IC(E_\gamma, E_\ISRF, E_\el)$
 is the differential IC scattering cross section in units of $E_\g\frac{d\sigma}{d E_\g}$ \citep{1970RvMP...42..237B}.
-For details on the parametrization of $\sigma_\IC$ see Appendix B of \citep{2014ApJ...793...64A}.
+For details on the parametrization of $\sigma_\IC$ see Appendix B of \cite{2014ApJ...793...64A}.
 The ISRF number density for starlight and IR photons is taken from GALPROP v54 \citep{2006ApJ...640L.155M}.
 For the CMB, we use the thermal spectrum with a temperature of $\SI{2.73}{K}$.
 We model the column density of electrons as a power law with a cutoff
@@ -172,7 +173,7 @@ We model the column density of electrons as a power law with a cutoff
 \ee
 In order to determine the normalization $n_\el$, the spectral index $\gamma_\el$, and the cutoff  $E_{\cut}$, 
 we fit the IC model of the FBs plus the (fixed) foreground model counts to the 
-total gamma-ray counts in different latitude stripes using Poisson likelihood.
+total smoothed gamma-ray counts in different latitude stripes using \red{likelihood based on gamma distribution}.
 As a baseline case, we take the gamma-ray spectrum derived in the rectangles model of the FBs in Section \ref{sec:box_model}.
 The best-fit parameters for the rectangles model of the bubbles are reported in Figure \ref{fig:SED_with_fits}
 %Figure \ref{fig:SED_with_fits} shows the residual of the rectangles model within 
@@ -180,14 +181,14 @@ in latitude stripes $b \in (\ang{2}, \ang{6})$, $b \in (-\ang{2}, \ang{2})$ and 
 %The dotted line represents the best-fit IC spectrum for an electron distribution following a simple power law.
 %\Laura{Should we here compare with the spectral indices of the other models?} \dima{yes}
 %The spectral index to the west of the GC of the electron spectrum is harder than the spectrum to the east of the GC. 
-If the improvement in $-2 \Delta \log \La$ with and without the cutoff is less than about 1, then we show only the parameters for the power-law model without a cutoff.
+If the improvement in $-2 \Delta \log \La$ with and without the cutoff is less than 0.1, then we show only the parameters for the power-law model without a cutoff.
 For example, for negative longitudes the cutoff is not significant.
 
-The 95\% statistical lower limit on the cutoff energy for the rectangles model and the minimum among all models of the 95\% confidence values for the cutoff energy
+The 95\% statistical lower limit on the cutoff energy for the rectangles model and the minimum among all models of the 95\% confidence lower limits for the cutoff energy
 are presented in Table \ref{tab:IC}.
 %We also report the 95\% lower limit on the cutoff value. 
 For negative longitudes,
-the 95\% confidence lower limit on the cutoff in the spectrum of electrons is about 4 TeV,
+the 95\% confidence lower limit on the cutoff in the spectrum of electrons in the rectangles model is about 4 TeV,
 while the minimal value of the 95\% confidence limit for all the models of the foreground emission is about 3 TeV.
 
 
@@ -242,7 +243,7 @@ for different latitude stripes.
         \includegraphics[width=\textwidth]{plots/SED_boxes_source_-4.pdf}
     \end{subfigure}
 \end{comment}
-  	\caption{SED of rectangles-model residual plus the FBs in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive (red) longitudes. We determine the spectral index of a powerlaw (PL), of an electron distribution emitting gamma-rays via IC and of a proton distribution emitting gamma-rays via $\pi^0$-decay.}
+  	\caption{SED of rectangles-model residual plus the FBs in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive (red) longitudes. We determine the spectral index of a power law (PL) of an electron distribution emitting gamma-rays via IC and of a proton distribution emitting gamma-rays via $\pi^0$-decay.}
   	%\Laura{Should we add the spectrum for the latitude band $(\ang{2}, \ang{6})$ also, or just say that it looks similar?}
 	%\blue{Dima: yes, let's add the 2 to 6 deg spectrum.}
   	\label{fig:SED_with_fits}
@@ -280,13 +281,13 @@ models are shown in the last two columns respectively.
 		       &        &                                  &  \multicolumn{1}{c}{Rectangles model} & All models \\ 
 		\hline
   		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 2.6  & 0.05 & 0.05 \\ 
-		& $(\ang{-10}, \ang{0})$ & 0.0  & 4.0  & 4.0 \\ 
+		& $(\ang{-10}, \ang{0})$ & $ < 0.1$  & 4.0  & 4.0 \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & 0.0 & 1.5 & 0.01 \\ 
-		& $(\ang{-10}, \ang{0})$ & 0.0 & 13  & 2.9  \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & $ < 0.1$ & 1.5 & 0.01 \\ 
+		& $(\ang{-10}, \ang{0})$ & $ < 0.1$ & 13  & 2.9  \\ 
  		\hline
   		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$ & 1.1 & 0.83 & 0.03 \\ 
-		& $(\ang{-10}, \ang{0})$& 0.0 & 6.3 & 6.3\\ 
+		& $(\ang{-10}, \ang{0})$& $ < 0.1$ & 6.3 & 6.3\\ 
  \hline
     \end{tabular}
   \end{center}
@@ -364,13 +365,13 @@ models are shown in the last two columns respectively.
 		      &        &                                  &       \multicolumn{1}{c}{Rectangles model} & All models \\ 
 		\hline
   		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 4.4 & 0.16  & 0.16 \\ 
-		& $(\ang{-10}, \ang{0})$ &  0.0 & 1.6 & 1.6 \\ 
+		& $(\ang{-10}, \ang{0})$ &  $ < 0.1$ & 1.6 & 1.6 \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & 0.0 & 1.3 & 0.023 \\ 
-		& $(\ang{-10}, \ang{0})$ & 0.0 & 30 & 6.3 \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & $ < 0.1$ & 1.3 & 0.023 \\ 
+		& $(\ang{-10}, \ang{0})$ & $ < 0.1$ & 30 & 6.3 \\ 
  		\hline
   		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$ & 2.7 & 1.6 & 0.05 \\ 
-		& $(\ang{-10}, \ang{0})$ & 0.0 & 2.1 & 2.1 \\ 
+		& $(\ang{-10}, \ang{0})$ & $ < 0.1$ & 2.1 & 2.1 \\ 
  \hline
     \end{tabular}
   \end{center}

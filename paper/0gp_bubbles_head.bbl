@@ -1,5 +1,10 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{40}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
+  Kaplinghat}]{Abazajian:2014fta}
+Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
+  023526
 
 \bibitem[{{Abdo} {et~al.}(2007){Abdo}, {Allen}, {Berley}, {Casanova}, {Chen},
   {Coyne}, {Dingus}, {Ellsworth}, {Fleysher}, {Fleysher}, {Gonzalez},
@@ -68,6 +73,13 @@
   {Zitzer}}]{2017ApJ...836...23A}
 {Archambault}, S., {Archer}, A., {Benbow}, W., {et~al.} 2017, \apj, 836, 23
 
+\bibitem[{{Assis} {et~al.}(2017){Assis}, {Barres de Almeida}, {Blanco},
+  {Concei{\c c}{\~a}o}, {D'Ettore Piazzoli}, {De Angelis}, {Doro}, {Fonte},
+  {Lopes}, {Matthiae}, {Pimenta}, {Shellard}, \&
+  {Tom{\'e}}}]{2017arXiv170909624A}
+{Assis}, P., {Barres de Almeida}, U., {Blanco}, A., {et~al.} 2017, ArXiv
+  e-prints [\eprint[arXiv]{1709.09624}]
+
 \bibitem[{{Ball} {et~al.}(2018){Ball}, {Sironi}, \&
   {{\"O}zel}}]{2018arXiv180305556B}
 {Ball}, D., {Sironi}, L., \& {{\"O}zel}, F. 2018, ArXiv e-prints
@@ -81,10 +93,17 @@
   {Kim}}]{2017ApJ...834..191B}
 {Bordoloi}, R., {Fox}, A.~J., {Lockman}, F.~J., {et~al.} 2017, \apj, 834, 191
 
+\bibitem[{{Calore} {et~al.}(2015){Calore}, {Cholis}, \&
+  {Weniger}}]{Calore:2014xka}
+{Calore}, F., {Cholis}, I., \& {Weniger}, C. 2015, \jcap, 3, 038
+
 \bibitem[{{Fox} {et~al.}(2015){Fox}, {Bordoloi}, {Savage}, {Lockman},
   {Jenkins}, {Wakker}, {Bland-Hawthorn}, {Hernandez}, {Kim}, {Benjamin},
   {Bowen}, \& {Tumlinson}}]{2015ApJ...799L...7F}
 {Fox}, A.~J., {Bordoloi}, R., {Savage}, B.~D., {et~al.} 2015, \apjl, 799, L7
+
+\bibitem[{Goodenough \& Hooper(2009)}]{Goodenough:2009gk}
+Goodenough, L. \& Hooper, D. 2009, ArXiv:0910.2998 [\eprint[arXiv]{0910.2998}]
 
 \bibitem[{{G{\'o}rski} {et~al.}(2005){G{\'o}rski}, {Hivon}, {Banday},
   {Wandelt}, {Hansen}, {Reinecke}, \& {Bartelmann}}]{2005ApJ...622..759G}

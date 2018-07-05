@@ -27,10 +27,9 @@ We assume that the CRp spectrum at the base of the bubbles is equal to the injec
 propagation softening.
 This is possible if the CRp were injected relatively recently and did not have enough time to escape from the region of the enhanced emission,
 i.e., the age of the CRp is smaller than the propagation time to cross the vertical distance of 0.9 kpc.
-
-We assume a spatially constant diffusion coefficient $D(E) = D_0\left(\frac{E}{\SI{1}{GeV}}\right)^\delta$ with 
-$D_0 = \SI{3e28}{cm^2/s} = \SI{100}{pc^2/kyr}$ and $\delta = 0.4$ \citep{2007ARNPS..57..285S}.
-The escape time for the protons (and also electrons) at $E > \SI{1.6}{TeV}$ is 
+If we assume a spatially constant diffusion coefficient $D(E) = D_0\left(\frac{E}{\SI{1}{GeV}}\right)^\delta$ with 
+$D_0 = \SI{3e28}{cm^2/s} = \SI{100}{pc^2/kyr}$ and $\delta = 0.4$ \citep{2007ARNPS..57..285S},
+then the escape time for the protons (and also electrons) at $E > \SI{1.6}{TeV}$ is 
 %\Laura{Should we also use 3 TeV here? Then escape time is 165 kyr.} 
 %\dima{it looks from Table 2 that the cutoff for the protons within $2^\circ$ from the Gal plane is 20 TeV? Strictly speaking, we should use 20 TeV for the protons (and 3 TeV for the electrons).} 
 
@@ -50,7 +49,7 @@ assuming that on average SNe inject $\sim 10^{50}$ erg in CRp, which corresponds
 of CR acceleration by a SN with kinetic energy $\sim 10^{51}$ erg \citep[e.g.,][]{Spurio2015}.
 %\Laura{Why 500 kyr? } \dima{ sorry this was a typo from my previous estimates.}\\
 
-The best-fit spectrum of CR electrons is $\sim E^{-2.7}$, which is softer than the spectrum of the protons.
+The best-fit spectrum of CR electrons (CRe) is $\sim E^{-2.7}$, which is softer than the spectrum of the protons.
 Nonetheless, this spectrum is harder than the spectrum expected in the presence of cooling
 for a stationary population of CRe.
 Thus, unless the injection spectrum is harder than $E^{-2}$, the population of the CRe at the base of the 
@@ -117,7 +116,7 @@ IC scattering at $E_\g = 1$ TeV relative to the hadronic model of the gamma-ray 
 \centering
  \includegraphics[width=0.48\textwidth]{plots/low_lat_FB_CTA.pdf}
  \includegraphics[width=0.48\textwidth]{plots/low_lat_FB_KM3.pdf}
- \caption{Comparison of the hadronic model of the residual plus FBs gamma-ray emission at the base of the FB
+ \caption{Comparison of the hadronic model of the gamma-ray emission at the base of the FB
  with the sensitivities of CTA and KM3NeT for a source with $2^\circ$ radius \citep{2018APh...100...69A}.
  %For the flux sensitivities we take the estimates of  for a $2^\circ$ radius source and divide by the area of the $2^\circ$ circle to transform to intensity units. 
  The min and max models correspond to the min and max models in
@@ -133,12 +132,12 @@ IC scattering at $E_\g = 1$ TeV relative to the hadronic model of the gamma-ray 
 
 \subsection{A nearby SNR or a superbubble scenario}
 
-The position of the hard and bright emission at the base of the FBs can be at any location along the line of sight.
-In this subsection we discuss models where this emission is created either by a single SNR
+%The position of the hard and bright emission at the base of the FBs can be at any location along the line of sight.
+In this subsection we discuss models where the hard and bright gamma-ray emission at the base of the FBs is created either by a single SNR
 or several SNRs at a distance closer than the distance to the GC.
 We start with a single SNR scenario.
 For the leptonic model we use the local ISRF and calculate the IC emission as described in Section \ref{sec:IC_model}.
-Assuming one single SN we find a distance of $\SI{50}{pc}$, which is rather close to Earth and should 
+Assuming one SNR we find a distance of $\SI{50}{pc}$, which is rather close to Earth and should 
 be easily detected in radio and X-ray observations.
 For the hadronic model of the gamma-ray emission, we assume that 
 the local gas density is similar to the average gas density near the GC \citep{2017ApJ...834...57M}.
@@ -162,7 +161,7 @@ For instance, the Cygnus superbubble \citep{2011Sci...334.1103A} has the radius 
 which at a distance of 1.4 kpc from the Earth, corresponds to a radius of about 50 pc.
 If a Cygnus-like region is responsible for the emission within $|b| < 6^\circ$ at the base of the FBs,
 then such region should be at a distance of about 500 pc from the Earth.
-If only the core of the high intensity region within $|b| < 6^\circ$ is explained by such a superbubble,
+If only the core of the high intensity region within $|b| < 2^\circ$ is explained by such a superbubble,
 then the distance would be similar to the distance to the Cygnus superbubble, i.e., about 1.4 kpc.
 
 \begin{figure}[h]
@@ -224,7 +223,7 @@ In the paper we use 9 years of \Fermi-LAT Source class data to study the gamma-r
 at the base of the FBs.
 We use different methods to construct the foreground diffuse gamma-ray emission and to determine
 the properties of the residual gamma-ray emission.
-We confirm the earlier findings that the residual emission at the base of the FB
+We confirm the earlier findings that the emission at the base of the FB
 has a higher intensity than the FBs emission at high latitudes.
 The spectrum is consistent with a single power law without a cutoff up to about 1 TeV.
 The emission is slightly displaced from the GC to negative longitudes,
@@ -256,17 +255,17 @@ If the residual gamma-ray emission is produced at a closer distance, e.g., at ab
 by a Cygnus-like cocoon or a superbubble in the Sagittarius arm, 
 then the required number of SNRs is about two orders of magnitude smaller.
 
-For the GC scenario, the diffusive escape time and the electron cooling time is $\gtrsim 100$ kyr.
-In this case one needs a relatively high SN rate of one per century at the location of the gamma-ray emission.
-For the 1 kpc scenario, the characteristic linear size is 10 times smaller, which leads to 10 times shorter
-diffusion time $t \gtrsim 1$ kyr. This is on the order of the lifetime of individual SNRs.
+For the GC scenario, the diffusive escape time and the electron cooling time is $\sim 200$ kyr.
+In this case one needs a relatively high SN rate of one per $\sim$ 200 yr at the location of the gamma-ray emission.
+For the superbubble scenario, the characteristic linear size is 10 times smaller, which leads to 100 times shorter
+diffusion time of a few kyr. This is shorter than the lifetime of individual SNRs.
 In this case, the age of the CR population can be longer than the diffusion time if there is an
 additional confinement by the SN shells or the shell of the superbubble.
 Together with the question of the location of the residual emission at the base of the FBs,
 one can revisit the question of the location of the FBs themselves:
 the FBs could have been inflated by a superbubble about 1 Myr ago
 at a distance of 1 kpc from the Sun.
-The CR in the past superbubble may create a wind with velocities up to few hundred km/s, 
+The CR in the past superbubble may create a wind with velocities up to $\sim$ 1000 km/s, 
 which are sufficient to inflate a 1 kpc large bubble within 1 Myr
 so that the CR electrons in the wind do not cool below 1 TeV and can explain the
 gamma-ray emission from the FBs at high latitudes.
@@ -274,15 +273,16 @@ The gamma-ray emission at low latitudes is then explained (most naturally) by a 
 scenario from a different and more recent starburst episode at about the same location.
 
 In the future, the bright and hard gamma-ray emission at the base of the FB
-should be detectable with the CTA telescopes.
-Observations with CTA should detect or put constraints on the cutoff value in the gamma-ray spectrum in multi-TeV regime.
+should be detectable with the CTA telescopes, or a version of the HAWC experiment in the southern hemisphere such as 
+LATTES \citep{2017arXiv170909624A}.
+Observations with Cherenkov telescopes should detect or put constraints on the cutoff value in the gamma-ray spectrum in multi-TeV regime.
 In the hadronic scenario, for a sufficiently high cutoff value of the CRp spectrum, e.g., around 1 PeV,
 the corresponding neutrino emission can be detected with the future KM3NeT telescope.
 
 
 \subsection*{Acknowledgements}
 
-The authors would like to thank Anna Franckowiak, Stefan Funk, Tsunefumi Mizuno, and Andrew Strong for valuable comments and suggestions.
+The authors would like to thank Anna Franckowiak, Stefan Funk, Tsunefumi Mizuno, Andrew Strong, and Luigi Tibaldo for valuable comments and suggestions.
 The Fermi LAT Collaboration acknowledges generous ongoing support from a number of agencies and institutes that have supported both the development and the operation of the LAT as well as scientific data analysis. These include the National Aeronautics and Space Administration and the Department of Energy in the United States, the Commissariat à l'Energie Atomique and the Centre National de la Recherche Scientifique / Institut National de Physique Nucléaire et de Physique des Particules in France, the Agenzia Spaziale Italiana and the Istituto Nazionale di Fisica Nucleare in Italy, the Ministry of Education, Culture, Sports, Science and Technology (MEXT), High Energy Accelerator Research Organization (KEK) and Japan Aerospace Exploration Agency (JAXA) in Japan, and the K. A. Wallenberg Foundation, the Swedish Research Council and the Swedish National Space Board in Sweden.
 
 

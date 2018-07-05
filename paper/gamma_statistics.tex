@@ -1,0 +1,40 @@
+\newpage
+\section{Gamma-statistics}
+
+Suppose that we have $n$ pixels with random variables $k_i$ drawn from a Poisson distribution with mean $\ld_0$.
+The likelihood function for parameter $\ld$ is
+\be
+L = \prod_i \frac{\ld^{k_i}}{k_i !} e^{-\ld}
+\ee
+The log likelihood is
+\be
+\log L = \sum_{i = 1}^n (-\ld + k_i \log \ld) + const.
+\ee
+The best-fit value $\ld_*$ is determined from
+\be
+0 = \frac{\p \log L}{\p \ld} = -n + \frac{1}{\ld} \sum_{i = 1}^n k_i
+\ee
+which gives $\ld_* = \frac{1}{n} \sum_{i = 1}^n k_i$.
+The uncertainty is
+\be
+\frac{1}{\sm^2} = - \left. \frac{\p^2 \log L}{\p \ld^2} \right|_{\ld = \ld_*} = \frac{n}{\ld_*},
+\ee
+which gives $\sm^2 = \ld_* / n$.
+
+Let us consider an extreme case of smoothing, when we substitute the values $k_i$ with the average $\tilde{k}_i = \bar{k} = \frac{1}{n} \sum_{i = 1}^n k_i$
+(note that $\tilde{k}_i$ are not integers).
+For the likelihood function we will take the gamma distribution
+\be
+\tilde{L} = \prod_i \frac{\ld^{\td{k}_i}}{\G(\td{k}_i + 1)} e^{-\ld}
+\ee
+and the log likelihood is
+\be
+\log \td{L} = \sum_{i = 1}^n (-\ld + \td{k}_i \log \ld) + const.
+\ee
+The best-fit solution is the same as in the Poisson case $\td{\ld}_* = \bar{k} = {\ld}_*$.
+The uncertainty is also the same as in the Poisson case:
+\be
+\frac{1}{\td{\sm}^2} = - \left. \frac{\p^2 \log \td{L}}{\p \ld^2} \right|_{\ld = \td{\ld}_*} = \frac{n}{\td{\ld}_*} = \frac{1}{\sm^2}.
+\ee
+Thus, smoothing the data and using the gamma distribution (in this case) gives the same result as using the original Poisson distribution,
+which shows that the procedure is well defined from the statistical point of view and it gives reasonable results.
