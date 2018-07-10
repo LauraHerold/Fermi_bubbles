@@ -112,7 +112,7 @@ the equivalent widths at low and at high energies $\sigma^2 = \sigma_{\rm low}^2
 Since $\sigma_{\rm low}^2 \gg \sigma_{\rm high}^2$, we neglect $\sigma_{\rm high}^2$ and smooth the 
 data at high energies with $\sigma_{\rm low} = 1^\circ$.}
 
-We separate the whole sky in latitude stripes of \red{$\ang{4}$ width} so that the Healpix pixels are assigned to stripes that contain the centers of the pixels.
+We separate the whole sky in latitude stripes of $\ang{4}$ width so that the Healpix pixels are assigned to stripes that contain the centers of the pixels.
 We parametrize the model in each stripe and each energy bin independently, i.e., 
 in the latitude stripe $b$ and energy bin $E$ the model consists of two terms:
 
@@ -163,8 +163,9 @@ In this subsection, we perform the fit over the whole sky and model the emission
 In order to explore the east-west asymmetry of the FBs, 
 we introduce two rectangular templates in each latitude stripe $b$ and energy bin $E$: 
 one east, $\ell \in (-20^\circ, 0^\circ)$, and one west, $\ell \in (0^\circ, 20^\circ)$, of the GC.
-Below $|b| = 10^\circ$, the width of the rectangles is $4^\circ$ with centers at $b = 0^\circ,  \pm 4^\circ,  \pm 8^\circ$,
-while above $|b| = 10^\circ$ the width is $10^\circ$ with centers at $b = \pm 15^\circ,  \pm 25^\circ,  \ldots, \pm 55^\circ$.
+The width of the rectangles is $4^\circ$, i.e., the same as the width of the latitude stripes.
+%Below $|b| = 10^\circ$, the width of the rectangles is $4^\circ$ with centers at $b = 0^\circ,  \pm 4^\circ,  \pm 8^\circ$,
+%while above $|b| = 10^\circ$ the width is $10^\circ$ with centers at $b = \pm 15^\circ,  \pm 25^\circ,  \ldots, \pm 55^\circ$.
 We use the same foreground model as in Section \ref{sec:le_data_model} plus the isotropic template.
 Overall, the model has four terms in each energy bin:
 
@@ -187,8 +188,10 @@ The map of residuals plus the rectangles model integrated for $E = 10 - \SI{100}
 \includegraphics[width=0.32\textwidth]{plots/Mollweide_Boxes_03-10GeV_flux_source_range_1.pdf}
  \includegraphics[width=0.32\textwidth]{plots/Mollweide_Boxes_residual+boxes_03-10GeV_flux_source_range_1.pdf}
  \caption{Energy flux of the full diffuse model excluding the rectangles model of the FBs,
- the rectangles model of the FBs, and 
- residuals plus the rectangles model of the FBs derived in Section \ref{sec:box_model}
+ the rectangles model of the FBs, 
+ residuals plus the rectangles model of the FBs,
+ \red{and the residual after subtracting the total model}
+ derived in Section \ref{sec:box_model}
  integrated between 10 and 100 GeV.}
  \label{fig:Maps_Rectangles}
 \end{figure}

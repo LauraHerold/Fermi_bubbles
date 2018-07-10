@@ -65,7 +65,9 @@ The spectra at positive longitudes show large oversubtractions and softer indice
 %\dima{I'm not sure, it will take space}
 
 To compare the behavior of the energy spectra at high energies for different latitudes, 
-we fit a log-parabola to \red{the residual flux} in each latitude stripe
+we fit a log-parabola plus the fixed foreground model counts to the 
+total smoothed gamma-ray counts in each latitude stripe using the likelihood based on gamma distribution.
+We use the following parametrization of the log-parabola function:
 
  \be
  f(E) = N_0 \left(\frac{E}{\SI{1}{GeV}}\right)^{-\alpha - \beta \ln(E)}.
@@ -89,8 +91,8 @@ is significantly harder ($n \approx 2$) than the index at higher latitudes.
 \includegraphics[width=0.5\textwidth]{plots/LogParabola_n(500GeV)_l_in_(0,10).pdf}
 \includegraphics[width=0.5\textwidth]{plots/LogParabola_n(500GeV)_l_in_(-10,0).pdf}
 \caption{
-\red{Index of the log-parabola defined in Equation (\ref{eq:log_par}) at  $E = \SI{500}{GeV}$ as a function of latitude for residuals in 
-the different foreground diffuse emission models. }
+Index of the log-parabola defined in Equation (\ref{eq:log_par}) at  $E = \SI{500}{GeV}$ as a function of latitude for the FBs in 
+the different foreground diffuse emission models.
 %The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0} - \ang{10}$ to the east of the GC (left) and $\ang{-10} - \ang{0}$ to the west of the GC (right).
 }
 \label{fig:logpar_index}
@@ -122,8 +124,11 @@ The 95\% confidence lower limit on the cutoff energy is $\sim$ 300 GeV.
     The last column is the minimal 95\% statistical lower limit among all models, $E_{\rm cut, 95\%}^{\rm min}$.
     There are four cases when the introduction of a cutoff does not lead to improved fit: in all of these cases
     $-2 \Delta \log \La < 0.1$ while the formal best-fit values of $E_{\rm cut}$ are larger than 1 TeV.
+    The numbers in parenthesis in the last two columns show the results without the last energy bin.
+    \dima{Some numbers seem to be very different with and without the last data point, e.g., 2.4 (180) and 12 (130). I've marked the strange numbers in red.
+    Also the 95\% cutoff values for the rectangles model without the last point seem to be higher in all cases, I'd expect that they would be almost always lower.}
     %\dima{I'm curious why the rectangles model is also the min model for negative longitudes in the Gal plane, for $\pi^0$ and IC models
-    %the cutoffs are different in this region.}
+    %the cutoffs are different in this region. I've marked what looked strange to me in red.}
     }
     \label{tab:param}
     \begin{tabular}{|c|c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
@@ -131,14 +136,14 @@ The 95\% confidence lower limit on the cutoff energy is $\sim$ 300 GeV.
 		 Lat & Lon  & $N_0$ & $n$ & $E_{\rm cut}$ &  $-2 \Delta \log \La$ & $E_{\rm cut, 95\%}$ & $E_{\rm cut, 95\%}^{\rm min}$ \\ 
 		       &        &  {\small $\SI{e-6}{GeV^{-1}cm^{-2}s^{-1} sr^{-1}}$ }&  & {\small $\SI{}{GeV}$ }& &{\small  $\SI{}{GeV}$ }&{\small  $\SI{}{GeV}$ }\\ 
 		\hline
-  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 1.9  & 1.9 & 45 & 4.8 & 25 & 25 \\ 
-		& $(\ang{-10}, \ang{0})$ & 2.0  & 2.2 & $-$ \cmt{5.2e3} & $< 0.1$ \cmt{0.027} & 308 \Laura{510} & {308} \Laura{510}  \\ 
+  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 1.9  & 1.9 & 45 & 4.8 & 25 (45) & 25 (25) \\ 
+		& $(\ang{-10}, \ang{0})$ & 2.0  & 2.2 & $-$ \cmt{5.2e3} & $< 0.1$ \cmt{0.027} & {510 (690)} & {510} (210)  \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 3.5  & 2.3 & $-$ \cmt{8.3e3} &  $< 0.1$ \cmt{0.010} & {210} \Laura {300} & 2.4  \\ 
-		& $(\ang{-10}, \ang{0})$  & 6.4  & 2.1 & $-$ \cmt{8.3e6} &  $< 0.1$ \cmt{3.3e-5} & {350} \Laura{1.0e3} & {350} \Laura{1.0e3}   \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 3.5  & 2.3 & $-$ \cmt{8.3e3} &  $< 0.1$ \cmt{0.010} & {300} (690) & \red{2.4 (180)}  \\ 
+		& $(\ang{-10}, \ang{0})$  & 6.4  & 2.1 & $-$ \cmt{8.3e6} &  $< 0.1$ \cmt{3.3e-5} & {{1000} (1300)} & {1000} (480)   \\ 
  		\hline
-  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$  & 1.8  & 2.1 & 260 & 3.8 & 120 \Laura{130} & 11 \Laura{12} \\ 
-		& $(\ang{-10}, \ang{0})$ & 2.8  & 2.2 &  $-$ \cmt{77e3} &  $< 0.1$ \cmt{0.020} & {330} \Laura{560} & {330} \Laura{560} \\ 
+  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$  & 1.8  & 2.1 & 260 & 3.8 & 130 (260) & \red{12 (130)} \\ 
+		& $(\ang{-10}, \ang{0})$ & 2.8  & 2.2 &  $-$ \cmt{77e3} &  $< 0.1$ \cmt{0.020} & {560} (780) & {560} (290) \\ 
  \hline
     \end{tabular}
   \end{center}
@@ -192,7 +197,7 @@ We model the column density of electrons as a power law with a cutoff
 \ee
 In order to determine the normalization $n_\el$, the spectral index $\gamma_\el$, and the cutoff  $E_{\cut}$, 
 we fit the IC model of the FBs plus the (fixed) foreground model counts to the 
-total smoothed gamma-ray counts in different latitude stripes using \red{likelihood based on gamma distribution}.
+total smoothed gamma-ray counts in different latitude stripes using likelihood based on gamma distribution.
 As a baseline case, we take the gamma-ray spectrum derived in the rectangles model of the FBs in Section \ref{sec:box_model}.
 The best-fit parameters for the rectangles model of the bubbles are reported in Figure \ref{fig:SED_with_fits}
 %Figure \ref{fig:SED_with_fits} shows the residual of the rectangles model within 
