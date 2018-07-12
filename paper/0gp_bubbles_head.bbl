@@ -1,4 +1,4 @@
-\begin{thebibliography}{40}
+\begin{thebibliography}{49}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -93,9 +93,19 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   {Kim}}]{2017ApJ...834..191B}
 {Bordoloi}, R., {Fox}, A.~J., {Lockman}, F.~J., {et~al.} 2017, \apj, 834, 191
 
+\bibitem[{{Breitschwerdt} {et~al.}(2016){Breitschwerdt}, {Feige}, {Schulreich},
+  {Avillez}, {Dettbarn}, \& {Fuchs}}]{2016Natur.532...73B}
+{Breitschwerdt}, D., {Feige}, J., {Schulreich}, M.~M., {et~al.} 2016, \nat,
+  532, 73
+
 \bibitem[{{Calore} {et~al.}(2015){Calore}, {Cholis}, \&
   {Weniger}}]{Calore:2014xka}
 {Calore}, F., {Cholis}, I., \& {Weniger}, C. 2015, \jcap, 3, 038
+
+\bibitem[{{Castro} {et~al.}(2013){Castro}, {Slane}, {Carlton}, \&
+  {Figueroa-Feliciano}}]{2013ApJ...774...36C}
+{Castro}, D., {Slane}, P., {Carlton}, A., \& {Figueroa-Feliciano}, E. 2013,
+  \apj, 774, 36
 
 \bibitem[{{Fox} {et~al.}(2015){Fox}, {Bordoloi}, {Savage}, {Lockman},
   {Jenkins}, {Wakker}, {Bland-Hawthorn}, {Hernandez}, {Kim}, {Benjamin},
@@ -109,6 +119,13 @@ Goodenough, L. \& Hooper, D. 2009, ArXiv:0910.2998 [\eprint[arXiv]{0910.2998}]
   {Wandelt}, {Hansen}, {Reinecke}, \& {Bartelmann}}]{2005ApJ...622..759G}
 {G{\'o}rski}, K.~M., {Hivon}, E., {Banday}, A.~J., {et~al.} 2005, \apj, 622,
   759
+
+\bibitem[{{Green}(2014)}]{2014BASI...42...47G}
+{Green}, D.~A. 2014, Bulletin of the Astronomical Society of India, 42, 47
+
+\bibitem[{{Green}(2017)}]{2017Green}
+{Green}, D.~A. 2017, Cavendish Laboratory, Cambridge, United Kingdom (available
+  at "http://www.mrao.cam.ac.uk/surveys/snrs/")
 
 \bibitem[{{Jacob} {et~al.}(2018){Jacob}, {Pakmor}, {Simpson}, {Springel}, \&
   {Pfrommer}}]{2018MNRAS.475..570J}
@@ -127,10 +144,18 @@ Goodenough, L. \& Hooper, D. 2009, ArXiv:0910.2998 [\eprint[arXiv]{0910.2998}]
 \bibitem[{{Karlsson} \& {Kamae}(2008)}]{2008ApJ...674..278K}
 {Karlsson}, N. \& {Kamae}, T. 2008, \apj, 674, 278
 
+\bibitem[{{Lloyd Evans}(1978)}]{1978MNRAS.184..661L}
+{Lloyd Evans}, T. 1978, \mnras, 184, 661
+
 \bibitem[{{Miville-Desch{\^e}nes} {et~al.}(2017){Miville-Desch{\^e}nes},
   {Murray}, \& {Lee}}]{2017ApJ...834...57M}
 {Miville-Desch{\^e}nes}, M.-A., {Murray}, N., \& {Lee}, E.~J. 2017, \apj, 834,
   57
+
+\bibitem[{{Moffat} {et~al.}(1977){Moffat}, {Fitzgerald}, \&
+  {Jackson}}]{1977ApJ...215..106M}
+{Moffat}, A.~F.~J., {Fitzgerald}, M.~P., \& {Jackson}, P.~D. 1977, \apj, 215,
+  106
 
 \bibitem[{Moskalenko \& Strong(1998)}]{Moskalenko:1997gh}
 Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
@@ -168,6 +193,20 @@ Porter, T.~A., Moskalenko, I.~V., Strong, A.~W., {et~al.} 2008, \apj, 682, 400
 \bibitem[{Ptuskin {et~al.}(2006)Ptuskin, Moskalenko, Jones,
   {et~al.}}]{Ptuskin:2005ax}
 Ptuskin, V., Moskalenko, I.~V., Jones, F., {et~al.} 2006, \apj, 642, 902
+
+\bibitem[{{Rohlfs} {et~al.}(1959){Rohlfs}, {Schrick}, \&
+  {Stock}}]{1959ZA.....47...15R}
+{Rohlfs}, K., {Schrick}, K.~W., \& {Stock}, J. 1959, \zap, 47, 15
+
+\bibitem[{{Schulreich} {et~al.}(2018){Schulreich}, {Breitschwerdt}, {Feige}, \&
+  {Dettbarn}}]{2018Galax...6...26S}
+{Schulreich}, M., {Breitschwerdt}, D., {Feige}, J., \& {Dettbarn}, C. 2018,
+  Galaxies, 6, 26
+
+\bibitem[{{Schulreich} {et~al.}(2017){Schulreich}, {Breitschwerdt}, {Feige}, \&
+  {Dettbarn}}]{2017A&A...604A..81S}
+{Schulreich}, M.~M., {Breitschwerdt}, D., {Feige}, J., \& {Dettbarn}, C. 2017,
+  \aap, 604, A81
 
 \bibitem[{{Sharp} \& {Bland-Hawthorn}(2010)}]{2010ApJ...711..818S}
 {Sharp}, R.~G. \& {Bland-Hawthorn}, J. 2010, \apj, 711, 818
