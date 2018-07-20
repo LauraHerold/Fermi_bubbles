@@ -1,4 +1,4 @@
-\begin{thebibliography}{49}
+\begin{thebibliography}{50}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -169,6 +169,11 @@ Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
   {Strong}}]{2006ApJ...640L.155M}
 {Moskalenko}, I.~V., {Porter}, T.~A., \& {Strong}, A.~W. 2006{\natexlab{b}},
   \apjl, 640, L155
+
+\bibitem[{{Mostafa} {et~al.}(2017){Mostafa}, {BenZvi}, {Schoorlemmer},
+  {Sch\"ussler}, {et~al.}}]{2017APS..APR.R4005M}
+{Mostafa}, M., {BenZvi}, S., {Schoorlemmer}, H., {Sch\"ussler}, F., {et~al.}
+  2017, in APS April Meeting Abstracts, R4.005
 
 \bibitem[{{Orlando} \& {Strong}(2007)}]{2007Ap&SS.309..359O}
 {Orlando}, E. \& {Strong}, A.~W. 2007, \apss, 309, 359
