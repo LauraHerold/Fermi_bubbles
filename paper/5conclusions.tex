@@ -3,7 +3,8 @@
 
 In general, the bright and hard gamma-ray emission at the base of the bubbles can be at any position along the line of sight.
 In this section we consider two characteristic scenarios: that the emission is near the GC or that the emission is 
-produced by one or a few SNRs closer to us (similar to, e.g., the Cygnus region that contains recently accelerated CRs from several SNRs).
+produced by one or a few SNRs closer to us. 
+% (similar to, e.g., the Cygnus region that contains recently accelerated CRs from several SNRs).
 
 \subsection{Emission near the GC scenario}
 \lb{sec:GC_scenario}
@@ -19,7 +20,7 @@ The total gamma-ray luminosity in this case can be estimated
 by summing the data points in the rectangles model in Figure \ref{fig:SED_with_fits}
 for $|b| < 6^\circ$, which yields the luminosity of $L = 1.1 \times 10^{37}\:{\rm erg\ s^{-1}}$.
 
-One of the most intriguing features of the gamma-ray spectrum at the base of the FBs is the absence of a cutoff up to 1 TeV and 
+One of the most intriguing features of the gamma-ray spectrum at the base of the FBs is the absence of a significant cutoff up to 1 TeV and 
 a hard spectrum of underlying electrons or protons.
 In particular, the spectrum of the CR protons (CRp) is $\sim E^{-2.2}$ which is significantly harder than the propagated spectrum of 
 $E^{-2.5 - 2.7}$ observed locally and throughout most of the Galactic plane \citep{2016ApJS..223...26A}.
@@ -29,22 +30,24 @@ This is possible if the CRp were injected relatively recently and did not have e
 i.e., the age of the CRp is smaller than the propagation time to cross the vertical distance of 0.9 kpc.
 If we assume a spatially constant diffusion coefficient $D(E) = D_0\left(\frac{E}{\SI{1}{GeV}}\right)^\delta$ with 
 $D_0 = \SI{3e28}{cm^2/s} = \SI{100}{pc^2/kyr}$ and $\delta = 0.4$ \citep{2007ARNPS..57..285S},
-then the escape time for the protons (and also electrons) at $E > \SI{1.6}{TeV}$ is 
+then the escape time for the protons at $E > \SI{6}{TeV}$ is 
 %\Laura{Should we also use 3 TeV here? Then escape time is 165 kyr.} 
 %\dima{it looks from Table 2 that the cutoff for the protons within $2^\circ$ from the Gal plane is 20 TeV? Strictly speaking, we should use 20 TeV for the protons (and 3 TeV for the electrons).} 
 
 \be
-T_{\rm esc} < \frac{\Delta h^2}{2 D(E)} \approx \SI{210}{kyr}.
+T_{\rm esc} < \frac{\Delta h^2}{2 D(E)} \approx \SI{100}{kyr}.
 \ee
 %\Laura{Is there no factor of 1/2 missing in the formula for the cooling time?} \dima{good point - fixed.}
-This gives us an approximate upper bound on the age of the proton CR.
+This gives us an approximate upper bound on the age of the proton CR, 
+assuming that the diffusion coefficient near the GC is similar to the diffusion coefficient near Sun.
+The escape time can be significantly larger, if the diffusion length near the GC is smaller than the local one.
 The CRp energy density (normalized to $n_\Hy = \SI{1}{cm^{-3}}$, which is a typical gas density in the Galactic plane) 
 within $|b| < 6^\circ$ is 
 $\de E_\tot / \de V = \SI{360}{meV\: cm^{-3}}$ between $\SI{1}{GeV}$ and $\SI{1}{TeV}$.
 In Figure \ref{fig:Particle_spectra} (left), we compare the corresponding flux to the local CRp flux.
 The total energy content within $|b| < 6^\circ$ is $E_\tot = \SI{7e52}{erg}$.
 %However, the gas density in the inner Galaxy is probably higher than $n_\Hy = \SI{1}{/cm^3}$ as assumed in Section \ref{sec:Pion_model}, resulting in an energy content in protons of the same order of magnitude as the energy density in electrons.
-This population of CRp can be obtained from $\sim$ 700 SNe in the past $\sim \SI{200}{kyr}$, 
+This population of CRp can be obtained from $\sim$ 700 SNe in the past $\sim \SI{100}{kyr}$, 
 assuming that on average SNe inject $\sim 10^{50}$ erg in CRp, which corresponds to about 10\% efficiency
 of CR acceleration by a SN with kinetic energy $\sim 10^{51}$ erg \citep[e.g.,][]{Spurio2015}.
 %\Laura{Why 500 kyr? } \dima{ sorry this was a typo from my previous estimates.}\\
@@ -103,10 +106,10 @@ IC scattering at $E_\g = 1$ TeV relative to the hadronic model of the gamma-ray 
 \includegraphics[width=0.5\textwidth]{plots/Summary_proton_spectra_0.pdf}
 \includegraphics[width=0.5\textwidth]{plots/Summary_electron_spectra_0.pdf}
   	\caption{
-	Best-fit proton (left) and electron (right) spectra for the residual plus FBs gamma-ray emission at the base of the FBs 
-	in the baseline model of the foreground gamma-ray emission. 
+	Best-fit proton (left) and electron (right) spectra for the residual plus FBs gamma-ray emission at the base of the FBs.
+	Solid lines show the best-fit spectra in the rectangles model of the FBs.
 	The shaded bands represent the systematic uncertainties, 
-	estimated by the maximal and minimal best-fit FBs spectrum among the foreground models. 
+	estimated by the maximal and minimal best-fit FBs spectra among the foreground models. 
 	For comparison with the local CR spectrum, data points of some experiments measuring the local CR flux are shown. 
 	Here, the error bars represent the combined systematic and statistical uncertainties.}
   	\label{fig:Particle_spectra}
@@ -137,7 +140,7 @@ In this subsection we discuss models where the hard and bright gamma-ray emissio
 or several SNRs at a distance closer than the distance to the GC.
 We start with a single SNR scenario.
 For the leptonic model we use the local ISRF and calculate the IC emission as described in Section \ref{sec:IC_model}.
-Assuming one SNR we find a distance of $\SI{50}{pc}$, which is rather close to Earth and should 
+Assuming one SNR, we find a distance of $\SI{50}{pc}$, which is rather close to Earth and should 
 be easily detected in radio and X-ray observations.
 For the hadronic model of the gamma-ray emission, we assume that 
 the local gas density is similar to the average gas density near the GC \citep{2017ApJ...834...57M}.
