@@ -13,7 +13,7 @@ of the Galactic latitude for different models of Galactic foreground emission.
 %that is $\ang{0} - \ang{10}$ to the east of the GC an $\ang{-10} - \ang{0}$ to the west of the GC. 
 %The profiles of the three models include the residual emission plus the FBs, i.e. 
 For the low-energy model, the profiles show the residual gamma-ray emission, 
-for the rectangles model -- the sum of residual emission and the rectangles templates model, 
+for the rectangles model -- the sum of residual emission and the rectangle templates model, 
 and for the GALPROP model --  the sum of residual emission, the FBs template, 
 and the GC excess template, as described in Section \ref{sec:Modeling}. 
 For comparison we show the latitude profile of the total gamma-ray data (excluding pixels in the PS mask).
@@ -49,7 +49,7 @@ This is due to additional freedom in the GALPROP model related to the usage of s
 \end{figure*}
 
 In this section we quantify the hardening of the gamma-ray spectrum at the base of the FBs. 
-We first compare the spectral energy distribution (SED) of the emission at the base of the FB for different foreground models in Figure \ref{fig:SED_all}. 
+We first compare the spectral energy distribution (SED) of the emission at the base of the FBs for different foreground models in Figure \ref{fig:SED_all}. 
 The differential flux is averaged over regions to the east, $\ell \in (\ang{0},\ \ang{10})$, and to the west, $\ell \in (\ang{-10},\ \ang{0})$, of the GC
 in a thin stripe covering the Galactic plane $b \in (\ang{-2},\ \ang{2})$. 
 For comparison, we show the total data (excluding pixels masked by the PS mask) and, on the plot for $\ell \in (\ang{-10},\ \ang{0})$, the difference in the data west minus east
@@ -59,7 +59,7 @@ For negative longitudes, all models give similar results.
 The differential flux of the GALPROP model is smaller than the differential flux of the other models above 10 GeV, 
 which is consistent with the profile plots in Figure \ref{fig:Profiles}.
 %We also find an asymmetry in the flux of the data with PS mask. 
-The difference of the data west minus east of the GC is similar to the fluxes at the base of the FB in the low-energy model and in the rectangles model. 
+The difference of the data west minus east of the GC is similar to the fluxes at the base of the FBs in the low-energy model and in the rectangles model. 
 The spectra at positive longitudes show large oversubtractions and softer indices. 
 %\Laura{Should we show here the plots for (-6,-2) and (2,6) deg latitude also?}
 %\dima{I'm not sure, it will take space}
@@ -344,7 +344,7 @@ E^2_\g \frac{dF_\g}{dE_\g} = \frac{E_\g}{4\pi} \int n_\Hy\ \sigma_\pr v_\pr \lef
 \ee
 where $\left(\frac{\de \Sigma}{\de E}\right)_{\!\!\pr} = \int \left(\frac{\de n}{\de E}\right)_{\!\!\pr} dR$ is the column density 
 of CR protons,
-$T_\pr = \sqrt{(q c)^2 + (m_p c^2)^2} - m_p c^2$ is the kinetic energies of the protons,
+$T_\pr = \sqrt{(q c)^2 + (m_p c^2)^2} - m_p c^2$ is the kinetic energy of the protons,
 $n_\Hy$ is the density of gas, and $\sigma_\pr (E_\gamma, T_\pr)$ is 
 the differential cross section in units of $E_\g\frac{d\sigma}{d E_\g}$
 for gamma rays in proton-proton collisions \citep{2006ApJ...647..692K, 2008ApJ...674..278K}.
@@ -410,7 +410,7 @@ In order to determine the maximal and minimal models of the FBs in the Galactic 
 we fit the maximal and minimal points in the envelope above 3 GeV with a power-law with a cutoff function
 (we fit above 3 GeV because some of the models of the foreground emission in Appendix \ref{sec:lowE_syst} are determined 
 for energies between 1 and 3 GeV).
-The corresponding parameters are reported in the first raw of Table \ref{tab:summary}.
+The corresponding parameters are reported in the first row of Table \ref{tab:summary}.
 We also fit the IC and hadronic models to the maximal and minimal points in the envelope and report the corresponding parameters
 in Table \ref{tab:summary}.
 
