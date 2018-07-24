@@ -13,7 +13,7 @@ of the Galactic latitude for different models of Galactic foreground emission.
 %that is $\ang{0} - \ang{10}$ to the east of the GC an $\ang{-10} - \ang{0}$ to the west of the GC. 
 %The profiles of the three models include the residual emission plus the FBs, i.e. 
 For the low-energy model, the profiles show the residual gamma-ray emission, 
-for the rectangles model -- the sum of residual emission and the rectangles templates model, 
+for the rectangles model -- the sum of residual emission and the rectangle templates model, 
 and for the GALPROP model --  the sum of residual emission, the FBs template, 
 and the GC excess template, as described in Section \ref{sec:Modeling}. 
 For comparison we show the latitude profile of the total gamma-ray data (excluding pixels in the PS mask).
@@ -42,14 +42,14 @@ This is due to additional freedom in the GALPROP model related to the usage of s
 \begin{figure*}[h]
 \includegraphics[width=0.5\textwidth]{plots/SED_all_models_source_l=5_b=0.pdf}
 \includegraphics[width=0.5\textwidth]{plots/SED_all_models_source_l=-5_b=0.pdf}
-  	\caption{SED of the residuals plus the FBs, the data, and the difference in the data west minus east of the GC (excluding pixels in the PS mask). 
+  	\caption{SED of the gamma-ray data, of the residuals plus the FBs, and of the difference in the data west minus east of the GC (excluding pixels in the PS mask). 
 	%The width of the regions in longitude is $\ang{10}$, i.e. $\ang{0}$ to $\ang{10}$ to the east of the GC (left) and $\ang{-10}$ to $\ang{0}$ to the west of the GC (right).
 	}
   	\label{fig:SED_all}
 \end{figure*}
 
 In this section we quantify the hardening of the gamma-ray spectrum at the base of the FBs. 
-We first compare the spectral energy distribution (SED) of the emission at the base of the FB for different foreground models in Figure \ref{fig:SED_all}. 
+We first compare the spectral energy distribution (SED) of the emission at the base of the FBs for different foreground models in Figure \ref{fig:SED_all}. 
 The differential flux is averaged over regions to the east, $\ell \in (\ang{0},\ \ang{10})$, and to the west, $\ell \in (\ang{-10},\ \ang{0})$, of the GC
 in a thin stripe covering the Galactic plane $b \in (\ang{-2},\ \ang{2})$. 
 For comparison, we show the total data (excluding pixels masked by the PS mask) and, on the plot for $\ell \in (\ang{-10},\ \ang{0})$, the difference in the data west minus east
@@ -59,7 +59,7 @@ For negative longitudes, all models give similar results.
 The differential flux of the GALPROP model is smaller than the differential flux of the other models above 10 GeV, 
 which is consistent with the profile plots in Figure \ref{fig:Profiles}.
 %We also find an asymmetry in the flux of the data with PS mask. 
-The difference of the data west minus east of the GC is similar to the fluxes at the base of the FB in the low-energy model and in the rectangles model. 
+The difference of the data west minus east of the GC is similar to the fluxes at the base of the FBs in the low-energy model and in the rectangles model. 
 The spectra at positive longitudes show large oversubtractions and softer indices. 
 %\Laura{Should we show here the plots for (-6,-2) and (2,6) deg latitude also?}
 %\dima{I'm not sure, it will take space}
@@ -114,21 +114,21 @@ For the model with a cutoff, we also find the 95\% statistical confidence lower 
 At last, we find the minimum among the 95\% confidence lower limits for all considered models.
 The spectrum of the residuals including the FBs at  $\ell \in (\ang{-10},\ \ang{0})$
 is consistent with a power law with an index $2.1 - 2.2$ up to $E \approx 1$ TeV.
-The 95\% confidence lower limit on the cutoff energy is $\sim$ 300 GeV.
+The 95\% confidence lower limit on the cutoff energy is $\sim$ 500 GeV.
 %\dima{Report the total luminosity (assuming the GC location) in erg/s including modeling ``error bars",  we can also do it in Section \ref{sec:GC_scenario}.}
 
 \begin{table*}
   \begin{center}
-    \caption{Parametric model of the FBs. We report the best fit values of the spectrum, the significance of the cutoff, 
-    and statistical 95\% confidence lower limit on the cutoff for the rectangles model, $E_{\rm cut, 95\%}$.
-    The last column is the minimal 95\% statistical lower limit among all models, $E_{\rm cut, 95\%}^{\rm min}$.
+    \caption{Best-fit parameters of the gamma-ray spectrum and the significance of the cutoff for the rectangles model
+    of the FBs.
+    $E_{\rm cut, 95\%}$ is the statistical 95\% confidence lower limit on the energy cutoff of the FBs spectrum, 
+    $E_{\rm cut, 95\%}^{\rm min}$ is the minimal 95\% statistical lower limit among all models of the FBs
+    considered in the paper.
     There are four cases when the introduction of a cutoff does not lead to improved fit: in all of these cases
     $-2 \Delta \log \La < 0.1$ while the formal best-fit values of $E_{\rm cut}$ are larger than 1 TeV.
-    The numbers in parenthesis in the last two columns show the results without the last energy bin.
+    %The numbers in parenthesis in the last two columns show the results without the last energy bin.
     %\dima{Some numbers seem to be very different with and without the last data point, e.g., 2.4 (180) and 12 (130). I've marked the strange numbers in red. Also the 95\% cutoff values for the rectangles model without the last point seem to be higher in all cases, I'd expect that they would be almost always lower.}
-    \Laura{I had normalized the powerlaw of the parametric model to 10 GeV. The correct values (for 1 GeV) are in parenthesis. IC and pi0 are not affected by the bug.}
-    %\dima{I'm curious why the rectangles model is also the min model for negative longitudes in the Gal plane, for $\pi^0$ and IC models
-    %the cutoffs are different in this region. I've marked what looked strange to me in red.}
+    %\Laura{I had normalized the powerlaw of the parametric model to 10 GeV. The correct values (for 1 GeV) are in parenthesis. IC and pi0 are not affected by the bug.}
     }
     \label{tab:param}
     \begin{tabular}{|c|c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
@@ -136,46 +136,26 @@ The 95\% confidence lower limit on the cutoff energy is $\sim$ 300 GeV.
 		 Lat & Lon  & $N_0$ & $n$ & $E_{\rm cut}$ &  $-2 \Delta \log \La$ & $E_{\rm cut, 95\%}$ & $E_{\rm cut, 95\%}^{\rm min}$ \\ 
 		       &        &  {\small $\SI{e-6}{GeV^{-1}cm^{-2}s^{-1} sr^{-1}}$ }&  & {\small $\SI{}{GeV}$ }& &{\small  $\SI{}{GeV}$ }&{\small  $\SI{}{GeV}$ }\\ 
 		\hline
-  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 1.9  \Laura{1.5}& 1.9 & 45 (45)& 4.8 & 25 (25) & 25  (25)\\ 
-		& $(\ang{-10}, \ang{0})$ & 2.0 \Laura{3.1} & 2.2 & $-\ (690)$ \cmt{5.2e3} & $< 0.1$ \cmt{0.027} & {510 (210)} & {510} (210)  \\ 
+  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 1.5  & 1.9 & 45& 4.8 & 25& 25\\ 
+		& $(\ang{-10}, \ang{0})$ & 3.1  & 2.2 & $-$ \cmt{5.2e3} & $< 0.1$ \cmt{0.027} & {510} & {510}  \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 3.5 \Laura{6.4}  & 2.3 & $-\ (610)$ \cmt{8.3e3} &  $< 0.1$ \cmt{0.010} & {300(180)}  & 2.4 (2.0)  \\ 
-		& $(\ang{-10}, \ang{0})$  & 6.4 \Laura{7.9} & 2.1 & $-\ (1300)$ \cmt{8.3e6} &  $< 0.1$ \cmt{3.3e-5} & {{1000} (480)} & {1000}  (460)  \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 6.4  & 2.3 & $-$ \cmt{8.3e3} &  $< 0.1$ \cmt{0.010} & {300}  & {2.4}  \\ 
+		& $(\ang{-10}, \ang{0})$  & 7.9  & 2.1 & $-$ \cmt{8.3e6} &  $< 0.1$ \cmt{3.3e-5} & {{1000}} & 600   \\ 
  		\hline
-  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$  & 1.8 \Laura{2.5} & 2.1 & 260 (260) & 3.8 & 130 (130)& {2.3 (2.3)} \\ 
-		& $(\ang{-10}, \ang{0})$ & 2.8 \Laura{4.0} & 2.2 &  $-\ (780)$ \cmt{77e3} &  $< 0.1$ \cmt{0.020} & {560(290)}  & {560 (290)}  \\ 
+  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$  & 2.5  & 2.1 & 260 & 3.8 & 130& {2.3} \\ 
+		& $(\ang{-10}, \ang{0})$ & 4.0  & 2.2 &  $-$ \cmt{77e3} &  $< 0.1$ \cmt{0.020} & {560}  & {560}  \\ 
  \hline
     \end{tabular}
   \end{center}
 \end{table*}
 
-\begin{table*}
-  \begin{center}
-    \caption{Rectangles model without last data point.}
-        \begin{tabular}{|c|c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-     	\hline
-		 Lat & Lon  & $N_0$ & $n$ & $E_{\rm cut}$ &  $-2 \Delta \log \La$ & $E_{\rm cut, 95\%}$ & $E_{\rm cut, 95\%}^{\rm min}$ \\ 
-		     &        &  {\small $\SI{e-6}{GeV^{-1}cm^{-2}s^{-1} sr^{-1}}$ }&  & {\small $\SI{}{GeV}$ }& &{\small  $\SI{}{GeV}$ }&{\small  $\SI{}{GeV}$ }\\ 
-		\hline
-  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 1.9 & 1.9 & 45 & 4.8 &25 & 25\\ 
-		& $(\ang{-10}, \ang{0})$ & 2.0 & 2.2 & 690 & $< 0.1$ & 210 & 210\\ 
- 		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & 3.6 & 2.3  & 610 & $< 0.1$ & 180 & 2.0 \\ 
-		& $(\ang{-10}, \ang{0})$ & 6.4 & 2.1 & 1.3e3 & $< 0.1$ & 480 & 460\\ 
- 		\hline
-  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$ & 1.8 & 2.1 & 260 & 3.8 & 130 & 2.3  \\ 
-		& $(\ang{-10}, \ang{0})$ & 2.9 & 2.1 & 780 & $< 0.1$ & 290 & 290\\ 
- \hline
-    \end{tabular}
-  \end{center}
-\end{table*}
 
 
 \subsection{IC model of the gamma-ray emission}
 \label{sec:IC_model}
 
 In this section we model the gamma-ray emission at the base of the FBs with an IC scattering model.
-The SED of the gamma-ray intensity is
+The SED of the gamma-ray intensity is parametrized as
 
 \be
 E^2_\g \frac{dF_\g}{dE_\g} = 
@@ -193,7 +173,7 @@ We model the column density of electrons as a power law with a cutoff
 
 \be 
 \label{eq:e_spectrum}
-\left(\frac{\de \Sigma}{\de E}\right)_{\!\!\el} = n_\el \left(\frac{E_\el}{\SI{1}{GeV}}\right)^{-\gamma_\el} e^{- E / E_{\cut}}.
+\left(\frac{\de \Sigma}{\de E}\right)_{\!\!\el} = n_\el \left(\frac{E_\el}{\SI{1}{GeV}}\right)^{-\gamma_\el} e^{- E_\el / E_{\cut}}.
 \ee
 In order to determine the normalization $n_\el$, the spectral index $\gamma_\el$, and the cutoff  $E_{\cut}$, 
 we fit the IC model of the FBs plus the (fixed) foreground model counts to the 
@@ -267,7 +247,8 @@ for different latitude stripes.
         \includegraphics[width=\textwidth]{plots/SED_boxes_source_-4.pdf}
     \end{subfigure}
 \end{comment}
-  	\caption{SED of rectangles-model residual plus the FBs in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive (red) longitudes. We determine the spectral index of a power law (PL) of an electron distribution emitting gamma-rays via IC and of a proton distribution emitting gamma-rays via $\pi^0$-decay.}
+  	\caption{SED of rectangles-model residual plus the FBs in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive (red) longitudes. We compare the parametric model of the SED with the leptonic (Section \ref{sec:IC_model}) 
+	and the hadronic (Section \ref{sec:Pion_model}) models.}
   	%\Laura{Should we add the spectrum for the latitude band $(\ang{2}, \ang{6})$ also, or just say that it looks similar?}
 	%\blue{Dima: yes, let's add the 2 to 6 deg spectrum.}
   	\label{fig:SED_with_fits}
@@ -304,14 +285,14 @@ models are shown in the last two columns respectively.
 		 Lat & Lon  & $-2 \Delta \log \La$ & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\ 
 		       &        &                                  &  \multicolumn{1}{c}{Rectangles model} & All models \\ 
 		\hline
-  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 2.6  & 0.05 \Laura{0.20} & 0.05 \Laura{0.17}\\ 
+  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 2.6  & {0.20} & {0.17}\\ 
 		& $(\ang{-10}, \ang{0})$ & $ < 0.1$  & 4.0  & 4.0 \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & $ < 0.1$ & 1.5 \Laura{1.4} & 0.01 \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & $ < 0.1$ & {1.4} & 0.01 \\ 
 		& $(\ang{-10}, \ang{0})$ & $ < 0.1$ & 13  & 2.9  \\ 
  		\hline
-  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$ & 1.1 & 0.83 \Laura{0.82} & 0.03 \\ 
-		& $(\ang{-10}, \ang{0})$& $ < 0.1$ & 6.3 \Laura{7.0} & 6.3 \Laura{7.0} \\ 
+  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$ & 1.1 & {0.82} & 0.03 \\ 
+		& $(\ang{-10}, \ang{0})$& $ < 0.1$ & {7.0} & {7.0} \\ 
  \hline
     \end{tabular}
   \end{center}
@@ -336,7 +317,7 @@ models are shown in the last two columns respectively.
 \label{sec:Pion_model}
 
 In the hadronic model, the gamma rays are produced as a result of collisions of hadronic CR with the interstellar gas.
-The gamma-ray intensity in the hadronic model is
+The gamma-ray intensity in the hadronic model is parametrized as
 
 \be
 E^2_\g \frac{dF_\g}{dE_\g} = \frac{E_\g}{4\pi} \int n_\Hy\ \sigma_\pr v_\pr \left(\frac{\de \Sigma}{\de T}\right)_{\!\!\pr} \de T_\pr,
@@ -344,7 +325,7 @@ E^2_\g \frac{dF_\g}{dE_\g} = \frac{E_\g}{4\pi} \int n_\Hy\ \sigma_\pr v_\pr \lef
 \ee
 where $\left(\frac{\de \Sigma}{\de E}\right)_{\!\!\pr} = \int \left(\frac{\de n}{\de E}\right)_{\!\!\pr} dR$ is the column density 
 of CR protons,
-$T_\pr = \sqrt{(q c)^2 + (m_p c^2)^2} - m_p c^2$ is the kinetic energies of the protons,
+$T_\pr = \sqrt{(q c)^2 + (m_p c^2)^2} - m_p c^2$ is the kinetic energy of the protons,
 $n_\Hy$ is the density of gas, and $\sigma_\pr (E_\gamma, T_\pr)$ is 
 the differential cross section in units of $E_\g\frac{d\sigma}{d E_\g}$
 for gamma rays in proton-proton collisions \citep{2006ApJ...647..692K, 2008ApJ...674..278K}.
@@ -388,14 +369,14 @@ models are shown in the last two columns respectively.
 		 lat & lon  & $-2 \Delta \log \La$ & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\
 		      &        &                                  &       \multicolumn{1}{c}{Rectangles model} & All models \\ 
 		\hline
-  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 4.4 & 0.16 \Laura{0.88} & 0.16 \Laura{0.48} \\ 
-		& $(\ang{-10}, \ang{0})$ &  $ < 0.1$ & 1.6 \Laura{7.4} & 1.6 \Laura{7.4}\\ 
+  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 4.4 & {0.88} & {0.48} \\ 
+		& $(\ang{-10}, \ang{0})$ &  $ < 0.1$ & {7.4} & {7.4}\\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & $ < 0.1$ & 1.3 \Laura{3.8} & 0.023 \\ 
-		& $(\ang{-10}, \ang{0})$ & $ < 0.1$ & 30 \Laura{29} & 6.3 \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$ & $ < 0.1$ & {3.8} & 0.023 \\ 
+		& $(\ang{-10}, \ang{0})$ & $ < 0.1$ & {29} & 6.3 \\ 
  		\hline
   		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$ & 2.7 & 1.6 & 0.05 \\ 
-		& $(\ang{-10}, \ang{0})$ & $ < 0.1$ & 2.1 \Laura{12} & 2.1 \Laura{12}\\ 
+		& $(\ang{-10}, \ang{0})$ & $ < 0.1$ & {12} & {12}\\ 
  \hline
     \end{tabular}
   \end{center}
@@ -410,7 +391,7 @@ In order to determine the maximal and minimal models of the FBs in the Galactic 
 we fit the maximal and minimal points in the envelope above 3 GeV with a power-law with a cutoff function
 (we fit above 3 GeV because some of the models of the foreground emission in Appendix \ref{sec:lowE_syst} are determined 
 for energies between 1 and 3 GeV).
-The corresponding parameters are reported in the first raw of Table \ref{tab:summary}.
+The corresponding parameters are reported in the first row of Table \ref{tab:summary}.
 We also fit the IC and hadronic models to the maximal and minimal points in the envelope and report the corresponding parameters
 in Table \ref{tab:summary}.
 
@@ -445,14 +426,14 @@ The lines show the fits to the maximal and minimal points in the envelopes above
 		 {\hspace{2cm}Model} & Type  & norm & index & cutoff & $E_{\rm cut, 95\%}$ \\ 
 		       &        &   &  & {\rm\small TeV} & {\rm\small TeV}\\ 
 		\hline
-  		\multirow{2}{*}{Parametric, $\frac{dN_\g}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}\, s^{-1} }}\right]$}} & max & $\SI{8.0e-6}{} $ \red{8.1e-6} & 2.10 \red{2.11} &  -- & 3.9 \red{1.65} \\ 
-		& min & $\SI{1.4e-6}{}$ \red{1.12e-6} & 2.04 \red{1.91} &  0.26 \red{0.11} & 0.14 \red{0.039} \\ 
+  		\multirow{2}{*}{Parametric, $\frac{dN_\g}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}\, s^{-1} }}\right]$}} & max &  $\SI{8.1e-6}{}$ & 2.11 &  -- & 1.7 \\ 
+		& min & $\SI{1.1e-6}{}$& 1.91 & 0.11 & 0.039 \\ 
  		\hline
-  		\multirow{2}{*}{IC, $\frac{d\Sigma_e}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}}}\right]$}} & max & $\SI{4.0e10}{}$ \red{33.5e9} & 2.71 \red{2.67} &  -- & 59 \red{18.5} \\ 
-		& min & $\SI{5.6e9}{}$ \red{12.5e9} & 2.60 \red{2.81} &  1.1 \red{7.18} & 0.43 \red{0.96} \\ 
+  		\multirow{2}{*}{IC, $\frac{d\Sigma_e}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}}}\right]$}} & max & $\SI{3.4e10}{}$ & 2.67 &  -- & 19 \\ 
+		& min & $\SI{1.3e10}{}$ & 2.81 &  7.2 & 0.96 \\ 
  		\hline
-  		\multirow{2}{*}{Hadronic, $\frac{d\Sigma_p}{dqc}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}}}\right]$}} & max & $\SI{1.0e12}{}$ \red{9.51e11} & 2.15\red{2.13} &  -- & 276 \red{64.9} \\ 
-		& min & $\SI{1.1e11}{}$ \red{1.05e11} & 2.00 \red{1.98} &  2.3 \red{1.79} & 1.1 \red{0.23}  \\ 
+  		\multirow{2}{*}{Hadronic, $\frac{d\Sigma_p}{dqc}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}}}\right]$}} & max & $\SI{9.5e11}{}$ & 2.13 &  -- &65 \\ 
+		& min & $\SI{1.1e11}{}$ & 1.98 &  1.8 & 0.23  \\ 
  \hline
     \end{tabular}
   \end{center}
