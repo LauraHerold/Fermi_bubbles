@@ -1,4 +1,4 @@
-\begin{thebibliography}{52}
+\begin{thebibliography}{56}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -97,6 +97,9 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   {Kim}}]{2017ApJ...834..191B}
 {Bordoloi}, R., {Fox}, A.~J., {Lockman}, F.~J., {et~al.} 2017, \apj, 834, 191
 
+\bibitem[{{Breitschwerdt} \& {de Avillez}(2006)}]{2006A&A...452L...1B}
+{Breitschwerdt}, D. \& {de Avillez}, M.~A. 2006, \aap, 452, L1
+
 \bibitem[{{Breitschwerdt} {et~al.}(2016){Breitschwerdt}, {Feige}, {Schulreich},
   {Avillez}, {Dettbarn}, \& {Fuchs}}]{2016Natur.532...73B}
 {Breitschwerdt}, D., {Feige}, J., {Schulreich}, M.~M., {et~al.} 2016, \nat,
@@ -110,6 +113,9 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   {Figueroa-Feliciano}}]{2013ApJ...774...36C}
 {Castro}, D., {Slane}, P., {Carlton}, A., \& {Figueroa-Feliciano}, E. 2013,
   \apj, 774, 36
+
+\bibitem[{{Dickinson}(2018)}]{2018Galax...6...56D}
+{Dickinson}, C. 2018, Galaxies, 6, 56
 
 \bibitem[{{Fox} {et~al.}(2015){Fox}, {Bordoloi}, {Savage}, {Lockman},
   {Jenkins}, {Wakker}, {Bland-Hawthorn}, {Hernandez}, {Kim}, {Benjamin},
@@ -219,6 +225,12 @@ Ptuskin, V., Moskalenko, I.~V., Jones, F., {et~al.} 2006, \apj, 642, 902
 
 \bibitem[{{Sharp} \& {Bland-Hawthorn}(2010)}]{2010ApJ...711..818S}
 {Sharp}, R.~G. \& {Bland-Hawthorn}, J. 2010, \apj, 711, 818
+
+\bibitem[{{Shchekinov}(2018)}]{2018Galax...6...62S}
+{Shchekinov}, Y. 2018, Galaxies, 6, 62
+
+\bibitem[{{Smith} \& {Cox}(2001)}]{2001ApJS..134..283S}
+{Smith}, R.~K. \& {Cox}, D.~P. 2001, \apjs, 134, 283
 
 \bibitem[{Spurio(2015)}]{Spurio2015}
 Spurio, M. 2015, {Particles and Astrophysics: a Multi-Messenger Approach}
