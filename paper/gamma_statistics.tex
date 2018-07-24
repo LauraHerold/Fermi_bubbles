@@ -1,11 +1,16 @@
 \newpage
-\section{Gamma distribution}
+\section{Gamma distribution as a likelihood for smoothed data}
 \lb{app:gamma}
 
-Suppose that we have $n$ pixels with random variables $k_i$ drawn from a Poisson distribution with mean $\ld_0$.
+In this appendix we show that smoothing the data and using gamma distribution instead of the Poisson distribution
+is a reasonable procedure (at least in the case when the scale of variations in the diffuse emission is larger than the smoothing radius).
+We split the log likelihood into a sum over areas with size approximately equal to the smoothing scale
+and neglect the correlation between the different areas after smoothing the data.
+Suppose that one of these areas has $n$ pixels with random variables $k_i$ drawn from a Poisson distribution with mean $\ld_0$
+(here we assume that the underlying diffuse flux is approximately constant within the smoothing radius).
 The likelihood function for parameter $\ld$ is
 \be
-L(\ld) = \prod_i \frac{\ld^{k_i}}{k_i !} e^{-\ld}
+L(\ld) = \prod_i \frac{\ld^{k_i}}{k_i !} e^{-\ld}.
 \ee
 The log likelihood is
 \be
@@ -13,7 +18,7 @@ The log likelihood is
 \ee
 The best-fit value $\ld_*$ is determined from
 \be
-0 = \frac{\p \log L}{\p \ld} = -n + \frac{1}{\ld} \sum_{i = 1}^n k_i
+0 = \frac{\p \log L}{\p \ld} = -n + \frac{1}{\ld} \sum_{i = 1}^n k_i,
 \ee
 which gives $\ld_* = \frac{1}{n} \sum_{i = 1}^n k_i$.
 The uncertainty is
@@ -24,11 +29,11 @@ which gives $\sm^2 = \ld_* / n$.
 
 Let us consider an extreme case of smoothing, when we substitute the values $k_i$ with the average $\tilde{k}_i = \bar{k} = \frac{1}{n} \sum_{i = 1}^n k_i$
 (note that $\tilde{k}_i$ are not integers).
-For the likelihood function we will take the gamma distribution
+We take the gamma distribution for the likelihood function 
 \be
-\tilde{L} = \prod_i \frac{\ld^{\td{k}_i}}{\G(\td{k}_i + 1)} e^{-\ld}
+\tilde{L} = \prod_i \frac{\ld^{\td{k}_i}}{\G(\td{k}_i + 1)} e^{-\ld}.
 \ee
-and the log likelihood is
+The log likelihood is
 \be
 \log \td{L} = \sum_{i = 1}^n (-\ld + \td{k}_i \log \ld) + const.
 \ee

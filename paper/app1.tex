@@ -3,22 +3,31 @@
 
 In this appendix we study the dependence of the spectrum of gamma-ray emission at the base of the FB
 on the selection of the low energy range in the definition of the diffuse foreground model
-and on the choice of the class of the events (ultraclean vs source).
+and on the choice of the class of the events (UltraCleanVeto vs Source).
 We use the rectangles model of the FB in Section \ref{sec:box_model}
 as our baseline example.
-In this model, the foreground emission model template consists of Source-class data averaged over the energy interval $0.3 - \SI{1.0}{GeV}$. 
-To probe the dependence on the choice of the low-energy range in the baseline model, 
+In this model, the foreground emission template consists of Source data averaged over the energy interval $0.3 - \SI{1.0}{GeV}$. 
+To probe the dependence on the choice of the low-energy range in the model, 
 we pick three non-overlapping energy ranges $0.3 - \SI{0.5}{GeV}$, $0.5 - \SI{1.0}{GeV}$, and $1.0 - \SI{2.2}{GeV}$ 
 and use the same analysis as for the baseline model. 
-We also compare with the spectra obtained using Ultraclean class data both in the definition of the model
+We also compare with the spectra obtained using UltraCleanVeto data both in the definition of the model
 at low energies and in the analysis at high energies.
 The residual spectra resulting from the different energy ranges and data classes are shown in Figure \ref{fig:syst_models}. 
 The agreement among the models is relatively good at $E > 10$ GeV, especially for negative longitudes.
 
+As one can see from Figure \ref{fig:syst_models}, the last data point in the negative longitudes may have an upwards statistical fluctuation,
+which can influence the conclusions about the lower limit in the cutoff values.
+In order to test this dependence, we exclude the last energy bin $680\;{\rm GeV} - 1\;{\rm TeV}$ and 
+repeat the derivation of the best-fit parameters in the rectangles model of the FBs.
+The results are presented in Table \ref{tab:param2}.
+
+
 \begin{figure*}[h]
 \includegraphics[width=0.5\textwidth]{plots/SED_different_lowE_ranges_boxes_l=5_b=0.pdf}
 \includegraphics[width=0.5\textwidth]{plots/SED_different_lowE_ranges_boxes_l=-5_b=0.pdf}
-\caption{SED of the residual in the rectangles model using Source class (dotted lines with markers) and Ultraclean class data (solid lines) in four different energy ranges. The baseline model, presented in Section \ref{sec:box_model}, has the low-energy range in the definition of the foreground model
+\caption{SED of the residual in the rectangles model using Source class (dotted lines with markers) and UltraCleanVeto class data (solid lines) 
+in four different energy ranges used to determine the foreground diffuse emission template. 
+The baseline model, presented in Section \ref{sec:box_model}, has the low-energy range in the definition of the foreground model
 $0.3 - \SI{1.0}{GeV}$ (black squres).}
 \label{fig:syst_models}
 \end{figure*}
@@ -38,7 +47,10 @@ $0.3 - \SI{1.0}{GeV}$ (black squres).}
 
 \begin{table*}
   \begin{center}
-    \caption{Rectangles model without last data point.}
+    \caption{Best-fit parameters of the rectangles model without the last energy bin: $680\;{\rm GeV} - 1\;{\rm TeV}$.
+    The definitions of the columns are the same as in Table \ref{tab:param}.
+    \lb{tab:param2}
+    }
         \begin{tabular}{|c|c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
 		 Lat & Lon  & $N_0$ & $n$ & $E_{\rm cut}$ &  $-2 \Delta \log \La$ & $E_{\rm cut, 95\%}$ & $E_{\rm cut, 95\%}^{\rm min}$ \\ 
