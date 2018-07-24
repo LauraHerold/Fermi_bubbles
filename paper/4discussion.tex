@@ -125,8 +125,8 @@ The 95\% confidence lower limit on the cutoff energy is $\sim$ 300 GeV.
     There are four cases when the introduction of a cutoff does not lead to improved fit: in all of these cases
     $-2 \Delta \log \La < 0.1$ while the formal best-fit values of $E_{\rm cut}$ are larger than 1 TeV.
     The numbers in parenthesis in the last two columns show the results without the last energy bin.
-    \dima{Some numbers seem to be very different with and without the last data point, e.g., 2.4 (180) and 12 (130). I've marked the strange numbers in red.
-    Also the 95\% cutoff values for the rectangles model without the last point seem to be higher in all cases, I'd expect that they would be almost always lower.}
+    %\dima{Some numbers seem to be very different with and without the last data point, e.g., 2.4 (180) and 12 (130). I've marked the strange numbers in red. Also the 95\% cutoff values for the rectangles model without the last point seem to be higher in all cases, I'd expect that they would be almost always lower.}
+    \Laura{I had normalized the powerlaw of the parametric model to 10 GeV. The correct values (for 1 GeV) are in parenthesis. IC and pi0 are not affected by the bug.}
     %\dima{I'm curious why the rectangles model is also the min model for negative longitudes in the Gal plane, for $\pi^0$ and IC models
     %the cutoffs are different in this region. I've marked what looked strange to me in red.}
     }
@@ -136,14 +136,14 @@ The 95\% confidence lower limit on the cutoff energy is $\sim$ 300 GeV.
 		 Lat & Lon  & $N_0$ & $n$ & $E_{\rm cut}$ &  $-2 \Delta \log \La$ & $E_{\rm cut, 95\%}$ & $E_{\rm cut, 95\%}^{\rm min}$ \\ 
 		       &        &  {\small $\SI{e-6}{GeV^{-1}cm^{-2}s^{-1} sr^{-1}}$ }&  & {\small $\SI{}{GeV}$ }& &{\small  $\SI{}{GeV}$ }&{\small  $\SI{}{GeV}$ }\\ 
 		\hline
-  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 1.9  & 1.9 & 45 (45)& 4.8 & 25 (25) & 25  (25)\\ 
-		& $(\ang{-10}, \ang{0})$ & 2.0  & 2.2 & $-\ (690)$ \cmt{5.2e3} & $< 0.1$ \cmt{0.027} & {510 (210)} & {510} (210)  \\ 
+  		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 1.9  \Laura{1.5}& 1.9 & 45 (45)& 4.8 & 25 (25) & 25  (25)\\ 
+		& $(\ang{-10}, \ang{0})$ & 2.0 \Laura{3.1} & 2.2 & $-\ (690)$ \cmt{5.2e3} & $< 0.1$ \cmt{0.027} & {510 (210)} & {510} (210)  \\ 
  		\hline
-  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 3.5  & 2.3 & $-\ (610)$ \cmt{8.3e3} &  $< 0.1$ \cmt{0.010} & {300(180)}  & \red{2.4 (2.0)}  \\ 
-		& $(\ang{-10}, \ang{0})$  & 6.4  & 2.1 & $-\ (1300)$ \cmt{8.3e6} &  $< 0.1$ \cmt{3.3e-5} & {{1000} (480)} & {1000}  (460)  \\ 
+  		$(\ang{-2}, \ang{2})$ & $(\ang{0}, \ang{10})$  & 3.5 \Laura{6.4}  & 2.3 & $-\ (610)$ \cmt{8.3e3} &  $< 0.1$ \cmt{0.010} & {300(180)}  & 2.4 (2.0)  \\ 
+		& $(\ang{-10}, \ang{0})$  & 6.4 \Laura{7.9} & 2.1 & $-\ (1300)$ \cmt{8.3e6} &  $< 0.1$ \cmt{3.3e-5} & {{1000} (480)} & {1000}  (460)  \\ 
  		\hline
-  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$  & 1.8  & 2.1 & 260 (260) & 3.8 & 130 (130)& \red{2.3 (2.3)} \\ 
-		& $(\ang{-10}, \ang{0})$ & 2.8  & 2.2 &  $-\ (780)$ \cmt{77e3} &  $< 0.1$ \cmt{0.020} & {560(290)}  & {560 (290)}  \\ 
+  		$(\ang{-6}, \ang{-2})$ & $(\ang{0}, \ang{10})$  & 1.8 \Laura{2.5} & 2.1 & 260 (260) & 3.8 & 130 (130)& {2.3 (2.3)} \\ 
+		& $(\ang{-10}, \ang{0})$ & 2.8 \Laura{4.0} & 2.2 &  $-\ (780)$ \cmt{77e3} &  $< 0.1$ \cmt{0.020} & {560(290)}  & {560 (290)}  \\ 
  \hline
     \end{tabular}
   \end{center}
@@ -445,14 +445,14 @@ The lines show the fits to the maximal and minimal points in the envelopes above
 		 {\hspace{2cm}Model} & Type  & norm & index & cutoff & $E_{\rm cut, 95\%}$ \\ 
 		       &        &   &  & {\rm\small TeV} & {\rm\small TeV}\\ 
 		\hline
-  		\multirow{2}{*}{Parametric, $\frac{dN_\g}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}\, s^{-1} }}\right]$}} & max & $\SI{8.0e-6}{}$  & 2.10 &  -- & 3.9 \\ 
-		& min & $\SI{1.4e-6}{}$ & 2.04 &  0.26 & 0.14  \\ 
+  		\multirow{2}{*}{Parametric, $\frac{dN_\g}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}\, s^{-1} }}\right]$}} & max & $\SI{8.0e-6}{} $ \red{8.1e-6} & 2.10 \red{2.11} &  -- & 3.9 \red{1.65} \\ 
+		& min & $\SI{1.4e-6}{}$ \red{1.12e-6} & 2.04 \red{1.91} &  0.26 \red{0.11} & 0.14 \red{0.039} \\ 
  		\hline
-  		\multirow{2}{*}{IC, $\frac{d\Sigma_e}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}}}\right]$}} & max & $\SI{4.0e10}{}$ & 2.71 &  -- & 59 \\ 
-		& min & $\SI{5.6e9}{}$ & 2.60 &  1.1 & 0.43  \\ 
+  		\multirow{2}{*}{IC, $\frac{d\Sigma_e}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}}}\right]$}} & max & $\SI{4.0e10}{}$ \red{33.5e9} & 2.71 \red{2.67} &  -- & 59 \red{18.5} \\ 
+		& min & $\SI{5.6e9}{}$ \red{12.5e9} & 2.60 \red{2.81} &  1.1 \red{7.18} & 0.43 \red{0.96} \\ 
  		\hline
-  		\multirow{2}{*}{Hadronic, $\frac{d\Sigma_p}{dqc}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}}}\right]$}} & max & $\SI{1.0e12}{}$& 2.15 &  -- & 276 \\ 
-		& min & $\SI{1.1e11}{}$ & 2.00 &  2.3 & 1.1  \\ 
+  		\multirow{2}{*}{Hadronic, $\frac{d\Sigma_p}{dqc}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}}}\right]$}} & max & $\SI{1.0e12}{}$ \red{9.51e11} & 2.15\red{2.13} &  -- & 276 \red{64.9} \\ 
+		& min & $\SI{1.1e11}{}$ \red{1.05e11} & 2.00 \red{1.98} &  2.3 \red{1.79} & 1.1 \red{0.23}  \\ 
  \hline
     \end{tabular}
   \end{center}
