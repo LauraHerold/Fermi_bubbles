@@ -114,8 +114,14 @@ For the model with a cutoff, we also find the 95\% statistical confidence lower 
 At last, we find the minimum among the 95\% confidence lower limits for all considered models.
 The spectrum of the residuals including the FBs at  $\ell \in (\ang{-10},\ \ang{0})$
 is consistent with a power law with an index $2.1 - 2.2$ up to $E \approx 1$ TeV.
-The 95\% confidence lower limit on the cutoff energy is $\sim$ 500 GeV.
+The 95\% confidence lower limit on the cutoff energy for $|b| < 6^\circ$ and $-10^\circ < \ell < 0^\circ$ is $\sim$ 500 GeV.
 %\dima{Report the total luminosity (assuming the GC location) in erg/s including modeling ``error bars",  we can also do it in Section \ref{sec:GC_scenario}.}
+
+As one can see from the spectra in Figure \ref{fig:SED_all}, there are large (relative to statistical uncertainty) fluctuations in some of the models.
+These fluctuations are due to modeling uncertainty of the Galactic diffuse emission.
+As a result, a fit with a simple function may be sensitive to the starting point (there can be several local minima).
+In the GALPROP model of the foreground, we also had to put a limit on the index of the FBs spectrum
+between 1.5 and 2.5 in the derivation of the 95\% confidence lower limit on the cutoff energy.
 
 \begin{table*}
   \begin{center}
@@ -400,8 +406,8 @@ in Table \ref{tab:summary}.
 
 \begin{figure}[h]
 \centering
- \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=5.pdf}
-  \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=-5.pdf}
+ \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=5_old.pdf}
+  \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=-5_old.pdf}
  \caption{SED of the FBs in the Galactic plane. 
  The shaded areas show the envelope of the FBs spectra in all foreground models considered in the paper
 including the changes in the choice of the low-energy range to model the foreground emission
@@ -426,8 +432,8 @@ The lines show the fits to the maximal and minimal points in the envelopes above
 		 {\hspace{2cm}Model} & Type  & norm & index & cutoff & $E_{\rm cut, 95\%}$ \\ 
 		       &        &   &  & {\rm\small TeV} & {\rm\small TeV}\\ 
 		\hline
-  		\multirow{2}{*}{Parametric, $\frac{dN_\g}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}\, s^{-1} }}\right]$}} & max &  $\SI{8.1e-6}{}$ & 2.11 &  -- & 1.7 \\ 
-		& min & $\SI{1.1e-6}{}$& 1.91 & 0.11 & 0.039 \\ 
+  		\multirow{2}{*}{Parametric, $\frac{dN_\g}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}\, s^{-1} }}\right]$}} & max &  $\SI{8.1e-6}{}$ & 2.10 &  -- & 1.7 \\ 
+		& min & $\SI{1.1e-6}{}$& 2.04 & 0.26 & 0.039 \\ 
  		\hline
   		\multirow{2}{*}{IC, $\frac{d\Sigma_e}{dE}$ {\small $\left[{\rm {GeV^{-1}\, cm^{-2}}}\right]$}} & max & $\SI{3.4e10}{}$ & 2.67 &  -- & 19 \\ 
 		& min & $\SI{1.3e10}{}$ & 2.81 &  7.2 & 0.96 \\ 
