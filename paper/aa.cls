@@ -25,6 +25,7 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 %%
+% Dima: I have set columnsep=12mm at line 194: change back columnsep=4mm when finish referee stage
 \def\filedate{2016/09/01}
 \let\aafiledate\filedate
 \def\fileversion{9.1}
@@ -190,7 +191,7 @@
                 \ifaa@twocolumn\aa@column\fi, \ifaa@referee\else twoside,\fi
                 textheight=\aa@fullheight,headheight=12pt,headsep=12pt,
                 footskip=20pt,
-                textwidth=\aa@fullwidth, columnsep=4mm,
+                textwidth=\aa@fullwidth, columnsep=12mm, % default value is columnsep=4mm
                 marginpar=0in, marginparsep=0in]{geometry}
 \RequirePackage{setspace}
 \ifaa@referee
