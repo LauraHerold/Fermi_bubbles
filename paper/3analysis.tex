@@ -119,21 +119,22 @@ data at high energies with $\sigma_{\rm low} = 1^\circ$.}
 
 We separate the whole sky in latitude stripes of $\ang{4}$ width where the \Healpix pixels are assigned to stripes that contain the centers of the pixels.
 We parametrize the model in each stripe and each energy bin independently, i.e., 
-in the latitude stripe $b$ and energy bin $E$ the model consists of two terms:
+in the latitude stripe $b$ for energy bin $E$ and pixel $i$ the model consists of two terms:
 
 \be
 \lb{eq:le_model}
-N^\model_{b}(E, i) = k_{b}(E) \cdot \tilde N^\low_{b}(E, i) + c_b(E) \cdot \tau(E, i),
+M_{b}(E, i) = k_{b}(E) \cdot \tilde N^\low_{b}(E, i) + c_b(E) \cdot \tau(E, i),
 \ee
-where $i$ is the pixel index,
+where $k_{b}(E)$ and $c_b(E)$ are coefficients to be determined from the fit to the data,
+the term $c_b(E) \cdot \tau(E, i)$ is proportional to the exposure $\tau(E, i)$: it accounts for the isotropic extragalactic background and partially compensates for the latitude dependent IC emission,
 $k_{b}(E) \cdot \tilde N^\low_b(E, i)$ is proportional to the low-energy photon counts summed over 
 $n_\low = 3$ energy bins between between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ 
 rescaled by the ratio of exposures at low and at high energies:
 
 \be
-\tilde N^\low_b(E, i) = \frac{1}{n_\low} \left(\sum_{\epsilon \in (0.3 - \SI{1.0}{GeV})} \frac{N^\low(\epsilon, i)}{\tau(\epsilon, i)}\right) \cdot \tau(E, i).
+\tilde N^\low_b(E, i) = \frac{1}{n_\low} \sum_{\alpha = 1}^3 \frac{N(E_\al, i)}{\tau(E_\al, i)} \tau(E, i),
 \ee
-The term $c_b(E) \cdot \tau(E, i)$ in Equation (\ref{eq:le_model}) is proportional to the exposure $\tau(E, i)$: it accounts for the isotropic extragalactic background and partially compensates for the latitude dependent IC emission. 
+where $N(E_\al, i)$ is the number of photons in energy bin $\al$ and in pixel $i$.
 
 We determine the parameters $c_{b}(E)$ and $k_{b}(E)$ by fitting the model to the \Fermi-LAT data in energy bins $E > \SI{1.0}{GeV}$.
 We maximize the log likelihood of the gamma distribution 
@@ -181,7 +182,7 @@ Overall, the model has four terms in each energy bin:
 
 \be
 \begin{split}
-N^\model_{b}(E, i) &= k_{b}(E) \cdot \tilde N^\low_{b}(E, i) + c_b(E) \cdot \tau(E, i)\\
+M_{b}(E, i) &= k_{b}(E) \cdot \tilde N^\low_{b}(E, i) + c_b(E) \cdot \tau(E, i)\\
 &\quad + R^\east_b(E) + R^\west_b(E).
 \end{split}
 \ee
@@ -198,10 +199,10 @@ The energy fluxes of the model and the residuals integrated for $E = 10 - \SI{10
 \includegraphics[width=0.45\textwidth]{plots/Mollweide_Boxes_03-10GeV_flux_source_range_1.pdf}\\
 \includegraphics[width=0.45\textwidth]{plots/Mollweide_Boxes_residual_03-10GeV_flux_source_range_1.pdf}
  \includegraphics[width=0.45\textwidth]{plots/Mollweide_Boxes_residual+boxes_03-10GeV_flux_source_range_1.pdf}
- \caption{Energy flux of the diffuse model (excluding the rectangles model of the FBs),
- the rectangles model of the FBs, 
-the residual after subtracting the total model,
-and residuals plus the rectangles model of the FBs
+ \caption{Energy flux of the diffuse model excluding the rectangles model of the FBs (top left),
+ the rectangles model of the FBs (top right), 
+the residual after subtracting the total model (bottom left),
+and residuals plus the rectangles model of the FBs (bottom righ)
  derived in Section \ref{sec:box_model}
  integrated between 10 and 100 GeV.}
  \label{fig:Maps_Rectangles}

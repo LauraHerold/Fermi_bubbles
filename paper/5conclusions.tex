@@ -22,8 +22,8 @@ for $|b| < 6^\circ$, which yields the luminosity of $L = 1.1 \times 10^{37}\:{\r
 
 One of the most intriguing features of the gamma-ray spectrum at the base of the FBs is the absence of a significant cutoff up to 1 TeV and 
 a hard spectrum of underlying electrons or protons.
-In particular, the spectrum of the CR protons (CRp) is $\sim E^{-2.2}$ which is significantly harder than the propagated spectrum of 
-$E^{-2.5 - 2.7}$ observed locally and throughout most of the Galactic plane \citep{2016ApJS..223...26A}.
+In particular, the spectrum of the CR protons (CRp) is $\sim E^{-2.2}$ which is significantly harder than the propagated spectrum
+$\sim E^{-2.5 - 2.7}$ observed locally and throughout most of the Galactic plane \citep{2016ApJS..223...26A}.
 We assume that the CRp spectrum at the base of the bubbles is equal to the injection spectrum unaffected by the 
 propagation softening.
 This is possible if the CRp were injected relatively recently and did not have enough time to escape from the region of the enhanced emission,
@@ -40,17 +40,24 @@ T_{\rm esc} < \frac{\Delta h^2}{2 D(E)} \approx \SI{100}{kyr}.
 %\Laura{Is there no factor of 1/2 missing in the formula for the cooling time?} \dima{good point - fixed.}
 This gives us an approximate upper bound on the age of the proton CR, 
 assuming that the diffusion coefficient near the GC is similar to the diffusion coefficient near Sun.
-The escape time can be significantly larger, if the diffusion length near the GC is smaller than the local one.
-The CRp energy density (normalized to $n_\Hy = \SI{1}{cm^{-3}}$, which is a typical gas density in the Galactic plane) 
-within $|b| < 6^\circ$ is 
-$\de E_\tot / \de V = \SI{360}{meV\: cm^{-3}}$ between $\SI{1}{GeV}$ and $\SI{1}{TeV}$.
+The escape time can be significantly longer, if the diffusion length near the GC is smaller than the local one
+or if the CR are confined by a particular configuration of magnetic fields.
+The CRp energy density within $|b| < 6^\circ$ in the rectangular model of the FBs (Section \ref{sec:Pion_model})  
+normalized to $n_\Hy = \SI{1}{cm^{-3}}$, which is a typical gas density in the Galactic plane,
+is $\de E_\tot / \de V = \SI{360}{meV\: cm^{-3}}$ above $\SI{1}{GeV}$.
 In Figure \ref{fig:Particle_spectra} (left), we compare the corresponding flux to the local CRp flux.
 The total energy content within $|b| < 6^\circ$ is $E_\tot = \SI{7e52}{erg}$.
 %However, the gas density in the inner Galaxy is probably higher than $n_\Hy = \SI{1}{/cm^3}$ as assumed in Section \ref{sec:Pion_model}, resulting in an energy content in protons of the same order of magnitude as the energy density in electrons.
-This population of CRp can be obtained from $\sim$ 700 SNe in the past $\sim \SI{100}{kyr}$, 
+This population of CRp can be obtained from $\sim$ 700 SNe, 
 assuming that on average SNe inject $\sim 10^{50}$ erg in CRp, which corresponds to about 10\% efficiency
 of CR acceleration by a SN with kinetic energy $\sim 10^{51}$ erg \citep[e.g.,][]{Spurio2015}.
 %\Laura{Why 500 kyr? } \dima{ sorry this was a typo from my previous estimates.}\\
+There are several populations of young stellar objects near the GC \citep{2009ApJ...702..178Y, 2012A&A...537A.121I},
+in particular there is a population of stars close to the GC with an age of about 6 Myr \citep{2006ApJ...643.1011P}.
+If we assume that the rate of SN in the Galaxy is about one per century and that the GC region contributes at the level of
+a few per cent to the total rate, e.g., a few SNRs per 10 kyr, then the 700 SNRs can be produced near the GC
+in the past few millions of years.
+
 
 The best-fit spectrum of CR electrons (CRe) is $\sim E^{-2.7}$, which is softer than the spectrum of the protons.
 Nonetheless, this spectrum is harder than the spectrum expected in the presence of cooling
@@ -66,14 +73,11 @@ $\SI{3}{TeV}$ is $T_{\rm cool} \approx \SI{180}{kyr}$,
 %softening of CRe for $|b| > 2^\circ$}.
 which is comparable to the escape time at $\SI{3}{TeV}$.
 
-The energy density in electrons with energy above $E_0 = \SI{1}{GeV}$, which is necessary to produce the gamma-ray signal, 
-is given by the integral of the electron spectrum that was found in Section \ref{sec:IC_model}:
-
-\be
-\frac{\de E_\tot}{\de V} = \int_{E_0}^{\infty} \left(E \frac{\de N}{\de E}\right)_{\!\!\el} \de E = \SI{4.0}{meV/cm^3}.
-\ee
+The energy density in electrons with energies above $E_0 = \SI{1}{GeV}$, which is necessary to produce the gamma-ray emission
+in the rectangles model of the FBs (Section \ref{sec:IC_model}), is $\SI{4.0}{meV\;cm^{-3}}$.
 In Figure \ref{fig:Particle_spectra} (right), we compare the corresponding flux to the local CRe flux.
-The total energy content of the ROI in electrons above $\SI{1}{GeV}$ is $E_\tot = \SI{3e51}{erg}$, which corresponds to the CR energy output of 3000 SNe in the past $\approx \SI{200}{kyr}$ assuming a 0.1\% efficiency in converting the SNR kinetic energy to CRe energy.
+The total energy content of the ROI in electrons above $\SI{1}{GeV}$ is $E_\tot = \SI{3e51}{erg}$, which corresponds to the CR energy output of 3000 SNe 
+assuming a 0.1\% efficiency in converting the SNR kinetic energy to CRe energy.
 The ratio of the electron and proton acceleration efficiencies $K_{e/p} = 10^{-2}$ assumed here is relatively optimistic,
 given that the values of the ratio of efficiencies can be as low as $\sim 10^{-3}$ \citep[e.g.,][]{2015PhRvL.114h5003P}.
 Similar efficiencies of $K_{e/p} \propto 10^{-2}$ can be expected in the acceleration of 
@@ -85,7 +89,7 @@ is likely to be produced by the hadronic interactions of CRp with the gas.
 %\Laura{So, $\SI{1e50}{erg}$ per SN?} \dima{ SNe kinetic energy is $10^{51}$ erg, energy in CRs:  $10^{50}$ erg, a fraction of that is in CRe, i.e., if we have 1\% in electrons, then we need 300 SNe.}
 %\dima{if the electrons cool as they propagate $2^\circ$, we should use $|b| < 2^\circ$ to calculate the total energy content of CRe}. \Laura{This is the total energy content for $|b| < 6$} \dima{OK}.
 The presence of the hadronic production of gamma rays at the base of the FBs without a sign of a cutoff up to gamma-ray energies
-of 1 TeV is important for the detectability of the associated neutrino signal by the neutrino telescopes (Figure \ref{fig:sensitivities}).
+of 1 TeV is important for the detectability of the associated neutrino signal by neutrino telescopes (Figure \ref{fig:sensitivities}).
 
 
 
@@ -106,11 +110,13 @@ IC scattering at $E_\g = 1$ TeV relative to the hadronic model of the gamma-ray 
 \includegraphics[width=0.5\textwidth]{plots/Summary_proton_spectra_0.pdf}
 \includegraphics[width=0.5\textwidth]{plots/Summary_electron_spectra_0.pdf}
   	\caption{
-	Best-fit proton (left) and electron (right) spectra for the residual plus FBs gamma-ray emission at the base of the FBs.
+	Proton (left) and electron (right) spectra fitted to the gamma-ray emission at the base of the FBs.
 	Solid lines show the best-fit spectra in the rectangles model of the FBs.
 	The shaded bands represent the systematic uncertainties, 
 	estimated by the maximal and minimal best-fit FBs spectra among the foreground models. 
-	For comparison with the local CR spectrum, data points of some experiments measuring the local CR flux are shown. 
+	For comparison with the local CR spectrum, we show the local fluxes of CRp  measured by AMS-02 \citep{2015PhRvL.114q1103A} and 
+	CRe measured by AMS-02 \citep{2014PhRvL.113v1102A}, \Fermi-LAT \citep{2017PhRvD..95h2007A},
+	and H.E.S.S. 
 	Here, the error bars represent the combined systematic and statistical uncertainties.}
   	\label{fig:Particle_spectra}
 \end{figure*}
@@ -140,8 +146,10 @@ In this subsection we discuss models where the hard and bright gamma-ray emissio
 or several SNRs at a distance closer than the distance to the GC.
 We start with a single SNR scenario.
 For the leptonic model we use the local ISRF and calculate the IC emission as described in Section \ref{sec:IC_model}.
-Assuming one SNR, we find a distance of $\SI{50}{pc}$, which is rather close to Earth and should 
-be easily detected in radio and X-ray observations.
+Assuming one SNR, we find a distance of $\SI{50}{pc}$.
+The radius of an SNR corresponding to $6^\circ$ circle at a distance of $\SI{50}{pc}$ is about $\SI{5}{pc}$.
+Provided that the SNR would be rather close to Earth, it should be detected in radio and X-ray observations,
+however no suitable candidates are currently known \citep{2014BASI...42...47G, 2017Green}.
 For the hadronic model of the gamma-ray emission, we assume that 
 the local gas density is similar to the average gas density near the GC \citep{2017ApJ...834...57M}.
 At the GC, we need about 700 SNRs, thus the distance where a single SNR can explain the excess emission
@@ -159,6 +167,7 @@ If we assume that only the core of the emission at the base of the FBs within $|
 the corresponding linear size is $\approx 10$ pc (for the same distance of 300 pc).
 There are several SNRs in Green's catalog \citep{2014BASI...42...47G, 2017Green} between $-10^\circ < \ell < 0^\circ$,
 but all of them have relatively small angular diameters $ \lesssim 30'$.
+Thus a single SNR is not a plausible scenario for the emission at the base of the FBs.
 
 \begin{figure}[h]
 %\centering
@@ -180,13 +189,13 @@ Another possibility is that the emission at the base of the FBs is created by se
 massive stars, similar to the Cygnus cocoon \citep{2011Sci...334.1103A} or the Loop I and the local superbubbles 
 \citep{2001ApJS..134..283S, 2006A&A...452L...1B, Wolleben:2007pq, 2016Natur.532...73B, 2018Galax...6...26S, 2018Galax...6...56D, 2018Galax...6...62S}.
 The Cygnus cocoon \citep{2011Sci...334.1103A} has the radius of about $2^\circ$, 
-which at a distance of 1.4 kpc from the Earth, corresponds to a radius of about 50 pc.
+which at a distance of 1.4 kpc from Earth, corresponds to a radius of about 50 pc.
 If a Cygnus-like region is responsible for the emission within $|b| < 6^\circ$ at the base of the FBs,
-then such region should be at a distance of about 500 pc from the Earth.
+then such region should be at a distance of about 500 pc from Earth.
 If only the core of the high intensity region within $|b| < 2^\circ$ is explained by such a cocoon,
 then the distance would be similar to the distance to the Cygnus cocoon, i.e., about 1.4 kpc.
 In Figure \ref{fig:cygnus} we compare the gamma-ray intensity at the base of the FB integrated over a $2^\circ$ circle
-to the flux from the Cygnus cocoon.
+to the flux from the Cygnus cocoon
 \cmt{The flux from the Cygnus region around 10 GeV of 
 $E^2 {dF}/{dE} \approx 6\times 10^{-5}\: {\rm MeV\, cm^{-2} s^{-1}}$
 averaged over a $2^\circ$ circle
@@ -195,11 +204,11 @@ which is comparable to the intensity at the base of the FBs within $|b| < 2^\cir
 while the flux from the Cygnus region averaged over a $6^\circ$ circle is comparable to the average intensity
 at the base of the FBs within $|b| < 6^\circ$.
 Thus the bright gamma-ray emission at the base of the FBs can be explained by a Cygnus-like 
-cocoon at a distance of $\sim 500\:{\rm pc} - 1.5 \:{\rm kpc}$ from the Earth towards the GC.
+cocoon at a distance of $\sim 500\:{\rm pc} - 1.5 \:{\rm kpc}$ from Earth towards the GC.
 In Figure \ref{fig:cygnus} we compare the SED in the min and max models at $|b| < 2^\circ$
 integrated over a $2^\circ$ circle with the SED measured from the Cygnus cocoon}
 \citep{2007ApJ...664L..91A, 2011Sci...334.1103A}.
-The flux in the max model is comparable (i.e., a factor 2 to 3 smaller) 
+The flux in the max model is comparable (within a factor of 2) 
 to the flux from the Cygnus cocoon between 1 and 100 GeV.
 
 Massive stars, which can inflate cocoons or superbubbles by stellar winds and SN explosions, are usually found in young open stellar clusters.
@@ -208,7 +217,7 @@ For example, clusters Trumpler 27 \citep{1977ApJ...215..106M} or NGC 6383 \citep
 contain more than 10 massive OB stars, have an age of about 10 Myr, and an estimated distance of 1.2 kpc and 1 kpc, respectively,
 in the direction of $\ell \approx 356^\circ$, $b \approx 0^\circ$.
 There is also a cluster NGC 6405 \citep{1959ZA.....47...15R}, which has a smaller estimated distance of about 500 pc
-but an older age of about 100 Myr.
+but an older age $\sim 100$ Myr.
 The turbulence created by winds from the massive stars as well as the past SNRs in these clusters can (re)accelerate cosmic rays and
 it would also lead to smaller diffusion length, which would prevent the escape of CR on timescales shorter than a few Myr \citep{2011Sci...334.1103A}.
 There are relatively few SNRs detected in gamma rays in that area of the sky.
@@ -223,7 +232,7 @@ The reason is that the wind from the massive stars as well as the first SNRs in 
 with smaller gas density than the average density in the Galactic plane. As a result, the subsequent SNRs quickly expand
 in the less dense environment until they reach the common envelope of the superbubble.
 For instance, this is observed in simulations of the formation of the local hot superbubble
-\citep[e.g.,][]{2016Natur.532...73B, 2017A&A...604A..81S, 2018Galax...6...26S}.
+\citep{2016Natur.532...73B, 2017A&A...604A..81S, 2018Galax...6...26S}.
 Whether the stellar clusters can provide the necessary CR injection rate to power the gamma-ray emission at the base
 of the FBs deserves a separate detailed study.
 

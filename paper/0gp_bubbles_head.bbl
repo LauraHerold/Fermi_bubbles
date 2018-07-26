@@ -1,4 +1,4 @@
-\begin{thebibliography}{56}
+\begin{thebibliography}{61}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -13,6 +13,25 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   {Saz Parkinson}, {Shoup}, {Sinnis}, {Smith}, {Sullivan}, {Vasileiou},
   {Walker}, {Williams}, {Xu}, \& {Yodh}}]{2007ApJ...664L..91A}
 {Abdo}, A.~A., {Allen}, B., {Berley}, D., {et~al.} 2007, \apjl, 664, L91
+
+\bibitem[{{Abdollahi} {et~al.}(2017){Abdollahi}, {Ackermann}, {Ajello},
+  {Atwood}, {Baldini}, {Barbiellini}, {Bastieri}, {Bellazzini}, {Bloom},
+  {Bonino}, {Brandt}, {Bregeon}, {Bruel}, {Buehler}, {Cameron}, {Caputo},
+  {Caragiulo}, {Castro}, {Cavazzuti}, {Cecchi}, {Chekhtman}, {Ciprini},
+  {Cohen-Tanugi}, {Costanza}, {Cuoco}, {Cutini}, {D'Ammando}, {de Palma},
+  {Desiante}, {Digel}, {Di Lalla}, {Di Mauro}, {Di Venere}, {Drell},
+  {Drlica-Wagner}, {Favuzzi}, {Focke}, {Funk}, {Fusco}, {Gargano},
+  {Gasparrini}, {Giglietto}, {Giordano}, {Giroletti}, {Green}, {Guillemot},
+  {Guiriec}, {Harding}, {Jogler}, {J{\'o}hannesson}, {Kamae}, {Kuss}, {La
+  Mura}, {Latronico}, {Longo}, {Loparco}, {Lubrano}, {Maldera}, {Malyshev},
+  {Manfreda}, {Mazziotta}, {Michelson}, {Mirabal}, {Mitthumsiri}, {Mizuno},
+  {Moiseev}, {Monzani}, {Morselli}, {Moskalenko}, {Negro}, {Nuss}, {Orlando},
+  {Paneque}, {Perkins}, {Pesce-Rollins}, {Piron}, {Pivato}, {Porter},
+  {Principe}, {Rain{\`o}}, {Rando}, {Razzano}, {Reimer}, {Reimer}, {Sgr{\`o}},
+  {Simone}, {Siskind}, {Spada}, {Spandre}, {Spinelli}, {Tajima}, {Thayer},
+  {Tibaldo}, {Torres}, {Troja}, {Wood}, {Worley}, {Zaharijas}, {Zimmer}, \&
+  {Fermi-LAT Collaboration}}]{2017PhRvD..95h2007A}
+{Abdollahi}, S., {Ackermann}, M., {Ajello}, M., {et~al.} 2017, \prd, 95, 082007
 
 \bibitem[{{Acero} {et~al.}(2015){Acero}, {Ackermann}, {Ajello},
   {et~al.}}]{2015ApJS..218...23A}
@@ -58,6 +77,18 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
 \bibitem[{{Ackermann} {et~al.}(2014){Ackermann}, {Albert}, {Atwood},
   {et~al.}}]{2014ApJ...793...64A}
 {Ackermann}, M., {Albert}, A., {Atwood}, W.~B., {et~al.} 2014, \apj, 793, 64
+
+\bibitem[{{Aguilar} {et~al.}(2014){Aguilar}, {Aisa}, {Alpat}, {Alvino},
+  {Ambrosi}, {Andeen}, {Arruda}, {Attig}, {Azzarello}, {Bachlechner}, \&
+  et~al.}]{2014PhRvL.113v1102A}
+{Aguilar}, M., {Aisa}, D., {Alpat}, B., {et~al.} 2014, Physical Review Letters,
+  113, 221102
+
+\bibitem[{{Aguilar} {et~al.}(2015){Aguilar}, {Aisa}, {Alpat}, {Alvino},
+  {Ambrosi}, {Andeen}, {Arruda}, {Attig}, {Azzarello}, {Bachlechner}, \&
+  et~al.}]{2015PhRvL.114q1103A}
+{Aguilar}, M., {Aisa}, D., {Alpat}, B., {et~al.} 2015, Physical Review Letters,
+  114, 171103
 
 \bibitem[{{Ambrogi} {et~al.}(2018){Ambrogi}, {Celli}, \&
   {Aharonian}}]{2018APh...100...69A}
@@ -137,6 +168,11 @@ Goodenough, L. \& Hooper, D. 2009, ArXiv:0910.2998 [\eprint[arXiv]{0910.2998}]
 {Green}, D.~A. 2017, Cavendish Laboratory, Cambridge, United Kingdom (available
   at "http://www.mrao.cam.ac.uk/surveys/snrs/")
 
+\bibitem[{{Immer} {et~al.}(2012){Immer}, {Schuller}, {Omont}, \&
+  {Menten}}]{2012A&A...537A.121I}
+{Immer}, K., {Schuller}, F., {Omont}, A., \& {Menten}, K.~M. 2012, \aap, 537,
+  A121
+
 \bibitem[{{Jacob} {et~al.}(2018){Jacob}, {Pakmor}, {Simpson}, {Springel}, \&
   {Pfrommer}}]{2018MNRAS.475..570J}
 {Jacob}, S., {Pakmor}, R., {Simpson}, C.~M., {Springel}, V., \& {Pfrommer}, C.
@@ -196,6 +232,11 @@ Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
 {Park}, J., {Caprioli}, D., \& {Spitkovsky}, A. 2015, Physical Review Letters,
   114, 085003
 
+\bibitem[{{Paumard} {et~al.}(2006){Paumard}, {Genzel}, {Martins}, {Nayakshin},
+  {Beloborodov}, {Levin}, {Trippe}, {Eisenhauer}, {Ott}, {Gillessen}, {Abuter},
+  {Cuadra}, {Alexander}, \& {Sternberg}}]{2006ApJ...643.1011P}
+{Paumard}, T., {Genzel}, R., {Martins}, F., {et~al.} 2006, \apj, 643, 1011
+
 \bibitem[{{Porter} {et~al.}(2017){Porter}, {J{\'o}hannesson}, \&
   {Moskalenko}}]{2017ApJ...846...67P}
 {Porter}, T.~A., {J{\'o}hannesson}, G., \& {Moskalenko}, I.~V. 2017, \apj, 846,
@@ -222,9 +263,6 @@ Ptuskin, V., Moskalenko, I.~V., Jones, F., {et~al.} 2006, \apj, 642, 902
   {Dettbarn}}]{2017A&A...604A..81S}
 {Schulreich}, M.~M., {Breitschwerdt}, D., {Feige}, J., \& {Dettbarn}, C. 2017,
   \aap, 604, A81
-
-\bibitem[{{Sharp} \& {Bland-Hawthorn}(2010)}]{2010ApJ...711..818S}
-{Sharp}, R.~G. \& {Bland-Hawthorn}, J. 2010, \apj, 711, 818
 
 \bibitem[{{Shchekinov}(2018)}]{2018Galax...6...62S}
 {Shchekinov}, Y. 2018, Galaxies, 6, 62
@@ -265,5 +303,10 @@ Vladimirov, A.~E., Digel, S.~W., Johannesson, G., {et~al.} 2011,
 
 \bibitem[{Wolleben(2007)}]{Wolleben:2007pq}
 Wolleben, M. 2007, \apj, 664, 349
+
+\bibitem[{{Yusef-Zadeh} {et~al.}(2009){Yusef-Zadeh}, {Hewitt}, {Arendt},
+  {et~al.}}]{2009ApJ...702..178Y}
+{Yusef-Zadeh}, F., {Hewitt}, J.~W., {Arendt}, R.~G., {et~al.} 2009, \apj, 702,
+  178
 
 \end{thebibliography}

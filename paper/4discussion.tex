@@ -4,10 +4,10 @@
 \subsection{Latitude profiles}
 \label{sec:Latitude_profiles}
 
-In order to quantitatively estimate the difference in the intensity of emission of the FBs at high and at low latitudes, as well as the asymmetry
+In order to quantitatively estimate the difference in the intensity of the emission of the FBs at high and at low latitudes, as well as the asymmetry
 of the gamma-ray emission at the base of the FBs,
 we plot the latitude profiles to the east and to the west of the GC.
-In Figure \ref{fig:Profiles} we show the profiles of energy flux between 10 -- 100 GeV as a function 
+In Figure \ref{fig:Profiles} we show the profiles of the energy flux between 10 -- 100 GeV as a function 
 of the Galactic latitude for different models of Galactic foreground emission.
 %The regions have a width of $\ang{4}$ for $|b|<\ang{10}$ and $\ang{10}$ for $|b|>\ang{10}$ in latitude and a width of $\ang{10}$ in longitude. 
 %that is $\ang{0} - \ang{10}$ to the east of the GC an $\ang{-10} - \ang{0}$ to the west of the GC. 
@@ -70,7 +70,7 @@ total smoothed gamma-ray counts in each latitude stripe using the likelihood bas
 We use the following parametrization of the log-parabola function:
 
  \begin{equation}
- f(E) = N_0 \left(\frac{E}{\SI{1}{GeV}}\right)^{-\alpha - \beta \ln(E)}.
+ f(E) = N_0 \left(\frac{E}{\SI{1}{GeV}}\right)^{-\alpha - \beta \ln(E / \SI{1}{GeV})}.
  \end{equation}
 The local ``index'' of the spectrum at energy $E$ is
 
@@ -165,12 +165,12 @@ The SED of the gamma-ray intensity is parametrized as
 
 \begin{equation}
 E^2_\g \frac{dF_\g}{dE_\g} = 
-\frac{E_\g c}{4\pi}\int \int \left(\frac{\de n}{\de E}\right)_{\!\!\ISRF} \sigma_\IC\ \left(\frac{\de \Sigma}{\de E}\right)_{\!\!\el} \de E_\ISRF\, \de E_\el,
+\frac{E_\g c}{4\pi}\int \frac{\de n_{h\nu}}{\de E_{h\nu}} \sigma_\IC\ \frac{\de \Sigma_{\el}}{\de E_{\el}} \de E_{h\nu}\, \de E_\el,
 \end{equation}
-where $\left(\frac{\de \Sigma}{\de E}\right)_{\!\!\el} = \int \left(\frac{\de n}{\de E}\right)_{\!\!\el} dR$ is the column density 
+where $\frac{\de \Sigma_{\el}}{\de E_{\el}} = \int \frac{\de n_{\el}}{\de E_{\el}} dR$ is the column density 
 of CR electrons integrated along the line-of-sight radius $R$,
-$(\de n/ \de E)_\ISRF$ is the number density of ISRF photons,
-and $\sigma_\IC(E_\gamma, E_\ISRF, E_\el)$
+$\frac{\de n_{h\nu}}{\de E_{h\nu}}$ is the number density of ISRF photons,
+and $\sigma_\IC(E_\gamma, E_{h\nu}, E_\el)$
 is the differential IC scattering cross section in units of $E_\g\frac{d\sigma}{d E_\g}$ \citep{1970RvMP...42..237B}.
 For details on the parametrization of $\sigma_\IC$ see Appendix B of \cite{2014ApJ...793...64A}.
 The ISRF number density for starlight and IR photons is taken from GALPROP v54 \citep{2006ApJ...640L.155M}.
@@ -179,7 +179,7 @@ We model the column density of electrons as a power law with a cutoff
 
 \begin{equation} 
 \label{eq:e_spectrum}
-\left(\frac{\de \Sigma}{\de E}\right)_{\!\!\el} = n_\el \left(\frac{E_\el}{\SI{1}{GeV}}\right)^{-\gamma_\el} e^{- E_\el / E_{\cut}}.
+ \frac{\de \Sigma_{\el}}{\de E_{\el}} = n_\el \left(\frac{E_\el}{\SI{1}{GeV}}\right)^{-\gamma_\el} e^{- E_\el / E_{\cut}}.
 \end{equation}
 In order to determine the normalization $n_\el$, the spectral index $\gamma_\el$, and the cutoff  $E_{\cut}$, 
 we fit the IC model of the FBs plus the (fixed) foreground model counts to the 
@@ -253,7 +253,7 @@ for different latitude stripes.
         \includegraphics[width=\textwidth]{plots/SED_boxes_source_-4.pdf}
     \end{subfigure}
 \end{comment}
-  	\caption{SED of rectangles-model residual plus the FBs in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive (red) longitudes. We compare the parametric model of the SED with the leptonic (Section \ref{sec:IC_model}) 
+  	\caption{SED of the residual emission plus the rectangles model of the FBs in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive (red) longitudes. We compare the parametric model of the SED with the leptonic (Section \ref{sec:IC_model}) 
 	and the hadronic (Section \ref{sec:Pion_model}) models.}
   	%\Laura{Should we add the spectrum for the latitude band $(\ang{2}, \ang{6})$ also, or just say that it looks similar?}
 	%\blue{Dima: yes, let's add the 2 to 6 deg spectrum.}
@@ -331,10 +331,14 @@ E^2_\g \frac{dF_\g}{dE_\g} = \frac{E_\g}{4\pi} \int n_\Hy\ \sigma_\pr v_\pr \lef
 \end{equation}
 where $\left(\frac{\de \Sigma}{\de E}\right)_{\!\!\pr} = \int \left(\frac{\de n}{\de E}\right)_{\!\!\pr} dR$ is the column density 
 of CR protons,
-$T_\pr = \sqrt{(q c)^2 + (m_p c^2)^2} - m_p c^2$ is the kinetic energy of the protons,
-$n_\Hy$ is the density of gas, and $\sigma_\pr (E_\gamma, T_\pr)$ is 
+$T_\pr = \sqrt{(q c)^2 + (m_p c^2)^2} - m_p c^2$ is the kinetic energy of the protons as a function of momentum $q$,
+$\sigma_\pr (E_\gamma, T_\pr)$ is 
 the differential cross section in units of $E_\g\frac{d\sigma}{d E_\g}$
-for gamma rays in proton-proton collisions \citep{2006ApJ...647..692K, 2008ApJ...674..278K}.
+for gamma rays in proton-proton collisions \citep{2006ApJ...647..692K, 2008ApJ...674..278K},
+and $n_\Hy$ is the density of gas.
+We will use $n_\Hy = \SI{1}{cm^{-3}}$ as a characteristic density,
+which is consistent with the gas surface density of $\sim 10 M_\odot {\rm pc}^{-2}$ \citep{2017ApJ...834...57M}
+averaged over $\sim 200$ pc above and below the GC.
 We model the proton spectrum as a power law of the momentum $\frac{d \Sigma}{d qc} = n_\pr q^{-\g_p}$ 
 (note, that $ v \frac{\de \Sigma}{\de T} = c \frac{d \Sigma}{d qc}$).
 
@@ -353,7 +357,7 @@ For $b \in (\ang{2}, \ang{6})$ the spectral index to the west of the GC varies b
 We calculate the significance of a cutoff in the CR proton spectrum by adding an exponential cutoff factor and refitting the model to the gamma-ray data.
 The improvement in the model and the 95\% confidence lower bound on the cutoff values are presented in Table \ref{tab:pi0}.
 Within $\pm 6^\circ$ from the Galactic plane west of the GC, the 95\% confidence level for the lower bound on the cutoff among all the models
-of the foreground emission that we have considered is about 1.6 TeV.
+of the foreground emission that we have considered is about 6 TeV.
 
 
 \begin{comment}
@@ -396,7 +400,7 @@ in the definition of the foreground emission model (Appendix \ref{sec:lowE_syst}
 In order to determine the maximal and minimal models of the FBs in the Galactic plane, 
 we fit the maximal and minimal points in the envelope above 3 GeV with a power-law with a cutoff function
 (we fit above 3 GeV because some of the models of the foreground emission in Appendix \ref{sec:lowE_syst} are determined 
-for energies between 1 and 3 GeV).
+for energies between 1 and 2.2 GeV).
 The corresponding parameters are reported in the first row of Table \ref{tab:summary}.
 We also fit the IC and hadronic models to the maximal and minimal points in the envelope and report the corresponding parameters
 in Table \ref{tab:summary}.
