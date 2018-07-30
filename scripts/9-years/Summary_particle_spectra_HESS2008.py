@@ -166,6 +166,12 @@ pyplot.xlabel('$E\ \mathrm{[GeV]}$')
 pyplot.ylabel(r'$ E^2\!\phi_{\mathrm{e}}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
 #pyplot.title(r'$b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + '$,\ %i^\circ),\ $' % (Bc[b] + dB[b]/2) + r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r'$,\ %i^\circ)$' % (Lc[l] + dL/2))
 pyplot.xlim(1e1,1e5)
+if 1:
+    textstr = r'$\ell \in (%i^\circ,\ %i^\circ)$' % ((Lc[l] - dL/2), (Lc[l] + dL/2)) + '\n'
+    textstr += r'$b \in (%i^\circ,\ %i^\circ)$' % ((Bc[b] - dB[b]/2), (Bc[b] + dB[b]/2))
+    ax = pyplot.axes()
+    pyplot.text(0.03, 0.15, textstr, transform=ax.transAxes, fontsize=20, verticalalignment='top',
+                backgroundcolor='w', alpha=1.)
 
 fn = plot_dir + name + fn_ending
 pyplot.xscale('log')
