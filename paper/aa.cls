@@ -191,7 +191,7 @@
                 \ifaa@twocolumn\aa@column\fi, \ifaa@referee\else twoside,\fi
                 textheight=\aa@fullheight,headheight=12pt,headsep=12pt,
                 footskip=20pt,
-                textwidth=\aa@fullwidth, columnsep=12mm, % default value is columnsep=4mm
+                textwidth=\aa@fullwidth, columnsep=4mm, % default value is columnsep=4mm
                 marginpar=0in, marginparsep=0in]{geometry}
 \RequirePackage{setspace}
 \ifaa@referee

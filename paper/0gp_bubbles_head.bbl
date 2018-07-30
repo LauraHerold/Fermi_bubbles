@@ -1,4 +1,4 @@
-\begin{thebibliography}{61}
+\begin{thebibliography}{62}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -89,6 +89,11 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   et~al.}]{2015PhRvL.114q1103A}
 {Aguilar}, M., {Aisa}, D., {Alpat}, B., {et~al.} 2015, Physical Review Letters,
   114, 171103
+
+\bibitem[{{Aharonian} {et~al.}(2008){Aharonian}, {Akhperjanian}, {Barres de
+  Almeida}, {et~al.}}]{2008PhRvL.101z1104A}
+{Aharonian}, F., {Akhperjanian}, A.~G., {Barres de Almeida}, U., {et~al.} 2008,
+  Physical Review Letters, 101, 261104
 
 \bibitem[{{Ambrogi} {et~al.}(2018){Ambrogi}, {Celli}, \&
   {Aharonian}}]{2018APh...100...69A}

@@ -9,19 +9,23 @@ and neglect the correlation between the different areas after smoothing the data
 Suppose that one of these areas has $n$ pixels with random variables $k_i$ drawn from a Poisson distribution with mean $\ld_0$
 (here we assume that the underlying diffuse flux is approximately constant within the smoothing radius).
 The likelihood function for parameter $\ld$ is
+
 \be
 L(\ld) = \prod_i \frac{\ld^{k_i}}{k_i !} e^{-\ld}.
 \ee
 The log likelihood is
+
 \be
 \log L = \sum_{i = 1}^n (-\ld + k_i \log \ld) + const.
 \ee
 The best-fit value $\ld_*$ is determined from
+
 \be
 0 = \frac{\p \log L}{\p \ld} = -n + \frac{1}{\ld} \sum_{i = 1}^n k_i,
 \ee
 which gives $\ld_* = \frac{1}{n} \sum_{i = 1}^n k_i$.
 The uncertainty is
+
 \be
 \frac{1}{\sm^2} = - \left. \frac{\p^2 \log L}{\p \ld^2} \right|_{\ld = \ld_*} = \frac{n}{\ld_*},
 \ee
@@ -31,15 +35,18 @@ If the smoothing radius is comparable to the size of the region,
 then we can approximate the values $k_i$ with the average in the region $\tilde{k}_i = \bar{k} = \frac{1}{n} \sum_{i = 1}^n k_i$
 (note that $\tilde{k}_i$ are not integers).
 We take the gamma distribution for the likelihood function 
+
 \be
 \tilde{L} = \prod_i \frac{\ld^{\td{k}_i}}{\G(\td{k}_i + 1)} e^{-\ld}.
 \ee
 The log likelihood is
+
 \be
 \log \td{L} = \sum_{i = 1}^n (-\ld + \td{k}_i \log \ld) + const.
 \ee
 The best-fit solution is the same as in the Poisson case $\td{\ld}_* = \bar{k} = {\ld}_*$.
 The uncertainty is also the same as in the Poisson case:
+
 \be
 \frac{1}{\td{\sm}^2} = - \left. \frac{\p^2 \log \td{L}}{\p \ld^2} \right|_{\ld = \td{\ld}_*} = \frac{n}{\td{\ld}_*} = \frac{1}{\sm^2}.
 \ee
