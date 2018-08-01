@@ -1,4 +1,4 @@
-\begin{thebibliography}{62}
+\begin{thebibliography}{63}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -99,6 +99,27 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   {Aharonian}}]{2018APh...100...69A}
 {Ambrogi}, L., {Celli}, S., \& {Aharonian}, F. 2018, Astroparticle Physics,
   100, 69
+
+\bibitem[{{Ambrosi} {et~al.}(2017){Ambrosi}, {An}, {Asfandiyarov}, {Azzarello},
+  {Bernardini}, {Bertucci}, {Cai}, {Chang}, {Chen}, {Chen}, {Chen}, {Chen},
+  {Cui}, {Cui}, {D'Amone}, {de Benedittis}, {De Mitri}, {di Santo}, {Dong},
+  {Dong}, {Dong}, {Dong}, {Donvito}, {Droz}, {Duan}, {Duan}, {Duranti},
+  {D'Urso}, {Fan}, {Fan}, {Fang}, {Feng}, {Feng}, {Fusco}, {Gallo}, {Gan},
+  {Gao}, {Gao}, {Gargano}, {Garrappa}, {Gong}, {Gong}, {Guo}, {Guo}, {Hu},
+  {Huang}, {Huang}, {Ionica}, {Jiang}, {Jiang}, {Jin}, {Kong}, {Lei}, {Li},
+  {Li}, {Li}, {Li}, {Liang}, {Liang}, {Liao}, {Liu}, {Liu}, {Liu}, {Liu},
+  {Liu}, {Loparco}, {Ma}, {Ma}, {Ma}, {Ma}, {Ma}, {Ma}, {Marsella},
+  {Mazziotta}, {Mo}, {Niu}, {Peng}, {Peng}, {Qiao}, {Rao}, {Salinas}, {Shang},
+  {H.~Shen}, {Shen}, {Shen}, {Song}, {Su}, {Su}, {Sun}, {Surdo}, {Teng},
+  {Tian}, {Tykhonov}, {Vagelli}, {Vitillo}, {Wang}, {Wang}, {Wang}, {Wang},
+  {Wang}, {Wang}, {Wang}, {Wang}, {Wang}, {Wang}, {Wang}, {Wang}, {Wen},
+  {Wang}, {Wei}, {Wei}, {Wei}, {Wu}, {Wu}, {Wu}, {Wu}, {Wu}, {Xi}, {Xia},
+  {Xin}, {Xu}, {Xu}, {Xu}, {Xue}, {Yang}, {Yang}, {Yang}, {Yang}, {Yao}, {Yu},
+  {Yuan}, {Yue}, {Zang}, {Zhang}, {Zhang}, {Zhang}, {Zhang}, {Zhang}, {Zhang},
+  {Zhang}, {Zhang}, {Zhang}, {Zhang}, {Zhang}, {Zhang}, {Zhang}, {Zhang},
+  {Zhang}, {Zhang}, {Zhang}, {Zhao}, {Zhao}, {Zhao}, {Zhou}, {Zhou}, {Zhu},
+  {Zhu}, \& {Zimmer}}]{2017Natur.552...63D}
+{Ambrosi}, G., {An}, Q., {Asfandiyarov}, R., {et~al.} 2017, \nat, 552, 63
 
 \bibitem[{{Archambault} {et~al.}(2017){Archambault}, {Archer}, {Benbow},
   {Bird}, {Bourbeau}, {Buchovecky}, {Buckley}, {Bugaev}, {Cerruti}, {Connolly},

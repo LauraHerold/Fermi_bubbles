@@ -112,13 +112,15 @@ label = "Excess region"
 if particles == "electrons":
     name = 'Summary_electron_spectra_' + str(int(Bc[b]))
     pyplot.plot(Es, baseline, color="green", linewidth=0.9, label=label)
-    pyplot.fill_between(Es, syst_min, syst_max, color = "green", alpha = 0.3)
+    pyplot.fill_between(Es, syst_min, syst_max, color = "green", alpha=0.25)
 
     HESS_data = np.loadtxt("../../data/Electron_spectra/HESS_2008_highE.csv", delimiter=',').T
     HESS_Es = HESS_data[0]
     HESS_E2dNdE = HESS_data[1] / m2cm**2 / HESS_Es
-    HESS_err_low = HESS_data[2] / m2cm**2 / HESS_Es
-    HESS_err_up = HESS_data[3] / m2cm**2 / HESS_Es
+    HESS_syst = (HESS_data[4] - HESS_data[5]) / 2.
+    HESS_err_low = np.sqrt(HESS_data[2]**2 + HESS_syst**2) / m2cm**2 / HESS_Es
+    HESS_err_up = np.sqrt(HESS_data[3]**2 + HESS_syst**2) / m2cm**2 / HESS_Es
+    
     #HESS_Es *= 1000. # TeV --> GeV
     #HESS_E3dNdE /= (100**2 * HESS_Es) # GeV^3/m^2/s/sr --> GeV^2/cm^2/s/sr
     #HESS_err /= (100**2 * HESS_Es) # GeV^3/m^2/s/sr --> GeV^2/cm^2/s/sr
@@ -137,6 +139,14 @@ if particles == "electrons":
     fermi_dNdE = np.append(fermi_LE[4], fermi_HE[4]) * fermi_Es**2 / 100.**2  # 1/GeV/m^2/sr/s --> GeV/cm^2/sr/s
     fermi_err = np.append(np.sqrt(fermi_LE[5]**2+fermi_LE[6]**2), np.sqrt(fermi_HE[5]**2+fermi_HE[6]**2+fermi_HE[7]**2)) * fermi_dNdE # Relative errors (stat + sys)
     pyplot.errorbar(fermi_Es, fermi_dNdE, fermi_err, color = "black", ls = "", marker = "o", label = "Fermi-LAT (2017)")
+
+
+    dampe = np.loadtxt("../../data/Electron_spectra/dampe_electrons.txt").T
+    dampe_Es = dampe[2]
+    factor = dampe[-1]
+    dampe_dNdE = factor * dampe[3] * dampe_Es**2 / m2cm**2  # 1/GeV/m^2/sr/s --> GeV/cm^2/sr/s
+    dampe_err = factor * np.sqrt(dampe[4]**2 + dampe[5]**2) * dampe_Es**2 / m2cm**2
+    pyplot.errorbar(dampe_Es, dampe_dNdE, dampe_err, color = "magenta", ls = "", marker = "v", label = "DAMPE (2017)")
 
 
     pyplot.ylim(3e-8, 3e-2)
