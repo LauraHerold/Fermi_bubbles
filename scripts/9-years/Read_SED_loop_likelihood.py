@@ -23,8 +23,8 @@ fit_pi0 = True
 parser = OptionParser()
 parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
 parser.add_option("-E", "--lowE_range", dest="lowE_range", default='0', help="There are 3 low-energy ranges: (3,5), (3,3), (4,5), (6,7)")
-parser.add_option("-i", "--input_data", dest="input_data", default="lowE", help="Input data can be: data, lowE, boxes, GALPROP")
-parser.add_option("-o", "--cutoff", dest="cutoff", default="True", help="Write true if you want cutoff")
+parser.add_option("-i", "--input_data", dest="input_data", default="boxes", help="Input data can be: data, lowE, boxes, GALPROP")
+parser.add_option("-o", "--cutoff", dest="cutoff", default="True", help="Write True if you want cutoff")
 (options, args) = parser.parse_args()
 
 data_class = str(options.data_class)
@@ -61,64 +61,6 @@ E_e = 10.**np.arange(-1., 8.001, 0.1)                                           
 p_p = 10.**np.arange(-0.5, 6., 0.1)                                                     # Proton-momenta array
 
 
-########################################################################################################################## Dima's auxil function
-
-def setup_figure_pars(spectrum=False, plot_type=None):
-    if plot_type is None:
-        if spectrum:
-            plot_type = 'spectrum'
-        else:
-            plot_type = 'map'
-    if plot_type == 'spectrum':
-        fig_width = 8  # width in inches
-        fig_height = 6    # height in inches
-    elif plot_type == 'map':
-        fig_width = 9  # width in inches
-        fig_height = 6    # height in inches
-    elif plot_type == 'zoomin_map':
-        fig_width = 4.6  # width in inches
-        fig_height = 6    # height in inches
-
-    fig_size =  [fig_width, fig_height]
-    params = {'axes.labelsize': 20,
-              'axes.titlesize': 20,
-              'font.size': 16,
-              'legend.fontsize': 14,
-              'xtick.labelsize':18,
-              'ytick.labelsize':18,
-              #'text.usetex': True,
-              'figure.figsize': fig_size,
-              'xtick.major.size' : 6,
-              'ytick.major.size' : 6,
-              'xtick.minor.size' : 3,
-              'ytick.minor.size' : 3,
-              'figure.subplot.left' : 0.05,
-              'figure.subplot.right' : 0.97,
-              'figure.subplot.bottom' : 0.15,
-              'figure.subplot.top' : 0.9
-                }
-    pyplot.rcParams.update(params)
-    if plot_type == 'spectrum':
-        pyplot.rcParams['figure.subplot.left'] = 0.15
-        pyplot.rcParams['figure.subplot.right'] = 0.95
-        pyplot.rcParams['figure.subplot.bottom'] = 0.1
-    elif plot_type == 'zoomin_map':
-        pyplot.rcParams['axes.titlesize'] = 20
-        pyplot.rcParams['xtick.labelsize'] = 16
-        pyplot.rcParams['ytick.labelsize'] = 16
-        pyplot.rcParams['font.size'] = 16
-        pyplot.rcParams['axes.labelsize'] = 24
-        
-        pyplot.rcParams['figure.subplot.left'] = 0.03
-        pyplot.rcParams['figure.subplot.right'] = 0.99
-        pyplot.rcParams['figure.subplot.bottom'] = 0.12
-        pyplot.rcParams['figure.subplot.top'] = 0.9
-        pyplot.rcParams['figure.linewidth'] = 0.9
-    
-        #pyplot.rcParams['figure.figsize'][0] *= 2./3.
-
-    #rc('text.latex', preamble=r'\usepackage{amsmath}')
-
 
 ########################################################################################################################## Load dictionaries
 
@@ -147,7 +89,7 @@ dOmega = expo_dct['7) dOmega_profiles']
 
 ########################################################################################################################## Read SED from dcts and plot
 
-for b in xrange(nB):
+for b in [6,7,8]: #xrange(nB)
     auxil.setup_figure_pars(plot_type = 'spectrum')
     pyplot.figure()
     colour_index = 0
@@ -173,16 +115,21 @@ for b in xrange(nB):
             if cutoff:
                 dct = dio.loaddict('plot_dct/Low_energy_range' + str(low_energy_range) +'/' + input_data + '_'  + data_class + '_Plaw_cutoff_l=' + str(Lc[l]) +'_b=' + str(Bc[b]) + '.yaml')
                 x, y = dct["x"], dct["y"]                
-                N_0, gamma, E_cut  = dct["N_0"], dct["gamma"], dct["E_cut"]
+                N_0, gamma, E_cut  = dct["1) N_0"], dct["2) gamma"], dct["3) E_cut"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
                 # gamma is saved as spectral index of dN/dE
-                label = r'$\mathrm{PL}:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.1e\ \mathrm{GeV}$ ' %E_cut #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
+                if E_cut > 10000: # 10 TeV
+                    label = r'$\mathrm{PL}:\ \gamma = %.2f$ ' %(gamma)
+                elif E_cut > 1000:
+                    label = r'$\mathrm{PL}:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.1f\ \mathrm{TeV}$ ' %(E_cut/1000)
+                else:
+                    label = r'$\mathrm{PL}:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.2f\ \mathrm{TeV}$ ' %(E_cut/1000)
                 pyplot.errorbar(x, y, label = label, color = colours[colour_index])
 
             else:
                 dct = dio.loaddict('plot_dct/Low_energy_range' + str(low_energy_range) +'/' + input_data + '_'  + data_class + '_Plaw_l=' + str(Lc[l]) +'_b=' + str(Bc[b]) + '.yaml')
                 x, y = dct["x"], dct["y"]                
-                N_0, gamma = dct["N_0"], dct["gamma"]
+                N_0, gamma = dct["N_0"], dct["2) gamma"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
                 label = r'$\mathrm{PL}:\ \gamma = %.2f$ ' %(gamma)  #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
                 pyplot.errorbar(x, y, label = label, color = colours[colour_index])
@@ -194,11 +141,16 @@ for b in xrange(nB):
             if cutoff:
                 dct = dio.loaddict('plot_dct/Low_energy_range' + str(low_energy_range) +'/' + input_data + '_'  + data_class + '_IC_cutoff_l=' + str(Lc[l]) +'_b=' + str(Bc[b]) + '.yaml')
                 x, y = dct["x"], dct["y"]                
-                N_0, gamma, E_cut  = dct["N_0"], dct["gamma"], dct["E_cut"]
+                N_0, gamma, E_cut  = dct["N_0"], dct["2) gamma"], dct["3) E_cut"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
                 # gamma is spectral index of EdN/dE
-                label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %(gamma+1) + r'$E_{\mathrm{cut}} = %.1e\ \mathrm{GeV}$' %(E_cut) #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
-                pyplot.errorbar(x, y, label = label, color = colours[colour_index], ls = ':')
+                if E_cut > 10000: # 10 TeV
+                    label = r'$\mathrm{IC}:\ \gamma = %.2f$ ' %(gamma)
+                elif E_cut > 1000:
+                    label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.1f\ \mathrm{TeV}$ ' %(E_cut/1000)
+                else:
+                    label = r'$\mathrm{IC}:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.2f\ \mathrm{TeV}$ ' %(E_cut/1000)
+                pyplot.errorbar(x, y, label = label, color = colours[colour_index], ls = '--')
 
             else:
                 print 'plot_dct/Low_energy_range' + str(low_energy_range) +'/' + input_data + '_'  + data_class + '_IC_l=' + str(Lc[l]) +'_b=' + str(Bc[b]) + '.yaml'
@@ -208,7 +160,7 @@ for b in xrange(nB):
                 chi2_dof, TS = IC_dct["chi^2/d.o.f."], IC_dct["-logL"]
                 # gamma is spectral index of dN/dp
                 label = r'$\mathrm{IC}:\ \gamma = %.2f$ ' %(gamma+1)  #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
-                pyplot.errorbar(IC_x, IC_y, label = label, color = colours[colour_index], ls = ':')
+                pyplot.errorbar(IC_x, IC_y, label = label, color = colours[colour_index], ls = '--')
             
 
             
@@ -220,10 +172,16 @@ for b in xrange(nB):
             if cutoff:
                 dct = dio.loaddict('plot_dct/Low_energy_range' + str(low_energy_range) +'/' + input_data + '_'  + data_class + '_pi0_cutoff_l=' + str(Lc[l]) +'_b=' + str(Bc[b]) + '.yaml')
                 x, y = dct["x"], dct["y"]                
-                N_0, gamma, E_cut  = dct["N_0"], dct["gamma"], dct["E_cut"]
+                N_0, gamma, E_cut  = dct["N_0"], dct["2) gamma"], dct["3) E_cut"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
-                label = r'$\pi^0:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.1e\ \mathrm{GeV}$' %(E_cut) #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
-                pyplot.errorbar(x, y, label = label, color = colours[colour_index], ls = '-.')
+
+                if E_cut > 10000: # 10 TeV
+                    label = r'$\pi^0:\ \gamma = %.2f$ ' %(gamma)
+                elif E_cut > 1000:
+                    label = r'$\pi^0:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.1f\ \mathrm{TeV}$ ' %(E_cut/1000)
+                else:
+                    label = r'$\pi^0:\ \gamma = %.2f,$ ' %(gamma) + r'$E_{\mathrm{cut}} = %.2f\ \mathrm{TeV}$ ' %(E_cut/1000)
+                pyplot.errorbar(x, y, label = label, color = colours[colour_index], ls = ':')
 
             else:
                 dct = dio.loaddict('plot_dct/Low_energy_range' + str(low_energy_range) +'/' + input_data + '_'  + data_class + '_pi0_l=' + str(Lc[l]) +'_b=' + str(Bc[b]) + '.yaml')
@@ -231,7 +189,7 @@ for b in xrange(nB):
                 N_0, gamma = dct["N_0"], dct["gamma"]
                 chi2_dof, TS = dct["chi^2/d.o.f."], dct["-logL"]
                 label = r'$\pi^0:\ \gamma = %.2f$ ' %(gamma)  #+ ',\n' + r'$-\log L = %.2f$' %TS + r', $\frac{\chi^2}{\mathrm{d.o.f.}} = %.2f$' %(chi2_dof)
-                pyplot.errorbar(x, y, label = label, color = colours[colour_index], ls = '-.')
+                pyplot.errorbar(x, y, label = label, color = colours[colour_index], ls = ':')
 
                 
         colour_index += 1
@@ -241,19 +199,18 @@ for b in xrange(nB):
 ########################################################################################################################## Cosmetics, safe plot
 
        
-    lg = pyplot.legend(loc='upper left', ncol=2, fontsize = 'x-small')
+    lg = pyplot.legend(loc='upper left', ncol=2)
     lg.get_frame().set_linewidth(0)
     pyplot.grid(True)
-    pyplot.xlabel('$E$ [GeV]')
-    pyplot.ylabel(r'$ E^2\frac{dN}{dE}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
-    pyplot.title(r'SED in latitude stripes, $b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2))
+    pyplot.xlabel('$E\ \mathrm{[GeV]}$')
+    pyplot.ylabel(r'$ E^2\frac{\mathrm{d}N}{\mathrm{d}E}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
+    pyplot.title(r'$b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2))
 
     name = 'SED_'+ input_data +'_' + data_class + '_' + str(int(Bc[b]))
     fn = plot_dir + name + fn_ending
     pyplot.xscale('log')
     pyplot.yscale('log')
-    pyplot.ylim((1.e-8,4.e-4))
-    setup_figure_pars(spectrum=True)
+    pyplot.ylim((5.e-8,4.e-4))
     pyplot.savefig(fn, format = 'pdf')
 
 

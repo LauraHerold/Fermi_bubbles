@@ -1,4 +1,4 @@
-""" Takes differential flux of lowE model (GeV/(cm**2 s sr)) in 10 deg or 4 deg lat stripes at high or low latitudes, respectively, and fits boxes in each latitude with a likelihood fit. The  are saved in a dictionary """
+""" Takes differential flux of lowE model (GeV/(cm**2 s sr)) in 10 deg or 4 deg lat stripes at high or low latitudes, respectively, and fits boxes in each latitude with a likelihood fit. The are saved in a dictionary """
 
 
 import numpy as np

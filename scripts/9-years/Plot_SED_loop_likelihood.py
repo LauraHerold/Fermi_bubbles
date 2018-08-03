@@ -88,6 +88,8 @@ Es = np.asarray(dct['5) Energy_bins'])
 diff_profiles = dct['6) Differential_flux_profiles']
 std_profiles = dct['7) Standard_deviation_profiles']
 
+print "diff_profiles: ", diff_profiles
+
 nB = len(diff_profiles)
 nL = len(diff_profiles[0])
 nE = len(diff_profiles[0][0])
@@ -97,7 +99,7 @@ print 'fitmax: ' + str(fitmax)
 #E_g = Es                                                                                # Final photon energies array in GeV
 
 total_data_profiles = dio.loaddict('dct/Low_energy_range0/dct_data_counts_' + data_class + '.yaml')['6) Differential_flux_profiles']
-print "total_data_profiles: ", len(total_data_profiles)
+
 
 expo_dct = dio.loaddict('dct/Low_energy_range' + str(low_energy_range) +'/dct_expo_' + data_class + '.yaml')
 exposure_profiles = expo_dct['6) Exposure_profiles'] # shape: (nB, nL, nE)
@@ -211,6 +213,8 @@ for b in xrange(nB):
         total_data_map = total_data_map[len(total_data_map)-nE:]
         print "len(total_data_profiles)-nE: ", (len(total_data_profiles)-nE)
         background_map = total_data_map - map
+
+        
 
         for E in range(nE):
             if np.abs(std_map[E]) < 1.:

@@ -33,6 +33,7 @@ plot_diff_leftright = True
 fn_ending = '.pdf'
 colours = ['black', 'blue', 'red', 'green']
 markers = ['s', 'o', 'D', '<']
+titles = ['West', 'East']
 
 dL = 10.
 dB = [10., 10., 10., 10., 10., 4., 4., 4., 4., 4., 10., 10., 10., 10., 10.]
@@ -117,19 +118,23 @@ for b in xrange(nB):
                 if difference[reading_point] < 0 and l==1:
                     pyplot.errorbar(Es[reading_point], difference[reading_point], total_std[reading_point], color='grey', marker='>', linestyle=':', label = lab1)
                     lab1 = None
-                
+                lab1 = None
                 
     
        
 ########################################################################################################################## cosmetics, safe plot
         
 
-        lg = pyplot.legend(loc='upper right', ncol=2)
+        ax = fig.add_subplot(111)
+        textstr = r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + '$,\ %i^\circ)$\n' % (Lc[l] + dL/2) + r'$b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + '$, %i^\circ)$' % (Bc[b] + dB[b]/2)
+        ax.text(0.03, 0.97, textstr, transform=ax.transAxes, fontsize = 20, verticalalignment='top')
+
+        lg = pyplot.legend(loc='upper right', ncol=1)
         lg.get_frame().set_linewidth(0)
         #pyplot.grid(True)
         pyplot.xlabel('$E\ [\mathrm{GeV}]$')
         pyplot.ylabel(r'$ E^2\frac{\mathrm{d} N}{\mathrm{d}E}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
-        pyplot.title(r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r'$,\ %i^\circ)$' % (Lc[l] + dL/2) + r'$,\ b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + '$, %i^\circ)$' % (Bc[b] + dB[b]/2))
+        pyplot.title(titles[l])
         auxil.setup_figure_pars(plot_type = 'spectrum')
         pyplot.axis('tight')
         name = 'SED_all_models_' + data_class + '_l=' + str(int(Lc[l])) + '_b=' + str(int(Bc[b]))
@@ -140,7 +145,7 @@ for b in xrange(nB):
         if dB[b] == 10:
             pyplot.ylim((1.e-8,1.e-4))
         else:
-            pyplot.ylim((1.e-8,1.e-3))
+            pyplot.ylim((1.e-8,2.e-3))
 
         pyplot.xlim((1., 2.e3))
 

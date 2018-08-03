@@ -55,7 +55,7 @@ def setup_figure_pars(spectrum=False, plot_type=None):
     params = {'axes.labelsize': 20,
               'axes.titlesize': 20,
               'font.size': 16,
-              'legend.fontsize': 16,
+              'legend.fontsize': 15,
               'xtick.labelsize':18,
               'ytick.labelsize':18,
               #'text.usetex': True,

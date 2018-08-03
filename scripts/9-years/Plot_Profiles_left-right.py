@@ -17,6 +17,7 @@ plot_diff_rightleft = False
 input_data = ['data', 'lowE', 'boxes', 'GALPROP']
 colours = ['black', 'blue', 'red', 'green']
 markers = ['s', 'o', 'D', '<']
+titles = ['West', 'East']
 
 
 parser = OptionParser()
@@ -56,6 +57,7 @@ nL = len(diff_profiles[0])
 
 ########################################################################################################################## Plot difference right - left
 
+
 for highE in range(3):
     binmin = highE_ranges[highE][0]
     binmax = highE_ranges[highE][1]
@@ -86,7 +88,7 @@ for highE in range(3):
 
     for l in xrange(nL):
         auxil.setup_figure_pars(plot_type = 'spectrum')
-        pyplot.figure()
+        f = pyplot.figure()
         colour_index = 0
         marker_index = 0
     
@@ -120,20 +122,29 @@ for highE in range(3):
                 if l==1 and difference_profiles[b] < 0:
                     pyplot.errorbar(Bc[b], -difference_profiles[b], difference_std[b], color = 'grey', marker='>', linewidth = 1.3, label=labl1)
                     labl1 = None
-        
-        lg = pyplot.legend(loc='upper left', ncol=1, fontsize = 'medium')
-        lg.get_frame().set_linewidth(0)
-        pyplot.grid(True)
-        pyplot.xlabel('$b\ [\mathrm{deg}]$')
-        pyplot.ylabel(r'$ F\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
+
 
         emin = Es[binmin] * np.exp(-delta/2)
         emax = Es[binmax] * np.exp(delta/2)
-        pyplot.title(r'$\ell \in (%.0f^\circ$' % (Lc[l] - 5) + '$,\ %.0f^\circ)$, ' % (Lc[l] + 5) + r'$E\in (%.0f\ \mathrm{GeV}$' %emin + r'$,\ %.0f$' %emax + r'$\ \mathrm{GeV})$')
+        ax = f.add_subplot(111)
+        #pyplot.text(0.1, 0.9,'matplotlib', ha='right', va='top')#, transform=ax.transAxes)
+        textstr = r'$\ell \in (%.0f^\circ$' % (Lc[l] - 5) + '$,\ %.0f^\circ)$\n' % (Lc[l] + 5) + r'$E\in (%.0f$' %emin + r'$,\ %.0f$' %emax + r'$)\ \mathrm{GeV}$'
+        ax.text(0.02, 0.97, textstr, transform=ax.transAxes, fontsize = 20, verticalalignment='top')
+        
+        lg = pyplot.legend(loc='upper right', ncol=1, fontsize = 'medium')
+        lg.get_frame().set_linewidth(0)
+        pyplot.grid(True)
+        pyplot.xlabel('$b\ [\mathrm{deg}]$')
+        pyplot.ylabel(r'$ I\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
+
+        
+        pyplot.title(titles[l])
+        
+
 
         name = 'Profiles_l='+ str(l)
         fn = plot_dir + '/Low_energy_range'+ str(low_energy_range)+ '/' + name + '_' + data_class + '_range_' + str(highE) +'.pdf'
         pyplot.yscale('log')
-        pyplot.ylim(3.e-7, 6.e-5)
+        pyplot.ylim(3.e-7, 7.e-5)
         pyplot.savefig(fn, format = 'pdf')
             

@@ -34,7 +34,7 @@ if lowE_range ==4:
     fn_extra = "_test"
 
 binmin_low, binmax_low = ((3,5), (3,3), (4,5), (6,7), (3,5))[lowE_range]
-binmin_high, binmax_high = ((6,23), (6,23), (6,23), (8,23),(10,11))[lowE_range]
+binmin_high, binmax_high = ((6,23), (6,23), (6,23), (8,23),(10,11))[lowE_range] 
 smooth_sigma = (1., 1.41, 0.65, 0.4, 1.)[lowE_range] #  1.25
 
 mask_point_sources = True                    # Is used in the calculate_indices function
@@ -48,7 +48,7 @@ Bmax = 90.
 
 GeV2MeV = 1000.
 delta = 0.3837641821164575          # Logarithmic size of one energy bin, in fits header "Step in energy (log)"
-npix = 196608                       # Number of Healpix pixels
+npix = 196608                       # Numer of Healpix pixels
 nside = healpy.npix2nside(npix)     # Side parameter of Healpy projection
 
 
@@ -184,17 +184,20 @@ for E in xrange(nE):
                 boxes_map[E, pixel] = box_l_map[pixel] * b_l_array[b,E] + box_r_map[pixel] * b_r_array[b,E]  # Boxes
                 model[E,pixel] = k_array[b,E] * data_low[E,pixel] + c_array[b,E] * expo_high[E,pixel]        # Model without boxes
                                                     
-resid_counts = data_high - model                                                                             # Residual + boxes                 
+resid_counts = data_high - model - boxes_map                                                                            # Residual + boxes
+resid_boxes_counts = data_high - model
 
 dOmega = 4. * np.pi / npix
 deltaE = Es_high * (np.exp(delta/2) - np.exp(-delta/2))
 
 boxes_flux = np.zeros((nE, npix))
 resid_flux = np.zeros((nE, npix))
+resid_boxes_flux = np.zeros((nE, npix))
 model_flux = np.zeros((nE, npix))
 for E in xrange(nE):
     boxes_flux[E] = mask * (Es_high[E]**2 * boxes_map[E]) / (deltaE[E] * expo_high[E] * dOmega)           # Differential flux
     resid_flux[E] = mask * (Es_high[E]**2 * resid_counts[E]) / (deltaE[E] * expo_high[E] * dOmega)
+    resid_boxes_flux[E] = mask * (Es_high[E]**2 * resid_boxes_counts[E]) / (deltaE[E] * expo_high[E] * dOmega)
     model_flux[E] = mask * (Es_high[E]**2 * model[E]) / (deltaE[E] * expo_high[E] * dOmega)               
 
 
@@ -253,11 +256,17 @@ skymap = hmap2skymap(boxes_map.T, fits_fn, unit = 'counts_', Es = Es_high)
 fits_fn = 'fits/Boxes_%.1f' %emin_low + '-%.1fGeV_flux_' %emax_low + data_class + fn_extra  + '.fits'
 skymap = hmap2skymap(boxes_flux.T, fits_fn, unit = 'GeV/(cm^2 s sr)', Es = Es_high)
 
-fits_resid_counts_fn = 'fits/Boxes_residual+boxes_%.1f' %emin_low + '-%.1fGeV_counts_' %emax_low + data_class + fn_extra  + '.fits'
+fits_resid_counts_fn = 'fits/Boxes_residual_%.1f' %emin_low + '-%.1fGeV_counts_' %emax_low + data_class + fn_extra  + '.fits'
 skymap_resid_counts = hmap2skymap(resid_counts.T, fits_resid_counts_fn, unit = 'counts_', Es = Es_high)
 
-fits_resid_flux_fn = 'fits/Boxes_residual+boxes_%.1f' %emin_low + '-%.1fGeV_flux_' %emax_low + data_class + fn_extra  + '.fits'
+fits_resid_flux_fn = 'fits/Boxes_residual_%.1f' %emin_low + '-%.1fGeV_flux_' %emax_low + data_class + fn_extra  + '.fits'
 skymap_resid_flux = hmap2skymap(resid_flux.T, fits_resid_flux_fn, unit = 'GeV/(cm^2 s sr)', Es = Es_high)
+
+fits_resid_boxes_counts_fn = 'fits/Boxes_residual+boxes_%.1f' %emin_low + '-%.1fGeV_counts_' %emax_low + data_class + fn_extra  + '.fits'
+skymap_resid_boxes_counts = hmap2skymap(resid_boxes_counts.T, fits_resid_boxes_counts_fn, unit = 'counts_', Es = Es_high)
+
+fits_resid_boxes_flux_fn = 'fits/Boxes_residual+boxes_%.1f' %emin_low + '-%.1fGeV_flux_' %emax_low + data_class + fn_extra  + '.fits'
+skymap_resid_boxes_flux = hmap2skymap(resid_boxes_flux.T, fits_resid_boxes_flux_fn, unit = 'GeV/(cm^2 s sr)', Es = Es_high)
 
 fits_fn_model = 'fits/Boxes_model_%.1f' %emin_low + '-%.1fGeV' %emax_low + '_counts_' + data_class + fn_extra  + '.fits'
 skymap_model = hmap2skymap(model.T, fits_fn_model, unit = 'counts', Es = Es_high)

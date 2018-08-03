@@ -30,6 +30,7 @@ fn_ending = '.pdf'
 colours = ['black', 'blue', 'grey', 'green','black', 'blue', 'grey', 'green']
 markers = ['s', 'o', 'D', '<', None, None, None, None]
 lss = [":", ":", ":", ":", "-", "-", "-", "-"]
+titles = ["West", "East"]
 
 dL = 10.
 dB = [10., 10., 10., 10., 10., 4., 4., 4., 4., 4., 10., 10., 10., 10., 10.]
@@ -88,12 +89,17 @@ for b in xrange(nB):
 ########################################################################################################################## cosmetics, safe plot
         
 
-        lg = pyplot.legend(loc='upper right', ncol=2)
+        ax = fig.add_subplot(111)
+        textstr = r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + ', $%i^\circ)$\n' % (Lc[l] + dL/2) + r'$b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2)
+        props = dict( facecolor='white', alpha=1, edgecolor = "white")
+        ax.text(0.15, 0.97, textstr, transform=ax.transAxes, fontsize = 20, verticalalignment='top', bbox=props)
+        
+        lg = pyplot.legend(loc='lower left', ncol=1)
         lg.get_frame().set_linewidth(0)
         #pyplot.grid(True)
-        pyplot.xlabel('$E$ [GeV]')
+        pyplot.xlabel('$E\ \mathrm{[GeV]}$')
         pyplot.ylabel(r'$ E^2\frac{\mathrm{d} N}{\mathrm{d}E}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
-        pyplot.title(r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r', $%i^\circ)$' % (Lc[l] + dL/2) + r', $b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2))
+        pyplot.title(titles[l])
     
         pyplot.axis('tight')
         name = 'SED_different_lowE_ranges_' + input + '_l=' + str(int(Lc[l])) + '_b=' + str(int(Bc[b]))
@@ -104,7 +110,7 @@ for b in xrange(nB):
         if dB[b] == 10:
             pyplot.ylim((5.e-8,1.e-5))
         else:
-            pyplot.ylim((2.e-7,4.e-5))
+            pyplot.ylim((6.e-7,2.e-5))
 
         pyplot.xlim((1., 2.e3))
 

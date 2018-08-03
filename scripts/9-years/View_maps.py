@@ -10,6 +10,7 @@ from optparse import OptionParser
 
 ##################################################################################################### Parameters
 
+
 parser = OptionParser()
 parser.add_option("-f", "--file_name", dest = "map_fn", default = '', help ='file name') 
 parser.add_option("-n", "--scale_min", dest="scale_min", default=" -2.e-6", help="Minimal value in Mollweide map")
@@ -25,6 +26,7 @@ scale_max = float(options.scale_max)
 
 highE_ranges = ((0,5),(6,11),(12,17))        # 1: 0.3-0.5 GeV, 2: 0.5-1.0 GeV, 3: 1.0-2.2 GeV, 0: baseline (0.3-1.0 GeV)
 
+log_scale = False
 
 smooth_map = True
 mask_point_sources = True
@@ -32,7 +34,10 @@ symmask = True
 cmap = pyplot.cm.hot_r # jet, hot
 
 normalized = False
-unit = r'$\mathrm{GeV /(s\ sr\ cm}^2)}$'
+unit = r'$I\ [\mathrm{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}]}$'
+if log_scale:
+    unit = r'$\log_{10}(I\ [\mathrm{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}])$'
+
 
 
 GeV2MeV = 1000.
@@ -64,7 +69,7 @@ if mask_point_sources:
 
 ##################################################################################################### Loop over 3 high-energy ranges
 
-for highE in range(3):
+for highE in [0,1,2]:
     print "Range ", highE
     binmin = highE_ranges[highE][0]
     binmax = highE_ranges[highE][1]
@@ -99,19 +104,25 @@ for highE in range(3):
     
     title = r'$E = %.0f$' %emin + r'$ - %.0f\ \mathrm{GeV}$' %emax
 
+    #pyplot.figure()
+    #healpy.gnomview(plot_map, rot = ([0,0]), xsize = 3000, ysize = 1000, min =scale_min, max=scale_max, unit = unit, title = title, notext = True)
+
+    #healpy.graticule(dpar=10., dmer=10.)
+    #save_fn = '../../plots/Plots_9-year/Gnomview_' + map_fn[:-5] + '_range_'+ str(highE) + '.pdf'
+    #pyplot.savefig(save_fn)
+
+    #print pyplot.rcParams['figure.figsize']
+
     pyplot.figure()
-    healpy.gnomview(plot_map, rot = ([0,0]), xsize = 3000, ysize = 1000, min =scale_min, max=scale_max, unit = unit, title = title, notext = True)
-
-    healpy.graticule(dpar=10., dmer=10.)
-    save_fn = '../../plots/Plots_9-year/Gnomview_' + map_fn[:-5] + '_range_'+ str(highE) + '.pdf'
-    pyplot.savefig(save_fn)
-
-    print pyplot.rcParams['figure.figsize']
-
-    pyplot.figure()
-    ax = healpy.mollview((plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap, xsize = 1500)
+    if log_scale:
+        ax = healpy.mollview(np.log10(plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap, xsize = 1500)
+    else:
+        ax = healpy.mollview((plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap, xsize = 1500)
+   
     print ax
     #pyplot.colorbar().set_label(label=unit, size=30, weight='bold')
     healpy.graticule(dpar=10., dmer=10.)
     save_fn = '../../plots/Plots_9-year/Mollweide_' + map_fn[:-5] + '_range_'+ str(highE) + '.pdf'
+    if log_scale:
+        save_fn = '../../plots/Plots_9-year/Mollweide_' + map_fn[:-5] + '_range_'+ str(highE) + '_log.pdf'
     pyplot.savefig(save_fn)

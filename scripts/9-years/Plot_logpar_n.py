@@ -28,27 +28,30 @@ data_source = np.array( [[-0.45045643245520206, -1.1007861873834948], [-0.779519
 ########################################################################################################################## Right
 
 auxil.setup_figure_pars(plot_type = 'spectrum')
-pyplot.figure()
+fig = pyplot.figure()
 
-pyplot.plot(lats, 2 - data_source[0], label = "Data", color = "black", linewidth = 1.3)
-pyplot.plot(lats, 2 - lowE_source_range0[0],  label = "LowE", color = "blue", linewidth = 1.3)
-pyplot.plot(lats, 2 - boxes_source_range0[0], label = "Rectangles", color = "red", linewidth = 1.3)
-pyplot.plot(lats, 2 - GALPROP_source[0],  label = "GALPROP", color = "green", linewidth = 1.3)
+pyplot.plot(lats, data_source[0], label = "Data", color = "black", linewidth = 1.3)
+pyplot.plot(lats, lowE_source_range0[0],  label = "LowE", color = "blue", linewidth = 1.3)
+pyplot.plot(lats, boxes_source_range0[0], label = "Rectangles", color = "red", linewidth = 1.3)
+pyplot.plot(lats, GALPROP_source[0],  label = "GALPROP", color = "green", linewidth = 1.3)
 
-lg = pyplot.legend(loc='upper left', ncol=1, fontsize = 'medium')
+lg = pyplot.legend(loc='upper right', ncol=1, fontsize = 'medium')
 lg.get_frame().set_linewidth(0)
 pyplot.grid(True)
 pyplot.xlabel(r'$b\ \mathrm{[deg]}$')
 pyplot.ylabel(r'$2 - n(500\, \mathrm{GeV})$')
 
-#pyplot.title(r'Inclination $n(E)= -\alpha-2\beta\ \log E$ for $\ell \in (-10^\circ,0^\circ)$', fontsize=20)#' for log parabola $\left(E\ \frac{\mathrm{d}N}{\mathrm{d}E}\right) = N_0 E^{-\alpha-\beta\ \log E}$ at $E = 500$ GeV',
-pyplot.title(r"$\ell \in (-10^\circ,0^\circ)$")
+ax = fig.add_subplot(111)
+textstr = r"$\ell \in (-10^\circ,0^\circ)$"
+ax.text(0.03, 0.97, textstr, transform=ax.transAxes, fontsize = 20, verticalalignment='top')
+
+pyplot.title("West")
 
 plot_dir = '../../plots/Plots_9-year/Low_energy_range0/'
 
 name = 'LogParabola_n(500GeV)_l_in_(-10,0).pdf'
 fn = plot_dir + name
-pyplot.ylim(1.5, 4.5)
+pyplot.ylim(-1.5, 1.)
 
 pyplot.savefig(fn, format = 'pdf')
 
@@ -56,27 +59,30 @@ pyplot.savefig(fn, format = 'pdf')
 ########################################################################################################################## Left
 
 
-pyplot.figure()
+fig = pyplot.figure()
 
-pyplot.plot(lats, 2 - data_source[1], label = "Data", color = "black", linewidth = 1.3)
-pyplot.plot(lats, 2 - lowE_source_range0[1],  label = "LowE", color = "blue", linewidth = 1.3)
-pyplot.plot(lats, 2 - boxes_source_range0[1], label = "Rectangles", color = "red", linewidth = 1.3)
-pyplot.plot(lats, 2 - GALPROP_source[1],  label = "GALPROP", color = "green", linewidth = 1.3)
+pyplot.plot(lats, data_source[1], label = "Data", color = "black", linewidth = 1.3)
+pyplot.plot(lats,lowE_source_range0[1],  label = "LowE", color = "blue", linewidth = 1.3)
+pyplot.plot(lats, boxes_source_range0[1], label = "Rectangles", color = "red", linewidth = 1.3)
+pyplot.plot(lats, GALPROP_source[1],  label = "GALPROP", color = "green", linewidth = 1.3)
 
-lg = pyplot.legend(loc='upper left', ncol=1, fontsize = 'medium')
+lg = pyplot.legend(loc='upper right', ncol=1, fontsize = 'medium')
 lg.get_frame().set_linewidth(0)
 pyplot.grid(True)
 pyplot.xlabel(r'$b\ \mathrm{[deg]}$')
 pyplot.ylabel(r'$2 - n(500\, \mathrm{GeV})$')
 
-pyplot.title(r'Inclination $n(E)= -\alpha-2\beta\ \log E$ for $\ell \in (0^\circ,10^\circ)$', fontsize=20)#' for log parabola $\left(E\ \frac{\mathrm{d}N}{\mathrm{d}E}\right) = N_0 E^{-\alpha-\beta\ \log E}$ at $E = 500$ GeV',
-pyplot.title(r"$\ell \in (0^\circ,10^\circ)$")
+ax = fig.add_subplot(111)
+textstr = r"$\ell \in (0^\circ,10^\circ)$"
+ax.text(0.03, 0.97, textstr, transform=ax.transAxes, fontsize = 20, verticalalignment='top')
+
+pyplot.title("East")
 
 plot_dir = '../../plots/Plots_9-year/Low_energy_range0/'
 
 name = 'LogParabola_n(500GeV)_l_in_(0,10).pdf'
 fn = plot_dir + name 
 #pyplot.yscale('log')
-pyplot.ylim(1.5, 4.5)
+pyplot.ylim(-1.5, 1.)
 auxil.setup_figure_pars(plot_type = 'spectrum')
 pyplot.savefig(fn, format = 'pdf')
