@@ -119,7 +119,7 @@ data at high energies with $\sigma_{\rm low} = 1^\circ$.}
 
 We separate the whole sky in latitude stripes of $\ang{4}$ width where the \Healpix pixels are assigned to stripes that contain the centers of the pixels.
 We parametrize the model in each stripe and each energy bin independently, i.e., 
-in the latitude stripe $b$ for energy bin $E$ and pixel $i$ the model consists of two terms:
+in the latitude stripe $b$ for energy bin $E$ and \Healpix pixel with index $i$ the model consists of two terms:
 
 \be
 \lb{eq:le_model}
@@ -186,7 +186,8 @@ M_{b}(E, i) &= k_{b}(E) \cdot \tilde N^\low_{b}(E, i) + c_b(E) \cdot \tau(E, i)\
 &\quad + R^\east_b(E) + R^\west_b(E).
 \end{split}
 \ee
-where the scaling parameters $k_{b}(E)$, $c_{b}(E)$, $R^\east_b(E)$, and $R^\west_b(E)$ are determined independently 
+where the scaling parameters $k_{b}(E)$ and $c_{b}(E)$
+and the FBs model parameters $R^\east_b(E)$ and $R^\west_b(E)$ are determined independently 
 in each $4^\circ$ latitude stripe and in each energy bin $E > 1$ GeV
 by  fitting the model to the smoothed \Fermi-LAT data.
 The energy fluxes of the model and the residuals integrated for $E = 10 - \SI{100}{GeV}$ are shown in Fig. \ref{fig:Maps_Rectangles}.
@@ -254,7 +255,9 @@ The PS mask in this section is different from the mask that we have used in the 
 We mask the 200 brightest sources outside a $10^\circ$ circle from the GC 
 with a radius of $\frac{\delta}{\sqrt{2}} + 1^\circ$ ($\delta = 0\degr\!\!.46$ is the characteristic size of the pixels),
 which is larger than the radius of  $\frac{\delta}{\sqrt{2}} + 0^\circ\!\!.5$ used in the previous sections.
-Within $10^\circ$ from the GC, we include independent templates for 40 sources with largest flux between 10 and 100 GeV.
+Within $10^\circ$ from the GC, we include independent templates for 40 sources with largest flux between 10 and 100 GeV
+taken from the column ``Flux10000\_100000'' in the 3FGL catalog.
+Each source is fit in each energy bin independently, i.e., we do not use the spectral information from the 3FGL catalog.
 In Figure \ref{fig:Maps_GALPROP} we show the residual emission plus the \Fermi bubbles model and the gNFW model summed over energies between 10 and 100 GeV.
 Due to more free parameters in this model in the Galactic plane relative to the models considered in the previous sections,
 there are fewer positive residuals in the Galactic plane.
