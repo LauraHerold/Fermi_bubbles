@@ -94,9 +94,11 @@ fn = plot_dir + name + fn_ending
 pyplot.xscale('log')
 
 pyplot.xlim((1., 1.e3))
-pyplot.ylim((-0.2e-5, 1.35e-5))
-    
+pyplot.ylim((-0.3e-5, 1.35e-5))
+
+print 'save figure to file:'
+print fn
 pyplot.savefig(fn, format = 'pdf')
 
-
+#pyplot.show()
 
