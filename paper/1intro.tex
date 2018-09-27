@@ -6,7 +6,7 @@
 The \Fermi bubbles (FBs) are one of the most spectacular and unexpected discoveries 
 in the \Fermi Large Area Telescope (LAT) data \citep{2010ApJ...724.1044S}.
 The FBs extend to $55^\circ$ above and below the Galactic center (GC),
-they have a sharp edge and a relatively uniform intensity across the surface, apart from a ``cocoon'' in the south eastern part of the bubbles
+they have a well-defined edge and a relatively uniform intensity across the surface, apart from a ``cocoon'' in the south eastern part of the bubbles
 \citep{2012ApJ...753...61S, 2014ApJ...793...64A}.
 The spectrum is $\sim E^{-2}$ at GeV energies with a cutoff or a softening around 100 GeV at latitudes $|b| > 10^\circ$ \citep{2014ApJ...793...64A}.
 The origin of the FBs is attributed either to an emission from the supermassive black hole (SMBH) at
@@ -36,8 +36,10 @@ The study of the FBs in the GP is complicated due to bright Galactic diffuse emi
 The $\pi^0$ component of the gamma-ray emission is well traced by the distribution of gas in most of the GP,
 but it has large uncertainties towards the GC due to a lack of kinematic information from the motion of the gas in the 
 Galaxy, which is used to reconstruct the gas distribution
-(the velocity of the gas in the direction of the GC is perpendicular to the line of sight).
-There are also large uncertainties in the distribution of the CR sources in the Galactic plane, especially near the GC,
+(the velocity of the gas in the direction of the GC is perpendicular to the line of sight)
+as well as the uncertainties in the absorption of CO emission along the line of sight to the GC (which is used as a tracer of molecular hydrogen)
+and large dispersion of velocities of some molecular clouds near the GC. 
+There are also large uncertainties in the distribution of the CR sources and the propagation model near the GC,
 which make it rather difficult to predict a priori 
 %, even using the standard tracers, such as supernova remnants (SNRs), 
 the distribution of the propagated CR in the Galaxy.
@@ -45,9 +47,12 @@ For the IC component of the gamma-ray emission,
 there is a significant uncertainty in the interstellar radiation field (ISRF) density near the GC \citep[e.g.,][]{2017ApJ...846...67P} in addition to 
 the uncertainties in the CR distribution.
 There should also be undetected point-like and extended sources, which nevertheless contribute to the total flux.
-As a result, the agreement of the gamma-ray data with Galactic propagation models, such as GALPROP \citep{2007ARNPS..57..285S}, 
-is rather poor in the GP from the statistical point of view, even after adjusting the components in energy bins and in Galactic rings
-\citep[e.g.,][]{2012ApJ...750....3A, 2017ApJ...840...43A}.
+Propagation of CR in the Galaxy can be computed with CR propagation tools, such as GALPROP \citep{2007ARNPS..57..285S}.
+The maps of gamma-ray emission from interactions of CR with gas in different Galactocentric rings and from interaction
+of CR electrons and positrons with ISRF can be used as templates for the corresponding components
+of gamma-ray emission.
+The agreement of the gamma-ray data with models based on templates derived with the CR propagation tools
+is rather poor in the GP from the statistical point of view \citep[e.g.,][]{2012ApJ...750....3A, 2017ApJ...840...43A}.
 
 In this paper, we analyze the gamma-ray emission at the base of the FBs and 
 estimate the uncertainties %in the residual hard and bright component
@@ -61,27 +66,60 @@ The study of the FBs at high energies will be also important for future searches
 
 %which we subtract from the data to find the gamma-ray emission from the FBs.
 %Since the Galactic gamma-ray emission has large uncertainties towards the GC \citep[e.g.,][]{Calore:2014xka, 2017ApJ...840...43A},
-We use several methods to determine the Galactic foreground/background emission at high energies.
-The goal is to bracket the uncertainty in the foreground and background emission in the determination of 
-the gamma-ray flux from the FBs.
-First, since the FBs emission shows an anisotropy relative to the GC
-while the foreground emission is expected to be symmetric (up to asymmetries in the gas distribution),
-as an estimate of the possible contribution of the FBs at low latitudes, 
-we find the difference in the gamma-ray data to the east and to the west of the GC 
-(after masking bright point sources).
-Second, we use the fact that the spectrum of the FBs is harder than the spectra of the other components of Galactic diffuse emission
-above $\sim$ 1 GeV.
-Consequently, the contribution of the FBs at low energies near the GP is relatively small. 
+We use several methods to determine the Galactic foreground/background emission.
+The notion of the foreground and background emission may not be well defined, if we search for
+an extended gamma-ray emitting source based on the gamma-ray data itself.
+Here and in the following by foreground/background emission we will mean a stationary (or average) emission of gamma-rays.
+The stationary distribution of CR is obtained by averaging over many sources, it results in the CR proton spectrum
+of $\sim E^{-2.7}$ for energies from a few GeV to about PeV and $\sim E^{-3.3}$ for the CR electrons from GeV to TeV energies.
+If the spectrum of the CR at the source is $\sim E^{-2.0 - 2.2}$, then the extra softening of the spectrum of CR protons is due to energy-dependent escape
+from the Galaxy,
+while the softening for the CR electrons is due to cooling.
+A distinguishing property of a source of CR is that the spectrum of CR at or near the source is much harder than the average (propagated)
+spectrum of CR.
+Thus, one can look for the presence of a population of freshly accelerated CR by searching for areas of gamma-ray emission
+with spectrum harder than average. In particular, one can use an ``on-off'' analysis to subtract the stationary component of the gamma-ray emission.
+One of the caveats of this analysis is that the stationary gamma-ray emission in the ``on'' region can be larger than the emission in the ``off'' region.
+But in any case the difference of the fluxes would have a soft spectrum characteristic for the propagated CR,
+unless the difference in flux is much smaller than the flux in both ``on'' and  ``off''  regions: in this case the difference can have a harder spectrum than the two terms.
+In any case, the ``on-off'' technic is a useful preliminary check in a search for populations of freshly accelerated CR.
+The harder spectrum of the difference is a necessary condition for the presence of a population of CR with a hard spectrum
+(after adjusting the zero-level in cases when the  ``off''  region is brighter than the ``on'' region),
+it is also a sufficient condition for the presence of a population of CR with a hard spectrum, if the difference
+has intensity comparable to the overall intensity in the ``on'' and  ``off''  regions.
+
+%The goal is to test the uncertainty in the foreground and background emission in the determination of  the gamma-ray flux at the base of the FBs.
+First, since there is a tentative asymmetry in diffuse gamma-ray emission near the GC at high energies with a spectrum
+harder to the east of the GC relative to the emission to the west of the GC,
+we estimate the amount of asymmetry by taking the difference in the gamma-ray data to the east and to the west of the GC 
+after masking bright point sources.
+Second, since the spectrum of the FBs at high latitudes as well as the tentative spectrum at low latitudes
+is harder than the spectra of the other components of diffuse emission,
+the contribution of the FBs at energies $\lesssim 1$ GeV is relatively small. 
 We use the data below 1 GeV as a template of the Galactic foreground emission, 
 which we fit to the data at energies above 1 GeV.
-The residual emission is used to estimate the emission from the FBs.
-Finally, we determine a model for the Galactic gamma-ray emission using the GALPROP code%
+The residual emission is used to estimate the emission from the components of emission with spectra harder than the typical 
+spectra of the stationary diffuse gamma-ray components.
+Finally, we determine a model for the Galactic gamma-ray diffuse emission using templates for the emission 
+components based on GALPROP calculation%
 \footnote{\url{http://galprop.stanford.edu}} 
 \citep{Moskalenko:1997gh, Strong:1998fr, Strong:2004de, Ptuskin:2005ax, 2007ARNPS..57..285S, Porter:2008ve,Vladimirov:2010aq}. 
 In this model, we allow many free parameters, such as rescaling of the $\pi^0$ and bremsstrahlung emission in Galactocentric rings and
 refitting of bright point sources near the GC.
 Due to many free parameters, this model absorbs as much of the gamma-ray emission at the base of the FBs as it can.
-Consequently, it gives us a lower bound on the emission from the tentative hard component at the base of the FBs.
+As a result, the residual emission at the base of the FBs in this model is smaller than the residuals in the other models considered in the paper.
+
+The similarity of the energy spectrum below 100 GeV of the hard and bright emission at the base of the FBs 
+and the FBs at high latitudes as well as the spatial coincidence of the emission with a continuation of the FBs from high latitudes 
+make the physical correspondence of the two objects very plausible.
+Nevertheless, their alignment along the line of sight can be accidental and the distance to the two objects can be different, i.e., the FBs may be
+above and below the GC while the hard component may be at a closer distance, e.g., 1 kpc, from us so that the two objects would be physically unrelated.
+Thus, we will refer to the hard and bright component as ``emission at the base of the FBs'' to keep both possibilities open: 
+that the emission is the base of the FBs and that the emission is at a different location along the line of sight towards the base of the FBs.
+We discuss possible origins of the hard component of emission in Section \ref{sec:Interpretation}.
+
+
+
 
 
 

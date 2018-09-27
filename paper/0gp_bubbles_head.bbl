@@ -1,4 +1,4 @@
-\begin{thebibliography}{63}
+\begin{thebibliography}{65}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -179,6 +179,10 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   {Bowen}, \& {Tumlinson}}]{2015ApJ...799L...7F}
 {Fox}, A.~J., {Bordoloi}, R., {Savage}, B.~D., {et~al.} 2015, \apjl, 799, L7
 
+\bibitem[{{Gaggero} {et~al.}(2015){Gaggero}, {Urbano}, {Valli}, \&
+  {Ullio}}]{2015PhRvD..91h3012G}
+{Gaggero}, D., {Urbano}, A., {Valli}, M., \& {Ullio}, P. 2015, \prd, 91, 083012
+
 \bibitem[{Goodenough \& Hooper(2009)}]{Goodenough:2009gk}
 Goodenough, L. \& Hooper, D. 2009, ArXiv:0910.2998 [\eprint[arXiv]{0910.2998}]
 
@@ -275,6 +279,9 @@ Porter, T.~A., Moskalenko, I.~V., Strong, A.~W., {et~al.} 2008, \apj, 682, 400
 \bibitem[{Ptuskin {et~al.}(2006)Ptuskin, Moskalenko, Jones,
   {et~al.}}]{Ptuskin:2005ax}
 Ptuskin, V., Moskalenko, I.~V., Jones, F., {et~al.} 2006, \apj, 642, 902
+
+\bibitem[{{Razzaque} \& {Yang}(2018)}]{2018Galax...6...47R}
+{Razzaque}, S. \& {Yang}, L. 2018, Galaxies, 6, 47
 
 \bibitem[{{Rohlfs} {et~al.}(1959){Rohlfs}, {Schrick}, \&
   {Stock}}]{1959ZA.....47...15R}
