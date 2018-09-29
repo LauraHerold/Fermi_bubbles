@@ -19,7 +19,7 @@ and the GC excess template, as described in Section \ref{sec:Modeling}.
 For comparison we show the latitude profile of the total gamma-ray data (excluding pixels in the PS mask).
 %We observe an agreement between all models and a east-west assymmetry close to the GC. 
 For positive longitudes,
-some models overpredict the gamma-ray data near the GP which leads to negative residuals.
+some models overpredict the gamma-ray data near the GP, which leads to negative residuals.
 For negative longitudes, there is an increase of flux at the base of the FBs 
 by at least a factor of 2 to 6 for all models relative to the gamma-ray emission from the FBs at high latitudes. 
 The results for the GALPROP model differ from the low-energy and rectangles model in the Galactic plane by a factor of 2 to 3. 
@@ -60,13 +60,13 @@ The differential flux of the GALPROP model is smaller than the differential flux
 which is consistent with the profile plots in Figure \ref{fig:Profiles}.
 %We also find an asymmetry in the flux of the data with PS mask. 
 The difference of the data west minus east of the GC is similar to the fluxes at the base of the FBs in the low-energy model and in the rectangles model. 
-The spectra at positive longitudes show large oversubtractions and softer indices. 
+The spectra at positive longitudes show large oversubtractions and softer spectra. 
 %\Laura{Should we show here the plots for (-6,-2) and (2,6) deg latitude also?}
 %\dima{I'm not sure, it will take space}
 
 To compare the behavior of the energy spectra at high energies for different latitudes, 
 we fit a log-parabola plus the fixed foreground model counts to the 
-total smoothed gamma-ray counts in each latitude stripe using the likelihood based on gamma distribution.
+total smoothed gamma-ray counts in each latitude stripe using the likelihood based on the gamma distribution.
 We use the following parametrization of the log-parabola function:
 
  \begin{equation}
@@ -78,11 +78,11 @@ The local ``index'' of the spectrum at energy $E$ is
 \lb{eq:log_par}
 n \equiv - \frac{\de \ln f}{\de \ln E} = \alpha + 2 \beta \ln\left(\frac{E}{\SI{1}{GeV}}\right).
 \end{equation}
-In Figure \ref{fig:logpar_index} we compare this log-parabola index $n$ as a function of latitude at $E = \SI{500}{GeV}$. 
+In Figure \ref{fig:logpar_index} we show this log-parabola index $n$ as a function of latitude at $E = \SI{500}{GeV}$. 
 %\Laura{You called it bubble! ;)} \dima{bubble removed}
 We plot $(2 - n)$, which corresponds to the SED index.
 For positive longitudes, the index is relatively soft ($n > 2$) for most of the latitudes
-except high latitudes where the gamma-ray statistics is small.
+except high latitudes where the gamma-ray statistics are small.
 For negative longitudes, the index near the GC
 is significantly harder ($n \approx 2$) than the index at higher latitudes.
 %\Laura{Would you like the x-axis of the log-par plot to show n-2?}
@@ -102,25 +102,27 @@ the different foreground diffuse emission models.
 \subsection{Parametric model of the gamma-ray spectrum at low latitudes}
 \label{sec:param_model}
 
-In this section we study the spectrum of the FBs at latitudes $|b| < 6^\circ$.
+In this section we study the spectrum at the base of the FBs at latitudes $|b| < 6^\circ$.
 As a baseline model we use the rectangles model of the FBs.
 We compare a power-law model of the energy spectrum with a power-law and an exponential cutoff model
+
 \begin{equation}
 \frac{dN}{dE} = N_0 \left( \frac{E}{1\:{\rm GeV}} \right)^{-n} e^{-E / E_{\rm cut}}.
 \end{equation}
 The best-fit parameters for the rectangles model are reported in Table \ref{tab:param}.
 If the improvement in $-2 \Delta \log \La$ is less than 0.1, then we report the power-law model parameters.
 For the model with a cutoff, we also find the 95\% statistical confidence lower limit for the cutoff energy.
-At last, we find the minimum among the 95\% confidence lower limits for all considered models.
+Finally, we find the minimum among the 95\% confidence lower limits for all considered models
+including the models in Appendix \ref{sec:lowE_syst}.
 The spectrum of the residuals including the FBs at  $\ell \in (\ang{-10},\ \ang{0})$
 is consistent with a power law with an index $2.1 - 2.2$ up to $E \approx 1$ TeV.
-The 95\% confidence lower limit on the cutoff energy for $|b| < 6^\circ$ and $-10^\circ < \ell < 0^\circ$ is $\sim$ 500 GeV.
+The 95\% confidence lower limit on the cutoff energy is $\sim$ 500 GeV for latitudes $|b| < 6^\circ$ within $-10^\circ < \ell < 0^\circ$.
 %\dima{Report the total luminosity (assuming the GC location) in erg/s including modeling ``error bars",  we can also do it in Section \ref{sec:GC_scenario}.}
 
 As one can see from the spectra in Figure \ref{fig:SED_all}, there are large (relative to statistical uncertainty) fluctuations in some of the models.
 These fluctuations are due to modeling uncertainty of the Galactic diffuse emission.
 As a result, a fit with a simple function may be sensitive to the starting point (there can be several local minima).
-In the GALPROP model of the foreground, we also had to put a limit on the index of the FBs spectrum
+In the GALPROP model of the foreground, we also had to constrain the range of the index of the FB's spectrum
 between 1.5 and 2.5 in the derivation of the 95\% confidence lower limit on the cutoff energy.
 
 \begin{table*}
@@ -168,8 +170,8 @@ E^2_\g \frac{dF_\g}{dE_\g} =
 \frac{E_\g c}{4\pi}\int \frac{\de n_{h\nu}}{\de E_{h\nu}} \sigma_\IC\ \frac{\de \Sigma_{\el}}{\de E_{\el}} \de E_{h\nu}\, \de E_\el,
 \end{equation}
 where $\frac{\de \Sigma_{\el}}{\de E_{\el}} = \int \frac{\de n_{\el}}{\de E_{\el}} dR$ is the column density 
-of CR electrons integrated along the line-of-sight radius $R$,
-$\frac{\de n_{h\nu}}{\de E_{h\nu}}$ is the number density of ISRF photons,
+of CR electrons integrated along the line-of-sight distance $R$,
+$\frac{\de n_{h\nu}}{\de E_{h\nu}}$ is the number density of ISRF photons of energy $h\nu$,
 and $\sigma_\IC(E_\gamma, E_{h\nu}, E_\el)$
 is the differential IC scattering cross section in units of $E_\g\frac{d\sigma}{d E_\g}$ \citep{1970RvMP...42..237B}.
 For details on the parametrization of $\sigma_\IC$ see Appendix B of \cite{2014ApJ...793...64A}.
@@ -186,7 +188,7 @@ In order to determine the normalization $n_\el$, the spectral index $\gamma_\el$
 we fit the IC model of the FBs plus the (fixed) foreground model counts to the 
 total smoothed gamma-ray counts in different latitude stripes using likelihood based on gamma distribution.
 As a baseline case, we take the gamma-ray spectrum derived in the rectangles model of the FBs in Section \ref{sec:box_model}.
-The best-fit parameters for the rectangles model of the bubbles are reported in Figure \ref{fig:SED_with_fits}
+The best-fit spectra for the rectangles model of the bubbles are shown in Figure \ref{fig:SED_with_fits}
 %Figure \ref{fig:SED_with_fits} shows the residual of the rectangles model within 
 in latitude stripes $b \in (\ang{2}, \ang{6})$, $b \in (-\ang{2}, \ang{2})$ and $b \in (-\ang{6}, -\ang{2})$. 
 %The dotted line represents the best-fit IC spectrum for an electron distribution following a simple power law.
@@ -254,7 +256,7 @@ for different latitude stripes.
         \includegraphics[width=\textwidth]{plots/SED_boxes_source_-4.pdf}
     \end{subfigure}
 \end{comment}
-  	\caption{SED of the residual emission plus the rectangles model of the FBs in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive (red) longitudes. We compare the parametric model of the SED with the leptonic (Section \ref{sec:IC_model}) 
+  	\caption{SEDs of the residual emission plus the rectangles model of the FBs in the latitude stripes $(\ang{2}, \ang{6})$, $(\ang{-2}, \ang{2})$ and $(\ang{-6}, \ang{-2})$ for negative (blue) and positive (red) longitudes. We compare the parametric model of the SED with the leptonic (Section \ref{sec:IC_model}) 
 	and the hadronic (Section \ref{sec:Pion_model}) models.}
   	%\Laura{Should we add the spectrum for the latitude band $(\ang{2}, \ang{6})$ also, or just say that it looks similar?}
 	%\blue{Dima: yes, let's add the 2 to 6 deg spectrum.}
@@ -326,20 +328,22 @@ models are shown in the last two columns respectively.
 In the hadronic model, the gamma rays are produced as a result of collisions of hadronic CR with the interstellar gas.
 The gamma-ray intensity in the hadronic model is parametrized as
 
-\begin{equation}
+\be
 E^2_\g \frac{dF_\g}{dE_\g} = \frac{E_\g}{4\pi} \int n_\Hy\ \sigma_\pr v_\pr \left(\frac{\de \Sigma}{\de T}\right)_{\!\!\pr} \de T_\pr,
-%\frac{Ec}{4\pi}\int \int \left(\frac{\de n}{\de E}\right)_{\!\!\ISRF} \sigma_\IC\ \left(\frac{\de \Sigma}{\de E}\right)_{\!\!\el} \de E_\ISRF\, \de E_\el,
-\end{equation}
-where $\left(\frac{\de \Sigma}{\de E}\right)_{\!\!\pr} = \int \left(\frac{\de n}{\de E}\right)_{\!\!\pr} dR$ is the column density 
+\ee
+where $\left(\frac{\de \Sigma}{\de T}\right)_{\!\!\pr} = \int \left(\frac{\de n}{\de T}\right)_{\!\!\pr} dR$ is the column density 
 of CR protons,
 $T_\pr = \sqrt{(q c)^2 + (m_p c^2)^2} - m_p c^2$ is the kinetic energy of the protons as a function of momentum $q$,
 $\sigma_\pr (E_\gamma, T_\pr)$ is 
 the differential cross section in units of $E_\g\frac{d\sigma}{d E_\g}$
 for gamma rays in proton-proton collisions \citep{2006ApJ...647..692K, 2008ApJ...674..278K},
 and $n_\Hy$ is the density of gas.
-We will use $n_\Hy = \SI{1}{cm^{-3}}$ as a characteristic density,
-which is consistent with the gas surface density of $\sim 10 M_\odot {\rm pc}^{-2}$ \citep{2017ApJ...834...57M}
-averaged over $\sim 200$ pc above and below the GC.
+We will use $n_\Hy = \SI{1}{cm^{-3}}$ as a reference density,
+which is comparable with the gas surface density of $\sim 30 M_\odot {\rm pc}^{-2}$ \citep{2017ApJ...834...57M}
+averaged over the approximate height of the enhanced emission at the base of the bubbles, e.g., $\sim 900$ pc above and below the GC.
+Since most of the gas density is concentrated within 100 - 200 pc from the midplane \citep[e.g.,][]{2013pss5.book..985S, 2017ApJ...834...57M},
+the gas density in the plane near the GC is ${5 - 10}{\;\rm cm^{-3}}$, which is consistent with the enhancement of the intensity of the emission
+at the base of the FBs at $\ell = 0^\circ$.
 We model the proton spectrum as a power law of the momentum $\frac{d \Sigma}{d qc} = n_\pr q^{-\g_p}$ 
 (note, that $ v \frac{\de \Sigma}{\de T} = c \frac{d \Sigma}{d qc}$).
 
@@ -396,10 +400,10 @@ models are shown in the last two columns respectively.
 \subsection{Summary of the spectral analysis}
 
 In Figure \ref{fig:spec_summary} we show the envelopes of the gamma-ray spectra at $|b| < 2^\circ$ of the residuals plus FB
-for the models of foreground emission that we have considered including the models where we change the selection of the low energies 
+for the models of foreground emission that we have considered, including the models where we change the selection of the low energies 
 in the definition of the foreground emission model (Appendix \ref{sec:lowE_syst}).
 In order to determine the maximal and minimal models of the FBs in the Galactic plane, 
-we fit the maximal and minimal points in the envelope above 3 GeV with a power-law with a cutoff function
+we fit the maximal and minimal points in the envelope above 3 GeV with a power law with a cutoff function
 (we fit above 3 GeV because some of the models of the foreground emission in Appendix \ref{sec:lowE_syst} are determined 
 for energies between 1 and 2.2 GeV).
 The corresponding parameters are reported in the first row of Table \ref{tab:summary}.
@@ -414,7 +418,7 @@ in Table \ref{tab:summary}.
  \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=5.pdf}
   \includegraphics[width=0.48\textwidth]{plots/Summary_SED_b=0_l=-5.pdf}
  \caption{SED of the FBs in the Galactic plane. 
- The shaded areas show the envelope of the FBs spectra in all foreground models considered in the paper
+ The shaded areas show the envelope of the FB's spectra in all foreground models considered in the paper
 including the changes in the choice of the low-energy range to model the foreground emission
 (discussed in Appendix \ref{sec:lowE_syst}).
 The lines show the fits to the maximal and minimal points in the envelopes above 3 GeV.
@@ -428,8 +432,8 @@ The lines show the fits to the maximal and minimal points in the envelopes above
     \caption{Summary of the min and max models for the parametric, 
     IC and hadronic models of the FBs for $|b| < 2^\circ$ and $-10^\circ < \ell < 0^\circ$. 
     For the parametric model, we report the energy spectrum of the gamma rays,
-    for the IC model we report the surface density of the electrons spectrum as a function of energy,
-    while for the hadronic model -- the surface density of the protons spectrum as a function of momentum.
+    for the IC model we report the column density of the electrons spectrum as a function of energy,
+    while for the hadronic model -- the column density of the protons spectrum as a function of momentum.
     The spectra are normalized at $E_0 = 1$ GeV. The last column shows the statistical 95\% confidence lower limit on the cutoff, $E_{\rm cut, 95\%}$.}
     \label{tab:summary}
     \begin{tabular}{| l |c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between

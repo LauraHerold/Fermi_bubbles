@@ -37,16 +37,17 @@ We also calculate the flux attributed to the bubbles using one of the diffuse em
 \subsection{East-west  asymmetry in the data}
 \label{sec:data_diff}
 
-In order to investigate the tentative asymmetry of the emission at the base of the FBs relative to the GC, 
+In order to investigate the asymmetry of the emission at the base of the FBs relative to the GC, 
 we compare the \Fermi-LAT data east and west of the GC. 
-We mask the 200 brightest above 1 GeV point sources (PS) in the Third \Fermi-LAT source catalog \citep[3FGL,][]{2015ApJS..218...23A}
-with a circle of radius $\frac{\delta}{\sqrt{2}} + 0^\circ\!\!.5$, where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels
-so that ${\delta}/{\sqrt{2}}$ is half of the pixel diagonal (if it were a square), while $0\degr\!\!.5$ is comparable to 68\% containment
-above $\approx 2$ GeV.
+We mask the 200 point sources (PS) in the Third \Fermi-LAT source catalog \citep[3FGL,][]{2015ApJS..218...23A}
+with the largest flux above 1 GeV.
+Each PS is masked with a circle of radius $\frac{\delta}{\sqrt{2}} + 0^\circ\!\!.5$, where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels
+so that ${\delta}/{\sqrt{2}}$ is half of the pixel diagonal (if it were a square), while $0\degr\!\!.5$ is comparable to 
+the 68\% containment radius of the point-spread function above $\approx 2$ GeV.
 In order to avoid possible bias by masking more pixels on one side of the GC,
-we symmetrize the PS mask relative to the GC, i.e., we put $m_{-b, -\ell} = 0$ if $m_{b, \ell} = 0$ and vice versa.
+we symmetrize the PS mask relative to the GC, i.e., we set $m_{-b, -\ell} = 0$ if $m_{b, \ell} = 0$ and vice versa.
 This PS mask is also used in the following sections (apart from Section \ref{sec:galprop_model}).
-The data is averaged over regions to the west ($0^\circ < \ell < 10^\circ$) and to the east ($-10^\circ < \ell  <  0^\circ$) 
+The data are averaged over regions to the east ($0^\circ < \ell < 10^\circ$) and to the west ($-10^\circ < \ell  <  0^\circ$) 
 of the GC at different latitudes. 
 The regions have a latitude width of $4^\circ$. 
 %$10^\circ$ for $b >|10^\circ|$ and a width of  $4^\circ$ for  $b <|10^\circ|$. 
@@ -55,12 +56,11 @@ for $|b| > 6^\circ$.
 
 The difference of the averaged intensity of emission west minus east of the GC is shown in Fig. \ref{fig:data_diff}. 
 The error bars represent the statistical errors.
-At high latitudes, $b >|10^\circ|$, the emission is relatively symmetric. 
+At high latitudes, $|b| > 10^\circ$, the emission is relatively symmetric,
+apart from the cocoon inside the southern lobe of the FBs \citep{2012ApJ...753...61S, 2014ApJ...793...64A}.
 The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^\circ)$ shows excess emission to the west of the GC, 
 which remains significant at high energies. 
-There is also asymmetry in the opposite direction for $b < 6^\circ$ (east is brighter than west), which is due to the cocoon inside the 
-southern lobe of the FBs \citep{2012ApJ...753...61S, 2014ApJ...793...64A}.
-The Fermi-LAT exposure within $|b| < 10^\circ$ and $|\ell| < 10^\circ$ is rather uniform, 
+The Fermi-LAT exposure within $|b| < 10^\circ$ and $|\ell| < 10^\circ$ is rather uniform; 
 the maximal fractional variation of the exposure in this region for $E > 1$ GeV is less than 4\%.
 
 \begin{figure}[h]
@@ -102,11 +102,12 @@ In the previous section we have shown that the west-minus-east difference in the
 spectrum $\sim E^{-2}$ up to 1 TeV.
 One of the simplest ways to separate the soft component of emission from the hard one is to use the low-energy data as
 a model of the soft component and subtract it from the data at higher energies.
-Gamma rays produced in interactions of the stationary Galactic population of CR with gas and ISRF,
+Gamma rays produced in interactions of the steady state Galactic population of CR with gas and ISRF,
 i.e., the $\pi^0$, bremsstrahlung, and IC components,
 dominate the gamma-ray emission in the Galactic plane in the energy range $E \lesssim \SI{1}{GeV}$. 
-Consequently, the low-energy \Fermi-LAT data is a good tracer for diffuse gamma-ray emission in the Galactic plane and can be used to create a spatial template for the Galactic foreground.
-The 68\% containment for the \Fermi-LAT photons between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ (averaged with $E^{-2}$ spectrum) is about $1^\circ\!\!.5$,
+Consequently, the low-energy \Fermi-LAT data is a good tracer for the soft components of the
+diffuse gamma-ray emission in the Galactic plane and can be used to create a spatial template for the Galactic foreground.
+The 68\% containment for the \Fermi-LAT photons between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ (averaged with an $E^{-2}$ spectrum) is about $1^\circ\!\!.5$,
 which is much larger than the sub-degree angular resolution above $\SI{1}{GeV}$.
 In order to compensate for the difference in the angular resolution, 
 we smooth the data in each high-energy bin above 1 GeV
@@ -126,25 +127,27 @@ in the latitude stripe $b$ for energy bin $E$ and \Healpix pixel with index $i$ 
 M_{b}(E, i) = k_{b}(E) \cdot \tilde N^\low_{b}(E, i) + c_b(E) \cdot \tau(E, i),
 \ee
 where $k_{b}(E)$ and $c_b(E)$ are coefficients to be determined from the fit to the data,
-the term $c_b(E) \cdot \tau(E, i)$ is proportional to the exposure $\tau(E, i)$: it accounts for the isotropic extragalactic background and partially compensates for the latitude dependent IC emission,
+the term $c_b(E) \cdot \tau(E, i)$ is proportional to the exposure $\tau(E, i)$: it accounts for the isotropic extragalactic background and partially compensates for 
+the latitude-dependent IC emission,
 $k_{b}(E) \cdot \tilde N^\low_b(E, i)$ is proportional to the low-energy photon counts summed over 
 $n_\low = 3$ energy bins between between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ 
 rescaled by the ratio of exposures at low and at high energies:
 
 \be
-\tilde N^\low_b(E, i) = \frac{1}{n_\low} \sum_{\alpha = 1}^3 \frac{N(E_\al, i)}{\tau(E_\al, i)} \tau(E, i),
+\tilde N^\low_b(E, i) = \frac{1}{n_\low} \left(\sum_{\alpha = 1}^{n_\low} \frac{N(E_\al, i)}{\tau(E_\al, i)} \right)\tau(E, i),
 \ee
-where $N(E_\al, i)$ is the number of photons in energy bin $\al$ and in pixel $i$.
+where $N(E_\al, i)$ is the number of photons in energy bin $E_\al$ and in pixel $i$.
 
 We determine the parameters $c_{b}(E)$ and $k_{b}(E)$ by fitting the model to the \Fermi-LAT data in energy bins $E > \SI{1.0}{GeV}$.
 We maximize the log likelihood of the gamma distribution 
 with respect to parameters $c_{b}(E)$ and $k_{b}(E)$
 using the Python iminuit optimizer%
 \footnote{
-Since the smoothed data has non-integer values, 
-we use the gamma distribution $p(x; \td{k} + 1) = \frac{x^{\td{k}}}{\G (\td{k} + 1)}e^{-x}$ instead of the Poisson distribution, 
-where $\td{k}$ is the value in the smoothed photon counts map (see Appendix \ref{app:gamma}).
-For an unsmoothed map, $\td{k}$ would be the observed number of photons in a pixel.
+The gamma distribution $p(x; \td{k} + 1) = \frac{x^{\td{k}}}{\G (\td{k} + 1)}e^{-x}$ is the probability density function
+for the parameter $x$ given the observed counts $\td{k}$.
+The counts $\td{k}$ are integer for unsmoothed maps and non-integer for the smoothed maps.
+We discuss the optimiztion of the model parameters using smoothed maps in 
+Appendix \ref{app:gamma}.
 }.
 In order to avoid an overcompensation 
 for the flux from the FBs, the region $-20^\circ < \ell < 20^\circ$
@@ -160,7 +163,7 @@ The intensity of the model energy flux integrated in three energy ranges
 is shown in Figure \ref{fig:Maps_lowE_model},
 while the residuals after subtracting the model from the data are presented in Figure \ref{fig:Maps_lowE}.
 The FBs are clearly visible in the first two energy ranges, $E = 1 - \SI{10}{GeV}$ and $E = 10 - \SI{100}{GeV}$.
-For $E = \SI{100}{GeV} - \SI{1}{TeV}$ the statistics is low, but one can still see an excess near the GP.
+For $E = \SI{100}{GeV} - \SI{1}{TeV}$ the statistics are low, but one can still see an excess near the GP.
 There are other regions of large residuals, mostly in the Galactic plane, but also some PS at high latitudes.
 These are diffuse and point-like sources with spectra harder than the average spectra of Galactic and
 extragalactic sources.
@@ -187,13 +190,15 @@ Overall, the model has four terms in each energy bin:
 \be
 \begin{split}
 M_{b}(E, i) &= k_{b}(E) \cdot \tilde N^\low_{b}(E, i) + c_b(E) \cdot \tau(E, i)\\
-&\quad + R^\east_b(E) + R^\west_b(E).
+& + R^\east_b(E) S^\east_b(i)+ R^\west_b(E) S^\west_b(i).
 \end{split}
 \ee
 where the scaling parameters $k_{b}(E)$ and $c_{b}(E)$
 and the FBs model parameters $R^\east_b(E)$ and $R^\west_b(E)$ are determined independently 
 in each $4^\circ$ latitude stripe and in each energy bin $E > 1$ GeV
-by  fitting the model to the smoothed \Fermi-LAT data.
+by fitting the model to the smoothed \Fermi-LAT data.
+$S_b^\east(i)$  and $S_b^\west(i)$ are step function templates, which are equal to 1 in each latitude stripe $b$
+for $0^\circ < \ell < 10^\circ$ and $0^\circ > \ell > - 10^\circ$ respectively and 0 otherwise.
 The energy fluxes of the model and the residuals integrated for $E = 10 - \SI{100}{GeV}$ are shown in Fig. \ref{fig:Maps_Rectangles}.
 %Here we plot the sum of the residual and the rectangles model.
 %With residual we denote the sum of the rectangles-model residual and the rectangles template in the following.
@@ -207,7 +212,7 @@ The energy fluxes of the model and the residuals integrated for $E = 10 - \SI{10
  \caption{Energy flux of the diffuse model excluding the rectangles model of the FBs (top left),
  the rectangles model of the FBs (top right), 
 the residual after subtracting the total model (bottom left),
-and residuals plus the rectangles model of the FBs (bottom righ)
+and residuals plus the rectangles model of the FBs (bottom right)
  derived in Section \ref{sec:box_model}
  integrated between 10 and 100 GeV.}
  \label{fig:Maps_Rectangles}
@@ -221,15 +226,15 @@ and residuals plus the rectangles model of the FBs (bottom righ)
 \centering
 \includegraphics[width=0.45\textwidth]{plots/Mollwiede_GALPROP_model_source_range2_log.pdf}
  \includegraphics[width=0.45\textwidth]{plots/Mollwiede_GALPROP_source_range2.pdf}
- \caption{Energy flux of the GALPROP background model 
- and of the residuals plus the FBs and the gNFW component derived in Section \ref{sec:galprop_model}
+ \caption{Energy flux of the background model based on rescaled GALPROP templates (left)
+ and of the residuals plus the FBs and the gNFW component (right) derived in Section \ref{sec:galprop_model}
  integrated between 10 and 100 GeV.}
  \label{fig:Maps_GALPROP}
 \end{figure*}
 
 In this section we fit the gamma-ray data using a model derived with the GALPROP
-galactic propagation code v54.1
-\citep{Moskalenko:1997gh, Strong:1998fr, Strong:2004de, Ptuskin:2005ax, 2007ARNPS..57..285S, Porter:2008ve,Vladimirov:2010aq}\footnote{\url{http://galprop.stanford.edu}}. 
+Galactic cosmic-ray propagation code v54.1.
+%\citep{Moskalenko:1997gh, Strong:1998fr, Strong:2004de, Ptuskin:2005ax, 2007ARNPS..57..285S, Porter:2008ve,Vladimirov:2010aq}\footnote{\url{http://galprop.stanford.edu}}. 
 The model for the diffuse emission components is the same as the Sample model in \cite{2017ApJ...840...43A}.
 %The difference is that, within $10^\circ$ from the GC, we do not mask PS and refit 40 PS with largest flux between 10 and 100 GeV.
 In particular, we use the GALPROP code to calculate templates for the Galactic diffuse emission components.
@@ -238,7 +243,7 @@ interactions of hadronic CR with gas and bremsstrahlung emission corresponding t
 0 -- 1.5\,kpc, 1.5 -- 3.5\,kpc, and 3.5 -- 8\,kpc; 8 -- 10\,kpc, and 10 -- 50\,kpc.
 We assume propagation halo height of 10 kpc, radius of 20 kpc and spin temperature 150 K.
 We use 3 inverse Compton templates corresponding to the three ISRF: CMB, 
-infrared emission, and starlight.
+infrared emission of dust, and starlight.
 In addition to GALPROP templates, we use a flat template for the \Fermi bubbles at latitudes $|b| > 10^\circ$~\citep{2014ApJ...793...64A}. 
 We model the Loop~I feature using a geometric template \citep[e.g., Figure 2 of][]{2014ApJ...793...64A}
 based on a polarization survey at 1.4 GHz~\citep{Wolleben:2007pq}.
@@ -246,8 +251,9 @@ The Moon and the Sun \citep{2007Ap&SS.309..359O, 2006ApJ...652L..65M, 2008A&A...
 are obtained with the \Fermi Science Tools%
 \footnote{\url{http://fermi.gsfc.nasa.gov/ssc/data/analysis/scitools/solar_template.html}}.
 We also include, as a GC excess template, a generalized Navarro-Frenk-White (gNFW) profile with index $\gamma = 1.25$ 
-\citep{Goodenough:2009gk,Calore:2014xka,Abazajian:2014fta}
-and scaling radius $r_{\rm s} = 20\;{\rm kpc}$.
+\citep{Goodenough:2009gk,Abazajian:2014fta, Calore:2014xka}
+and scaling radius $r_{\rm s} = 20\;{\rm kpc}$, as well as the isotropic template to model the non-resolved 
+extragalactic sources.
 
 
 For the PS, we add sources from the 3FGL catalog~\citep{2015ApJS..218...23A} to form a template
@@ -256,16 +262,17 @@ We create independent templates for the Large Magellanic cloud and the Cygnus re
 The remaining extended sources are also added in a separate template.
 The spatial templates for the extended sources are provided by the 3FGL catalog.
 The PS mask in this section is different from the mask that we have used in the previous sections.
-We mask the 200 brightest sources outside a $10^\circ$ circle from the GC 
-with a radius of $\frac{\delta}{\sqrt{2}} + 1^\circ$ ($\delta = 0\degr\!\!.46$ is the characteristic size of the pixels),
+We mask the 200 sources with largest flux above 1 GeV outside a $10^\circ$ circle from the GC.
+Each source is masked with a circle of $\frac{\delta}{\sqrt{2}} + 1^\circ$ radius ($\delta = 0\degr\!\!.46$ is the characteristic size of the pixels),
 which is larger than the radius of  $\frac{\delta}{\sqrt{2}} + 0^\circ\!\!.5$ used in the previous sections.
-Within $10^\circ$ from the GC, we include independent templates for 40 sources with largest flux between 10 and 100 GeV
+We do not mask PS within $10^\circ$ from the GC.
+Instead, we include independent templates for 40 sources with largest flux between 10 and 100 GeV
 taken from the column ``Flux10000\_100000'' in the 3FGL catalog.
 Each source is fit in each energy bin independently, i.e., we do not use the spectral information from the 3FGL catalog.
 In Figure \ref{fig:Maps_GALPROP} we show the residual emission plus the \Fermi bubbles model and the gNFW model summed over energies between 10 and 100 GeV.
-Due to more free parameters in this model in the Galactic plane relative to the models considered in the previous sections,
+Due to the model having more free parameters in the Galactic plane relative to the models considered in the previous sections,
 there are fewer positive residuals in the Galactic plane.
-There are, however, negative residuals in several locations, which signals about deficiencies in the model. 
+There are, however, negative residuals in several locations, which indicates errors in the model. 
 In particular, there is a rather significant negative residual to the east of the GC.
 Nonetheless, the FBs are clearly visible as well as the bright emission at the base of the FBs which also displays a shift to negative
 longitudes relative to the GC.

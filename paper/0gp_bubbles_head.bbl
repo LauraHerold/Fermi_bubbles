@@ -1,4 +1,4 @@
-\begin{thebibliography}{65}
+\begin{thebibliography}{66}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -302,6 +302,10 @@ Ptuskin, V., Moskalenko, I.~V., Jones, F., {et~al.} 2006, \apj, 642, 902
 
 \bibitem[{{Smith} \& {Cox}(2001)}]{2001ApJS..134..283S}
 {Smith}, R.~K. \& {Cox}, D.~P. 2001, \apjs, 134, 283
+
+\bibitem[{{Sofue}(2013)}]{2013pss5.book..985S}
+{Sofue}, Y. 2013, {Mass Distribution and Rotation Curve in the Galaxy}, ed.
+  T.~D. {Oswalt} \& G.~{Gilmore}, 985
 
 \bibitem[{Spurio(2015)}]{Spurio2015}
 Spurio, M. 2015, {Particles and Astrophysics: a Multi-Messenger Approach}
