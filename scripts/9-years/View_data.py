@@ -1,6 +1,8 @@
 """ 
 Plots fits file integrated over energy. Since fits file saves data in differential flux one has to multiply by (deltaE/E) in order to get integral flux. 
 python View_data.py
+info on changing the size of phont in units: 
+https://stackoverflow.com/questions/11940971/changing-fontsize-of-colorbar-labels-in-healpy-mollview
 """
 
 import numpy as np
@@ -22,8 +24,8 @@ else:
     scale_max = [5.e-5, 3.e-5, 1.e-5]
     scale_min = np.zeros(3)
 
-save_plots = 0
-show_plots = 1
+save_plots = 1
+show_plots = 0
 
 ##################################################################################################### Constants
 
@@ -34,7 +36,7 @@ smooth_map = True
 mask_point_sources = False
 symmask = False
 cmap = pyplot.cm.hot_r # jet, hot
-cmap = None
+#cmap = None
 
 normalized = False
 if log_plot:
@@ -131,11 +133,18 @@ for highE in (0,1,2):
     healpy.mollview(plot_map, unit=unit, title=title,  min=scale_min[highE], max=scale_max[highE],
                          cmap=cmap, xsize=1500)
     #print ax
+    fontsize = 20
     pyplot.rcParams['figure.figsize'] = [12,8]
     pyplot.rcParams['axes.labelsize'] = 30
-    pyplot.rcParams['axes.titlesize'] = 20
+    pyplot.rcParams['axes.titlesize'] = fontsize
     pyplot.rcParams['xtick.labelsize'] = 15
     print pyplot.rcParams['figure.figsize']
+
+    # part that changes the size of the font for the unit
+    CbAx = pyplot.gcf().get_children()[2]
+    unit_text_obj = CbAx.get_children()[1]
+    unit_text_obj.set_fontsize(fontsize)
+
     #pyplot.colorbar().set_label(label=unit, size=30, weight='bold')
     healpy.graticule(dpar=10., dmer=10.)
     save_fn = '../../plots/Plots_9-year/Mollweide_data_source_range_'+ str(highE) + '.pdf'
