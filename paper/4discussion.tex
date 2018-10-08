@@ -98,7 +98,8 @@ the different foreground diffuse emission models.
 \label{fig:logpar_index}
 \end{figure*}
 
-
+% somehow we need this for latex to compile
+\vspace{2cm}
 \subsection{Parametric model of the gamma-ray spectrum at low latitudes}
 \label{sec:param_model}
 
@@ -110,7 +111,8 @@ We compare a power-law model of the energy spectrum with a power-law and an expo
 \frac{dN}{dE} = N_0 \left( \frac{E}{1\:{\rm GeV}} \right)^{-n} e^{-E / E_{\rm cut}}.
 \end{equation}
 The best-fit parameters for the rectangles model are reported in Table \ref{tab:param}.
-If the improvement in $-2 \Delta \log \La$ is less than 0.1, then we report the power-law model parameters.
+If the improvement in $2 \Delta \log \La$ is less than 1, then we report the power-law model parameters
+(it turns out that the improvement in $2 \Delta \log \La$ is less than 0.1 in the cases when the cutoff is not significant).
 For the model with a cutoff, we also find the 95\% statistical confidence lower limit for the cutoff energy.
 Finally, we find the minimum among the 95\% confidence lower limits for all considered models
 including the models in Appendix \ref{sec:lowE_syst}.
@@ -133,7 +135,7 @@ between 1.5 and 2.5 in the derivation of the 95\% confidence lower limit on the 
     $E_{\rm cut, 95\%}^{\rm min}$ is the minimal 95\% statistical lower limit among all models of the FBs
     considered in the paper.
     There are four cases when the introduction of a cutoff does not lead to improved fit: in all of these cases
-    $-2 \Delta \log \La < 0.1$ while the formal best-fit values of $E_{\rm cut}$ are larger than 1 TeV.
+    $2 \Delta \log \La < 0.1$ while the formal best-fit values of $E_{\rm cut}$ are larger than 1 TeV.
     %The numbers in parenthesis in the last two columns show the results without the last energy bin.
     %\dima{Some numbers seem to be very different with and without the last data point, e.g., 2.4 (180) and 12 (130). I've marked the strange numbers in red. Also the 95\% cutoff values for the rectangles model without the last point seem to be higher in all cases, I'd expect that they would be almost always lower.}
     %\Laura{I had normalized the powerlaw of the parametric model to 10 GeV. The correct values (for 1 GeV) are in parenthesis. IC and pi0 are not affected by the bug.}
@@ -141,7 +143,7 @@ between 1.5 and 2.5 in the derivation of the 95\% confidence lower limit on the 
     \label{tab:param}
     \begin{tabular}{|c|c|c|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
-		 Lat & Lon  & $N_0$ & $n$ & $E_{\rm cut}$ &  $-2 \Delta \log \La$ & $E_{\rm cut, 95\%}$ & $E_{\rm cut, 95\%}^{\rm min}$ \\ 
+		 Lat & Lon  & $N_0$ & $n$ & $E_{\rm cut}$ &  $2 \Delta \log \La$ & $E_{\rm cut, 95\%}$ & $E_{\rm cut, 95\%}^{\rm min}$ \\ 
 		       &        &  {\small $\SI{e-6}{\rm GeV^{-1}cm^{-2}s^{-1} sr^{-1}}$ }&  & {\small $\SI{}{GeV}$ }& &{\small  $\SI{}{GeV}$ }&{\small  $\SI{}{GeV}$ }\\ 
 		\hline
   		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & $1.5^{+0.0}_{-0.0}$  & $1.9\pm 0.0$ & $45\pm 0.0$ & 4.8 & 25& 25\\ 
@@ -194,7 +196,7 @@ in latitude stripes $b \in (\ang{2}, \ang{6})$, $b \in (-\ang{2}, \ang{2})$ and 
 %The dotted line represents the best-fit IC spectrum for an electron distribution following a simple power law.
 %\Laura{Should we here compare with the spectral indices of the other models?} \dima{yes}
 %The spectral index to the west of the GC of the electron spectrum is harder than the spectrum to the east of the GC. 
-If the improvement in $-2 \Delta \log \La$ with and without the cutoff is less than 0.1, then we show only the parameters for the power-law model without a cutoff.
+If the improvement in $2 \Delta \log \La$ with and without the cutoff is less than 0.1, then we show only the parameters for the power-law model without a cutoff.
 For example, for negative longitudes the cutoff is not significant.
 
 The 95\% statistical lower limit on the cutoff energy for the rectangles model and the minimum among all models of the 95\% confidence lower limits for the cutoff energy
@@ -222,7 +224,7 @@ For $b \in (\ang{2}, \ang{6})$ the spectral index varies between 2.92 and 3.15 f
 In order to test the presence of a cutoff in the spectrum of electrons, we fit the gamma-ray data using a spectrum of the electrons
 with an additional cutoff factor $\exp(-\alpha E_\el)$, where $\alpha = E^{-1}_{\el,\cut}$ is the inverse cutoff.
 The improvement in the $-2 \log \La$ \dima{We use Poisson log likelihood, right? I think it will be less confusing to use $-2 \log \La$,
-which we actually calculate, rather  than $\chi^2$. We could even replace the two $\chi^2$ columns in the tables with a single column $-2 \Delta \log \La$,
+which we actually calculate, rather  than $\chi^2$. We could even replace the two $\chi^2$ columns in the tables with a single column $2 \Delta \log \La$,
 since the actual values of $-2 \log \La$ do not mean much.}
 for the models with and without the cutoff is shown in Table \ref{tab:IC}
 for different latitude stripes.
@@ -291,7 +293,7 @@ models are shown in the last two columns respectively.
     \label{tab:IC}
     \begin{tabular}{|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
-		 Lat & Lon  & $-2 \Delta \log \La$ & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\ 
+		 Lat & Lon  & $2 \Delta \log \La$ & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\ 
 		       &        &                                  &  \multicolumn{1}{c}{Rectangles model} & All models \\ 
 		\hline
   		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 2.6  & {0.20} & {0.17}\\ 
@@ -332,7 +334,7 @@ The gamma-ray intensity in the hadronic model is parametrized as
 E^2_\g \frac{dF_\g}{dE_\g} = \frac{E_\g}{4\pi} \int n_\Hy\ \sigma_\pr v_\pr \left(\frac{\de \Sigma}{\de T}\right)_{\!\!\pr} \de T_\pr,
 \ee
 where $\left(\frac{\de \Sigma}{\de T}\right)_{\!\!\pr} = \int \left(\frac{\de n}{\de T}\right)_{\!\!\pr} dR$ is the column density 
-of CR protons,
+of CR protons, $v_\pr$ is the velocity of the protons,
 $T_\pr = \sqrt{(q c)^2 + (m_p c^2)^2} - m_p c^2$ is the kinetic energy of the protons as a function of momentum $q$,
 $\sigma_\pr (E_\gamma, T_\pr)$ is 
 the differential cross section in units of $E_\g\frac{d\sigma}{d E_\g}$
@@ -345,7 +347,7 @@ Since most of the gas density is concentrated within 100 - 200 pc from the midpl
 the gas density in the plane near the GC is ${5 - 10}{\;\rm cm^{-3}}$, which is consistent with the enhancement of the intensity of the emission
 at the base of the FBs at $\ell = 0^\circ$.
 We model the proton spectrum as a power law of the momentum $\frac{d \Sigma}{d qc} = n_\pr q^{-\g_p}$ 
-(note, that $ v \frac{\de \Sigma}{\de T} = c \frac{d \Sigma}{d qc}$).
+(note, that $ v_\pr \frac{\de \Sigma}{\de T_\pr} = c \frac{d \Sigma}{d qc}$).
 
 We fit the hadronic model of the gamma-ray emission at the base of the FBs analogously to the leptonic model in 
 Section \ref{sec:IC_model}.
@@ -381,7 +383,7 @@ models are shown in the last two columns respectively.
 }
     \begin{tabular}{|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
      	\hline
-		 lat & lon  & $-2 \Delta \log \La$ & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\
+		 lat & lon  & $2 \Delta \log \La$ & \multicolumn{2}{c|}{Lower bound on $E_\cut$ (TeV) } \\
 		      &        &                                  &       \multicolumn{1}{c}{Rectangles model} & All models \\ 
 		\hline
   		$(\ang{2}, \ang{6})$ & $(\ang{0}, \ang{10})$ & 4.4 & {0.88} & {0.48} \\ 

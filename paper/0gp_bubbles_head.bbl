@@ -1,10 +1,14 @@
-\begin{thebibliography}{66}
+\begin{thebibliography}{68}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
   Kaplinghat}]{Abazajian:2014fta}
 Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   023526
+
+\bibitem[{{Abdo} {et~al.}(2011){Abdo}, {Ackermann}, {Ajello},
+  {et~al.}}]{2011ApJ...734..116A}
+{Abdo}, A.~A., {Ackermann}, M., {Ajello}, M., {et~al.} 2011, \apj, 734, 116
 
 \bibitem[{{Abdo} {et~al.}(2007){Abdo}, {Allen}, {Berley}, {Casanova}, {Chen},
   {Coyne}, {Dingus}, {Ellsworth}, {Fleysher}, {Fleysher}, {Gonzalez},
@@ -40,6 +44,10 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
 \bibitem[{{Acero} {et~al.}(2016){Acero}, {Ackermann}, {Ajello},
   {et~al.}}]{2016ApJS..223...26A}
 {Acero}, F., {Ackermann}, M., {Ajello}, M., {et~al.} 2016, \apjs, 223, 26
+
+\bibitem[{{Ackermann} {et~al.}(2016){Ackermann}, {Ajello}, {Albert},
+  {et~al.}}]{2016PhRvD..93h2001A}
+{Ackermann}, M., {Ajello}, M., {Albert}, A., {et~al.} 2016, \prd, 93, 082001
 
 \bibitem[{{Ackermann} {et~al.}(2017){Ackermann}, {Ajello}, {Albert},
   {et~al.}}]{2017ApJ...840...43A}
