@@ -1,4 +1,4 @@
-\begin{thebibliography}{68}
+\begin{thebibliography}{67}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -6,9 +6,40 @@
 Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   023526
 
-\bibitem[{{Abdo} {et~al.}(2011){Abdo}, {Ackermann}, {Ajello},
+\bibitem[{{Abdo} {et~al.}(2011{\natexlab{a}}){Abdo}, {Ackermann}, {Ajello},
+  {Allafort}, {Baldini}, {Ballet}, {Barbiellini}, {Baring}, {Bastieri},
+  {Bellazzini}, {Berenji}, {Blandford}, {Bloom}, {Bonamente}, {Borgland},
+  {Bouvier}, {Brandt}, {Bregeon}, {Brigida}, {Bruel}, {Buehler}, {Buson},
+  {Caliandro}, {Cameron}, {Caraveo}, {Casandjian}, {Cecchi}, {Chaty},
+  {Chekhtman}, {Cheung}, {Chiang}, {Cillis}, {Ciprini}, {Claus},
+  {Cohen-Tanugi}, {Conrad}, {Corbel}, {Cutini}, {de Angelis}, {de Palma},
+  {Dermer}, {Digel}, {Silva}, {Drell}, {Drlica-Wagner}, {Dubois}, {Dumora},
+  {Favuzzi}, {Ferrara}, {Fortin}, {Frailis}, {Fukazawa}, {Fukui}, {Funk},
+  {Fusco}, {Gargano}, {Gasparrini}, {Gehrels}, {Germani}, {Giglietto},
+  {Giordano}, {Giroletti}, {Glanzman}, {Godfrey}, {Grenier}, {Grondin},
+  {Guiriec}, {Hadasch}, {Hanabata}, {Harding}, {Hayashida}, {Hayashi}, {Hays},
+  {Horan}, {Jackson}, {J{\'o}hannesson}, {Johnson}, {Kamae}, {Katagiri},
+  {Kataoka}, {Kerr}, {Kn{\"o}dlseder}, {Kuss}, {Lande}, {Latronico}, {Lee},
+  {Lemoine-Goumard}, {Longo}, {Loparco}, {Lovellette}, {Lubrano}, {Madejski},
+  {Makeev}, {Mazziotta}, {McEnery}, {Michelson}, {Mignani}, {Mitthumsiri},
+  {Mizuno}, {Moiseev}, {Monte}, {Monzani}, {Morselli}, {Moskalenko}, {Murgia},
+  {Naumann-Godo}, {Nolan}, {Norris}, {Nuss}, {Ohsugi}, {Okumura}, {Orlando},
+  {Ormes}, {Paneque}, {Parent}, {Pelassa}, {Pesce-Rollins}, {Pierbattista},
+  {Piron}, {Pohl}, {Porter}, {Rain{\`o}}, {Rando}, {Razzano}, {Reimer},
+  {Reposeur}, {Ritz}, {Romani}, {Roth}, {Sadrozinski}, {Saz Parkinson},
+  {Sgr{\`o}}, {Smith}, {Smith}, {Spandre}, {Spinelli}, {Strickman}, {Tajima},
+  {Takahashi}, {Takahashi}, {Tanaka}, {Thayer}, {Thayer}, {Thompson},
+  {Tibaldo}, {Tibolla}, {Torres}, {Tosti}, {Tramacere}, {Troja}, {Uchiyama},
+  {Vandenbroucke}, {Vasileiou}, {Vianello}, {Vilchez}, {Vitale}, {Waite},
+  {Wang}, {Winer}, {Wood}, {Yamamoto}, {Yamazaki}, {Yang}, \&
+  {Ziegler}}]{2011ApJ...734...28A}
+{Abdo}, A.~A., {Ackermann}, M., {Ajello}, M., {et~al.} 2011{\natexlab{a}},
+  \apj, 734, 28
+
+\bibitem[{{Abdo} {et~al.}(2011{\natexlab{b}}){Abdo}, {Ackermann}, {Ajello},
   {et~al.}}]{2011ApJ...734..116A}
-{Abdo}, A.~A., {Ackermann}, M., {Ajello}, M., {et~al.} 2011, \apj, 734, 116
+{Abdo}, A.~A., {Ackermann}, M., {Ajello}, M., {et~al.} 2011{\natexlab{b}},
+  \apj, 734, 116
 
 \bibitem[{{Abdo} {et~al.}(2007){Abdo}, {Allen}, {Berley}, {Casanova}, {Chen},
   {Coyne}, {Dingus}, {Ellsworth}, {Fleysher}, {Fleysher}, {Gonzalez},
@@ -244,23 +275,14 @@ Goodenough, L. \& Hooper, D. 2009, ArXiv:0910.2998 [\eprint[arXiv]{0910.2998}]
 \bibitem[{Moskalenko \& Strong(1998)}]{Moskalenko:1997gh}
 Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
 
-\bibitem[{{Moskalenko} {et~al.}(2006{\natexlab{a}}){Moskalenko}, {Porter}, \&
-  {Digel}}]{2006ApJ...652L..65M}
-{Moskalenko}, I.~V., {Porter}, T.~A., \& {Digel}, S.~W. 2006{\natexlab{a}},
-  \apjl, 652, L65
-
-\bibitem[{{Moskalenko} {et~al.}(2006{\natexlab{b}}){Moskalenko}, {Porter}, \&
+\bibitem[{{Moskalenko} {et~al.}(2006){Moskalenko}, {Porter}, \&
   {Strong}}]{2006ApJ...640L.155M}
-{Moskalenko}, I.~V., {Porter}, T.~A., \& {Strong}, A.~W. 2006{\natexlab{b}},
-  \apjl, 640, L155
+{Moskalenko}, I.~V., {Porter}, T.~A., \& {Strong}, A.~W. 2006, \apjl, 640, L155
 
 \bibitem[{{Mostafa} {et~al.}(2017){Mostafa}, {BenZvi}, {Schoorlemmer},
   {Sch\"ussler}, {et~al.}}]{2017APS..APR.R4005M}
 {Mostafa}, M., {BenZvi}, S., {Schoorlemmer}, H., {Sch\"ussler}, F., {et~al.}
   2017, in APS April Meeting Abstracts, R4.005
-
-\bibitem[{{Orlando} \& {Strong}(2007)}]{2007Ap&SS.309..359O}
-{Orlando}, E. \& {Strong}, A.~W. 2007, \apss, 309, 359
 
 \bibitem[{{Orlando} \& {Strong}(2008)}]{2008A&A...480..847O}
 {Orlando}, E. \& {Strong}, A.~W. 2008, \aap, 480, 847

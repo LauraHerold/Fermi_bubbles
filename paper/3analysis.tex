@@ -44,6 +44,7 @@ with the largest flux above 1 GeV.
 Each PS is masked with a circle of radius $\frac{\delta}{\sqrt{2}} + 0^\circ\!\!.5$, where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels
 so that ${\delta}/{\sqrt{2}}$ is half of the pixel diagonal (if it were a square), while $0\degr\!\!.5$ is comparable to 
 the 68\% containment radius of the point-spread function above $\approx 2$ GeV.
+Thus the total radius is about $0\degr\!\!.82$.
 In order to avoid possible bias by masking more pixels on one side of the GC,
 we symmetrize the PS mask relative to the GC, i.e., we set $m_{-b, -\ell} = 0$ if $m_{b, \ell} = 0$ and vice versa.
 This PS mask is also used in the following sections (apart from Section \ref{sec:galprop_model}).
@@ -56,8 +57,8 @@ for $|b| > 6^\circ$.
 
 The difference of the averaged intensity of emission west minus east of the GC is shown in Fig. \ref{fig:data_diff}. 
 The error bars represent the statistical errors.
-At high latitudes, $|b| > 10^\circ$, the emission is relatively symmetric,
-apart from the cocoon inside the southern lobe of the FBs \citep{2012ApJ...753...61S, 2014ApJ...793...64A}.
+%At high latitudes, $|b| > 10^\circ$, the emission is relatively symmetric, 
+%apart from the cocoon inside the southern lobe of the FBs \citep{2012ApJ...753...61S, 2014ApJ...793...64A}.
 The emission for latitudes $b \in (-6^\circ, -2^\circ)$ and $b \in (-2^\circ, 2^\circ)$ shows excess emission to the west of the GC, 
 which remains significant at high energies. 
 The Fermi-LAT exposure within $|b| < 10^\circ$ and $|\ell| < 10^\circ$ is rather uniform; 
@@ -172,7 +173,7 @@ This residual can be due to IC emission, which has a harder spectrum than the av
 or to a harder spectrum of cosmic rays in the inner Galaxy \citep{2015PhRvD..91h3012G, 2016ApJS..223...26A}.
 At energies above 100 GeV the residuals are split in localized sources, some of which are extended.
 Apart from the Galactic foreground and background components, there are gamma rays emitted by the interactions of CRs with 
-the Sun \citep{2011ApJ...734..116A} and the Moon \citep{2016PhRvD..93h2001A}.
+the Sun and its radiation field \citep{2011ApJ...734..116A} and the Moon \citep{2016PhRvD..93h2001A}.
 The intensities of the emission from the Sun and the Moon are about an order of magnitude less than 
 the intensity of the emission from the FBs. 
 As a result, these components are not visible on  the residual maps at energies above 10 GeV.
@@ -203,7 +204,8 @@ M_{b}(E, i) &= k_{b}(E) \cdot \tilde N^\low_{b}(E, i) + c_b(E) \cdot \tau(E, i)\
 where the scaling parameters $k_{b}(E)$ and $c_{b}(E)$
 and the FBs model parameters $R^\east_b(E)$ and $R^\west_b(E)$ are determined independently 
 in each $4^\circ$ latitude stripe and in each energy bin $E > 1$ GeV
-by fitting the model to the smoothed \Fermi-LAT data.
+by fitting the model to the smoothed \Fermi-LAT data
+(see Section  \ref{sec:le_data_model} for details on the smoothing of the data).
 $S_b^\east(i)$  and $S_b^\west(i)$ are step function templates, which are equal to 1 in each latitude stripe $b$
 for $0^\circ < \ell < 10^\circ$ and $0^\circ > \ell > - 10^\circ$ respectively and 0 otherwise.
 The energy fluxes of the model and the residuals integrated for $E = 10 - \SI{100}{GeV}$ are shown in Fig. \ref{fig:Maps_Rectangles}.

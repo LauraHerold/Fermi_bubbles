@@ -1,7 +1,7 @@
 \section{Morphology and spectrum of the gamma-ray emission at the base of the FB}
 
 
-\subsection{Latitude profiles}
+\subsection{Latitude and longitude profiles}
 \label{sec:Latitude_profiles}
 
 In order to quantitatively estimate the difference in the intensity of the emission of the FBs at high and at low latitudes, as well as the asymmetry
@@ -27,6 +27,13 @@ This is due to additional freedom in the GALPROP model related to the usage of s
 %the inability of the GALPROP templates to fit the data is also manifested by the negative residuals to the east of the GC.
 %Also the data shows a slight east-west assymmetry in the flux around the GC.
 
+In Figure \ref{fig:lon-profiles} we show the longitude profiles of the residual flux in the low energy data background model.
+The excess at $\ell \approx -13^\circ$ for $|b| < 2^\circ$ is probably due to residual emission around RX J1713 SNR \citep{2011ApJ...734...28A}.
+Consequently, we do not consider it as a part of the emission at the base of the FBs.
+We associate the excess between $-2^\circ \lesssim \ell \lesssim -8^\circ$ to the base of the FBs. 
+In this paper, we use the range $\ell \in (0^\circ,\ -10^\circ)$ in the calculations of the spectrum of the gamma-ray
+emission at the base of the FBs.
+
 
 \begin{figure*}[h]
 \includegraphics[width=0.5\textwidth]{plots/Profiles_l=1_source_range_1.pdf}
@@ -36,6 +43,16 @@ This is due to additional freedom in the GALPROP model related to the usage of s
 	different diffuse emission models to the east and to the west of the GC.}
   	\label{fig:Profiles}
 \end{figure*}
+
+
+\begin{figure*}[h]
+\includegraphics[width=0.5\textwidth]{plots/Lon_profiles_LowE_source_range_1.pdf}
+\includegraphics[width=0.5\textwidth]{plots/Lon_profiles_LowE_source_range_2.pdf}
+  	\caption{Longitude profiles of the energy flux between 10 and 100 GeV and between 100 GeV and 1 TeV 
+	for the residuals in the low energy data background model (Section \ref{sec:le_data_model}).}
+  	\label{fig:lon-profiles}
+\end{figure*}
+
 
 \subsection{Comparison of the spectra at different latitudes}
 
@@ -114,8 +131,8 @@ The best-fit parameters for the rectangles model are reported in Table \ref{tab:
 If the improvement in $2 \Delta \log \La$ is less than 1, then we report the power-law model parameters
 (it turns out that the improvement in $2 \Delta \log \La$ is less than 0.1 in the cases when the cutoff is not significant).
 For the model with a cutoff, we also find the 95\% statistical confidence lower limit for the cutoff energy.
-Finally, we find the minimum among the 95\% confidence lower limits for all considered models
-including the models in Appendix \ref{sec:lowE_syst}.
+In the last column we report the minimum among the 95\% confidence lower limits for the three models considered in the paper
+(the low energy data model, the rectangles model, and the GALPROP templates model).
 The spectrum of the residuals including the FBs at  $\ell \in (\ang{-10},\ \ang{0})$
 is consistent with a power law with an index $2.1 - 2.2$ up to $E \approx 1$ TeV.
 The 95\% confidence lower limit on the cutoff energy is $\sim$ 500 GeV for latitudes $|b| < 6^\circ$ within $-10^\circ < \ell < 0^\circ$.
@@ -239,12 +256,12 @@ for different latitude stripes.
 
 %Slightly below the Galactic plane, $b \in (-\ang{6}, -\ang{2})$, the $\chi^2$-value does not improve by exchanging the simple powerlaw by a powerlaw with a cutoff at negative longitudes ($\chi^2 \approx 76$). At positive longitudes the $\chi^2$-value improves slightly by adding the cutoff ($\chi^2 = 98$ to $\chi^2 = 87$). For negative longitudes we find a lower bound for the cutoff energy at $\SI{6.89}{TeV}$ ($\SI{6.89}{TeV}$), for positive longitudes at $\SI{818}{GeV}$ ($\SI{0.79}{GeV}$), at a $\SI{95}{\percent}$-confidence level.
 
-\begin{figure*}[h!]
+\begin{figure}[h!]
 % version for the one-column style
 %\begin{comment}
-\includegraphics[width=0.33\textwidth]{plots/SED_boxes_source_4cutoff.pdf}
-\includegraphics[width=0.33\textwidth]{plots/SED_boxes_source_0cutoff.pdf}
-\includegraphics[width=0.33\textwidth]{plots/SED_boxes_source_-4cutoff.pdf}
+\includegraphics[width=0.5\textwidth]{plots/SED_boxes_source_4cutoff.pdf} \\
+\includegraphics[width=0.5\textwidth]{plots/SED_boxes_source_0cutoff.pdf} \\
+\includegraphics[width=0.5\textwidth]{plots/SED_boxes_source_-4cutoff.pdf}
 %\end{comment}
 % version for the two-column style?
 \begin{comment}
@@ -263,7 +280,7 @@ for different latitude stripes.
   	%\Laura{Should we add the spectrum for the latitude band $(\ang{2}, \ang{6})$ also, or just say that it looks similar?}
 	%\blue{Dima: yes, let's add the 2 to 6 deg spectrum.}
   	\label{fig:SED_with_fits}
-\end{figure*}
+\end{figure}
 
 %
 %\begin{center}
