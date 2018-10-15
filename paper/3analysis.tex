@@ -127,11 +127,11 @@ in the latitude stripe $b$ for energy bin $E$ and \Healpix pixel with index $i$ 
 \lb{eq:le_model}
 M_{b}(E, i) = k_{b}(E) \cdot \tilde N^\low_{b}(E, i) + c_b(E) \cdot \tau(E, i),
 \ee
-where $k_{b}(E)$ and $c_b(E)$ are coefficients to be determined from the fit to the data,
-the term $c_b(E) \cdot \tau(E, i)$ is proportional to the exposure $\tau(E, i)$: it accounts for the isotropic extragalactic background and partially compensates for 
-the latitude-dependent IC emission,
+where $k_{b}(E)$ and $c_b(E)$ are coefficients to be determined from the fit to the data.
+The term $c_b(E) \cdot \tau(E, i)$ is proportional to the exposure $\tau(E, i)$: it accounts for the isotropic extragalactic background and partially compensates for 
+the latitude-dependent IC emission.
 $k_{b}(E) \cdot \tilde N^\low_b(E, i)$ is proportional to the low-energy photon counts summed over 
-$n_\low = 3$ energy bins between between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ 
+$n_\low = 3$ energy bins between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ 
 rescaled by the ratio of exposures at low and at high energies:
 
 \be
@@ -139,7 +139,8 @@ rescaled by the ratio of exposures at low and at high energies:
 \ee
 where $N(E_\al, i)$ is the number of photons in energy bin $E_\al$ and in pixel $i$.
 
-We determine the parameters $c_{b}(E)$ and $k_{b}(E)$ by fitting the model to the \Fermi-LAT data in energy bins $E > \SI{1.0}{GeV}$.
+We determine the parameters $c_{b}(E)$ and $k_{b}(E)$ by fitting the model to the \Fermi-LAT data in energy bins 
+$E > \SI{1}{GeV}$.
 We maximize the log likelihood of the gamma distribution 
 with respect to parameters $c_{b}(E)$ and $k_{b}(E)$
 using the Python iminuit optimizer%
@@ -147,7 +148,7 @@ using the Python iminuit optimizer%
 The gamma distribution $p(x; \td{k} + 1) = \frac{x^{\td{k}}}{\G (\td{k} + 1)}e^{-x}$ is the probability density function
 for the parameter $x$ given the observed counts $\td{k}$.
 The counts $\td{k}$ are integer for unsmoothed maps and non-integer for the smoothed maps.
-We discuss the optimiztion of the model parameters using smoothed maps in 
+We discuss the optimization of the model parameters using smoothed maps in 
 Appendix \ref{app:gamma}.
 }.
 In order to avoid an overcompensation 
@@ -155,7 +156,7 @@ for the flux from the FBs, the region $-20^\circ < \ell < 20^\circ$
 is excluded from the fit, i.e., the fit is performed for 
 the total remaining length of the stripe $20^\circ < \ell < 340^\circ$.
 In the following, the region $-20^\circ < \ell < 20^\circ$ will be refered to as the FBs region of interest (ROI).
-PSs are masked with the mask described in Section \ref{sec:data_diff}.
+Bright PSs are masked with the mask described in Section \ref{sec:data_diff}.
 
 %\red{Dima: do we symmetrize the PS mask in the analysis as well, not only in the calculation of the asymmetry in the data?}
 
@@ -207,7 +208,7 @@ in each $4^\circ$ latitude stripe and in each energy bin $E > 1$ GeV
 by fitting the model to the smoothed \Fermi-LAT data
 (see Section  \ref{sec:le_data_model} for details on the smoothing of the data).
 $S_b^\east(i)$  and $S_b^\west(i)$ are step function templates, which are equal to 1 in each latitude stripe $b$
-for $0^\circ < \ell < 10^\circ$ and $0^\circ > \ell > - 10^\circ$ respectively and 0 otherwise.
+for $0^\circ < \ell < 20^\circ$ and $0^\circ > \ell > - 20^\circ$ respectively and 0 otherwise.
 The energy fluxes of the model and the residuals integrated for $E = 10 - \SI{100}{GeV}$ are shown in Fig. \ref{fig:Maps_Rectangles}.
 %Here we plot the sum of the residual and the rectangles model.
 %With residual we denote the sum of the rectangles-model residual and the rectangles template in the following.
@@ -250,7 +251,7 @@ In particular, we use the GALPROP code to calculate templates for the Galactic d
 We determine 5 templates in each energy bin for gamma rays produced in 
 interactions of hadronic CR with gas and bremsstrahlung emission corresponding to 5 Galactocentric rings: 
 0 -- 1.5\,kpc, 1.5 -- 3.5\,kpc, and 3.5 -- 8\,kpc; 8 -- 10\,kpc, and 10 -- 50\,kpc.
-We assume propagation halo height of 10 kpc, radius of 20 kpc and spin temperature 150 K.
+We assume propagation halo height of 10 kpc and radius of 20 kpc and spin temperature 150 K.
 We use 3 inverse Compton templates corresponding to the three ISRF: CMB, 
 infrared emission of dust, and starlight.
 In addition to GALPROP templates, we use a flat template for the \Fermi bubbles at latitudes $|b| > 10^\circ$~\citep{2014ApJ...793...64A}. 
@@ -261,7 +262,8 @@ Templates for the gamma-ray emission from the Sun  and the Moon
  %\citep{2007Ap&SS.309..359O, 2006ApJ...652L..65M}
 are obtained with the \Fermi Science Tools%
 \footnote{\url{http://fermi.gsfc.nasa.gov/ssc/data/analysis/scitools/solar_template.html}}.
-We also include, as a GC excess template, a generalized Navarro-Frenk-White (gNFW) profile with index $\gamma = 1.25$ 
+We also include, as a GC excess template, 
+DM annihilation with a generalized Navarro-Frenk-White (gNFW) profile with index $\gamma = 1.25$ 
 \citep{Goodenough:2009gk,Abazajian:2014fta, Calore:2014xka}
 and scaling radius $r_{\rm s} = 20\;{\rm kpc}$, as well as the isotropic template to model the non-resolved 
 extragalactic sources.
