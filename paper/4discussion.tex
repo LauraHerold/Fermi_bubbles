@@ -13,8 +13,8 @@ of the Galactic latitude for different models of Galactic foreground emission.
 %that is $\ang{0} - \ang{10}$ to the east of the GC an $\ang{-10} - \ang{0}$ to the west of the GC. 
 %The profiles of the three models include the residual emission plus the FBs, i.e. 
 For the low-energy model, the profiles show the residual gamma-ray emission, 
-for the rectangles model -- the intensity of the rectangles templates model, 
-and for the GALPROP model --  the sum of residual emission, the FBs template, 
+for the rectangles model -- the intensity of the rectangles templates model.
+In case of the GALPROP model, we show the sum of the residual emission, the FBs template, 
 and the GC excess template, as described in Section \ref{sec:Modeling}. 
 For comparison we show the latitude profile of the total gamma-ray data (excluding pixels in the PS mask).
 %We observe an agreement between all models and a east-west assymmetry close to the GC. 
@@ -27,11 +27,12 @@ This is due to additional freedom in the GALPROP model related to the usage of s
 %the inability of the GALPROP templates to fit the data is also manifested by the negative residuals to the east of the GC.
 %Also the data shows a slight east-west assymmetry in the flux around the GC.
 
-In Figure \ref{fig:lon-profiles} we show the longitude profiles of the residual flux in the low energy data background model.
-The excess at $\ell \approx -13^\circ$ for $|b| < 2^\circ$ is probably due to residual emission around RX J1713 SNR \citep{2011ApJ...734...28A}.
+In Figure \ref{fig:lon-profiles} we show the longitude profiles of the residual flux 
+for the background model based on low-energy data.
+The excess at $\ell \approx -13^\circ$ for $|b| < 2^\circ$ is probably due to residual emission around the RX J1713 SNR \citep{2011ApJ...734...28A}.
 Consequently, we do not consider it as a part of the emission at the base of the FBs.
 We associate the excess between $-2^\circ \lesssim \ell \lesssim -8^\circ$ to the base of the FBs. 
-In this paper, we use the range $\ell \in (0^\circ,\ -10^\circ)$ in the calculations of the spectrum of the gamma-ray
+In this paper, we use $\ell \in (0^\circ,\ -10^\circ)$ and $|b| < 6^\circ$ in the calculations of the spectrum of the gamma-ray
 emission at the base of the FBs.
 
 
@@ -52,7 +53,7 @@ emission at the base of the FBs.
 \includegraphics[width=\twopic\textwidth]{plots/Lon_profiles_LowE_source_range_1.pdf}
 \includegraphics[width=\twopic\textwidth]{plots/Lon_profiles_LowE_source_range_2.pdf}
   	\caption{Longitude profiles of the energy flux between 10 and 100 GeV and between 100 GeV and 1 TeV 
-	for the residuals in the low energy data background model (Section \ref{sec:le_data_model}).}
+	for the residuals in the low-energy data background model (Section \ref{sec:le_data_model}).}
   	\label{fig:lon-profiles}
 \end{figure*}
 
@@ -63,7 +64,7 @@ emission at the base of the FBs.
 \centering
 \includegraphics[width=\twopic\textwidth]{plots/SED_all_models_source_l=5_b=0.pdf}
 \includegraphics[width=\twopic\textwidth]{plots/SED_all_models_source_l=-5_b=0.pdf}
-  	\caption{SED of the gamma-ray data, of the residuals (``LowE'' model), 
+  	\caption{SEDs of the gamma-ray data, of the residuals (``LowE'' model), 
 	rectangles model of the FBs (``rectangles'' model),
 	residuals plus FBs model plus gNFW DM annihilation template (``GALPROP'' model),
 	and of the difference in the data west minus east of the GC (excluding pixels in the PS mask). 
@@ -140,7 +141,7 @@ If the improvement in $2 \Delta \log \La$ is less than 1, then we report the pow
 (it turns out that the improvement in $2 \Delta \log \La$ is less than 0.1 in the cases when the cutoff is not significant).
 For the model with a cutoff, we also find the 95\% statistical confidence lower limit for the cutoff energy.
 In the last column we report the minimum among the 95\% confidence lower limits for the three models considered in the paper
-(the low energy data model, the rectangles model, and the GALPROP templates model).
+(the low-energy data model, the rectangles model, and the GALPROP templates model).
 The spectrum of the residuals including the FBs at  $\ell \in (\ang{-10},\ \ang{0})$
 is consistent with a power law with an index $2.1 - 2.2$ up to $E \approx 1$ TeV.
 The 95\% confidence lower limit on the cutoff energy is $\sim$ 500 GeV for latitudes $|b| < 6^\circ$ within $-10^\circ < \ell < 0^\circ$.
@@ -360,8 +361,8 @@ and $n_\Hy$ is the density of gas.
 We will use $n_\Hy = \SI{1}{cm^{-3}}$ as a reference density,
 which is comparable with the gas surface density of $\sim 30 M_\odot {\rm pc}^{-2}$ \citep{2017ApJ...834...57M}
 averaged over the approximate height of the enhanced emission at the base of the bubbles, e.g., $\sim 900$ pc above and below the GC.
-Since most of the gas density is concentrated within 100 - 200 pc from the midplane \citep[e.g.,][]{2013pss5.book..985S, 2017ApJ...834...57M},
-the gas density in the plane near the GC is ${5 - 10}{\;\rm cm^{-3}}$, which is consistent with the enhancement of the intensity of the emission
+Since most of the gas density is concentrated within 100 -- 200 pc from the midplane \citep[e.g.,][]{2013pss5.book..985S, 2017ApJ...834...57M},
+the gas density in the plane near the GC is 5 -- 10 ${\rm cm^{-3}}$, which is consistent with the enhancement of the intensity of the emission
 at the base of the FBs at $\ell = 0^\circ$.
 We model the proton spectrum as a power law of the momentum $\frac{d \Sigma}{d qc} = n_\pr q^{-\g_p}$ 
 (note, that $ v_\pr \frac{\de \Sigma}{\de T_\pr} = c \frac{d \Sigma}{d qc}$).
