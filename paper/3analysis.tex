@@ -45,7 +45,7 @@ Each PS is masked with a circle of radius $\frac{\delta}{\sqrt{2}} + 0^\circ\!\!
 so that ${\delta}/{\sqrt{2}}$ is half of the pixel diagonal (if it were a square), while $0\degr\!\!.5$ is comparable to 
 the 68\% containment radius of the point-spread function above $\approx 2$ GeV.
 Thus the total radius is about $0\degr\!\!.82$.
-In order to avoid possible bias by masking more pixels on one side of the GC,
+In order to avoid possible bias by masking more pixels on one side of the GC in the Galactic plane,
 we symmetrize the PS mask relative to the GC, i.e., we set $m_{-b, -\ell} = 0$ if $m_{b, \ell} = 0$ and vice versa.
 This PS mask is also used in the following sections (apart from Section \ref{sec:galprop_model}).
 The data are averaged over regions to the east ($0^\circ < \ell < 10^\circ$) and to the west ($-10^\circ < \ell  <  0^\circ$) 
@@ -166,12 +166,13 @@ is shown in Figure \ref{fig:Maps_lowE_model},
 while the residuals after subtracting the model from the data are presented in Figure \ref{fig:Maps_lowE}.
 The FBs are clearly visible in the first two energy ranges, $E = 1 - \SI{10}{GeV}$ and $E = 10 - \SI{100}{GeV}$.
 For $E = \SI{100}{GeV} - \SI{1}{TeV}$ the statistics are low, but one can still see an excess near the GP.
-There are other regions of large residuals, mostly in the Galactic plane, but also some PS at high latitudes.
+There are other regions of large residuals in the Galactic plane as well as at high latitudes.
 These are diffuse and point-like sources with spectra harder than the average spectra of Galactic and
 extragalactic sources.
 In particular, there is a residual in diffuse emission along the Galactic plane within $|\ell | \lesssim 60^\circ$ at energies below 100 GeV.
 This residual can be due to IC emission, which has a harder spectrum than the average spectrum of the $\pi^0$ component,
-or to a harder spectrum of cosmic rays in the inner Galaxy \citep{2015PhRvD..91h3012G, 2016ApJS..223...26A}.
+or to a harder spectrum of cosmic rays in the inner Galaxy \citep{2015PhRvD..91h3012G, 2016ApJS..223...26A},
+or to a population of hard PSs in the Galactic plane in the inner parts of the Galaxy.
 At energies above 100 GeV the residuals are resolved into localized sources, some of which are extended.
 Apart from the Galactic foreground and background components, there are gamma rays emitted by the interactions of CRs with 
 the Sun and its radiation field \citep{2011ApJ...734..116A} and the Moon \citep{2016PhRvD..93h2001A}.
@@ -185,7 +186,7 @@ As a result, these components are not visible on  the residual maps at energies 
 \label{sec:box_model}
 
 In the previous subsection, we exclude the ROI of the FBs.
-In this subsection, we perform the fit over the whole sky and model the emission from the FBs using rectangles of small size.
+In this subsection, we perform the fit over the whole sky and model the emission from the FBs using rectangles.
 %Our first simple ansatz for a model of the FBs consists of rectangular templates that approximately cover the area of the FBs. 
 In order to explore the east-west asymmetry of the FBs, 
 we introduce two rectangular templates in each latitude stripe $b$ and energy bin $E$: 
