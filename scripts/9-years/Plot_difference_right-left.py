@@ -16,6 +16,9 @@ data_class = 'source'
 binmin = 0
 binmax = 31
 
+normalized = False
+significance_plot = True
+
 fn_ending = '.pdf'
 colours = ['grey', 'grey', 'grey', 'grey', 'grey', 'darkorange', 'green', 'red', 'blue', 'magenta', 'grey', 'grey', 'grey', 'grey', 'grey']
 markers = ['.', '.', '.', '.', '.', '.', 'o', 's', 'D', '.', '.', '.', '.', '.', '.']
@@ -51,12 +54,12 @@ print 'nB, nL, nE = ' + str(nB) + ', ' + str(nL) + ', ' + str(nE)
 
 ########################################################################################################################## Plot spectra
 
-index = 0
+index = 5
 
 auxil.setup_figure_pars(plot_type = 'spectrum')
 fig = pyplot.figure()
 
-for b in xrange(nB):
+for b in range(5,10):#xrange(nB):
         
     map = [0,0]
     std_map = [0,0]
@@ -71,30 +74,62 @@ for b in xrange(nB):
     label = None
     if colours[index] != "grey":
         label = r'$b \in (%i\!^\circ$' % (Bc[b] - dB[b]/2) + ', $%i\!^\circ\!)$' % (Bc[b] + dB[b]/2)
-        
-    pyplot.errorbar(Es, difference, total_std, linewidth=1.3, label = label, color = colours[index], marker = markers[index])
+
+    if normalized:
+        difference /= (map[0] + map[1])
+        total_std /= (map[0] + map[1])
+    if significance_plot:
+        difference /= total_std
+        if difference[0] < 0:
+            difference *= -1
+            ls = "--"
+        else:
+            ls = "-"
+        pyplot.plot(Es, difference, linewidth=1.3, label = label, color = colours[index], marker = markers[index], ls = ls)
+    else:
+        pyplot.errorbar(Es, difference, total_std, linewidth=1.3, label = label, color = colours[index], marker = markers[index])
     index += 1
     
        
 ########################################################################################################################## cosmetics, safe plot
         
 
-lg = pyplot.legend(loc='upper left', ncol=2)
-lg.get_frame().set_linewidth(0)
+
+
 pyplot.grid(True)
 pyplot.axhline(0, linestyle='-', color='k') # horizontal lines
-pyplot.xlabel('$E\ [\mathrm{GeV}]$')
-pyplot.ylabel(r'$ E^2\frac{\mathrm{d} N}{\mathrm{d}E}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
+pyplot.xlabel(r'$E\ [\mathrm{GeV}]$')
 #pyplot.title('Difference of data: left - right')
 
-pyplot.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+
 pyplot.axis('tight')
-name = 'Difference_data_for_different_latitudes'
+if normalized:
+    name = 'Difference_data_for_different_latitudes_normalized'
+    pyplot.ylim((-1, 1))
+    pyplot.ylabel(r'$(\mathrm{east}-\mathrm{west})/(\mathrm{east}+\mathrm{west})$')
+    lg = pyplot.legend(loc='upper left', ncol=2)
+    
+    
+else:
+    #pyplot.ticklabel_format(style='sci', axis='y', scilimits=(2,2))
+    name = 'Difference_data_for_different_latitudes'
+    pyplot.ylim((-0.3e-5, 1.35e-5))
+    pyplot.ylabel(r'$ E^2\frac{\mathrm{d} N}{\mathrm{d}E}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
+    lg = pyplot.legend(loc='upper left', ncol=2)
+
+if significance_plot:
+    name = 'Difference_data_for_different_latitudes_sgm'
+    pyplot.ylabel(r'$(\mathrm{east}-\mathrm{west})/\sigma$')
+    pyplot.ylim((-10, 20))
+    lg = pyplot.legend(loc='upper right', ncol=2)
+    
+
+lg.get_frame().set_linewidth(0)
+    
 fn = plot_dir + name + fn_ending
 pyplot.xscale('log')
 
 pyplot.xlim((1., 1.e3))
-pyplot.ylim((-0.3e-5, 1.35e-5))
 
 print 'save figure to file:'
 print fn

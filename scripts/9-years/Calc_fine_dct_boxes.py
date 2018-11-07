@@ -11,8 +11,6 @@ from optparse import OptionParser
 
 ####################################################################################################################### Parameters
 
-residual_p_boxes = True
-residual_only = False
 
 parser = OptionParser()
 parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
@@ -45,8 +43,8 @@ symmetrize_mask = True
 
 dB_dct = {'small': 4., 'large':  10.}             # length of bin in latitude
 Bmax_dct = {'small': 10., 'large': 60.}           # maximal latitude (in deg)
-dL = 10.                                          # length of bin in longitudinal
-Lmax = 10.                                        # maximal longitude (in deg)
+dL = 2.                                          # length of bin in longitudinal
+Lmax = 21.                                        # maximal longitude (in deg)
 
 GeV2MeV = 1000.
 delta = 0.3837641821164575                        # Logarithmic size of one energy bin, in fits header "Step in energy (log)"
@@ -59,29 +57,21 @@ nside = healpy.npix2nside(npix)
 if source_class:
     counts_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits' # Source class (counts )
     if Save_counts:
-        map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_counts_source.fits'
-        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes_counts_source.yaml'
+        map_fn = 'fits/Boxes_residual+boxes_'+ lowE_ranges[low_energy_range] +'GeV_counts_source.fits'
+        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/Fine_dct_boxes_counts_source.yaml'
     else:
-        map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_flux_source.fits'
-        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes_source.yaml'
+        map_fn = 'fits/Boxes_residual+boxes_'+ lowE_ranges[low_energy_range] +'GeV_flux_source.fits'
+        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/Fine_dct_boxes_source.yaml'
 
 else:
     counts_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits' # Ultraclean class (counts)
     if Save_counts:
-        map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_counts_ultraclean.fits'
-        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes_counts_ultraclean.yaml'
+        map_fn = 'fits/Boxes_residual+boxes_'+ lowE_ranges[low_energy_range] +'GeV_counts_ultraclean.fits'
+        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/Fine_dct_boxes_counts_ultraclean.yaml'
     else:
-        map_fn = 'fits/Boxes_'+ lowE_ranges[low_energy_range] +'GeV_flux_ultraclean.fits'
-        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes_ultraclean.yaml'
-
-if residual_p_boxes:
-    map_fn = 'fits/Boxes_residual+boxes_'+ lowE_ranges[low_energy_range] +'GeV_flux_source.fits'
-    dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes+residual_source.yaml'
-
-if residual_only:
-    map_fn = 'fits/Boxes_residual_'+ lowE_ranges[low_energy_range] +'GeV_flux_source.fits'
-    dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/dct_boxes_residual_only_source.yaml'
-    
+        map_fn = 'fits/Boxes_residual+boxes_'+ lowE_ranges[low_energy_range] +'GeV_flux_ultraclean.fits'
+        dct_fn ='dct/Low_energy_range' + str(low_energy_range) +'/Fine_dct_boxes_ultraclean.yaml'
+        
 mask_fn = '../../data/ps_masks/ps_mask_3FGL_small_nside128.npy'    
 
 

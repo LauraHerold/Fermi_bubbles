@@ -105,7 +105,8 @@ for highE in range(3):
                 for E in xrange(nE):
                     profiles[b] += diff_profiles[b][l][binmin+E] *  deltaE[E] / Es[E]
                     std[b] += (std_profiles[b][l][binmin+E] * deltaE[E] / Es[E])**2
-            std = np.sqrt(std) 
+            std = np.sqrt(std)
+            print std
             
             
             pyplot.errorbar(Bc, profiles, std, color = colours[colour_index], marker=markers[marker_index], linewidth = 1.3,  label=labels_dct[input])

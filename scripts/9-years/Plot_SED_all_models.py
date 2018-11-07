@@ -13,6 +13,8 @@ import auxil
 
 ########################################################################################################################## parameters
 
+boxes_p_residual = True
+
 parser = OptionParser()
 parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
 parser.add_option("-E", "--lowE_range", dest="lowE_range", default='0', help="There are 3 low-energy ranges: (3,5), (3,3), (4,5), (6,7)")
@@ -30,7 +32,7 @@ labels_dct = {"data":"Data", "lowE": "LowE", "boxes": "Rectangles", "GALPROP":"G
 
 plot_diff_leftright = True
 
-fn_ending = '.pdf'
+fn_ending = 'boxes+residual.pdf'
 colours = ['black', 'blue', 'red', 'green']
 markers = ['s', 'o', 'D', '<']
 titles = ['West', 'East']
@@ -73,6 +75,11 @@ for b in xrange(nB):
             print input
             
             dct  = dio.loaddict('dct/Low_energy_range' + str(low_energy_range)  +'/dct_' + input + '_' + data_class + '.yaml')
+
+            if boxes_p_residual and input == "boxes":
+                dct  = dio.loaddict('dct/Low_energy_range' + str(low_energy_range)  +'/dct_boxes+residual_' + data_class + '.yaml')
+                
+            
             diff_profiles = dct['6) Differential_flux_profiles']
             std_profiles = dct['7) Standard_deviation_profiles']
         

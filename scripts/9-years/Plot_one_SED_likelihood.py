@@ -20,15 +20,15 @@ from scipy import special
 
 print_total_energy_output = False
 plot_contour = False
-print_upper_limits_Ecut = True
+print_upper_limits_Ecut = False
 
 no_accurate_matrix = False
 acc_matrix = True
 
-fit_plaw = False
+fit_plaw = True
 fit_logpar = False
 fit_IC  = False
-fit_pi0 = True
+fit_pi0 = False
 
 parser = OptionParser()
 parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
@@ -45,7 +45,7 @@ latitude = int(options.latitude)
 
 
 fn_ending = ".pdf"
-dct_fn_ending = ".yaml"
+dct_fn_ending = "without_last_data_point.yaml"
 cutoff = False
 if str(options.cutoff) == "True":
     cutoff = True
@@ -68,7 +68,7 @@ lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
 
 Save_as_dct = True
 Save_plot = True
-without_last_data_point = False
+without_last_data_point = True
 
     
 fitmin = 3
@@ -381,6 +381,7 @@ for l in [0, 1]:
 
             dct_fn = "plot_dct/Low_energy_range" + str(low_energy_range) + "/" + input_data + "_" + data_class + "_Plaw_cutoff_l=" + str(Lc[l]) + "_b=" + str(Bc[b])  + dct_fn_ending
             dct["3) E_cut"] = 1./Ecut_inv
+            dct["8) sgm_E_cut"] = - m.errors["Ecut_inv"] / Ecut_inv**2
 
             
 
@@ -402,6 +403,8 @@ for l in [0, 1]:
             dct["2) gamma"] = (gamma + 2)
             dct["4) -2 Delta logL"] = (TS_nocut - TS_cut)
             dct["5) lower bound E_cut"] = (1./upper_bound)
+            dct["6) sgm_N_0"] = m.errors["N_0"]
+            dct["7) sgm_gamma"] = m.errors["gamma"]
             dio.saveyaml(dct, dct_fn, expand = True)
 
         if plot_contour:

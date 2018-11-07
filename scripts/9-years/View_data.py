@@ -40,9 +40,9 @@ cmap = pyplot.cm.hot_r # jet, hot
 
 normalized = False
 if log_plot:
-    unit = r'${\rm log_{10}} (I [\mathrm{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}])$'
+    unit = r'${\rm log_{10}} (I\ [\mathrm{GeV\ s^{-1} sr^{-1} cm^{-2}}])$'
 else:
-    unit = r'$I [\mathrm{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}]}$'
+    unit = r'$I [\mathrm{GeV\ s^{-1} sr^{-1} cm^{-2}]}$'
 
 
 GeV2MeV = 1000.

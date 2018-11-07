@@ -11,6 +11,7 @@ import auxil
 
 source_class = True
 gnomview = False
+model = False
 
 binmin = 6
 binmax = 11
@@ -21,23 +22,25 @@ binmax = 17
 #binmin = 18
 #binmax = 23
 
-save_fn = '../../plots/Plots_9-year/Mollwiede_GALPROP_model_source_range2_log.pdf'
+save_fn = '../../plots/Plots_9-year/Mollwiede_GALPROP_source_range2.pdf'
 
 ##################################################################################################### constants
 
 smooth_map = True
 mask_point_sources = True
 
-scale_min = 0
-scale_max = 1e-5
 
-scale_min = -6.5
-scale_max = -4
 
 normalized = False
-#unit = r'$I\ [\mathrm{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}]$'
-unit = r'$\log_{10}(I\ [\mathrm{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}])$'
-
+if model:
+    unit = r'$\log_{10}(I\ [\mathrm{GeV\ s^{-1} sr^{-1} cm^{-2}}])$'
+    scale_min = -6.5
+    scale_max = -4
+else:
+    unit = r'$I\ [\mathrm{GeV\ s^{-1} sr^{-1} cm^{-2}}]$'
+    scale_min = -2.e-6
+    scale_max = 4e-6
+    
 cmap = pyplot.cm.hot_r # jet, hot
 
 GeV2MeV = 1000.
@@ -49,6 +52,7 @@ nside = healpy.npix2nside(npix)
 ##################################################################################################### load data from a fits file
 
 if source_class:
+
     map_fn = '../../data/P8_P302_Source_z100_w009_w478/residuals/9years_Source_z100_refit_PS_resid_signal_bubbles_counts.fits'# Map is in unit counts
     data_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits'
     expo_fn = '../../data/P8_P302_Source_z100_w009_w478/irfs/expcube_P8_P302_Source_z100_w009_w478_P8R2_SOURCE_V6_healpix_o7_24bins.fits'
@@ -90,10 +94,14 @@ if mask_point_sources:
 print 'sum over energy bins...'
 
 plot_map = np.zeros(npix)
-for i in range(binmin, binmax+1):
-    for j in range(len(plot_map)):
-        plot_map[j] += Es[i] * mod[i][j] / exposure[i][j] / dOmega
-       
+if model:
+    for i in range(binmin, binmax+1):
+        plot_map += Es[i] * mod[i] / exposure[i] / dOmega
+
+else:
+    for i in range(binmin, binmax+1):
+        plot_map += Es[i] * res[i] / exposure[i] / dOmega
+    
 
 
 ##################################################################################################### smooth with smooth_sigma Gaussian
@@ -118,13 +126,24 @@ emax = Es[binmax] * np.exp(delta/2)
 title = r'$E = %.0f$' %emin + r'$ - %.0f\ \mathrm{GeV}$' %emax
 
 auxil.setup_figure_pars(plot_type = 'map')
+pyplot.rcParams['xtick.labelsize'] = 15
 
 if gnomview:
     healpy.gnomview(plot_map, rot = ([0,0]), xsize = 3000, ysize = 1000, min =scale_min, max=scale_max, unit = unit, title = title, notext = True)
     
 else:
-    healpy.mollview(np.log10(plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap)
-
+    if model:
+        healpy.mollview(np.log10(plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap)
+    else: 
+        healpy.mollview(plot_map, unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap)
+   
+# part that changes the size of the font for the unit
+fontsize = 20
+pyplot.rcParams['xtick.labelsize'] = 15
+CbAx = pyplot.gcf().get_children()[2]
+unit_text_obj = CbAx.get_children()[1]
+unit_text_obj.set_fontsize(fontsize)
+    
 healpy.graticule(dpar=10., dmer=10.)
 
 pyplot.savefig(save_fn)

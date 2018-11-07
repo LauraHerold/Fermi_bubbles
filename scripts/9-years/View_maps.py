@@ -26,7 +26,7 @@ scale_max = float(options.scale_max)
 
 highE_ranges = ((0,5),(6,11),(12,17))        # 1: 0.3-0.5 GeV, 2: 0.5-1.0 GeV, 3: 1.0-2.2 GeV, 0: baseline (0.3-1.0 GeV)
 
-log_scale = False
+log_scale = True
 
 smooth_map = True
 mask_point_sources = True
@@ -34,9 +34,11 @@ symmask = True
 cmap = pyplot.cm.hot_r # jet, hot
 
 normalized = False
-unit = r'$I\ [\mathrm{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}]}$'
+unit = r'$I\ [\mathrm{GeV\ s^{-1} sr^{-1} cm^{-2}}]}$'
 if log_scale:
-    unit = r'$\log_{10}(I\ [\mathrm{GeV\ s^{-1}\ sr^{-1}\ cm^{-2}}])$'
+    unit = r'$\log_{10}(I\ [\mathrm{GeV\ s^{-1} sr^{-1} cm^{-2}}])$'
+    scale_mins = [-6, -6.5, -7]
+    scale_maxs = [-3.5, -4, -4.5]
 
 
 
@@ -70,6 +72,10 @@ if mask_point_sources:
 ##################################################################################################### Loop over 3 high-energy ranges
 
 for highE in [0,1,2]:
+
+    if log_scale:
+        scale_min = scale_mins[highE]
+        scale_max = scale_maxs[highE]
     print "Range ", highE
     binmin = highE_ranges[highE][0]
     binmax = highE_ranges[highE][1]
@@ -121,6 +127,14 @@ for highE in [0,1,2]:
    
     print ax
     #pyplot.colorbar().set_label(label=unit, size=30, weight='bold')
+
+    # part that changes the size of the font for the unit
+    fontsize = 20
+    pyplot.rcParams['xtick.labelsize'] = 15
+    CbAx = pyplot.gcf().get_children()[2]
+    unit_text_obj = CbAx.get_children()[1]
+    unit_text_obj.set_fontsize(fontsize)
+
     healpy.graticule(dpar=10., dmer=10.)
     save_fn = '../../plots/Plots_9-year/Mollweide_' + map_fn[:-5] + '_range_'+ str(highE) + '.pdf'
     if log_scale:

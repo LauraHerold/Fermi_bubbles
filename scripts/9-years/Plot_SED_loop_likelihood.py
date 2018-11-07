@@ -19,7 +19,7 @@ fit_logpar = True
 fit_IC  = False
 fit_pi0 = False
 
-fn_ending = ".pdf"
+fn_ending = "_logpar.pdf"
 
 parser = OptionParser()
 parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
@@ -87,8 +87,6 @@ Bc = dct['4) Center_of_lat_bins']
 Es = np.asarray(dct['5) Energy_bins'])
 diff_profiles = dct['6) Differential_flux_profiles']
 std_profiles = dct['7) Standard_deviation_profiles']
-
-print "diff_profiles: ", diff_profiles
 
 nB = len(diff_profiles)
 nL = len(diff_profiles[0])
@@ -165,6 +163,7 @@ def logpar(N_0, alpha, beta):
 E_zero = Es[bin_start_fit]
 Ecut_array = np.zeros((nB, nL))
 logpar_n_array = np.zeros((nB, nL))
+logpar_sgm_n_array = np.zeros((nB, nL))
 print Bc
 
 for b in xrange(nB):
@@ -275,6 +274,7 @@ for b in xrange(nB):
                 Ecut_array[b,l] = 1. / Ecut_inv
                 dct_fn = "plot_dct/Low_energy_range" + str(low_energy_range) + "/" + input_data + "_" + data_class + "_Plaw_cutoff_l=" + str(Lc[l]) + "_b=" + str(Bc[b])  + ".yaml"
                 dct["E_cut"] = 1./Ecut_inv
+                dct["sgm_E_cut"] = - m.errors["Ecut_inv"] / Ecut_inv**2
 
             flux_plaw = [plaw(N_0, gamma, Ecut_inv)(E) for E in range(fitmin,fitmax)]
             
@@ -290,6 +290,8 @@ for b in xrange(nB):
                 dct["-logL"] = TS
                 dct["gamma"] = (gamma + 2)                       # The fit returns gammas close to 0
                 dct["N_0"] = N_0
+                dct["sgm_N_0"] = m.errors["N_0"]
+                dct["sgm_gamma"] = m.errors["gamma"]
                 dio.saveyaml(dct, dct_fn, expand = True)
 
                 
@@ -428,6 +430,7 @@ for b in xrange(nB):
             m = Minuit(fit, N_0 = N_0, gamma = alpha, Ecut_inv = beta, limit_N_0 = (0., 1.), error_N_0 = 1., error_gamma = 1., errordef = 0.5)
             m.migrad()
             N_0, alpha, beta  = m.values["N_0"], m.values["gamma"], m.values["Ecut_inv"]
+            sgm_N_0, sgm_alpha, sgm_beta = m.errors ["N_0"], m.errors["gamma"], m.errors["Ecut_inv"]
 
             
             TS = 2 * sum(flux_logpar_in_counts(N_0, alpha, beta)(E) - map[E] * np.log(flux_logpar_in_counts(N_0, alpha, beta)(E)) for E in range(fitmin,fitmax))
@@ -446,6 +449,9 @@ for b in xrange(nB):
 
             logpar_n = - alpha - 2. * beta * np.log(500.)
             logpar_n_array[b,l] = logpar_n
+
+            logpar_sgm_n = np.sqrt(sgm_alpha**2 + 4 * np.log(500)**2 * sgm_beta**2)
+            logpar_sgm_n_array[b,l] = logpar_sgm_n
             
             if Save_as_dct:
                 
@@ -484,3 +490,4 @@ if cutoff:
     print "Ecut_array = np.array(", Ecut_array.tolist(), ")"
 if fit_logpar:
     print "logpar_n_array = np.array(", logpar_n_array.tolist(), ")"
+    print "logpar_sgm_n_array = np.array(", logpar_sgm_n_array.tolist(),")"

@@ -13,8 +13,9 @@ import dio
 binmin = 6 # range: 0 - 23
 binmax = 23
 
+lon180 = True
 source_class = True
-Save_counts = True
+Save_counts = False
 
 ###################################################################################################################### Constants
 
@@ -26,29 +27,49 @@ Bmax_dct = {'small': 10., 'large': 60.} # maximal latitude (in deg)
 dL = 10. # length of bin in longitudinal
 Lmax = 10. # maximal longitude (in deg)
 
+if lon180:
+    Lmax = 180.
+
 GeV2MeV = 1000.
 delta = 0.3837641821164575 # logarithmic distance between two energy bins
 npix = 196608
 nside = healpy.npix2nside(npix)
 
 ###################################################################################################################### Load data and mask
-
-if source_class:
-    map_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits'
-    expo_fn = '../../data/P8_P302_Source_z100_w009_w478/irfs/expcube_P8_P302_Source_z100_w009_w478_P8R2_SOURCE_V6_healpix_o7_24bins.fits'
-    if Save_counts:
-        dct_fn ='dct/Low_energy_range0/dct_data_counts_source.yaml'
-    else:
-        dct_fn ='dct/Low_energy_range0/dct_data_source.yaml'
+if lon180:
+    if source_class:
+        map_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits'
+        expo_fn = '../../data/P8_P302_Source_z100_w009_w478/irfs/expcube_P8_P302_Source_z100_w009_w478_P8R2_SOURCE_V6_healpix_o7_24bins.fits'
+        if Save_counts:
+            dct_fn ='dct/Low_energy_range0/dct_data_counts_source_lon180.yaml'
+        else:
+            dct_fn ='dct/Low_energy_range0/dct_data_source_lon180.yaml'
         
-else:
-    map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits'
-    expo_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/irfs/expcube_P8_P302_UltracleanVeto_z90_w009_w478_P8R2_ULTRACLEANVETO_V6_healpix_o7_24bins.fits'
-    if Save_counts:
-        dct_fn ='dct/Low_energy_range0/dct_data_counts_ultraclean.yaml'
     else:
-        dct_fn ='dct/Low_energy_range0/dct_data_ultraclean.yaml'
+        map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits'
+        expo_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/irfs/expcube_P8_P302_UltracleanVeto_z90_w009_w478_P8R2_ULTRACLEANVETO_V6_healpix_o7_24bins.fits'
+        if Save_counts:
+            dct_fn ='dct/Low_energy_range0/dct_data_counts_ultraclean_lon180.yaml'
+        else:
+            dct_fn ='dct/Low_energy_range0/dct_data_ultraclean_lon180.yaml'
+else:
+    if source_class:
+        map_fn = '../../data/P8_P302_Source_z100_w009_w478/maps/counts_P8_P302_Source_z100_w009_w478_healpix_o7_24bins.fits'
+        expo_fn = '../../data/P8_P302_Source_z100_w009_w478/irfs/expcube_P8_P302_Source_z100_w009_w478_P8R2_SOURCE_V6_healpix_o7_24bins.fits'
+        if Save_counts:
+            dct_fn ='dct/Low_energy_range0/dct_data_counts_source.yaml'
+        else:
+            dct_fn ='dct/Low_energy_range0/dct_data_source.yaml'
+        
+    else:
+        map_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/maps/counts_P8_P302_UltracleanVeto_z90_w009_w478_healpix_o7_24bins.fits'
+        expo_fn = '../../data/P8_P302_UltracleanVeto_z90_w009_w478/irfs/expcube_P8_P302_UltracleanVeto_z90_w009_w478_P8R2_ULTRACLEANVETO_V6_healpix_o7_24bins.fits'
+        if Save_counts:
+            dct_fn ='dct/Low_energy_range0/dct_data_counts_ultraclean.yaml'
+        else:
+            dct_fn ='dct/Low_energy_range0/dct_data_ultraclean.yaml'
 
+            
 mask_fn = '../../data/ps_masks/ps_mask_3FGL_small_nside128.npy'
 
 

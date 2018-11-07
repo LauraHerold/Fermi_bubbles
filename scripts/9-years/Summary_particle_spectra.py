@@ -140,7 +140,7 @@ if particles == "electrons":
     pyplot.ylim(3e-8, 3e-2)
 '''
 
-if particles == "electrons":
+if particles == "electrons":                                                        # Older HESS data + DAMPE data
     name = 'Summary_electron_spectra_' + str(int(Bc[b]))
     pyplot.plot(Es, baseline, color="green", linewidth=0.9, label=label)
     pyplot.fill_between(Es, syst_min, syst_max, color = "green", alpha=0.25)
