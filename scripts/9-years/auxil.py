@@ -11,6 +11,7 @@ from mpl_toolkits.axes_grid1.axes_divider import make_axes_locatable
 from matplotlib import pyplot
 from matplotlib import rc
 from matplotlib import cm
+from matplotlib import transforms
 import pyfits
 import healpy
 from sets import Set
@@ -100,6 +101,35 @@ def save_figure(figFn, ext=[], save_plots=False):
             fn = '%s.%s' % (figFn, extn)
             print fn
             pyplot.savefig(fn)
+    return 0
+
+def add_mollview_colorbar(pix_map, label='', nticks=5):
+    # bounding box parameters for the main map on healpy mollview
+    x0 = 0.02
+    y0 = 0.15 # y0=0.185 - original mollview setup
+    x1 = 0.98
+    y1 = 0.92 # y1=0.95 - original mollview setup
+    
+    points = [[x0, y0], [x1, y1]]
+    bbox_mollview = transforms.Bbox(points)
+    
+    # determine the values of the ticks and the tick labels
+    min = np.min(pix_map)
+    max = np.max(pix_map)
+    ticks = np.linspace(min, max, nticks)
+    tick_labels = ['%.2g' % x for x in ticks]
+    
+    # set the posistion of the map
+    plot_ax = pyplot.gcf().get_children()[1]
+    plot_ax.set_position(bbox_mollview)
+    
+    # add the color bar with the custom tick values and labels
+    image = plot_ax.get_images()[0]
+    cbar = pyplot.colorbar(image, orientation='horizontal',
+                           pad=.03, fraction=0.06, aspect=30, shrink=.8,
+                           ticks=ticks, label=label)
+        
+    cbar.set_ticklabels(tick_labels)
     return 0
 
 
