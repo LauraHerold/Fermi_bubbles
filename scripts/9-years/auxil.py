@@ -103,7 +103,7 @@ def save_figure(figFn, ext=[], save_plots=False):
             pyplot.savefig(fn)
     return 0
 
-def add_mollview_colorbar(pix_map, label='', nticks=5):
+def add_mollview_colorbar(pix_map, label='', nticks=5, ticks=None, tick_labels=None):
     # bounding box parameters for the main map on healpy mollview
     x0 = 0.02
     y0 = 0.15 # y0=0.185 - original mollview setup
@@ -114,10 +114,12 @@ def add_mollview_colorbar(pix_map, label='', nticks=5):
     bbox_mollview = transforms.Bbox(points)
     
     # determine the values of the ticks and the tick labels
-    min = np.min(pix_map)
-    max = np.max(pix_map)
-    ticks = np.linspace(min, max, nticks)
-    tick_labels = ['%.2g' % x for x in ticks]
+    if ticks is None:
+        min = np.min(pix_map)
+        max = np.max(pix_map)
+        ticks = np.linspace(min, max, nticks)
+    if tick_labels is None:
+        tick_labels = ['%.2g' % x for x in ticks]
     
     # set the posistion of the map
     plot_ax = pyplot.gcf().get_children()[1]
