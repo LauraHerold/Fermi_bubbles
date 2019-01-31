@@ -41,10 +41,10 @@ In order to investigate the asymmetry of the emission at the base of the FBs rel
 we compare the \Fermi-LAT data east and west of the GC. 
 We mask the 200 point sources (PS) in the Third \Fermi-LAT source catalog \citep[3FGL,][]{2015ApJS..218...23A}
 with the largest flux above 1 GeV.
-Each PS is masked with a circle of radius $\frac{\delta}{\sqrt{2}} + 0^\circ\!\!.5$, where $\delta = 0\degr\!\!.46$ is the characteristic size of the pixels
-so that ${\delta}/{\sqrt{2}}$ is half of the pixel diagonal (if it were a square), while $0\degr\!\!.5$ is comparable to 
+Each PS is masked with a circle of radius $\frac{\delta}{\sqrt{2}} + 0{\fdg}5$, where $\delta = 0{\fdg}46$ is the characteristic size of the pixels
+so that ${\delta}/{\sqrt{2}}$ is half of the pixel diagonal (if it were a square), while $0{\fdg}5$ is comparable to 
 the 68\% containment radius of the point-spread function above $\approx 2$ GeV.
-Thus the total radius is about $0\degr\!\!.82$.
+Thus the total radius is about $0{\fdg}82$.
 In order to avoid possible bias by masking more pixels on one side of the GC in the Galactic plane,
 we symmetrize the PS mask relative to the GC, i.e., we set $m_{-b, -\ell} = 0$ if $m_{b, \ell} = 0$ and vice versa.
 This PS mask is also used in the following sections (apart from Section \ref{sec:galprop_model}).
@@ -108,12 +108,13 @@ i.e., the $\pi^0$, bremsstrahlung, and IC components,
 dominate the gamma-ray emission in the Galactic plane in the energy range $E \lesssim \SI{1}{GeV}$. 
 Consequently, the low-energy \Fermi-LAT data is a good tracer for the soft components of the
 diffuse gamma-ray emission in the Galactic plane and can be used to create a spatial template for the Galactic foreground.
-The 68\% containment for the \Fermi-LAT photons between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ (averaged with an $E^{-2}$ spectrum) is about $1^\circ\!\!.5$,
+The 68\% containment for the \Fermi-LAT photons between $\SI{316}{MeV}$ and $\SI{1}{GeV}$ (averaged with an $E^{-2}$ spectrum) is about 
+$1{\fdg}5$,
 which is much larger than the sub-degree angular resolution above $\SI{1}{GeV}$.
 In order to compensate for the difference in the angular resolution, 
 we smooth the data in each high-energy bin above 1 GeV
 with a Gaussian kernel of $\sigma = \ang{1}$ (which corresponds to $68\%$ containment angle of
-$1^\circ\!\!.5$ in 2 dimensions).%
+$1{\fdg}5$ in 2 dimensions).%
 \footnote{In general, the width of the Gaussian kernel $\sigma$ can be obtained by subtracting in quadrature
 the equivalent widths at low and at high energies $\sigma^2 = \sigma_{\rm low}^2 - \sigma_{\rm high}^2$.
 Since $\sigma_{\rm low}^2 \gg \sigma_{\rm high}^2$, we neglect $\sigma_{\rm high}^2$ and smooth the 
@@ -171,7 +172,7 @@ These are diffuse and point-like sources with spectra harder than the average sp
 extragalactic sources.
 In particular, there is a residual in diffuse emission along the Galactic plane within $|\ell | \lesssim 60^\circ$ at energies below 100 GeV.
 This residual can be due to IC emission, which has a harder spectrum than the average spectrum of the $\pi^0$ component,
-or to a harder spectrum of cosmic rays in the inner Galaxy \citep{2015PhRvD..91h3012G, 2016ApJS..223...26A},
+or to a harder spectrum of cosmic rays in the inner Galaxy \citep{2015PhRvD..91h3012G, 2016ApJS..223...26A, 2016PhRvD..93l3007Y},
 or to a population of hard PSs in the Galactic plane in the inner parts of the Galaxy.
 At energies above 100 GeV the residuals are resolved into localized sources, some of which are extended.
 Apart from the Galactic foreground and background components, there are gamma rays emitted by the interactions of CRs with 
@@ -210,7 +211,7 @@ by fitting the model to the smoothed \Fermi-LAT data
 (see Section  \ref{sec:le_data_model} for details on the smoothing of the data).
 $S_b^\east(i)$  and $S_b^\west(i)$ are step function templates, which are equal to 1 in each latitude stripe $b$
 for $0^\circ < \ell < 20^\circ$ and $0^\circ > \ell > - 20^\circ$ respectively and 0 otherwise.
-The energy fluxes of the model and the residuals integrated for $E = 10 - \SI{100}{GeV}$ are shown in Fig. \ref{fig:Maps_Rectangles}.
+The energy fluxes of the model and the residuals integrated in the range $E = 10 - \SI{100}{GeV}$ are shown in Fig. \ref{fig:Maps_Rectangles}.
 %Here we plot the sum of the residual and the rectangles model.
 %With residual we denote the sum of the rectangles-model residual and the rectangles template in the following.
 
@@ -253,7 +254,7 @@ We determine 5 templates in each energy bin for gamma rays produced in
 interactions of hadronic CR with gas and bremsstrahlung emission corresponding to 5 Galactocentric rings: 
 0 -- 1.5\,kpc, 1.5 -- 3.5\,kpc, and 3.5 -- 8\,kpc; 8 -- 10\,kpc, and 10 -- 50\,kpc.
 We assume propagation halo height of 10 kpc and radius of 20 kpc and spin temperature 150 K.
-We use 3 inverse Compton templates corresponding to the three ISRF: CMB, 
+We use 3 inverse Compton templates corresponding to the three ISRF components: CMB, 
 infrared emission of dust, and starlight.
 In addition to GALPROP templates, we use a flat template for the \Fermi bubbles at latitudes $|b| > 10^\circ$~\citep{2014ApJ...793...64A}. 
 We model the Loop~I feature using a geometric template \citep[e.g., Figure 2 of][]{2014ApJ...793...64A}
@@ -277,8 +278,8 @@ The remaining extended sources are also added in a separate template.
 The spatial templates for the extended sources are provided by the 3FGL catalog.
 The PS mask in this section is different from the mask that we have used in the previous sections.
 We mask the 200 sources with largest flux above 1 GeV outside a $10^\circ$ circle from the GC.
-Each source is masked with a circle of $\frac{\delta}{\sqrt{2}} + 1^\circ$ radius ($\delta = 0\degr\!\!.46$ is the characteristic size of the pixels),
-which is larger than the radius of  $\frac{\delta}{\sqrt{2}} + 0^\circ\!\!.5$ used in the previous sections.
+Each source is masked with a circle of $\frac{\delta}{\sqrt{2}} + 1^\circ$ radius ($\delta = 0{\fdg}46$ is the characteristic size of the pixels),
+which is larger than the radius of  $\frac{\delta}{\sqrt{2}} + 0{\fdg}5$ used in the previous sections.
 We do not mask PS within $10^\circ$ from the GC.
 Instead, we include independent templates for 40 sources with largest flux between 10 and 100 GeV
 taken from the column ``Flux10000\_100000'' in the 3FGL catalog.

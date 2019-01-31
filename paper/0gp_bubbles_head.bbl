@@ -1,4 +1,4 @@
-\begin{thebibliography}{67}
+\begin{thebibliography}{74}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -109,10 +109,6 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
 {Ackermann}, M., {Ajello}, M., {Allafort}, A., {et~al.} 2011, Science, 334,
   1103
 
-\bibitem[{{Ackermann} {et~al.}(2012){Ackermann}, {Ajello}, {Atwood},
-  {et~al.}}]{2012ApJ...750....3A}
-{Ackermann}, M., {Ajello}, M., {Atwood}, W.~B., {et~al.} 2012, \apj, 750, 3
-
 \bibitem[{{Ackermann} {et~al.}(2014){Ackermann}, {Albert}, {Atwood},
   {et~al.}}]{2014ApJ...793...64A}
 {Ackermann}, M., {Albert}, A., {Atwood}, W.~B., {et~al.} 2014, \apj, 793, 64
@@ -133,6 +129,11 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   Almeida}, {et~al.}}]{2008PhRvL.101z1104A}
 {Aharonian}, F., {Akhperjanian}, A.~G., {Barres de Almeida}, U., {et~al.} 2008,
   Physical Review Letters, 101, 261104
+
+\bibitem[{{Aharonian} {et~al.}(2018){Aharonian}, {Peron}, {Yang}, {Casanova},
+  \& {Zanin}}]{2018arXiv181112118A}
+{Aharonian}, F., {Peron}, G., {Yang}, R., {Casanova}, S., \& {Zanin}, R. 2018,
+  arXiv e-prints, arXiv:1811.12118
 
 \bibitem[{{Ambrogi} {et~al.}(2018){Ambrogi}, {Celli}, \&
   {Aharonian}}]{2018APh...100...69A}
@@ -204,6 +205,9 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
 \bibitem[{{Calore} {et~al.}(2015){Calore}, {Cholis}, \&
   {Weniger}}]{Calore:2014xka}
 {Calore}, F., {Cholis}, I., \& {Weniger}, C. 2015, \jcap, 3, 038
+
+\bibitem[{{Casandjian}(2015)}]{2015ApJ...806..240C}
+{Casandjian}, J.-M. 2015, \apj, 806, 240
 
 \bibitem[{{Castro} {et~al.}(2013){Castro}, {Slane}, {Carlton}, \&
   {Figueroa-Feliciano}}]{2013ApJ...774...36C}
@@ -284,6 +288,15 @@ Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
 {Mostafa}, M., {BenZvi}, S., {Schoorlemmer}, H., {Sch\"ussler}, F., {et~al.}
   2017, in APS April Meeting Abstracts, R4.005
 
+\bibitem[{{Neronov} {et~al.}(2017){Neronov}, {Malyshev}, \&
+  {Semikoz}}]{2017A&A...606A..22N}
+{Neronov}, A., {Malyshev}, D., \& {Semikoz}, D.~V. 2017, \aap, 606, A22
+
+\bibitem[{{Niederwanger} {et~al.}(2019){Niederwanger}, {Reimer}, {Kissmann},
+  {Strong}, {Popescu}, \& {Tuffs}}]{2019APh...107....1N}
+{Niederwanger}, F., {Reimer}, O., {Kissmann}, R., {et~al.} 2019, Astroparticle
+  Physics, 107, 1
+
 \bibitem[{{Orlando} \& {Strong}(2008)}]{2008A&A...480..847O}
 {Orlando}, E. \& {Strong}, A.~W. 2008, \aap, 480, 847
 
@@ -297,6 +310,10 @@ Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
   {Cuadra}, {Alexander}, \& {Sternberg}}]{2006ApJ...643.1011P}
 {Paumard}, T., {Genzel}, R., {Martins}, F., {et~al.} 2006, \apj, 643, 1011
 
+\bibitem[{{Popescu} {et~al.}(2017){Popescu}, {Yang}, {Tuffs}, {Natale},
+  {Rushton}, \& {Aharonian}}]{2017MNRAS.470.2539P}
+{Popescu}, C.~C., {Yang}, R., {Tuffs}, R.~J., {et~al.} 2017, \mnras, 470, 2539
+
 \bibitem[{{Porter} {et~al.}(2017){Porter}, {J{\'o}hannesson}, \&
   {Moskalenko}}]{2017ApJ...846...67P}
 {Porter}, T.~A., {J{\'o}hannesson}, G., \& {Moskalenko}, I.~V. 2017, \apj, 846,
@@ -306,12 +323,20 @@ Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
   {et~al.}}]{Porter:2008ve}
 Porter, T.~A., Moskalenko, I.~V., Strong, A.~W., {et~al.} 2008, \apj, 682, 400
 
+\bibitem[{{Prokhorov} \& {Colafrancesco}(2018)}]{2018MNRAS.478.2939P}
+{Prokhorov}, D.~A. \& {Colafrancesco}, S. 2018, \mnras, 478, 2939
+
 \bibitem[{Ptuskin {et~al.}(2006)Ptuskin, Moskalenko, Jones,
   {et~al.}}]{Ptuskin:2005ax}
 Ptuskin, V., Moskalenko, I.~V., Jones, F., {et~al.} 2006, \apj, 642, 902
 
 \bibitem[{{Razzaque} \& {Yang}(2018)}]{2018Galax...6...47R}
 {Razzaque}, S. \& {Yang}, L. 2018, Galaxies, 6, 47
+
+\bibitem[{{Remy} {et~al.}(2017){Remy}, {Grenier}, {Marshall}, \&
+  {Casandjian}}]{2017A&A...601A..78R}
+{Remy}, Q., {Grenier}, I.~A., {Marshall}, D.~J., \& {Casandjian}, J.~M. 2017,
+  \aap, 601, A78
 
 \bibitem[{{Rohlfs} {et~al.}(1959){Rohlfs}, {Schrick}, \&
   {Stock}}]{1959ZA.....47...15R}
@@ -370,6 +395,10 @@ Vladimirov, A.~E., Digel, S.~W., Johannesson, G., {et~al.} 2011,
 
 \bibitem[{Wolleben(2007)}]{Wolleben:2007pq}
 Wolleben, M. 2007, \apj, 664, 349
+
+\bibitem[{{Yang} {et~al.}(2016){Yang}, {Aharonian}, \&
+  {Evoli}}]{2016PhRvD..93l3007Y}
+{Yang}, R., {Aharonian}, F., \& {Evoli}, C. 2016, \prd, 93, 123007
 
 \bibitem[{{Yusef-Zadeh} {et~al.}(2009){Yusef-Zadeh}, {Hewitt}, {Arendt},
   {et~al.}}]{2009ApJ...702..178Y}
