@@ -1,6 +1,6 @@
 # tests of gamma-ray spectra library
-# source 
 # python gamma_spectra_tests.py
+
 import numpy as np
 from matplotlib import pyplot
 import os
@@ -13,7 +13,7 @@ if not os.path.isdir(folder):
     os.mkdir(folder)
 
 index = -2.
-cutoff_power = 5.
+cutoff_power = 5. + np.log10(5.)
 
 npts = 200
 
