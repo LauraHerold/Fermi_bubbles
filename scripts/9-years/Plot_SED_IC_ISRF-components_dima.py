@@ -28,6 +28,7 @@ acc_matrix = True
 
 fit_IC  = True
 fit_pi0 = True
+alt_IRF = True
 
 Ecut_inv_min0 = 1.e-6
 Ecut_inv_min = 2.e-6
@@ -253,11 +254,17 @@ hdu = pyfits.open(IRFmap_fn)                                                    
 wavelengths = hdu[1].data.field('Wavelength') * 1.e-6                                       # in m
 E_irf_galaxy = c_light * h_Planck / wavelengths[::-1]                                       # Convert wavelength in eV, invert order
 
-transition_bin_IR_starlight = 73 * 4 - 1 # Energy = 0.1 eV
+E_SL2IR_transition = 0.1 # transition energy between IR and starlight - 0.1 eV
+transition_bin_IR_starlight = np.argmin(np.abs(E_irf_galaxy - E_SL2IR_transition))
 print "transition energy IR - starlght: ", E_irf_galaxy[transition_bin_IR_starlight]
-
+#transition_bin_IR_starlight0 = 73 * 4 - 1 # Energy = 0.1 eV
+#print "transition energy IR - starlght old: ", E_irf_galaxy[transition_bin_IR_starlight0]
 
 EdNdE_irf_galaxy = hdu[1].data.field('Total')[::-1] / E_irf_galaxy                          # in 1/cm^3. Since unit of 'Total': eV/cm^3
+
+if alt_IRF:
+    EdNdE_irf_galaxy *= 10
+
 dlogE_irf = 0.0230258509299398                                                              # Wavelength bin size
 
 E_irf = np.e**np.arange(np.log(E_irf_galaxy[len(E_irf_galaxy)-1]), -6.* np.log(10.), -dlogE_irf)[:0:-1] # CMB-energies array with same log bin size as IRF_galaxy in eV
@@ -534,6 +541,8 @@ if Save_plot:
     pyplot.title(r'$b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2))
 
     name = 'SED_ISRF_components'+ input_data +'_' + data_class + '_' + str(int(Bc[b]))
+    if alt_IRF:
+        name += '_altIRF'
     fn = plot_dir + name + fn_ending
     pyplot.xscale('log')
     pyplot.yscale('log')
