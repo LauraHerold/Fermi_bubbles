@@ -1,5 +1,5 @@
 """ Plots the SED of all latitude stripes necessary to observe the Fermi bubbles. """
-# python Plot_SED_IC_ISRF-components_dima.py
+# python Plot_SED_IC_ISRF-components_dima.py -o0
 
 import numpy as np
 import pyfits
@@ -28,7 +28,7 @@ acc_matrix = True
 
 fit_IC  = True
 fit_pi0 = True
-alt_IRF = True
+alt_IRF = 1
 
 Ecut_inv_min0 = 1.e-6
 Ecut_inv_min = 2.e-6
@@ -74,7 +74,7 @@ R_GC = 8.5 * kpc2cm # cm
 V_ROI_tot = 4.e64 #cm^3
 line_of_sight = 1.5 * kpc2cm
 dOmega_tot = 0.012   # dOmega of unmasked ROI
-
+mk2m = 1.e-6
 
 lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
 
@@ -135,6 +135,7 @@ Bc = dct['4) Center_of_lat_bins']
 Es = np.asarray(dct['5) Energy_bins'])
 diff_profiles = dct['6) Differential_flux_profiles']
 std_profiles = dct['7) Standard_deviation_profiles']
+
 
 print "diff_profiles: ", diff_profiles[7][0]
 
@@ -245,13 +246,12 @@ b = latitude
 
 print "Bc[b]: ",  Bc[b]
 auxil.setup_figure_pars(plot_type = 'spectrum')
-pyplot.figure()
 colour_index = 0
 
 
 IRFmap_fn = '../../data/ISRF_flux/Standard_0_0_' + str(ISFR_heights[b]) + '_Flux.fits.gz'   # Model for the ISRF
 hdu = pyfits.open(IRFmap_fn)                                                                # Physical unit of field: 'micron'
-wavelengths = hdu[1].data.field('Wavelength') * 1.e-6                                       # in m
+wavelengths = hdu[1].data.field('Wavelength') * mk2m                                       # in m
 E_irf_galaxy = c_light * h_Planck / wavelengths[::-1]                                       # Convert wavelength in eV, invert order
 
 E_SL2IR_transition = 0.1 # transition energy between IR and starlight - 0.1 eV
@@ -260,11 +260,25 @@ print "transition energy IR - starlght: ", E_irf_galaxy[transition_bin_IR_starli
 #transition_bin_IR_starlight0 = 73 * 4 - 1 # Energy = 0.1 eV
 #print "transition energy IR - starlght old: ", E_irf_galaxy[transition_bin_IR_starlight0]
 
-EdNdE_irf_galaxy = hdu[1].data.field('Total')[::-1] / E_irf_galaxy                          # in 1/cm^3. Since unit of 'Total': eV/cm^3
+ld_dUdld = hdu[1].data.field('Total')
 
 if alt_IRF:
-    EdNdE_irf_galaxy *= 10
+    #EdNdE_irf_galaxy *= 10
+    ld_dUdld0 = 1. * ld_dUdld
+    isrf = auxil.get_popescu_isrf(field='total')
+    wavelengths_mkm = wavelengths / mk2m
+    ld_dUdld = isrf(wavelengths_mkm)
+    if 0:
+        pyplot.figure()
+        pyplot.loglog(wavelengths_mkm, ld_dUdld0)
+        pyplot.loglog(wavelengths_mkm, ld_dUdld, ls='--')
+        pyplot.loglog(wavelengths_mkm, auxil.get_popescu_isrf(field='SL')(wavelengths_mkm), ls='-.')
+        pyplot.loglog(wavelengths_mkm, auxil.get_popescu_isrf(field='IR')(wavelengths_mkm), ls=':')
+        pyplot.ylim(0.001, 2000)
+        pyplot.show()
+        exit()
 
+EdNdE_irf_galaxy = ld_dUdld[::-1] / E_irf_galaxy                          # in 1/cm^3. Since unit of 'Total': eV/cm^3
 dlogE_irf = 0.0230258509299398                                                              # Wavelength bin size
 
 E_irf = np.e**np.arange(np.log(E_irf_galaxy[len(E_irf_galaxy)-1]), -6.* np.log(10.), -dlogE_irf)[:0:-1] # CMB-energies array with same log bin size as IRF_galaxy in eV
@@ -280,7 +294,8 @@ EdNdE_irf_galaxy = np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), EdNdE_irf_g
 
 EdNdE_irf = EdNdE_CMB + EdNdE_irf_galaxy # Differential flux in 1/cm^3 
 
-    
+
+pyplot.figure()
 for l in [0]:
     V_ROI = dOmega[b][l] * R_GC**2 * line_of_sight
 

@@ -15,6 +15,8 @@ from matplotlib import transforms
 import pyfits
 import healpy
 from sets import Set
+from scipy import interpolate
+
 
 
 #import upix
@@ -1385,4 +1387,28 @@ def select_ebins(Es, cdict, name='low_energy', plotting=0):
     imin = num.findIndex(Es, E_min)
     imax = num.findIndex(Es, E_max)
     return range(imin, imax)
+
+
+def get_popescu(field):
+    fn = '../../data/ISRF_popescu/ISRF/ldUld_r0pc_z0pc_%s.csv' % field
+    data = np.loadtxt(fn, delimiter=',', skiprows=1).T
+    return interpolate.interp1d(data[0], data[1], kind='linear',
+                                bounds_error=False, fill_value=0.)
+
+def get_popescu_isrf(field='total'):
+    """
+        INPUT:
+            field - 'total', 'IR', 'SL'
+    """
+    if field in ['IR', 'SL']:
+        return get_popescu(field)
+    elif field == 'total':
+        f1 = get_popescu('IR')
+        f2 = get_popescu('SL')
+        def f(x):
+            return f1(x) + f2(x)
+        return f
+    else:
+        return None
+
 
