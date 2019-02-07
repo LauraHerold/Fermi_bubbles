@@ -55,12 +55,12 @@ def setup_figure_pars(spectrum=False, plot_type=None):
         fig_height = 6    # height in inches
 
     fig_size =  [fig_width, fig_height]
-    params = {'axes.labelsize': 20,
-              'axes.titlesize': 20,
-              'font.size': 16,
-              'legend.fontsize': 15,
-              'xtick.labelsize':18,
-              'ytick.labelsize':18,
+    params = {'axes.labelsize': 25, #unit
+              'axes.titlesize': 25,  #title
+              'font.size': 10,
+              'legend.fontsize': 10,
+              'xtick.labelsize':18, #ticks
+              'ytick.labelsize':10,
               #'text.usetex': True,
               #'figure.figsize': fig_size,
               'xtick.major.size' : 6,
