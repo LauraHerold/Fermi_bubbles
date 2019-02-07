@@ -268,7 +268,7 @@ if alt_IRF:
     isrf = auxil.get_popescu_isrf(field='total')
     wavelengths_mkm = wavelengths / mk2m
     ld_dUdld = isrf(wavelengths_mkm)
-    if 0:
+    if 1:
         pyplot.figure()
         pyplot.loglog(wavelengths_mkm, ld_dUdld0)
         pyplot.loglog(wavelengths_mkm, ld_dUdld, ls='--')
