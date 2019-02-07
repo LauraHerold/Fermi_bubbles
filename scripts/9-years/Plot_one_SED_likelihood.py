@@ -1,4 +1,5 @@
 """ Plots the SED of all latitude stripes necessary to observe the Fermi bubbles. """
+# python Plot_one_SED_likelihood.py
 
 import numpy as np
 import pyfits
@@ -27,8 +28,9 @@ acc_matrix = True
 
 fit_plaw = False
 fit_logpar = False
-fit_IC  = False
-fit_pi0 = True
+fit_IC  = True
+fit_pi0 = False
+alt_IRF = 1
 
 parser = OptionParser()
 parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
@@ -54,13 +56,16 @@ if str(options.cutoff) == "True":
     print_contour = False
     print_upper_limits_Ecut = False
 
-
 Save_as_dct = True 
 Save_plot = True
 without_last_data_point = False
 
 
 ########################################################################################################################## Constants
+
+if alt_IRF:
+    fn_ending = fn_ending.replace('.pdf', '_altIRF.pdf')
+    dct_fn_ending = dct_fn_ending.replace(".yaml", "_altIRF.yaml")
 
 
 kpc2cm = 3.086e21
@@ -69,6 +74,7 @@ V_ROI_tot = 4.e64 #cm^3
 line_of_sight = 1.5 * kpc2cm
 dOmega_tot = 0.012   # dOmega of unmasked ROI
 upper_bound = 0
+mk2m = 1.e-6
 
 lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
 
@@ -242,24 +248,41 @@ auxil.setup_figure_pars(plot_type = 'spectrum')
 pyplot.figure()
 colour_index = 0
 
-
-IRFmap_fn = '../../data/ISRF_flux/Standard_0_0_' + str(ISFR_heights[b]) + '_Flux.fits.gz'   # Model for the ISRF
+# Model for the ISRF
+IRFmap_fn = '../../data/ISRF_flux/Standard_0_0_%s_Flux.fits.gz' \
+                % (str(ISFR_heights[b]))
 hdu = pyfits.open(IRFmap_fn)                                                                # Physical unit of field: 'micron'
-wavelengths = hdu[1].data.field('Wavelength') * 1.e-6                                       # in m
+wavelengths = hdu[1].data.field('Wavelength') * mk2m                                       # in m
 E_irf_galaxy = c_light * h_Planck / wavelengths[::-1]                                       # Convert wavelength in eV, invert order
 
-transition_bin_IR_starlight = 73 * 4 - 1 # Energy = 0.1 eV
+
+ld_dUdld = hdu[1].data.field('Total')
+
+if alt_IRF:
+    #EdNdE_irf_galaxy *= 10
+    #ld_dUdld0 = 1. * ld_dUdld
+    isrf = auxil.get_popescu_isrf(field='total')
+    wavelengths_mkm = wavelengths / mk2m
+    ld_dUdld = isrf(wavelengths_mkm)
+
+
+EdNdE_irf_galaxy = ld_dUdld[::-1] / E_irf_galaxy # in 1/cm^3. Since unit of 'Total': eV/cm^3
+dlogE_irf = 0.0230258509299398 # Wavelength bin size
+
+# CMB-energies array with same log bin size as IRF_galaxy in eV
+E_irf = np.exp(np.arange(np.log(E_irf_galaxy[len(E_irf_galaxy)-1]),
+                        -6.* np.log(10.), -dlogE_irf)[:0:-1])
+
+E_transition = 0.1
+transition_bin_IR_starlight = np.argmin(np.abs(E_transition - E_irf_galaxy))
 print "transition energy IR - starlght: ", E_irf_galaxy[transition_bin_IR_starlight]
-
-
-EdNdE_irf_galaxy = hdu[1].data.field('Total')[::-1] / E_irf_galaxy                          # in 1/cm^3. Since unit of 'Total': eV/cm^3
 EdNdE_irf_IR = EdNdE_irf_galaxy[0:transition_bin_IR_starlight]
 EdNdE_irf_starlight = EdNdE_irf_galaxy[transition_bin_IR_starlight:]
-dlogE_irf = 0.0230258509299398                                                              # Wavelength bin size
 
-E_irf = np.e**np.arange(np.log(E_irf_galaxy[len(E_irf_galaxy)-1]), -6.* np.log(10.), -dlogE_irf)[:0:-1] # CMB-energies array with same log bin size as IRF_galaxy in eV
-irf_CMB = gamma_spectra.thermal_spectrum(T_CMB)                                             # Use thermal_spectrum from gamma_spectra.py, returns IRF in eV/cm^3
-EdNdE_CMB = irf_CMB(E_irf) / E_irf                                                          # in 1/cm^3
+
+# Use thermal_spectrum from gamma_spectra.py, returns IRF in eV/cm^3
+irf_CMB = gamma_spectra.thermal_spectrum(T_CMB)
+EdNdE_CMB = irf_CMB(E_irf) / E_irf # in 1/cm^3
 
 #EdNdE_irf_IR =  EdNdE_irf_galaxy[0:transition_bin_IR_starlight]
 #EdNdE_irf_starlight = EdNdE_irf_galaxy[transition_bin_IR_starlight:]
@@ -776,6 +799,8 @@ if Save_plot:
     pyplot.xscale('log')
     pyplot.yscale('log')
     pyplot.ylim((5.e-8,4.e-4))
+    print 'save the figure to file'
+    print fn
     pyplot.savefig(fn, format = 'pdf')
 
 
