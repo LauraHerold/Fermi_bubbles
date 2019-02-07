@@ -106,11 +106,11 @@ for highE in (0,1,2):
     emax = Es[binmax] * np.exp(delta/2)
 
     auxil.setup_figure_pars(plot_type = 'map')
-    pyplot.rcParams['figure.figsize'] = [6,4]
-    pyplot.rcParams['axes.labelsize'] = 30 # 30
-    pyplot.rcParams['axes.titlesize'] = 20 # 20
-    pyplot.rcParams['xtick.labelsize'] = 15 # 15
-    print pyplot.rcParams['figure.figsize']
+    #pyplot.rcParams['figure.figsize'] = [6,4]
+    #pyplot.rcParams['axes.labelsize'] = 20 # 30
+    #pyplot.rcParams['axes.titlesize'] = 20 # 20
+    #pyplot.rcParams['xtick.labelsize'] = 20 # 15
+    #print pyplot.rcParams['figure.figsize']
     
     title = r'$E = %.0f$' %emin + r'$ - %.0f\ \mathrm{GeV}$' %emax
     
@@ -130,25 +130,27 @@ for highE in (0,1,2):
     if log_plot:
         plot_map = np.maximum(plot_map, 10**scale_min[highE])
         plot_map = np.log10(plot_map)
-    healpy.mollview(plot_map, unit=unit, title=title,  min=scale_min[highE], max=scale_max[highE],
-                         cmap=cmap, xsize=1500)
+    healpy.mollview(plot_map, title=title, cmap= cmap, min = scale_min[highE], max = scale_max[highE], cbar=None, xsize=1500)
+    ticks = np.linspace(scale_min[highE], scale_max[highE], 4)
+    auxil.add_mollview_colorbar(plot_map, label=unit, ticks = ticks)
+
+    auxil.setup_figure_pars(plot_type = 'map')
     #print ax
-    fontsize = 20
-    pyplot.rcParams['figure.figsize'] = [12,8]
-    pyplot.rcParams['axes.labelsize'] = 30
-    pyplot.rcParams['axes.titlesize'] = fontsize
-    pyplot.rcParams['xtick.labelsize'] = 15
-    print pyplot.rcParams['figure.figsize']
+    #fontsize = 20
+    #pyplot.rcParams['figure.figsize'] = [12,8]
+    #pyplot.rcParams['axes.labelsize'] = fontsize
+    #pyplot.rcParams['axes.titlesize'] = fontsize
+    #pyplot.rcParams['xtick.labelsize'] = fontsize
+    #print pyplot.rcParams['figure.figsize']
 
     # part that changes the size of the font for the unit
-    CbAx = pyplot.gcf().get_children()[2]
-    unit_text_obj = CbAx.get_children()[1]
-    unit_text_obj.set_fontsize(fontsize)
+    #CbAx = pyplot.gcf().get_children()[2]
+    #unit_text_obj = CbAx.get_children()[1]
+    #unit_text_obj.set_fontsize(fontsize)
 
     #pyplot.colorbar().set_label(label=unit, size=30, weight='bold')
     healpy.graticule(dpar=10., dmer=10.)
     save_fn = '../../plots/Plots_9-year/Mollweide_data_source_range_'+ str(highE) + '.pdf'
-
 
     if save_plots:
         print 'save figure to file:'

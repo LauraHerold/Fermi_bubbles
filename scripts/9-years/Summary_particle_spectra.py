@@ -20,6 +20,7 @@ latitude = int(options.latitude)
 particles = str(options.particles)
 
 fn_ending = ".pdf"
+Save_dct = True
 
 Es = 10**np.arange(1,5,0.25)
 
@@ -81,10 +82,10 @@ else: # units: 1/GeVcm^3s
 factor = Es**2 * speed_of_light / 4. / np.pi
 
 print dct_boxes['N_0']
-print dct_boxes['2) gamma']
-print dct_boxes['3) E_cut']
+print dct_boxes['gamma']
+print dct_boxes['E_cut']
 
-plaw_boxes = factor * plaw(dct_boxes['N_0'], dct_boxes['2) gamma'], dct_boxes['3) E_cut'])(Es)
+plaw_boxes = factor * plaw(dct_boxes['N_0'], dct_boxes['gamma'], dct_boxes['E_cut'])(Es)
 plaw_lowE = factor * plaw(dct_lowE['N_0'], dct_lowE['2) gamma'], dct_lowE['3) E_cut'])(Es)
 plaw_GALPROP = factor * plaw(dct_GALPROP['N_0'], dct_GALPROP['2) gamma'], dct_GALPROP['3) E_cut'])(Es)
 plaw_boxes1 = factor * plaw(dct_boxes1['N_0'], dct_boxes1['gamma'], dct_boxes1['E_cut'])(Es)
@@ -221,4 +222,16 @@ pyplot.yscale('log')
 #pyplot.ylim((1.e-8,4.e-4))
 pyplot.savefig(fn, format = 'pdf')
 
+if Save_dct:
+    dct = {"x: energies" : Es}
+    if particles == "electrons":
+        dct_fn = "plot_dct/Low_energy_range0/Summary_electron_spectrum_source_plaw_l=" + str(Lc[l]) + "_b=" + str(Bc[b])  + ".yaml"
+        dct["Comment: "] = "Min and max best-fit electron spectra assuming a lecptonic scenario for the different models (taking only the baseline low-energy range into account)."
+    else:
+        dct_fn = "plot_dct/Low_energy_range0/Summary_proton_spectrum_source_plaw_l=" + str(Lc[l]) + "_b=" + str(Bc[b])  +  ".yaml"
+        dct["Comment: "] = "Min and max best-fit proton spectra assuming a hadronic scenario for the different models (taking only the baseline low-energy range into account)."
+        
+    dct["y: flux_max"] = np.array(syst_max)
+    dct["y: flux_min"] = np.array(syst_min)
+    dio.saveyaml(dct, dct_fn, expand = True)
 

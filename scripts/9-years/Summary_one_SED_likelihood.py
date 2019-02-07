@@ -21,14 +21,17 @@ from scipy import special
 
 latitude = 7   # 7 is GP
 
-fit_plaw = False
+fit_plaw = True
 fit_IC  = False
-fit_pi0 = True
+fit_pi0 = False
 
 
-fn_ending = "_E_95.pdf"
+fn_ending = ".pdf"
+dct_fn_ending = ".yaml"
 cutoff = True
 no_accurate_matrix = False
+
+Save_dct = True
 
 
 
@@ -288,7 +291,9 @@ for l in [0, 1]:
 
     ls = "-"
     maxmin = "Max: "
-    for sig_counts in [syst_max_counts]:
+    maxmin_label = "max"
+    dct = {"x: energies" : Es[fitmin:fitmax]}
+    for sig_counts in [syst_max_counts, syst_min_counts]:
         background_counts = total_data_counts - sig_counts
 
 
@@ -317,7 +322,11 @@ for l in [0, 1]:
             N_0, gamma  = m.values["N_0"], m.values["gamma"]
                 
             label =  r"PL: $\gamma = %.2f$" %(gamma+2)
-            
+
+            TS_nocut = -2. * np.sum((total_data_counts[E] * np.log(background_counts[E] + flux_plaw_in_counts(N_0, gamma)(E)) - (background_counts[E] + flux_plaw_in_counts(N_0, gamma)(E))) for E in range(fitmin,fitmax))
+            TS = TS_nocut
+        
+            dct_fn = "plot_dct/Min_max_rectangles_source_plaw_l=" + str(Lc[l]) + "_b=" + str(Bc[b]) + dct_fn_ending
             if cutoff:
                 while True:
                     Ecut_inv = np.random.random(1) * 1.e-1
@@ -326,9 +335,13 @@ for l in [0, 1]:
                     m.migrad()
                     N_0, gamma, Ecut_inv  = m.values["N_0"], m.values["gamma"], m.values["Ecut_inv"]
                     sgm_Ecut = m.errors["Ecut_inv"]
+                    
+                    dct_fn = "plot_dct/Min_max_rectangles_plaw_source_cutoff_l=" + str(Lc[l]) + "_b=" + str(Bc[b])  + dct_fn_ending
+                    dct["E_cut" + maxmin_label] = 1./Ecut_inv
+                    dct["sgm_E_cut" + maxmin_label] = - m.errors["Ecut_inv"] / Ecut_inv**2
                     if m.matrix_accurate():
                         break
-                
+                    
                 print "%"
                 print "N_0: ", N_0
                 print "gamma: ", (2+gamma)
@@ -342,9 +355,13 @@ for l in [0, 1]:
                     
                 else:
                     label = maxmin + r"$\gamma = %.2f$" %(gamma+2)
+                TS_cut = -2. * np.sum((total_data_counts[E] * np.log(background_counts[E] + flux_plaw_in_counts(N_0, gamma, Ecut_inv)(E)) - (background_counts[E] + flux_plaw_in_counts(N_0, gamma, Ecut_inv)(E))) for E in range(fitmin,fitmax))
+                TS = TS_cut
+                print r"$-2\Delta\log(L) = $", TS_nocut, " - ", TS_cut, " = ", (TS_nocut - TS_cut)
                    
 
             flux_plaw = [plaw(N_0, gamma, Ecut_inv)(E) for E in range(fitmin,fitmax)]
+
 
             #print "sig_counts: ", sig_counts[fitmin:fitmax]
             #print "flux_plaw in coutns: ", [flux_plaw_in_counts(N_0, gamma, Ecut_inv)(E) for E in range(fitmin,fitmax)]
@@ -353,8 +370,25 @@ for l in [0, 1]:
 
             
             pyplot.errorbar(Es[fitmin:fitmax], flux_plaw, label = label, color = colours[index], ls = ls)
+
+            if Save_dct:
+                      
+                dct["y: flux_best_fit_plaw_" + maxmin_label] = np.array(flux_plaw)
+                dct["-logL_"+ maxmin_label] = TS
+
+                dct["N_0_" + maxmin_label] = N_0
+                dct["gamma_" + maxmin_label] = (gamma + 2)
+                dct["-2 Delta logL_" + maxmin_label] = (TS_nocut - TS_cut)
+                dct["lower bound E_cut_"+maxmin_label] = (1./upper_bound)
+                dct["sgm_N_0_" + maxmin_label] = m.errors["N_0"]
+                dct["sgm_gamma_" + maxmin_label] = m.errors["gamma"]
+                
+
+            
             ls = "--"
             maxmin = "Min: "
+            maxmin_label = "min"
+                        
 
 
                 
@@ -399,8 +433,7 @@ for l in [0, 1]:
                 print "%"
                 
 
-            #CHANGE!!!!!!
-            flux_IC = [(IC_model(N_0, gamma, upper_bound)(E) * Es[E]**2 / dOmega[b][l] / deltaE[E] / expo_map[E]) for E in range(fitmin,fitmax)]
+            flux_IC = [(IC_model(N_0, gamma, Ecut_inv)(E) * Es[E]**2 / dOmega[b][l] / deltaE[E] / expo_map[E]) for E in range(fitmin,fitmax)]
 
             pyplot.errorbar(Es[fitmin:fitmax], flux_IC, color = colours[index], ls = ':')
 
@@ -450,8 +483,7 @@ for l in [0, 1]:
                 print "E_95%:  ", (1/upper_bound), r" GeV"
                 print "%"
 
-            #CHANGE!!!!
-            flux_pi0 = [(pi0_model(N_0, gamma, upper_bound)(E) * Es[E]**2 / dOmega[b][l] / deltaE[E] / expo_map[E]) for E in range(fitmin,fitmax)]
+            flux_pi0 = [(pi0_model(N_0, gamma, Ecut_inv)(E) * Es[E]**2 / dOmega[b][l] / deltaE[E] / expo_map[E]) for E in range(fitmin,fitmax)]
         
             pyplot.errorbar(Es[fitmin:fitmax], flux_pi0, color = colours[index], ls = '-.')
 
@@ -459,6 +491,12 @@ for l in [0, 1]:
 
     
     print "++++++++++++++++++++++++++++++++++++++++++----------------------------+++++++++++++++++++++++++++++++++++++++++"
+    if Save_dct:
+        dct["Comment: "] = "Min and max model of the FBs for all foreground models considered. Parametric model of min and max described by a powerlaw with spectral index gamma, normalization N_0 and a cutoff E_cut. The corresponding errors output by iminuit are sgm_gamma, sgm_N_0, sgm_E_cut. The 95-percent confidence limit on the cutoff is lower bound E_cut. -2 Delta logL quantifies the difference in likelihood between the powerlaw with and without a cutoff."
+        dct["y: flux_min"] = np.array(syst_min)
+        dct["y: flux_max"] = np.array(syst_max)
+        dio.saveyaml(dct, dct_fn, expand = True)
+        
 
 
             
@@ -487,11 +525,12 @@ for l in [0, 1]:
     pyplot.xscale('log')
     pyplot.yscale('log')
     pyplot.ylim((1.e-8,1.e-4))
-    pyplot.savefig(fn, format = 'pdf')
+    pyplot.savefig(fn, format = 'pdf')   
 
     index += 1
-    
 
+    
+    
                     
 
 

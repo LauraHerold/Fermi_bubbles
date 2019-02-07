@@ -25,10 +25,10 @@ print_upper_limits_Ecut = False
 no_accurate_matrix = False
 acc_matrix = True
 
-fit_plaw = True
+fit_plaw = False
 fit_logpar = False
 fit_IC  = False
-fit_pi0 = False
+fit_pi0 = True
 
 parser = OptionParser()
 parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
@@ -45,14 +45,23 @@ latitude = int(options.latitude)
 
 
 fn_ending = ".pdf"
-dct_fn_ending = "without_last_data_point.yaml"
+dct_fn_ending = ".yaml"
 cutoff = False
 if str(options.cutoff) == "True":
     cutoff = True
-    fn_ending = "_E_95.pdf"
+    fn_ending = "_cutoff.pdf"
     #print_total_energy_output = False
     print_contour = False
     print_upper_limits_Ecut = False
+
+
+Save_as_dct = True 
+Save_plot = True
+without_last_data_point = False
+
+
+########################################################################################################################## Constants
+
 
 kpc2cm = 3.086e21
 R_GC = 8.5 * kpc2cm # cm
@@ -61,14 +70,8 @@ line_of_sight = 1.5 * kpc2cm
 dOmega_tot = 0.012   # dOmega of unmasked ROI
 upper_bound = 0
 
-########################################################################################################################## Constants
-
-
 lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
 
-Save_as_dct = True
-Save_plot = True
-without_last_data_point = True
 
     
 fitmin = 3
@@ -239,19 +242,30 @@ auxil.setup_figure_pars(plot_type = 'spectrum')
 pyplot.figure()
 colour_index = 0
 
-    
+
 IRFmap_fn = '../../data/ISRF_flux/Standard_0_0_' + str(ISFR_heights[b]) + '_Flux.fits.gz'   # Model for the ISRF
 hdu = pyfits.open(IRFmap_fn)                                                                # Physical unit of field: 'micron'
 wavelengths = hdu[1].data.field('Wavelength') * 1.e-6                                       # in m
 E_irf_galaxy = c_light * h_Planck / wavelengths[::-1]                                       # Convert wavelength in eV, invert order
+
+transition_bin_IR_starlight = 73 * 4 - 1 # Energy = 0.1 eV
+print "transition energy IR - starlght: ", E_irf_galaxy[transition_bin_IR_starlight]
+
+
 EdNdE_irf_galaxy = hdu[1].data.field('Total')[::-1] / E_irf_galaxy                          # in 1/cm^3. Since unit of 'Total': eV/cm^3
+EdNdE_irf_IR = EdNdE_irf_galaxy[0:transition_bin_IR_starlight]
+EdNdE_irf_starlight = EdNdE_irf_galaxy[transition_bin_IR_starlight:]
 dlogE_irf = 0.0230258509299398                                                              # Wavelength bin size
 
 E_irf = np.e**np.arange(np.log(E_irf_galaxy[len(E_irf_galaxy)-1]), -6.* np.log(10.), -dlogE_irf)[:0:-1] # CMB-energies array with same log bin size as IRF_galaxy in eV
 irf_CMB = gamma_spectra.thermal_spectrum(T_CMB)                                             # Use thermal_spectrum from gamma_spectra.py, returns IRF in eV/cm^3
 EdNdE_CMB = irf_CMB(E_irf) / E_irf                                                          # in 1/cm^3
 
-EdNdE_irf = EdNdE_CMB + np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), EdNdE_irf_galaxy) # Differential flux in 1/cm^3 
+#EdNdE_irf_IR =  EdNdE_irf_galaxy[0:transition_bin_IR_starlight]
+#EdNdE_irf_starlight = EdNdE_irf_galaxy[transition_bin_IR_starlight:]
+EdNdE_irf_galaxy = np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), EdNdE_irf_galaxy)
+
+EdNdE_irf = EdNdE_CMB + EdNdE_irf_galaxy # Differential flux in 1/cm^3 
 
     
 for l in [0, 1]:
@@ -282,13 +296,14 @@ for l in [0, 1]:
     std_total_map = std_total_map[len(std_total_map)-nE:]
     print "len(total_data_profiles)-nE: ", (len(total_data_profiles)-nE)
     background_map = total_data_map - map
+    print std_map
 
     print "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     print "map: ", map
         
-    for E in range(nE):
-        if np.abs(std_map[E]) < 1.:
-            std_map[E] = 1.
+    #for E in range(nE):
+    #    if np.abs(std_map[E]) < 1.:
+    #        std_map[E] = 1.
                 
     label = r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r', $%i^\circ)$' % (Lc[l] + dL/2)
 
@@ -312,7 +327,7 @@ for l in [0, 1]:
         print "-  -  -  -  -  -  -  -  -  -      Powerlaw      -  -  -  -  -  -  -  -  -  -  -  -  -  -"
         print " "
 
-        dct = {"x" : Es[fitmin:fitmax]}
+        dct = {"x: energies" : Es[fitmin:fitmax]}
         N_0, gamma, Ecut_inv = 8.e-6, 0.1,0
 
         fit = likelihood1(flux_plaw_in_counts, background_map, total_data_map)        # First fit
@@ -325,9 +340,7 @@ for l in [0, 1]:
         m.migrad()
         N_0, gamma  = m.values["N_0"], m.values["gamma"]
         #cov = m.matrix()
-
-        
-        TS_nocut = -2. * np.sum((total_data_map[E] * np.log(background_map[E] + IC_model(N_0, gamma)(E)) - (background_map[E] + IC_model(N_0, gamma)(E))) for E in range(fitmin,fitmax))    
+   
         TS_nocut = -2. * np.sum((total_data_map[E] * np.log(background_map[E] + flux_plaw_in_counts(N_0, gamma)(E)) - (background_map[E] + flux_plaw_in_counts(N_0, gamma)(E))) for E in range(fitmin,fitmax))
         TS = TS_nocut
         chi2_nocut = np.sum((total_data_map[E] - background_map[E] - flux_plaw_in_counts(N_0, gamma)(E))**2/std_total_map[E]**2 for E in range(fitmin,fitmax))
@@ -380,8 +393,8 @@ for l in [0, 1]:
                 label = r'$\mathrm{PL}:\ \gamma = %.2f$ ' %(gamma+2.) 
 
             dct_fn = "plot_dct/Low_energy_range" + str(low_energy_range) + "/" + input_data + "_" + data_class + "_Plaw_cutoff_l=" + str(Lc[l]) + "_b=" + str(Bc[b])  + dct_fn_ending
-            dct["3) E_cut"] = 1./Ecut_inv
-            dct["8) sgm_E_cut"] = - m.errors["Ecut_inv"] / Ecut_inv**2
+            dct["E_cut"] = 1./Ecut_inv
+            dct["sgm_E_cut"] = - m.errors["Ecut_inv"] / Ecut_inv**2
 
             
 
@@ -394,17 +407,17 @@ for l in [0, 1]:
         pyplot.errorbar(Es[fitmin:fitmax], flux_plaw, label = label, color = colours[colour_index])
             
         if Save_as_dct:
-                
-            dct["y"] = np.array(flux_plaw)
+            dct["Comment: "] = "Parametric model of the Fermi bubbles described by a powerlaw with spectral index gamma, normalization N_0 and a cutoff E_cut. The corresponding errors output by iminuit are sgm_gamma, sgm_N_0, sgm_E_cut. The 95-percent confidence limit on the cutoff is lower bound E_cut. -2 Delta logL quantifies the difference in likelihood between the powerlaw with and without a cutoff."      
+            dct["y: flux"] = np.array(flux_plaw)
             dct["chi^2/d.o.f."] = chi2/dof
             dct["-logL"] = TS
 
-            dct["1) N_0"] = N_0
-            dct["2) gamma"] = (gamma + 2)
-            dct["4) -2 Delta logL"] = (TS_nocut - TS_cut)
-            dct["5) lower bound E_cut"] = (1./upper_bound)
-            dct["6) sgm_N_0"] = m.errors["N_0"]
-            dct["7) sgm_gamma"] = m.errors["gamma"]
+            dct["N_0"] = N_0
+            dct["gamma"] = (gamma + 2)
+            dct["-2 Delta logL"] = (TS_nocut - TS_cut)
+            dct["lower bound E_cut"] = (1./upper_bound)
+            dct["sgm_N_0"] = m.errors["N_0"]
+            dct["sgm_gamma"] = m.errors["gamma"]
             dio.saveyaml(dct, dct_fn, expand = True)
 
         if plot_contour:
@@ -425,8 +438,8 @@ for l in [0, 1]:
         print "-  -  -  -  -  -  -  -  -  -  -  -          IC         -  -  -  -  -  -  -  -  -  -  -  -  -  -"
         print " "
             
-        dct = {"x" : Es[fitmin:fitmax]}
-        N_0, gamma, Ecut_inv = 7.e-12, 1.7, 0.
+        dct = {"x: energies" : Es[fitmin:fitmax]}
+        N_0, gamma, Ecut_inv = 3.e-12, 1.75, 0.
             
         fit = likelihood1(IC_model, background_map, total_data_map)                        # First fit
         m = Minuit(fit, N_0 = N_0, gamma = gamma, error_N_0 = 1., error_gamma = 1., limit_N_0 = (1.e-16, 1.e-7), limit_gamma = (1.5,2.5), errordef = 0.5)
@@ -464,7 +477,7 @@ for l in [0, 1]:
                     break
             
             dct_fn = "plot_dct/Low_energy_range" + str(low_energy_range) + "/" + input_data + "_" + data_class + "_IC_cutoff_l=" + str(Lc[l]) + "_b=" + str(Bc[b])  + dct_fn_ending
-            dct["3) E_cut"] = 1./Ecut_inv
+            dct["E_cut"] = 1./Ecut_inv
             #cov = m.matrix
             N_0_e, gamma_e, Ecut_inv_e  = m.values["N_0"], m.values["gamma"], m.values["Ecut_inv"]
             sgm_Ecut = m.errors["Ecut_inv"]
@@ -512,22 +525,22 @@ for l in [0, 1]:
         print "chi2 = ", chi2
         #label += r', $\chi^2 = %.2f$' %chi2
             
-        pyplot.errorbar(Es[fitmin:fitmax], flux_IC, label = label, color = colours[colour_index], ls = ':')
+        pyplot.errorbar(Es[fitmin:fitmax], flux_IC, label = label, color = colours[colour_index], ls = '--')
         #EdNdE_e = N_0 * E_e**(-gamma) * np.exp(-E_e * Ecut_inv)
 
         
         
         if Save_as_dct:
-                
-            dct["y"] = np.array(flux_IC)
+            dct["Comment: "] = "IC model of the Fermi bubbles for the ISRF close to the GC taken from the GALPROP model (Moskalenko et al. 2006) and for an electron spectrum following a powerlaw with spectral index gamma, normalization N_0 and a cutoff E_cut. The corresponding errors output by iminuit are sgm_gamma, sgm_N_0, sgm_E_cut. N_0_los is the column density of electrons along the line of sight. The 95-percent confidence limit on the cutoff is lower bound E_cut. -2 Delta logL quantifies the difference in likelihood between the powerlaw with and without a cutoff."    
+            dct["y: flux"] = np.array(flux_IC)
             dct["chi^2/d.o.f."] = chi2/dof
             dct["-logL"] = TS
             dct["N_0"] = N_0
             
-            dct["1) N_0_los"] = N_0 * line_of_sight
-            dct["2) gamma"] = (gamma + 1)
-            dct["4) -2 Delta logL"] = TS_values[0][l]
-            dct["5) lower bound E_cut"] = Ecut_values[0][l]
+            dct["N_0_los"] = N_0 * line_of_sight
+            dct["gamma"] = (gamma + 1)
+            dct["-2 Delta logL"] = TS_values[0][l]
+            dct["lower bound E_cut"] = Ecut_values[0][l]
             
             dio.saveyaml(dct, dct_fn, expand = True)
 
@@ -550,8 +563,8 @@ for l in [0, 1]:
 
 
 
-        dct = {"x" : Es[fitmin:fitmax]}
-        N_0, gamma, Ecut_inv = 2.e-10, 2.1, 0.
+        dct = {"x: energies" : Es[fitmin:fitmax]}
+        N_0, gamma, Ecut_inv = 9.e-10, 1.8, 0.
             
         fit = likelihood1(pi0_model, background_map, total_data_map)              # First fit
         m = Minuit(fit, N_0 = N_0, gamma = gamma, error_N_0 = 1., error_gamma = 1., limit_N_0 = (1.e-14, 1.e-7), errordef = 0.5)
@@ -586,19 +599,19 @@ for l in [0, 1]:
             while True:
                 Ecut_inv = np.random.random(1) * 1.e-3
                 fit = likelihood_cutoff(pi0_model, background_map, total_data_map)   # Third fit
-                m = Minuit(fit, N_0 = N_0, gamma = gamma, Ecut_inv = Ecut_inv, error_N_0 = 1.e-13, error_Ecut_inv = 1.e-5, error_gamma = 1., limit_N_0 = (8.e-11, 1.e-7), limit_Ecut_inv = (0.,1.), errordef = 0.5)
+                m = Minuit(fit, N_0 = N_0, gamma = gamma, Ecut_inv = Ecut_inv, error_N_0 = 1.e-13, error_Ecut_inv = .1, error_gamma = 1., limit_N_0 = (8.e-11, 1.e-7), limit_Ecut_inv = (0.,1.), errordef = 0.5)
                 m.migrad()
                 N_0, gamma, Ecut_inv  = m.values["N_0"], m.values["gamma"], m.values["Ecut_inv"]
-                #fit = likelihood_cutoff(pi0_model, background_map, total_data_map)   # Third fit
-                #m = Minuit(fit, N_0 = N_0, gamma = gamma, Ecut_inv = Ecut_inv, error_N_0 = 1., error_Ecut_inv = .1, error_gamma = 1., limit_N_0 = (1.e-14, 1.e-7), limit_Ecut_inv = (0.,1.), errordef = 0.5)
-                #m.migrad()
+                fit = likelihood_cutoff(pi0_model, background_map, total_data_map)   # Third fit
+                m = Minuit(fit, N_0 = N_0, gamma = gamma, Ecut_inv = Ecut_inv, error_N_0 = 1., error_Ecut_inv = .05, error_gamma = 1., limit_N_0 = (1.e-14, 1.e-7), limit_Ecut_inv = (0.,1.), errordef = 0.5)
+                m.migrad()
                 N_0, gamma, Ecut_inv  = m.values["N_0"], m.values["gamma"], m.values["Ecut_inv"]
                 if m.matrix_accurate() or no_accurate_matrix:
                     break
             #TS =  2 * sum(pi0_model(N_0, gamma, Ecut_inv)(E) - map[E] * np.log(pi0_model(N_0, gamma, Ecut_inv)(E)) for E in range(fitmin,fitmax))
             
             dct_fn = "plot_dct/Low_energy_range" + str(low_energy_range) + "/" + input_data + "_" + data_class + "_pi0_cutoff_l=" + str(Lc[l]) + "_b=" + str(Bc[b])  +dct_fn_ending
-            dct["3) E_cut"] = 1./Ecut_inv
+            dct["E_cut"] = 1./Ecut_inv
             #cov = m.matrix()
             #m.hesse()
             #m.minos()
@@ -635,26 +648,27 @@ for l in [0, 1]:
                 return p * N_0_p * p**(-gamma_p) * np.exp(-p * Ecut_inv_p)
             print "bf_dNdp_p() = ", N_0_p, " * E**(-", gamma_p, ") * exp(p * ", Ecut_inv_p, ")"
             
-        flux_pi0 = [(pi0_model(N_0, gamma, upper_bound)(E) * Es[E]**2 / dOmega[b][l] / deltaE[E] / expo_map[E]) for E in range(fitmin,fitmax)]
+        flux_pi0 = [(pi0_model(N_0, gamma, Ecut_inv)(E) * Es[E]**2 / dOmega[b][l] / deltaE[E] / expo_map[E]) for E in range(fitmin,fitmax)]
         
         chi2 = sum((flux_pi0 - flux_map[fitmin:fitmax])**2/flux_std_map[fitmin:fitmax]**2)
         print "chi2 = ", chi2
         #label += r', $\chi^2 = %.2f$' %chi2
         
-        pyplot.errorbar(Es[fitmin:fitmax], flux_pi0, label = label, color = colours[colour_index], ls = '-.')
+        pyplot.errorbar(Es[fitmin:fitmax], flux_pi0, label = label, color = colours[colour_index], ls = ':')
 
         
 
         if Save_as_dct:
-            dct["y"] = np.array(flux_pi0)
+            dct["Comment: "] = "pi0 model of the Fermi bubbles for a proton spectrum following a powerlaw with spectral index gamma, normalization N_0 and a cutoff E_cut. The corresponding errors output by iminuit are sgm_gamma, sgm_N_0, sgm_E_cut. N_0_los is the column density of electrons along the line of sight. The 95-percent confidence limit on the cutoff is lower bound E_cut. -2 Delta logL quantifies the difference in likelihood between the powerlaw with and without a cutoff."
+            dct["y: flux"] = np.array(flux_pi0)
             dct["chi^2/d.o.f."] = chi2/dof
             dct["-logL"] = TS
             dct["N_0"] = N_0
 
-            dct["1) N_0_los"] = N_0 * line_of_sight
-            dct["2) gamma"] = gamma
-            dct["4) -2 Delta logL"] = TS_values[1][l]
-            dct["5) lower bound E_cut"] = Ecut_values[1][l]
+            dct["N_0_los"] = N_0 * line_of_sight
+            dct["gamma"] = gamma
+            dct["-2 Delta logL"] = TS_values[1][l]
+            dct["lower bound E_cut"] = Ecut_values[1][l]
             dio.saveyaml(dct, dct_fn, expand = True)
             
         if plot_contour:
@@ -691,7 +705,7 @@ for l in [0, 1]:
         chi2 = sum((flux_logpar - flux_map[fitmin:fitmax])**2 / flux_std_map[fitmin:fitmax]**2)
         label += r', $\chi^2 = %.2f$' %chi2
             
-        pyplot.errorbar(Es[fitmin:fitmax], flux_logpar, label = label, color = colours[colour_index], ls = '--')
+        pyplot.errorbar(Es[fitmin:fitmax], flux_logpar, label = label, color = colours[colour_index], ls = '-.')
 
         logpar_n = - alpha - 2. * beta * np.log(500.)
         print "logpar_n: ", logpar_n

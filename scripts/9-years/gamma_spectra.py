@@ -587,11 +587,11 @@ if __name__ == '__main__':
     U_CMB = 0.26
 
     test_e = 0 # plot spectra of gamma, e+, e- created in hadronic collisions
-    test_pi0 = 0 # plot pi0 gamma-ray spectrum from a power-law with a cutoff proton CR spectrum
+    test_pi0 = 1 # plot pi0 gamma-ray spectrum from a power-law with a cutoff proton CR spectrum
     test_Wtot = 0 # compare Thomson E loss with full IC E loss on CMB
     test_synch = 0 # calculate synchrotron spectrum
     test_sigmaIC = 0 # test IC scattering cross section
-    test_spectra = 1 # calculate IC spectra for three thermal fields: 1.e-4, 1.e-2, and 1. eV
+    test_spectra = 0 # calculate IC spectra for three thermal fields: 1.e-4, 1.e-2, and 1. eV
     
     
     if test_e:
@@ -624,7 +624,7 @@ if __name__ == '__main__':
         E_g = 10.**np.arange(-2., 4., 0.1)
         
         p_p = 10**np.arange(-0.5, 5, 0.02)
-        pars_p = [1., -2., 1000.]
+        pars_p = [1., -2., 10000000.]
         dNdp_p = plaw_cut(pars_p)(p_p)
         
         #EdNdE_gamma = pi0_spectrum(dNdp_p, p_p)

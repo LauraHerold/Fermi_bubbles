@@ -427,7 +427,7 @@ for b in xrange(nB):
             N_0, alpha, beta = 1.e-6, 0.3, 0.
 
             fit = likelihood_cutoff(flux_logpar_in_counts, background_map, total_data_map)        # First fit
-            m = Minuit(fit, N_0 = N_0, gamma = alpha, Ecut_inv = beta, limit_N_0 = (0., 1.), error_N_0 = 1., error_gamma = 1., errordef = 0.5)
+            m = Minuit(fit, N_0 = N_0, gamma = alpha, Ecut_inv = beta, limit_N_0 = (0., 1.), limit_Ecut_inv = (0,2), error_N_0 = 1., error_gamma = 1., errordef = 0.5)
             m.migrad()
             N_0, alpha, beta  = m.values["N_0"], m.values["gamma"], m.values["Ecut_inv"]
             sgm_N_0, sgm_alpha, sgm_beta = m.errors ["N_0"], m.errors["gamma"], m.errors["Ecut_inv"]

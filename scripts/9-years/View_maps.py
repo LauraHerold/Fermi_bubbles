@@ -15,18 +15,23 @@ parser = OptionParser()
 parser.add_option("-f", "--file_name", dest = "map_fn", default = '', help ='file name') 
 parser.add_option("-n", "--scale_min", dest="scale_min", default=" -2.e-6", help="Minimal value in Mollweide map")
 parser.add_option("-x", "--scale_max", dest="scale_max", default=" 4.e-6", help="Maximal value in Mollweide map")
+parser.add_option("-l", "--log_scale", dest="log_scale_string", default= "False", help="Type True if you want log scale")
 (options, args) = parser.parse_args()
 
 map_fn = str(options.map_fn)
 scale_min = float(options.scale_min)
 scale_max = float(options.scale_max)
+log_scale_string = str(options.log_scale_string)
+
+if log_scale_string == "True":
+    log_scale = True
+else:
+    log_scale = False
 
 
 ##################################################################################################### Constants
 
 highE_ranges = ((0,5),(6,11),(12,17))        # 1: 0.3-0.5 GeV, 2: 0.5-1.0 GeV, 3: 1.0-2.2 GeV, 0: baseline (0.3-1.0 GeV)
-
-log_scale = True
 
 smooth_map = True
 mask_point_sources = True
@@ -101,12 +106,7 @@ for highE in [0,1,2]:
     emin = Es[binmin] * np.exp(-delta/2)
     emax = Es[binmax] * np.exp(delta/2)
 
-    #auxil.setup_figure_pars(plot_type = 'map')
-    pyplot.rcParams['figure.figsize'] = [1.5,1]
-    pyplot.rcParams['axes.labelsize'] = 30
-    pyplot.rcParams['axes.titlesize'] = 20
-    pyplot.rcParams['xtick.labelsize'] = 15
-    print pyplot.rcParams['figure.figsize']
+    auxil.setup_figure_pars(plot_type = 'map')
     
     title = r'$E = %.0f$' %emin + r'$ - %.0f\ \mathrm{GeV}$' %emax
 
@@ -117,23 +117,24 @@ for highE in [0,1,2]:
     #save_fn = '../../plots/Plots_9-year/Gnomview_' + map_fn[:-5] + '_range_'+ str(highE) + '.pdf'
     #pyplot.savefig(save_fn)
 
-    #print pyplot.rcParams['figure.figsize']
 
     pyplot.figure()
     if log_scale:
-        ax = healpy.mollview(np.log10(plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap, xsize = 1500)
+        ax = healpy.mollview(np.log10(plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cbar=None, cmap=cmap, xsize = 1500)
+        ticks = np.linspace(scale_min, scale_max, 4)
     else:
-        ax = healpy.mollview((plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap, xsize = 1500)
-   
-    print ax
+        ax = healpy.mollview((plot_map), unit=unit, title = title,  min=scale_min, max=scale_max, cmap=cmap, xsize = 1500, cbar = None)
+        ticks = np.linspace(scale_min, scale_max, 4)
+    auxil.add_mollview_colorbar(plot_map, label=unit, ticks = ticks)
+    
     #pyplot.colorbar().set_label(label=unit, size=30, weight='bold')
 
     # part that changes the size of the font for the unit
-    fontsize = 20
-    pyplot.rcParams['xtick.labelsize'] = 15
-    CbAx = pyplot.gcf().get_children()[2]
-    unit_text_obj = CbAx.get_children()[1]
-    unit_text_obj.set_fontsize(fontsize)
+    #fontsize = 20
+    #pyplot.rcParams['xtick.labelsize'] = 15
+    #CbAx = pyplot.gcf().get_children()[2]
+    #unit_text_obj = CbAx.get_children()[1]
+    #unit_text_obj.set_fontsize(fontsize)
 
     healpy.graticule(dpar=10., dmer=10.)
     save_fn = '../../plots/Plots_9-year/Mollweide_' + map_fn[:-5] + '_range_'+ str(highE) + '.pdf'

@@ -47,7 +47,7 @@ Bc = dct['4) Center_of_lat_bins']
 Es = np.asarray(dct['5) Energy_bins'])
 deltaE = Es * (np.exp(delta/2) - np.exp(-delta/2))
 
-
+ 
 nB = len(diff_profiles)
 nL = len(diff_profiles[0])
     

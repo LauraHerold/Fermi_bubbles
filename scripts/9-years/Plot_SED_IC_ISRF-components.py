@@ -484,7 +484,6 @@ if fit_pi0:
 
         if plot_till_100TeV:
             dNdp_p = N_0 * p_p**(-gamma) * np.exp(-p_p * Ecut_inv)
-            EdNdE_gamma_pi0 = gamma_spectra.pi0_spectrum(dNdp_p, p_p)
             EdNdE_gamma_pi0 = gamma_spectra.EdQdE_pp(dNdp_p, p_p)
             EdNdE_gamma_pi0_vec = np.frompyfunc(EdNdE_gamma_pi0, 1, 1)
             pi0_model = EdNdE_gamma_pi0_vec(E_gamma) * V_ROI  / (4. * R_GC**2 * np.pi)  / E_gamma
