@@ -742,6 +742,8 @@ for l in [0, 1]:
             dct["beta"] = beta
             dct["N_0"] = N_0
             dio.saveyaml(dct, dct_fn, expand = True)
+            print "Saved dct to file "
+            print dct_fn
 
 ###################################################################################################################### Print total energy output
 

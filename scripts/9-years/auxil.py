@@ -57,10 +57,10 @@ def setup_figure_pars(spectrum=False, plot_type=None):
     fig_size =  [fig_width, fig_height]
     params = {'axes.labelsize': 25, #unit
               'axes.titlesize': 25,  #title
-              'font.size': 10,
-              'legend.fontsize': 10,
+              'font.size': 20,
+              'legend.fontsize': 15,
               'xtick.labelsize':18, #ticks
-              'ytick.labelsize':10,
+              'ytick.labelsize':20,
               #'text.usetex': True,
               #'figure.figsize': fig_size,
               'xtick.major.size' : 6,
@@ -75,6 +75,8 @@ def setup_figure_pars(spectrum=False, plot_type=None):
     }
     pyplot.rcParams.update(params)
     if plot_type == 'spectrum':
+        pyplot.rcParams['xtick.labelsize'] = 20 #ticks
+        pyplot.rcParams['axes.labelsize'] = 20
         pyplot.rcParams['figure.subplot.left'] = 0.15
         pyplot.rcParams['figure.subplot.right'] = 0.95
         pyplot.rcParams['figure.subplot.bottom'] = 0.12

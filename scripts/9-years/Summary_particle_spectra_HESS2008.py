@@ -13,7 +13,7 @@ from optparse import OptionParser
 
 m2cm = 100
 
-########################################################################################################################## Parameters
+#################################################################################################### Parameters
 
 parser = OptionParser()
 parser.add_option("-l", "--latitude", dest = "latitude", default = "7", help="latitude (7 = GP)")
@@ -24,16 +24,19 @@ latitude = int(options.latitude)
 particles = str(options.particles)
 
 fn_ending = ".pdf"
+alt_IRF = 1
+cutoff = 0
+all_energy_ranges = 0
 
 Es = 10**np.arange(1,5,0.25)
 
-########################################################################################################################## Constants
+##################################################################################################### Constants
 
 #colours = ["blue", "red"]
 lowE_ranges = ["0.3-1.0", "0.3-0.5", "0.5-1.0", "1.0-2.2"]
 
 GeV2MeV = 1000.
-delta = 0.3837641821164575                                                              # logarithmic distance between two energy bins
+delta = 0.3837641821164575  # logarithmic distance between two energy bins
 plot_dir = '../../plots/Plots_9-year/'
 speed_of_light = 2.998e+10
 
@@ -45,55 +48,101 @@ Bc = dct['4) Center_of_lat_bins']
 dL = 10.
 dB = [10., 10., 10., 10., 10., 4., 4., 4., 4., 4., 10., 10., 10., 10., 10.]
 
-def plaw(N_0, gamma, Ecut):  # powerlaw
-    return lambda E: N_0 * E**(-gamma) * np.exp(-E / Ecut)
+if cutoff:
+    def plaw(N_0, gamma, Ecut):  # powerlaw
+        return lambda E: N_0 * E**(-gamma) * np.exp(-E / Ecut)
+else:
+    def plaw(N_0, gamma):  # powerlaw
+        return lambda E: N_0 * E**(-gamma)
 
-########################################################################################################################## Load dictionaries
+############################################################################################## Load dictionaries
 
 print "Latitude: ", Bc[latitude]
 l = 0
 b = latitude
 
+if alt_IRF:
+    dct_ending = "_altIRF.yaml"
+    fn_ending = fn_ending.replace('.pdf', '_altIRF.pdf')
+else:
+    dct_ending = ".yaml"
 
+if cutoff:
+    cutoff_str = "_cutoff_"
+else:
+    cutoff_str = "_"
 
 if particles == "electrons": # units: 1/cm^3s
     factor = Es * speed_of_light / 4. / np.pi
-    dct_boxes = dio.loaddict('plot_dct/Low_energy_range0/boxes_source_IC_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_lowE = dio.loaddict('plot_dct/Low_energy_range0/lowE_source_IC_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_GALPROP = dio.loaddict('plot_dct/Low_energy_range0/GALPROP_source_IC_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_lowE1 = dio.loaddict('plot_dct/Low_energy_range1/lowE_source_IC_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_lowE2 = dio.loaddict('plot_dct/Low_energy_range2/lowE_source_IC_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_lowE3 = dio.loaddict('plot_dct/Low_energy_range3/lowE_source_IC_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_boxes1 = dio.loaddict('plot_dct/Low_energy_range1/boxes_source_IC_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_boxes2 = dio.loaddict('plot_dct/Low_energy_range2/boxes_source_IC_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_boxes3 = dio.loaddict('plot_dct/Low_energy_range3/boxes_source_IC_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
+    dct_boxes = dio.loaddict('plot_dct/Low_energy_range0/boxes_source_IC' +cutoff_str+ 'l=-5.0_b='
+                             + str(Bc[latitude]) + dct_ending)
+    dct_lowE = dio.loaddict('plot_dct/Low_energy_range0/lowE_source_IC' +cutoff_str+ 'l=-5.0_b='
+                            + str(Bc[latitude]) + dct_ending)
+    dct_GALPROP = dio.loaddict('plot_dct/Low_energy_range0/GALPROP_source_IC' +cutoff_str+ 'l=-5.0_b='
+                               + str(Bc[latitude]) + dct_ending)
+    if all_energy_ranges:
+        dct_lowE1 = dio.loaddict('plot_dct/Low_energy_range1/lowE_source_IC' +cutoff_str+ 'l=-5.0_b='
+                             + str(Bc[latitude]) + dct_ending)
+        dct_lowE2 = dio.loaddict('plot_dct/Low_energy_range2/lowE_source_IC' +cutoff_str+ 'l=-5.0_b='
+                             + str(Bc[latitude]) + dct_ending)
+        dct_lowE3 = dio.loaddict('plot_dct/Low_energy_range3/lowE_source_IC' +cutoff_str+ 'l=-5.0_b='
+                             + str(Bc[latitude]) + dct_ending)
+        dct_boxes1 = dio.loaddict('plot_dct/Low_energy_range1/boxes_source_IC' +cutoff_str+ 'l=-5.0_b='
+                              + str(Bc[latitude]) + dct_ending)
+        dct_boxes2 = dio.loaddict('plot_dct/Low_energy_range2/boxes_source_IC' +cutoff_str+ 'l=-5.0_b='
+                              + str(Bc[latitude]) +dct_ending)
+        dct_boxes3 = dio.loaddict('plot_dct/Low_energy_range3/boxes_source_IC' +cutoff_str+ 'l=-5.0_b='
+                              + str(Bc[latitude]) + dct_ending)
     #HESS_2017 = np.array([])
     #Es_HESS_2017 = np.array([])
 
 else: # units: 1/GeVcm^3s
     factor = Es**2 * speed_of_light / 4. / np.pi
-    dct_boxes = dio.loaddict('plot_dct/Low_energy_range0/boxes_source_pi0_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_lowE = dio.loaddict('plot_dct/Low_energy_range0/lowE_source_pi0_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_GALPROP = dio.loaddict('plot_dct/Low_energy_range0/GALPROP_source_pi0_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_lowE1 = dio.loaddict('plot_dct/Low_energy_range1/lowE_source_pi0_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_lowE2 = dio.loaddict('plot_dct/Low_energy_range2/lowE_source_pi0_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_lowE3 = dio.loaddict('plot_dct/Low_energy_range3/lowE_source_pi0_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_boxes1 = dio.loaddict('plot_dct/Low_energy_range1/boxes_source_pi0_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_boxes2 = dio.loaddict('plot_dct/Low_energy_range2/boxes_source_pi0_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
-    dct_boxes3 = dio.loaddict('plot_dct/Low_energy_range3/boxes_source_pi0_cutoff_l=-5.0_b=' + str(Bc[latitude]) + '.yaml')
+    dct_boxes = dio.loaddict('plot_dct/Low_energy_range0/boxes_source_pi0' +cutoff_str+ 'l=-5.0_b='
+                             + str(Bc[latitude]) + '.yaml')
+    dct_lowE = dio.loaddict('plot_dct/Low_energy_range0/lowE_source_pi0' +cutoff_str+ 'l=-5.0_b='
+                            + str(Bc[latitude]) + '.yaml')
+    dct_GALPROP = dio.loaddict('plot_dct/Low_energy_range0/GALPROP_source_pi0' +cutoff_str+ 'l=-5.0_b='
+                               + str(Bc[latitude]) + '.yaml')
+    if all_energy_ranges:
+        dct_lowE1 = dio.loaddict('plot_dct/Low_energy_range1/lowE_source_pi0' +cutoff_str+ 'l=-5.0_b='
+                             + str(Bc[latitude]) + '.yaml')
+        dct_lowE2 = dio.loaddict('plot_dct/Low_energy_range2/lowE_source_pi0' +cutoff_str+ 'l=-5.0_b='
+                             + str(Bc[latitude]) + '.yaml')
+        dct_lowE3 = dio.loaddict('plot_dct/Low_energy_range3/lowE_source_pi0' +cutoff_str+ '=-5.0_b='
+                             + str(Bc[latitude]) + '.yaml')
+        dct_boxes1 = dio.loaddict('plot_dct/Low_energy_range1/boxes_source_pi0' +cutoff_str+ 'l=-5.0_b='
+                              + str(Bc[latitude]) + '.yaml')
+        dct_boxes2 = dio.loaddict('plot_dct/Low_energy_range2/boxes_source_pi0' +cutoff_str+ 'l=-5.0_b='
+                              + str(Bc[latitude]) + '.yaml')
+        dct_boxes3 = dio.loaddict('plot_dct/Low_energy_range3/boxes_source_pi0' +cutoff_str+ 'l=-5.0_b='
+                              + str(Bc[latitude]) + '.yaml')
+if cutoff:
+    plaw_boxes = factor * plaw(dct_boxes['N_0'], dct_boxes['gamma'], dct_boxes['E_cut'])(Es)
+    plaw_lowE = factor * plaw(dct_lowE['N_0'], dct_lowE['gamma'], dct_lowE['E_cut'])(Es)
+    plaw_GALPROP = factor * plaw(dct_GALPROP['N_0'], dct_GALPROP['gamma'], dct_GALPROP['E_cut'])(Es)
 
-plaw_boxes = factor * plaw(dct_boxes['N_0'], dct_boxes['gamma'], dct_boxes['E_cut'])(Es)
-plaw_lowE = factor * plaw(dct_lowE['N_0'], dct_lowE['gamma'], dct_lowE['E_cut'])(Es)
-plaw_GALPROP = factor * plaw(dct_GALPROP['N_0'], dct_GALPROP['gamma'], dct_GALPROP['E_cut'])(Es)
-plaw_boxes1 = factor * plaw(dct_boxes1['N_0'], dct_boxes1['gamma'], dct_boxes1['E_cut'])(Es)
-plaw_boxes2 = factor * plaw(dct_boxes2['N_0'], dct_boxes2['gamma'], dct_boxes2['E_cut'])(Es)
-plaw_boxes3 = factor * plaw(dct_boxes3['N_0'], dct_boxes3['gamma'], dct_boxes3['E_cut'])(Es)
-plaw_lowE1 = factor * plaw(dct_lowE1['N_0'], dct_lowE1['gamma'], dct_lowE1['E_cut'])(Es)
-plaw_lowE2 = factor * plaw(dct_lowE2['N_0'], dct_lowE2['gamma'], dct_lowE2['E_cut'])(Es)
-plaw_lowE3 = factor * plaw(dct_lowE3['N_0'], dct_lowE3['gamma'], dct_lowE3['E_cut'])(Es)
+    if all_energy_ranges:
+        plaw_boxes1 = factor * plaw(dct_boxes1['N_0'], dct_boxes1['gamma'], dct_boxes1['E_cut'])(Es)
+        plaw_boxes2 = factor * plaw(dct_boxes2['N_0'], dct_boxes2['gamma'], dct_boxes2['E_cut'])(Es)
+        plaw_boxes3 = factor * plaw(dct_boxes3['N_0'], dct_boxes3['gamma'], dct_boxes3['E_cut'])(Es)
+        plaw_lowE1 = factor * plaw(dct_lowE1['N_0'], dct_lowE1['gamma'], dct_lowE1['E_cut'])(Es)
+        plaw_lowE2 = factor * plaw(dct_lowE2['N_0'], dct_lowE2['gamma'], dct_lowE2['E_cut'])(Es)
+        plaw_lowE3 = factor * plaw(dct_lowE3['N_0'], dct_lowE3['gamma'], dct_lowE3['E_cut'])(Es)
 
+else:
+    plaw_boxes = factor * plaw(dct_boxes['N_0'], dct_boxes['gamma'])(Es)
+    plaw_lowE = factor * plaw(dct_lowE['N_0'], dct_lowE['gamma'])(Es)
+    plaw_GALPROP = factor * plaw(dct_GALPROP['N_0'], dct_GALPROP['gamma'])(Es)
 
-########################################################################################################################## Plot
+    if all_energy_ranges:
+        plaw_boxes1 = factor * plaw(dct_boxes1['N_0'], dct_boxes1['gamma'])(Es)
+        plaw_boxes2 = factor * plaw(dct_boxes2['N_0'], dct_boxes2['gamma'])(Es)
+        plaw_boxes3 = factor * plaw(dct_boxes3['N_0'], dct_boxes3['gamma'])(Es)
+        plaw_lowE1 = factor * plaw(dct_lowE1['N_0'], dct_lowE1['gamma'])(Es)
+        plaw_lowE2 = factor * plaw(dct_lowE2['N_0'], dct_lowE2['gamma'])(Es)
+        plaw_lowE3 = factor * plaw(dct_lowE3['N_0'], dct_lowE3['gamma'])(Es)
+######################################################################################################### Plot
 
 
 auxil.setup_figure_pars(plot_type = 'spectrum')
@@ -104,8 +153,11 @@ baseline  = plaw_boxes
 
 syst_max = np.maximum.reduce([plaw_boxes, plaw_lowE, plaw_GALPROP])
 syst_min = np.minimum.reduce([plaw_boxes, plaw_lowE, plaw_GALPROP])
-#syst_max = np.maximum.reduce([plaw_boxes, plaw_lowE, plaw_GALPROP, plaw_boxes1, plaw_boxes2, plaw_boxes3, plaw_lowE1, plaw_lowE2, plaw_lowE3])
-#syst_min = np.minimum.reduce([plaw_boxes, plaw_lowE, plaw_GALPROP, plaw_boxes1, plaw_boxes2, plaw_boxes3, plaw_lowE1, plaw_lowE2, plaw_lowE3])
+if all_energy_ranges:
+    syst_max = np.maximum.reduce([plaw_boxes, plaw_lowE, plaw_GALPROP,plaw_boxes1, plaw_boxes2,
+                                  plaw_boxes3, plaw_lowE1, plaw_lowE2, plaw_lowE3])
+    syst_min = np.minimum.reduce([plaw_boxes, plaw_lowE, plaw_GALPROP, plaw_boxes1, plaw_boxes2,
+                                  plaw_boxes3, plaw_lowE1, plaw_lowE2, plaw_lowE3])
 
 label = "Excess region"
 
@@ -124,7 +176,8 @@ if particles == "electrons":
     #HESS_Es *= 1000. # TeV --> GeV
     #HESS_E3dNdE /= (100**2 * HESS_Es) # GeV^3/m^2/s/sr --> GeV^2/cm^2/s/sr
     #HESS_err /= (100**2 * HESS_Es) # GeV^3/m^2/s/sr --> GeV^2/cm^2/s/sr
-    pyplot.errorbar(HESS_Es, HESS_E2dNdE, yerr=[HESS_err_low, HESS_err_up], color = "blue", label = "H.E.S.S. (2008)", ls = "", marker = "s")
+    pyplot.errorbar(HESS_Es, HESS_E2dNdE, yerr=[HESS_err_low, HESS_err_up], color = "blue",
+                    label = "H.E.S.S. (2008)", ls = "", marker = "s")
 
     AMS_Es, AMS_dNdE, AMS_stat = np.loadtxt("../../data/Electron_spectra/AMS02_2014")
     AMS_sys_tot = np.loadtxt("../../data/Electron_spectra/ams_electrons_syst.txt").T
@@ -137,8 +190,10 @@ if particles == "electrons":
     fermi_HE = np.loadtxt("../../data/Electron_spectra/Fermi_HE_2017").T
     fermi_Es = np.append((fermi_LE[0]+fermi_LE[1])/2, (fermi_HE[0]+fermi_HE[1])/2)
     fermi_dNdE = np.append(fermi_LE[4], fermi_HE[4]) * fermi_Es**2 / 100.**2  # 1/GeV/m^2/sr/s --> GeV/cm^2/sr/s
-    fermi_err = np.append(np.sqrt(fermi_LE[5]**2+fermi_LE[6]**2), np.sqrt(fermi_HE[5]**2+fermi_HE[6]**2+fermi_HE[7]**2)) * fermi_dNdE # Relative errors (stat + sys)
-    pyplot.errorbar(fermi_Es, fermi_dNdE, fermi_err, color = "black", ls = "", marker = "o", label = "Fermi-LAT (2017)")
+    fermi_err = np.append(np.sqrt(fermi_LE[5]**2+fermi_LE[6]**2),
+            np.sqrt(fermi_HE[5]**2+fermi_HE[6]**2+fermi_HE[7]**2)) * fermi_dNdE # Relative errors (stat + sys)
+    pyplot.errorbar(fermi_Es, fermi_dNdE, fermi_err, color = "black", ls = "", marker = "o",
+                    label = "Fermi-LAT (2017)")
 
 
     dampe = np.loadtxt("../../data/Electron_spectra/dampe_electrons.txt").T
@@ -146,10 +201,13 @@ if particles == "electrons":
     factor = dampe[-1]
     dampe_dNdE = factor * dampe[3] * dampe_Es**2 / m2cm**2  # 1/GeV/m^2/sr/s --> GeV/cm^2/sr/s
     dampe_err = factor * np.sqrt(dampe[4]**2 + dampe[5]**2) * dampe_Es**2 / m2cm**2
-    pyplot.errorbar(dampe_Es, dampe_dNdE, dampe_err, color = "magenta", ls = "", marker = "v", label = "DAMPE (2017)")
+    pyplot.errorbar(dampe_Es, dampe_dNdE, dampe_err, color = "magenta", ls = "", marker = "v",
+                    label = "DAMPE (2017)")
 
-
-    pyplot.ylim(3e-8, 3e-2)
+    if alt_IRF:
+        pyplot.ylim(3e-9, 3e-3)
+    else:
+        pyplot.ylim(3e-8, 3e-2)
     
 else:
     name = 'Summary_proton_spectra_' + str(int(Bc[b]))
@@ -165,16 +223,16 @@ else:
     pyplot.ylim(4e-3,1e0)
 
 
-########################################################################################################################## Cosmetics, safe plot
+########################################################################################### Cosmetics, safe plot
 
     
 lg = pyplot.legend(loc='upper right', ncol=1)
 lg.get_frame().set_linewidth(0)
 pyplot.grid(True)
 pyplot.xlabel('$E\ \mathrm{[GeV]}$')
-#pyplot.ylabel('Counts')
+
 pyplot.ylabel(r'$ E^2\!\phi_{\mathrm{e}}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
-#pyplot.title(r'$b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + '$,\ %i^\circ),\ $' % (Bc[b] + dB[b]/2) + r'$\ell \in (%i^\circ$' % (Lc[l] - dL/2) + r'$,\ %i^\circ)$' % (Lc[l] + dL/2))
+
 pyplot.xlim(1e1,1e5)
 if 1:
     textstr = r'$\ell \in (%i^\circ,\ %i^\circ)$' % ((Lc[l] - dL/2), (Lc[l] + dL/2)) + '\n'

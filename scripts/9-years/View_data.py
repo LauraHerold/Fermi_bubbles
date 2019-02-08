@@ -106,11 +106,6 @@ for highE in (0,1,2):
     emax = Es[binmax] * np.exp(delta/2)
 
     auxil.setup_figure_pars(plot_type = 'map')
-    #pyplot.rcParams['figure.figsize'] = [6,4]
-    #pyplot.rcParams['axes.labelsize'] = 20 # 30
-    #pyplot.rcParams['axes.titlesize'] = 20 # 20
-    #pyplot.rcParams['xtick.labelsize'] = 20 # 15
-    #print pyplot.rcParams['figure.figsize']
     
     title = r'$E = %.0f$' %emin + r'$ - %.0f\ \mathrm{GeV}$' %emax
     
@@ -135,13 +130,6 @@ for highE in (0,1,2):
     auxil.add_mollview_colorbar(plot_map, label=unit, ticks = ticks)
 
     auxil.setup_figure_pars(plot_type = 'map')
-    #print ax
-    #fontsize = 20
-    #pyplot.rcParams['figure.figsize'] = [12,8]
-    #pyplot.rcParams['axes.labelsize'] = fontsize
-    #pyplot.rcParams['axes.titlesize'] = fontsize
-    #pyplot.rcParams['xtick.labelsize'] = fontsize
-    #print pyplot.rcParams['figure.figsize']
 
     # part that changes the size of the font for the unit
     #CbAx = pyplot.gcf().get_children()[2]
