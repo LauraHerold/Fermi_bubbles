@@ -1,4 +1,4 @@
-\begin{thebibliography}{74}
+\begin{thebibliography}{79}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Abazajian {et~al.}(2014)Abazajian, Canac, Horiuchi, \&
@@ -222,6 +222,9 @@ Abazajian, K.~N., Canac, N., Horiuchi, S., \& Kaplinghat, M. 2014, \prd, 90,
   {Bowen}, \& {Tumlinson}}]{2015ApJ...799L...7F}
 {Fox}, A.~J., {Bordoloi}, R., {Savage}, B.~D., {et~al.} 2015, \apjl, 799, L7
 
+\bibitem[{{Freudenreich}(1998)}]{1998ApJ...492..495F}
+{Freudenreich}, H.~T. 1998, \apj, 492, 495
+
 \bibitem[{{Gaggero} {et~al.}(2015){Gaggero}, {Urbano}, {Valli}, \&
   {Ullio}}]{2015PhRvD..91h3012G}
 {Gaggero}, D., {Urbano}, A., {Valli}, M., \& {Ullio}, P. 2015, \prd, 91, 083012
@@ -297,6 +300,12 @@ Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
 {Niederwanger}, F., {Reimer}, O., {Kissmann}, R., {et~al.} 2019, Astroparticle
   Physics, 107, 1
 
+\bibitem[{{Orlando}(2018)}]{2018MNRAS.475.2724O}
+{Orlando}, E. 2018, \mnras, 475, 2724
+
+\bibitem[{{Orlando}(2019)}]{2019arXiv190108604O}
+{Orlando}, E. 2019, arXiv e-prints [\eprint[arXiv]{1901.08604}]
+
 \bibitem[{{Orlando} \& {Strong}(2008)}]{2008A&A...480..847O}
 {Orlando}, E. \& {Strong}, A.~W. 2008, \aap, 480, 847
 
@@ -319,6 +328,10 @@ Moskalenko, I. \& Strong, A. 1998, \apj, 493, 694
 {Porter}, T.~A., {J{\'o}hannesson}, G., \& {Moskalenko}, I.~V. 2017, \apj, 846,
   67
 
+\bibitem[{{Porter} {et~al.}(2006){Porter}, {Moskalenko}, \&
+  {Strong}}]{2006ApJ...648L..29P}
+{Porter}, T.~A., {Moskalenko}, I.~V., \& {Strong}, A.~W. 2006, \apj, 648, L29
+
 \bibitem[{Porter {et~al.}(2008)Porter, Moskalenko, Strong,
   {et~al.}}]{Porter:2008ve}
 Porter, T.~A., Moskalenko, I.~V., Strong, A.~W., {et~al.} 2008, \apj, 682, 400
@@ -337,6 +350,11 @@ Ptuskin, V., Moskalenko, I.~V., Jones, F., {et~al.} 2006, \apj, 642, 902
   {Casandjian}}]{2017A&A...601A..78R}
 {Remy}, Q., {Grenier}, I.~A., {Marshall}, D.~J., \& {Casandjian}, J.~M. 2017,
   \aap, 601, A78
+
+\bibitem[{{Robitaille} {et~al.}(2012){Robitaille}, {Churchwell}, {Benjamin},
+  {Whitney}, {Wood}, {Babler}, \& {Meade}}]{2012A&A...545A..39R}
+{Robitaille}, T.~P., {Churchwell}, E., {Benjamin}, R.~A., {et~al.} 2012, \aap,
+  545, A39
 
 \bibitem[{{Rohlfs} {et~al.}(1959){Rohlfs}, {Schrick}, \&
   {Stock}}]{1959ZA.....47...15R}

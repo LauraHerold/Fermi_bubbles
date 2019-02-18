@@ -1,5 +1,8 @@
 """ Plots the SED of all latitude stripes necessary to observe the Fermi bubbles. """
-# python Plot_SED_IC_ISRF-components_dima.py -o0
+# isrf=Popescu
+# v54, R12, F98
+# python Plot_SED_IC_ISRF-components_dima.py -o0 -r $isrf
+# cp ../../plots/Plots_9-year/Low_energy_range0/SED_ISRF_componentsboxes_source_0_"$isrf".pdf ../../paper/plots
 
 import numpy as np
 import pyfits
@@ -28,10 +31,9 @@ acc_matrix = True
 
 fit_IC  = True
 fit_pi0 = True
-alt_IRF = 1
 
-Ecut_inv_min0 = 1.e-6
-Ecut_inv_min = 2.e-6
+Ecut_inv_min0 = 1.e-6 # 1 PeV cutoff for electron and proton CR spectra
+Ecut_inv_min = 2.e-6 # effective 500 TeV cutoff for the proton spectra (there are some problems in the parametrization above 500 TeV)
 
 parser = OptionParser()
 parser.add_option("-c", "--data_class", dest = "data_class", default = "source", help="data class (source or ultraclean)")
@@ -39,12 +41,14 @@ parser.add_option("-E", "--lowE_range", dest="lowE_range", default='0', help="Th
 parser.add_option("-i", "--input_data", dest="input_data", default="boxes", help="Input data can be: data, lowE, boxes, GALPROP")
 parser.add_option("-o", "--cutoff", dest="cutoff", default="True", help="Write true if you want cutoff")
 parser.add_option("-l", "--latitude", dest="latitude", default='7', help="Number of latitude stripe")
+parser.add_option("-r", "--isrf", dest="isrf", default='v54', help="ISRF model for the GC: v54 (default), R12, F98, Popescu")
 (options, args) = parser.parse_args()
 
 data_class = str(options.data_class)
 low_energy_range = int(options.lowE_range) # 0: baseline, 4: test
 input_data = str(options.input_data) # data, lowE, boxes, GALPROP
 latitude = int(options.latitude)
+ISRF_model = options.isrf # 'v54', 'Popescu', 'R12', 'F98'
 
 
 fn_ending = ".pdf"
@@ -119,6 +123,12 @@ if low_energy_range == 3:
 erg2GeV = 624.151
 
 E_SN = 1.e49 * erg2GeV
+
+plot_dict = {'Popescu': r'Popescu\ et\ al.\ (2017)',
+             'R12': r'Porter\ et\ al.\ (2017)\ R12',
+             'F98': r'Porter\ et\ al.\ (2017)\ F98',
+             'v54': r'GALPROP\ v54.1'
+}
 
 
 
@@ -224,7 +234,11 @@ def plaw(N_0, gamma, Ecut_inv = Ecut_inv_min0):  # powerlaw
 def logpar(N_0, alpha, beta):
     return lambda E: N_0 * Es[E]**(-alpha - beta * np.log(Es[E]))
 
-
+def lambda2eV(ld):
+    """
+        transform lambda (m) to energy (eV)
+    """
+    return c_light * h_Planck / ld
 
 ########################################################################################################################## Define particle-spectra functions
 
@@ -249,10 +263,18 @@ auxil.setup_figure_pars(plot_type = 'spectrum')
 colour_index = 0
 
 
-IRFmap_fn = '../../data/ISRF_flux/Standard_0_0_' + str(ISFR_heights[b]) + '_Flux.fits.gz'   # Model for the ISRF
+IRFmap_fn = '../../data/ISRF_flux/Standard_0_0_%s_Flux.fits.gz' % str(ISFR_heights[b])   # Model for the ISRF
+if ISRF_model == 'R12':
+    print 'Take R12 ISRF model'
+    IRFmap_fn = '../../data/ISRF_galprop_v56/robitaille_DL07_PAHISMMix_-0.1_0_-0.1_Flux.fits.gz'
+elif ISRF_model == 'F98':
+    print 'Take F98 ISRF model'
+    IRFmap_fn = '../../data/ISRF_galprop_v56/freudenreich_DL07_PAHISMMix_-0.1_0_-0.1_Flux.fits.gz'
+
+
 hdu = pyfits.open(IRFmap_fn)                                                                # Physical unit of field: 'micron'
 wavelengths = hdu[1].data.field('Wavelength') * mk2m                                       # in m
-E_irf_galaxy = c_light * h_Planck / wavelengths[::-1]                                       # Convert wavelength in eV, invert order
+E_irf_galaxy = lambda2eV(wavelengths)[::-1]                                       # Convert wavelength to eV, invert order
 
 E_SL2IR_transition = 0.1 # transition energy between IR and starlight - 0.1 eV
 transition_bin_IR_starlight = np.argmin(np.abs(E_irf_galaxy - E_SL2IR_transition))
@@ -262,32 +284,71 @@ print "transition energy IR - starlght: ", E_irf_galaxy[transition_bin_IR_starli
 
 ld_dUdld = hdu[1].data.field('Total')
 
-if alt_IRF:
+if ISRF_model == 'Popescu':
+    print 'Take Popescu ISRF model'
     #EdNdE_irf_galaxy *= 10
     ld_dUdld0 = 1. * ld_dUdld
     isrf = auxil.get_popescu_isrf(field='total')
     wavelengths_mkm = wavelengths / mk2m
     ld_dUdld = isrf(wavelengths_mkm)
+    Es_isrf = lambda2eV(wavelengths)[::-1]
     if 0:
+        pyplot.rcParams['figure.subplot.top'] = 0.93
+        pyplot.rcParams['figure.subplot.bottom'] = 0.15
+        pyplot.rcParams['xtick.labelsize'] = 18
+        pyplot.rcParams['ytick.labelsize'] = 18
+
         pyplot.figure()
-        pyplot.loglog(wavelengths_mkm, ld_dUdld0)
-        pyplot.loglog(wavelengths_mkm, ld_dUdld, ls='--')
-        pyplot.loglog(wavelengths_mkm, auxil.get_popescu_isrf(field='SL')(wavelengths_mkm), ls='-.')
-        pyplot.loglog(wavelengths_mkm, auxil.get_popescu_isrf(field='IR')(wavelengths_mkm), ls=':')
+        pyplot.loglog(E_irf_galaxy, ld_dUdld0[::-1], label='GALPROP v54.1')
+        pyplot.loglog(E_irf_galaxy, ld_dUdld[::-1], ls='--', label='Popescu et al. (2017) ')
+        #pyplot.loglog(wavelengths_mkm, auxil.get_popescu_isrf(field='SL')(wavelengths_mkm), ls='-.')
+        #pyplot.loglog(wavelengths_mkm, auxil.get_popescu_isrf(field='IR')(wavelengths_mkm), ls=':')
+        # R12 Galprop v56 ISRF field
+        fn = '../../data/ISRF_galprop_v56/robitaille_DL07_PAHISMMix_-0.1_0_-0.1_Flux.fits.gz'
+        hdu_r12 = pyfits.open(fn)
+        lambda_r12 = hdu_r12[1].data.field('Wavelength')
+        ld_dUdld_r12 = hdu_r12[1].data.field('Total')
+        Es_r12 = lambda2eV(lambda_r12 * mk2m)[::-1]
+        pyplot.loglog(Es_r12, ld_dUdld_r12[::-1], ls='-.', label='Porter et al. (2017) R12')
+        # F98 Galprop v56 ISRF field
+        fn = '../../data/ISRF_galprop_v56/freudenreich_DL07_PAHISMMix_-0.1_0_-0.1_Flux.fits.gz'
+        hdu_f98 = pyfits.open(fn)
+        lambda_f98 = hdu_f98[1].data.field('Wavelength')
+        Es_f98 = lambda2eV(lambda_f98 * mk2m)[::-1]
+        ld_dUdld_f98 = hdu_f98[1].data.field('Total')
+        pyplot.loglog(Es_f98, ld_dUdld_f98[::-1], ls=':', label='Porter et al. (2017) F98')
+        lg = pyplot.legend(loc='best', ncol=1, numpoints=1, labelspacing=0.4)
+        lg.get_frame().set_linewidth(0)  #To get rid of the box
+
+        pyplot.xlabel(r'$E_{\rm ISRF}\ \mathrm{[eV]}$')
+        pyplot.ylabel(r'$\lambda\frac{\mathrm{d}U}{\mathrm{d}\lambda}\ \left[ \frac{\mathrm{eV}}{\mathrm{cm^3}} \right]$')
+        
         pyplot.ylim(0.001, 2000)
-        pyplot.show()
+        pyplot.xlim(3.e-4, 30)
+        fn = plot_dir + 'ISRF_comparison.pdf'
+        print 'save figure to file'
+        print fn
+        pyplot.savefig(fn, format = 'pdf')
+        auxil.setup_figure_pars(plot_type = 'spectrum')
+        #pyplot.show()
         exit()
 
 EdNdE_irf_galaxy = ld_dUdld[::-1] / E_irf_galaxy                          # in 1/cm^3. Since unit of 'Total': eV/cm^3
-dlogE_irf = 0.0230258509299398                                                              # Wavelength bin size
+dlogE_irf = np.log(E_irf_galaxy[1] / E_irf_galaxy[0])                                                              # Wavelength bin size
+# 0.0230258509299398
 
-E_irf = np.e**np.arange(np.log(E_irf_galaxy[len(E_irf_galaxy)-1]), -6.* np.log(10.), -dlogE_irf)[:0:-1] # CMB-energies array with same log bin size as IRF_galaxy in eV
+E_irf = np.e**np.arange(-6.* np.log(10.), np.log(E_irf_galaxy[-1]) + dlogE_irf, dlogE_irf) # CMB-energies array with same log bin size as IRF_galaxy in eV
 irf_CMB = gamma_spectra.thermal_spectrum(T_CMB)                                             # Use thermal_spectrum from gamma_spectra.py, returns IRF in eV/cm^3
 EdNdE_CMB = irf_CMB(E_irf) / E_irf                                                          # in 1/cm^3
 
-EdNdE_irf_IR =  np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), np.append(EdNdE_irf_galaxy[0:transition_bin_IR_starlight], np.zeros(len(E_irf_galaxy)-transition_bin_IR_starlight)))
-                                                                        
-EdNdE_irf_starlight = np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), np.append(np.zeros(transition_bin_IR_starlight), EdNdE_irf_galaxy[transition_bin_IR_starlight:]))
+EdNdE_irf_IR = np.zeros_like(EdNdE_irf_galaxy)
+EdNdE_irf_IR[:transition_bin_IR_starlight] = EdNdE_irf_galaxy[:transition_bin_IR_starlight]
+EdNdE_irf_IR = np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), EdNdE_irf_IR)
+#EdNdE_irf_IR =  np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), np.append(EdNdE_irf_galaxy[0:transition_bin_IR_starlight], np.zeros(len(E_irf_galaxy)-transition_bin_IR_starlight)))
+
+EdNdE_irf_starlight = np.zeros_like(EdNdE_irf_galaxy)
+EdNdE_irf_starlight[transition_bin_IR_starlight:] = EdNdE_irf_galaxy[transition_bin_IR_starlight:]
+EdNdE_irf_starlight = np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), EdNdE_irf_starlight)
 
 EdNdE_irf_galaxy = np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), EdNdE_irf_galaxy)
 
@@ -295,7 +356,7 @@ EdNdE_irf_galaxy = np.append(np.zeros(len(E_irf)-len(E_irf_galaxy)), EdNdE_irf_g
 EdNdE_irf = EdNdE_CMB + EdNdE_irf_galaxy # Differential flux in 1/cm^3 
 
 
-pyplot.figure()
+fig = pyplot.figure()
 for l in [0]:
     V_ROI = dOmega[b][l] * R_GC**2 * line_of_sight
 
@@ -360,10 +421,11 @@ for l in [0]:
         m.migrad()
         N_0, gamma  = m.values["N_0"], m.values["gamma"]
 
-        fit = likelihood2(IC_model, background_map, total_data_map)                        # Second fit
-        m = Minuit(fit, N_0 = N_0, gamma = gamma, error_N_0 = 1., error_gamma = .5, limit_N_0 = (1.e-16, 1.e-7), errordef = 0.5)
-        m.migrad()
-        N_0, gamma  = m.values["N_0"], m.values["gamma"]
+        if 1:
+            fit = likelihood2(IC_model, background_map, total_data_map)                        # Second fit
+            m = Minuit(fit, N_0 = N_0, gamma = gamma, error_N_0 = 1., error_gamma = .5, limit_N_0 = (1.e-16, 1.e-7), errordef = 0.5)
+            m.migrad()
+            N_0, gamma  = m.values["N_0"], m.values["gamma"]
 
 
         TS_nocut = -2. * np.sum((total_data_map[E] * np.log(background_map[E] + IC_model(N_0, gamma)(E)) - (background_map[E] + IC_model(N_0, gamma)(E))) for E in range(fitmin,fitmax))
@@ -405,9 +467,9 @@ for l in [0]:
 
 
         # replace the cutoff in the spectrum with min value
-        print 'test values'
+        print 'parameters for the final CRe spectrum:'
         print N_0, gamma, Ecut_inv
-        print 'end test'
+        print
         EdNdE_e = N_0 * E_e**(-gamma) * np.exp(-E_e * Ecut_inv)
         #EdNdE_e = N_0 * E_e**(-gamma) * np.exp(-E_e * Ecut_inv_min0)
         irf_components = [EdNdE_irf, EdNdE_irf_starlight, EdNdE_irf_IR, EdNdE_CMB]
@@ -417,8 +479,8 @@ for l in [0]:
         lws = [1.6, 1.6, 1.6, 1.6]
         
         for component in range(len(labels)):
-            EdNdE_irf = irf_components[component]
-            EdNdE_gamma_IC =  gamma_spectra.IC_spectrum(EdNdE_irf, E_irf, EdNdE_e, E_e)
+            EdNdE_irf_comp = irf_components[component]
+            EdNdE_gamma_IC =  gamma_spectra.IC_spectrum(EdNdE_irf_comp, E_irf, EdNdE_e, E_e)
             EdNdE_gamma_IC_vec = np.frompyfunc(EdNdE_gamma_IC, 1, 1)
 
             if plot_till_100TeV:
@@ -547,24 +609,29 @@ if fit_pi0:
 
     
 if Save_plot:
+    #pyplot.title(plot_dict[ISRF_model])
     lg = pyplot.legend(loc='upper left', ncol=2)
     lg.get_frame().set_linewidth(0)
     pyplot.grid(True)
     pyplot.xlabel('$E\ \mathrm{[GeV]}$')
     #pyplot.ylabel('Counts')
     pyplot.ylabel(r'$ E^2\frac{\mathrm{d}N}{\mathrm{d}E}\ \left[ \frac{\mathrm{GeV}}{\mathrm{cm^2\ s\ sr}} \right]$')
-    pyplot.title(r'$b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2))
+    #pyplot.title(r'$b \in (%i^\circ$' % (Bc[b] - dB[b]/2) + ', $%i^\circ)$' % (Bc[b] + dB[b]/2))
+
+    ax = fig.add_subplot(111)
+    props = dict(facecolor='white', alpha=1, edgecolor = "white")
+    st = r'$ISRF\ from\ %s$' % plot_dict[ISRF_model]
+    ax.text(0.03, 0.72, st, transform=ax.transAxes, fontsize=16, verticalalignment='top', bbox=props)
 
     name = 'SED_ISRF_components'+ input_data +'_' + data_class + '_' + str(int(Bc[b]))
-    if alt_IRF:
-        name += '_altIRF'
-    fn = plot_dir + name + fn_ending
+    name += '_%s' % ISRF_model
     pyplot.xscale('log')
     pyplot.yscale('log')
     pyplot.ylim((5.e-8,4.e-4))
     
+    fn = plot_dir + name + fn_ending
     print 'save figure to file'
     print fn
     pyplot.savefig(fn, format = 'pdf')
 
-
+#pyplot.show()

@@ -79,7 +79,8 @@ def setup_figure_pars(spectrum=False, plot_type=None):
         pyplot.rcParams['axes.labelsize'] = 20
         pyplot.rcParams['figure.subplot.left'] = 0.15
         pyplot.rcParams['figure.subplot.right'] = 0.95
-        pyplot.rcParams['figure.subplot.bottom'] = 0.12
+        pyplot.rcParams['figure.subplot.top'] = 0.91
+        pyplot.rcParams['figure.subplot.bottom'] = 0.13
     elif plot_type == 'zoomin_map':
         pyplot.rcParams['axes.titlesize'] = 20
         pyplot.rcParams['xtick.labelsize'] = 16
