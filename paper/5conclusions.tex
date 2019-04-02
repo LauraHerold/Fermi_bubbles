@@ -78,8 +78,7 @@ $\SI{3}{TeV}$ is $T_{\rm cool} \approx \SI{200}{kyr}$,
 %this corresponds to \red{$xx^\circ$ -- this is consistent(?) with the 
 %softening of CRe for $|b| > 2^\circ$}.
 which is comparable to the diffusive escape time from the $\pm 900$ pc volume around the GP at $\SI{3}{TeV}$.
-The cooling time has a significant uncertainty due to the uncertainties in the ISRF near the GC, e.g., 
-it can be more than an order of magnitude shorter for higher ISRF densities in the model of \cite{2017MNRAS.470.2539P}.
+The cooling time can have a factor $\sim$ 3 uncertainty due to the uncertainties in the ISRF near the GC (see Appendix~\ref{app:ISRF}).
 
 The energy density in electrons with energies above $E_0 = \SI{1}{GeV}$, which is necessary to produce the gamma-ray emission
 in the rectangles model of the FBs (Section \ref{sec:IC_model}), is $\SI{4.0}{meV\;cm^{-3}}$.
@@ -96,15 +95,12 @@ we conclude that the majority of the gamma-ray emission near the base of the FBs
 is likely to be produced by the hadronic interactions of CRp with the gas.
 %\Laura{So, $\SI{1e50}{erg}$ per SN?} \dima{ SNe kinetic energy is $10^{51}$ erg, energy in CRs:  $10^{50}$ erg, a fraction of that is in CRe, i.e., if we have 1\% in electrons, then we need 300 SNe.}
 %\dima{if the electrons cool as they propagate $2^\circ$, we should use $|b| < 2^\circ$ to calculate the total energy content of CRe}. \Laura{This is the total energy content for $|b| < 6$} \dima{OK}.
-The presence of the hadronic production of gamma rays at the base of the FBs, without any sign of a cutoff up to gamma-ray energies of 1TeV,  
+The presence of the hadronic production of gamma rays at the base of the FBs, without any sign of a cutoff up to gamma-ray energies of 1 TeV,  
 is important
 for the detectability of the associated neutrino signal by neutrino telescopes, Figure \ref{fig:sensitivities} \citep[see also][]{2018Galax...6...47R}.
-If the ISRF energy density is an order of magnitude higher near the GC \citep{2017MNRAS.470.2539P}, than the ISRF assumed in the GALPROP model,
-then CRe energy density can be an order of magnitude smaller, i.e., the required number of SNRs is about 300,
-but the cooling time is also an order of magnitude shorter.
-Thus the SNRs should have exploded in the past $\sim$ 20 thousand years.
-In this scenario, the gamma-rays produced in interactions of CR protons with gas will be subdominant to the IC gamma rays.
-
+%If the average ISRF energy density is a factor $\sim$ 2 higher or smaller near the GC \citep{2017MNRAS.470.2539P}, than the ISRF assumed in the GALPROP v54.1 model,
+%then CRe energy density can be a factor of $\sim$ 2 smaller or higher, than in the reference model.
+%But in any case the majority of the gamma-ray emission should come from the hadronic interactions.
 
 
 \begin{figure*}[h]
@@ -116,9 +112,8 @@ In this scenario, the gamma-rays produced in interactions of CR protons with gas
 	Solid lines show the best-fit spectra in the rectangles model of the FBs.
 	The shaded bands represent the systematic uncertainties, 
 	estimated from the maximal and minimal best-fit FBs spectra among the foreground models. 
-	Uncertainties in ISRF energy density near the GC result in additional order of magnitude uncertainties in the CRe energy density.
-	In particular, CRe energy density derived with the ISRF model of \cite{2017MNRAS.470.2539P} results in 
-	a factor $\sim$ 20 smaller overall normalization (see Appendix \ref{app:ISRF} for details). 
+	Uncertainties in the ISRF energy density near the GC result in an additional factor of $\sim$ 2 uncertainties in the CRe energy density 
+	(see Appendix \ref{app:ISRF} for details). 
 	For comparison with the local CR spectrum, we show the local fluxes of CRp  measured by AMS-02 \citep{2015PhRvL.114q1103A} and 
 	CRe measured by H.E.S.S. \citep{2008PhRvL.101z1104A}, AMS-02 \citep{2014PhRvL.113v1102A}, 
 	\Fermi-LAT \citep{2017PhRvD..95h2007A}, and \DAMPE \citep{2017Natur.552...63D}.
@@ -287,7 +282,7 @@ gamma-ray emission away from Sgr A* in the SMBH scenario.
 
 The gamma-ray emission at the base of the FBs can be explained by either a hadronic or a leptonic model of gamma-ray production
 with CR spectra consistent with a power law without a cutoff.
-The index of the CRe (CRp) spectrum is 2.5 -- 2.9 (2.0 -- 2.2).
+The index of the CRe (CRp) spectrum is 2.6 -- 2.9 (2.0 -- 2.3).
 We derive the 95\% confidence lower bound on the cutoff in the CR electron and proton spectra
 by selecting the lowest 95\% statistical confidence value among the models of the foreground emission considered 
 in Sections \ref{sec:le_data_model} -- \ref{sec:galprop_model}.
@@ -308,8 +303,8 @@ gamma-ray emission in the hadronic scenario near the GC,
 while with 0.1\% CRe acceleration efficiency, the required number of SNRs is 3000.
 For the GC scenario, the estimated diffusive escape time and the electron cooling time is $\sim 100$ kyr.
 In this case one needs a relatively high SN rate of one per $\sim$ 100 yr at the location of the gamma-ray emission.
-If the ISRF energy density is an order of magnitude higher \citep{2017MNRAS.470.2539P} than the GALPROP ISRF,
-than both the cooling time and the required energy density of CRe are an order of magnitude smaller than in the reference model,
+If the average ISRF energy density is a factor of $\sim$ 2 lower or higher than the ISRF in the reference model (Appendix \ref{app:ISRF}),
+then both the cooling time and the required energy density of CRe will be a factor of $\sim$ 2 higher or lower than in the reference model,
 which nevertheless requires the same SN rate of one per $\sim$ 100 yr.
 
 If the residual gamma-ray emission is produced at a closer distance, e.g., at about 1 kpc
@@ -343,8 +338,9 @@ the corresponding neutrino emission could be detected with the future KM3NeT tel
 \subsection*{Acknowledgements}
 
 The authors would like to thank 
-Seth Digel, Anna Franckowiak, Stefan Funk, Gudlaugur Johannesson, Tsunefumi Mizuno, Andrew Strong, and Luigi Tibaldo 
+Seth Digel, Anna Franckowiak, Stefan Funk, Gudlaugur Johannesson, Tsunefumi Mizuno, Troy Porter, Andrew Strong, and Luigi Tibaldo 
 for valuable comments and suggestions.
+Also we would like to thank Cristina Popescu for providing us the ISRF data files in fits format.
 The Fermi LAT Collaboration acknowledges generous ongoing support from a number of agencies and institutes that have supported both the development and the operation of the LAT as well as scientific data analysis. These include the National Aeronautics and Space Administration and the Department of Energy in the United States, the Commissariat à l'Energie Atomique and the Centre National de la Recherche Scientifique / Institut National de Physique Nucléaire et de Physique des Particules in France, the Agenzia Spaziale Italiana and the Istituto Nazionale di Fisica Nucleare in Italy, the Ministry of Education, Culture, Sports, Science and Technology (MEXT), High Energy Accelerator Research Organization (KEK) and Japan Aerospace Exploration Agency (JAXA) in Japan, and the K. A. Wallenberg Foundation, the Swedish Research Council and the Swedish National Space Board in Sweden.
 
 
