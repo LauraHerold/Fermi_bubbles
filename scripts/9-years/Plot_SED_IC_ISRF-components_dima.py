@@ -1,6 +1,7 @@
 """ Plots the SED of all latitude stripes necessary to observe the Fermi bubbles. """
 # isrf=Popescu
 # v54, R12, F98
+# cd /Users/Dmitry/Work/student_works/github_bubbles/scripts/9-years
 # python Plot_SED_IC_ISRF-components_dima.py -o0 -r $isrf
 # cp ../../plots/Plots_9-year/Low_energy_range0/SED_ISRF_componentsboxes_source_0_"$isrf".pdf ../../paper/plots
 
@@ -11,14 +12,14 @@ from matplotlib import pyplot
 import healpylib as hlib
 from iminuit import Minuit
 from optparse import OptionParser
-import dio
 from yaml import load
 import gamma_spectra
 import scipy.integrate as integrate
 from math import factorial
-import auxil
 from scipy import special
 
+import auxil
+import dio
 
 ########################################################################################################################## Parameters
 
@@ -30,7 +31,7 @@ no_accurate_matrix = False
 acc_matrix = True
 
 fit_IC  = True
-fit_pi0 = True
+fit_pi0 = False
 
 Ecut_inv_min0 = 1.e-6 # 1 PeV cutoff for electron and proton CR spectra
 Ecut_inv_min = 2.e-6 # effective 500 TeV cutoff for the proton spectra (there are some problems in the parametrization above 500 TeV)
@@ -49,6 +50,9 @@ low_energy_range = int(options.lowE_range) # 0: baseline, 4: test
 input_data = str(options.input_data) # data, lowE, boxes, GALPROP
 latitude = int(options.latitude)
 ISRF_model = options.isrf # 'v54', 'Popescu', 'R12', 'F98'
+
+cre_sp_fn = '../dima/data/ISRF_CRe.yaml'
+cre_sp_dict = dio.loaddict(cre_sp_fn)
 
 
 fn_ending = ".pdf"
@@ -127,7 +131,7 @@ E_SN = 1.e49 * erg2GeV
 plot_dict = {'Popescu': r'Popescu\ et\ al.\ (2017)',
              'R12': r'Porter\ et\ al.\ (2017)\ R12',
              'F98': r'Porter\ et\ al.\ (2017)\ F98',
-             'v54': r'GALPROP\ v54.1'
+             'v54': r'Porter\ et\ al.\ (2008)'
 }
 
 
@@ -262,18 +266,20 @@ print "Bc[b]: ",  Bc[b]
 auxil.setup_figure_pars(plot_type = 'spectrum')
 colour_index = 0
 
-
-IRFmap_fn = '../../data/ISRF_flux/Standard_0_0_%s_Flux.fits.gz' % str(ISFR_heights[b])   # Model for the ISRF
-if ISRF_model == 'R12':
-    print 'Take R12 ISRF model'
-    IRFmap_fn = '../../data/ISRF_galprop_v56/robitaille_DL07_PAHISMMix_-0.1_0_-0.1_Flux.fits.gz'
-elif ISRF_model == 'F98':
-    print 'Take F98 ISRF model'
-    IRFmap_fn = '../../data/ISRF_galprop_v56/freudenreich_DL07_PAHISMMix_-0.1_0_-0.1_Flux.fits.gz'
+print 'Take %s ISRF model' % ISRF_model
+IRFmap_fn = '../../data/ISRF_average/ldUld_GC_average_%s.csv' % ISRF_model
 
 
-hdu = pyfits.open(IRFmap_fn)                                                                # Physical unit of field: 'micron'
-wavelengths = hdu[1].data.field('Wavelength') * mk2m                                       # in m
+data = np.loadtxt(IRFmap_fn, delimiter=',', skiprows=1).T
+wavelengths = data[0] * mk2m
+ld_dUdld = data[1]
+#else:
+#    hdu = pyfits.open(IRFmap_fn)                                                                # Physical unit of field: 'micron'
+#    ld_dUdld = hdu[1].data.field('Total')
+#    wavelengths = hdu[1].data.field('Wavelength') * mk2m                                       # in m
+
+
+
 E_irf_galaxy = lambda2eV(wavelengths)[::-1]                                       # Convert wavelength to eV, invert order
 
 E_SL2IR_transition = 0.1 # transition energy between IR and starlight - 0.1 eV
@@ -282,56 +288,6 @@ print "transition energy IR - starlght: ", E_irf_galaxy[transition_bin_IR_starli
 #transition_bin_IR_starlight0 = 73 * 4 - 1 # Energy = 0.1 eV
 #print "transition energy IR - starlght old: ", E_irf_galaxy[transition_bin_IR_starlight0]
 
-ld_dUdld = hdu[1].data.field('Total')
-
-if ISRF_model == 'Popescu':
-    print 'Take Popescu ISRF model'
-    #EdNdE_irf_galaxy *= 10
-    ld_dUdld0 = 1. * ld_dUdld
-    isrf = auxil.get_popescu_isrf(field='total')
-    wavelengths_mkm = wavelengths / mk2m
-    ld_dUdld = isrf(wavelengths_mkm)
-    Es_isrf = lambda2eV(wavelengths)[::-1]
-    if 0:
-        pyplot.rcParams['figure.subplot.top'] = 0.93
-        pyplot.rcParams['figure.subplot.bottom'] = 0.15
-        pyplot.rcParams['xtick.labelsize'] = 18
-        pyplot.rcParams['ytick.labelsize'] = 18
-
-        pyplot.figure()
-        pyplot.loglog(E_irf_galaxy, ld_dUdld0[::-1], label='GALPROP v54.1')
-        pyplot.loglog(E_irf_galaxy, ld_dUdld[::-1], ls='--', label='Popescu et al. (2017) ')
-        #pyplot.loglog(wavelengths_mkm, auxil.get_popescu_isrf(field='SL')(wavelengths_mkm), ls='-.')
-        #pyplot.loglog(wavelengths_mkm, auxil.get_popescu_isrf(field='IR')(wavelengths_mkm), ls=':')
-        # R12 Galprop v56 ISRF field
-        fn = '../../data/ISRF_galprop_v56/robitaille_DL07_PAHISMMix_-0.1_0_-0.1_Flux.fits.gz'
-        hdu_r12 = pyfits.open(fn)
-        lambda_r12 = hdu_r12[1].data.field('Wavelength')
-        ld_dUdld_r12 = hdu_r12[1].data.field('Total')
-        Es_r12 = lambda2eV(lambda_r12 * mk2m)[::-1]
-        pyplot.loglog(Es_r12, ld_dUdld_r12[::-1], ls='-.', label='Porter et al. (2017) R12')
-        # F98 Galprop v56 ISRF field
-        fn = '../../data/ISRF_galprop_v56/freudenreich_DL07_PAHISMMix_-0.1_0_-0.1_Flux.fits.gz'
-        hdu_f98 = pyfits.open(fn)
-        lambda_f98 = hdu_f98[1].data.field('Wavelength')
-        Es_f98 = lambda2eV(lambda_f98 * mk2m)[::-1]
-        ld_dUdld_f98 = hdu_f98[1].data.field('Total')
-        pyplot.loglog(Es_f98, ld_dUdld_f98[::-1], ls=':', label='Porter et al. (2017) F98')
-        lg = pyplot.legend(loc='best', ncol=1, numpoints=1, labelspacing=0.4)
-        lg.get_frame().set_linewidth(0)  #To get rid of the box
-
-        pyplot.xlabel(r'$E_{\rm ISRF}\ \mathrm{[eV]}$')
-        pyplot.ylabel(r'$\lambda\frac{\mathrm{d}U}{\mathrm{d}\lambda}\ \left[ \frac{\mathrm{eV}}{\mathrm{cm^3}} \right]$')
-        
-        pyplot.ylim(0.001, 2000)
-        pyplot.xlim(3.e-4, 30)
-        fn = plot_dir + 'ISRF_comparison.pdf'
-        print 'save figure to file'
-        print fn
-        pyplot.savefig(fn, format = 'pdf')
-        auxil.setup_figure_pars(plot_type = 'spectrum')
-        #pyplot.show()
-        exit()
 
 EdNdE_irf_galaxy = ld_dUdld[::-1] / E_irf_galaxy                          # in 1/cm^3. Since unit of 'Total': eV/cm^3
 dlogE_irf = np.log(E_irf_galaxy[1] / E_irf_galaxy[0])                                                              # Wavelength bin size
@@ -469,12 +425,20 @@ for l in [0]:
         # replace the cutoff in the spectrum with min value
         print 'parameters for the final CRe spectrum:'
         print N_0, gamma, Ecut_inv
+        print 'save to the dict:'
+        print cre_sp_fn
+        sub_dict = {}
+        sub_dict['N_0'] = N_0
+        sub_dict['gamma'] = gamma
+        cre_sp_dict[ISRF_model] = sub_dict
+        dio.savedict(cre_sp_dict, cre_sp_fn, expand=True)
         print
+        
         EdNdE_e = N_0 * E_e**(-gamma) * np.exp(-E_e * Ecut_inv)
         #EdNdE_e = N_0 * E_e**(-gamma) * np.exp(-E_e * Ecut_inv_min0)
         irf_components = [EdNdE_irf, EdNdE_irf_starlight, EdNdE_irf_IR, EdNdE_CMB]
         lss = [ "-", "--", "-.", ":",]
-        labels = ["Total IC",  "starlight", "IR", "CMB",]
+        labels = ["Total IC",  "SL", "IR", "CMB",]
         colors = ["blue", "darkorange", "red", "cadetblue"]
         lws = [1.6, 1.6, 1.6, 1.6]
         

@@ -32,12 +32,13 @@ for ind, band in enumerate(bands['Band']):
     fn = 'models/u_%s.dat' % band
     #df = pd.read_table(fn, header=80, sep=' ')
     data = np.loadtxt(fn, skiprows=82).T
-    for i in range(len(data))[:1]:
+    for i in range(data.shape[1]):
         r = data[0][i]
         z = data[1][i]
         u = data[2][i]
         key = 'r%ipc_z%ipc' % (r, z)
         if ind == 0:
+            print key
             arr = np.zeros_like(bands, dtype=np.float)
             res_dict[key] = pd.DataFrame(arr, columns=['lambda(mkm)', 'ldUld(eV/cm^3)'])
         ld_angstrom = 10. * ld
@@ -51,4 +52,4 @@ for key in res_dict.keys():
     print fn
     res_dict[key].to_csv(fn, index=False)
 
-print res_dict
+#print res_dict

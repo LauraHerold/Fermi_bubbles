@@ -27,6 +27,8 @@ import dio
 import healpylib as hlib
 #import wcs_plot as wplot
 
+epsilon = 1.e-30
+
 step = lambda x: (1. + np.sign(x)) / 2.
 delta = lambda x: (1. + np.sign(x)) * (1. - np.sign(x))
 
@@ -1393,10 +1395,13 @@ def select_ebins(Es, cdict, name='low_energy', plotting=0):
 
 
 def get_popescu(field):
-    fn = '../../data/ISRF_popescu/ISRF/ldUld_r0pc_z0pc_%s.csv' % field
+    fn = '../../data/ISRF_popescu/ISRF/ldUld_GC_average_%s.csv' % field
     data = np.loadtxt(fn, delimiter=',', skiprows=1).T
-    return interpolate.interp1d(data[0], data[1], kind='linear',
-                                bounds_error=False, fill_value=0.)
+    f1 = interpolate.interp1d(data[0], data[1], kind='linear',
+                                bounds_error=False, fill_value='extrapolate')
+    def f(x):
+        return np.maximum(f1(x), np.ones_like(x) * epsilon)
+    return f
 
 def get_popescu_isrf(field='total'):
     """
